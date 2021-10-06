@@ -53,7 +53,8 @@ CREATE TABLE PatientRegistration (
 
 INSERT INTO dbo.PatientDetails (Firstname, Lastname, Gender, Age, Birthdate, Height, Weight, EmailID, PhoneNumber, CreatedOn) VALUES
 ('Raymond', 'Gorospe', 'Male', 20, '2000-11-13', 5.5, 22.0, 'raymondgorospe@gmail.com', '09162711323', GETDATE()),
-('John', 'John', 'Male', 25, '1995-12-25', 6.4, 32.0, 'johnjohn@business.com', '09772681369', GETDATE());
+('John', 'John', 'Male', 25, '1995-12-25', 6.4, 32.0, 'johnjohn@business.com', '09772681369', GETDATE()),
+('Reuben', 'Palabasan', 'Male', 20, '2001-03-12', 6.9, 100, 'reuben.palabasan@neu.edu.ph', '09778651222', GETDATE());
 
 SELECT * FROM dbo.Laboratory;
 SELECT * FROM dbo.PatientDetails;
