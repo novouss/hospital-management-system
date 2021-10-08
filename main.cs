@@ -23,6 +23,7 @@ namespace hospital_management_system
         private void resetDisplayPanel()
         {
             addPatientPanel.Visible = false;
+            patientPanel.Visible = false;
         }
 
         private void resetNavigationPanel()
@@ -44,6 +45,7 @@ namespace hospital_management_system
         private void patientBtn_Click(object sender, EventArgs e)
         {
             resetNavigationPanel();
+            patientPanel.Visible = true;
             removePatientBtn.Visible = true;
             addPatientBtn.Visible = true;
         }
@@ -86,6 +88,58 @@ namespace hospital_management_system
             PatientGenderFemaleRadio.Checked = false;
             PatientGenderOthersRadio.Checked = false;
             PatientGenderOthersTextbox.Text =  "";
+            PatientHeightTextbox.Text = "";
+            PatientWeightTexbox.Text = "";
+            PatientEmailTextbox.Text = "";
+            PatientPhoneTextbox.Text = "";
+        }
+
+        private void mainWindow_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dataset.PatientDetails' table. You can move, or remove it, as needed.
+            this.patientDetailsTableAdapter.Fill(this.dataset.PatientDetails);
+            // TODO: This line of code loads data into the 'dataset.PatientDetails' table. You can move, or remove it, as needed.
+            this.patientDetailsTableAdapter.Fill(this.dataset.PatientDetails);
+
+        }
+
+        private void patientBtn_Click_1(object sender, EventArgs e)
+        {
+            resetDisplayPanel();
+            patientPanel.Visible = true;
+            resetNavigationPanel();
+            removePatientBtn.Visible = true;
+            addPatientBtn.Visible = true;
+        }
+
+        private void doctorBtn_Click_1(object sender, EventArgs e)
+        {
+            resetNavigationPanel();
+            removeDoctorBtn.Visible = true;
+            addDoctorsBtn.Visible = true;
+        }
+
+        private void addPatientBtn_Click_1(object sender, EventArgs e)
+        {
+            resetDisplayPanel();
+            addPatientPanel.Visible = true;
+        }
+
+        private void logoutBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void addPatientClearBtn_Click_1(object sender, EventArgs e)
+        {
+            PatientFirstnameTextbox.Text = "";
+            PatientLastnameTextbox.Text = "";
+            PatientMiddlenameTextbox.Text = "";
+            PatientAddressTextbox.Text = "";
+            PatientGenderMaleRadio.Checked = false;
+            PatientGenderFemaleRadio.Checked = false;
+            PatientGenderOthersRadio.Checked = false;
+            PatientGenderOthersTextbox.Text = "";
             PatientHeightTextbox.Text = "";
             PatientWeightTexbox.Text = "";
             PatientEmailTextbox.Text = "";
