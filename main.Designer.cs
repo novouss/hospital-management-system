@@ -40,18 +40,35 @@ namespace hospital_management_system
             this.addPatientBtn = new System.Windows.Forms.Button();
             this.patientBtn = new System.Windows.Forms.Button();
             this.addPatientPanel = new System.Windows.Forms.Panel();
+            this.addPatientClearBtn = new System.Windows.Forms.Button();
+            this.addPatientSaveBtn = new System.Windows.Forms.Button();
+            this.PatientPhoneTextbox = new System.Windows.Forms.TextBox();
+            this.PatientEmailTextbox = new System.Windows.Forms.TextBox();
+            this.PatientPhoneLabel = new System.Windows.Forms.Label();
+            this.PatientEmailLabel = new System.Windows.Forms.Label();
+            this.PatientWeightTexbox = new System.Windows.Forms.TextBox();
+            this.PatientHeightTextbox = new System.Windows.Forms.TextBox();
+            this.PatientBirthdateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.PatientWeightLabel = new System.Windows.Forms.Label();
+            this.PatientHeightLabel = new System.Windows.Forms.Label();
+            this.PatientGenderOthersTextbox = new System.Windows.Forms.TextBox();
+            this.PatientGenderOthersRadio = new System.Windows.Forms.RadioButton();
+            this.PatientGenderFemaleRadio = new System.Windows.Forms.RadioButton();
+            this.PatientGenderMaleRadio = new System.Windows.Forms.RadioButton();
+            this.PatientGenderLabel = new System.Windows.Forms.Label();
+            this.PatientNameLabel = new System.Windows.Forms.Label();
+            this.PatientBirthdateLabel = new System.Windows.Forms.Label();
             this.addPatientLabel = new System.Windows.Forms.Label();
-            this.firstnameLabel = new System.Windows.Forms.Label();
-            this.middlenameLabel = new System.Windows.Forms.Label();
-            this.lastnameLabel = new System.Windows.Forms.Label();
+            this.PatientFirstnameLabel = new System.Windows.Forms.Label();
+            this.PatientMiddlenameLabel = new System.Windows.Forms.Label();
+            this.PatientLastnameLabel = new System.Windows.Forms.Label();
             this.addressLabel = new System.Windows.Forms.Label();
-            this.firstnameTextbox = new System.Windows.Forms.TextBox();
-            this.middlenameTextbox = new System.Windows.Forms.TextBox();
-            this.lastnameTextbox = new System.Windows.Forms.TextBox();
-            this.addressTextbox = new System.Windows.Forms.TextBox();
+            this.PatientFirstnameTextbox = new System.Windows.Forms.TextBox();
+            this.PatientMiddlenameTextbox = new System.Windows.Forms.TextBox();
+            this.PatientLastnameTextbox = new System.Windows.Forms.TextBox();
+            this.PatientAddressTextbox = new System.Windows.Forms.TextBox();
             this.navigationBar = new System.Windows.Forms.Panel();
             this.profileLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.displayLayout.SuspendLayout();
             this.navigationPanel.SuspendLayout();
             this.addPatientPanel.SuspendLayout();
@@ -226,96 +243,296 @@ namespace hospital_management_system
             // 
             // addPatientPanel
             // 
-            this.addPatientPanel.Controls.Add(this.label1);
+            this.addPatientPanel.Controls.Add(this.addPatientClearBtn);
+            this.addPatientPanel.Controls.Add(this.addPatientSaveBtn);
             this.addPatientPanel.Controls.Add(this.addPatientLabel);
-            this.addPatientPanel.Controls.Add(this.firstnameLabel);
-            this.addPatientPanel.Controls.Add(this.middlenameLabel);
-            this.addPatientPanel.Controls.Add(this.lastnameLabel);
+            this.addPatientPanel.Controls.Add(this.PatientPhoneTextbox);
+            this.addPatientPanel.Controls.Add(this.PatientPhoneLabel);
+            this.addPatientPanel.Controls.Add(this.PatientEmailTextbox);
+            this.addPatientPanel.Controls.Add(this.PatientEmailLabel);
+            this.addPatientPanel.Controls.Add(this.PatientWeightTexbox);
+            this.addPatientPanel.Controls.Add(this.PatientWeightLabel);
+            this.addPatientPanel.Controls.Add(this.PatientHeightTextbox);
+            this.addPatientPanel.Controls.Add(this.PatientHeightLabel);
+            this.addPatientPanel.Controls.Add(this.PatientBirthdateTimePicker);
+            this.addPatientPanel.Controls.Add(this.PatientBirthdateLabel);
+            this.addPatientPanel.Controls.Add(this.PatientGenderOthersTextbox);
+            this.addPatientPanel.Controls.Add(this.PatientGenderOthersRadio);
+            this.addPatientPanel.Controls.Add(this.PatientGenderFemaleRadio);
+            this.addPatientPanel.Controls.Add(this.PatientGenderMaleRadio);
+            this.addPatientPanel.Controls.Add(this.PatientGenderLabel);
+            this.addPatientPanel.Controls.Add(this.PatientFirstnameTextbox);
+            this.addPatientPanel.Controls.Add(this.PatientFirstnameLabel);
+            this.addPatientPanel.Controls.Add(this.PatientMiddlenameTextbox);
+            this.addPatientPanel.Controls.Add(this.PatientMiddlenameLabel);
+            this.addPatientPanel.Controls.Add(this.PatientLastnameTextbox);
+            this.addPatientPanel.Controls.Add(this.PatientLastnameLabel);
+            this.addPatientPanel.Controls.Add(this.PatientNameLabel);
+            this.addPatientPanel.Controls.Add(this.PatientAddressTextbox);
             this.addPatientPanel.Controls.Add(this.addressLabel);
-            this.addPatientPanel.Controls.Add(this.firstnameTextbox);
-            this.addPatientPanel.Controls.Add(this.middlenameTextbox);
-            this.addPatientPanel.Controls.Add(this.lastnameTextbox);
-            this.addPatientPanel.Controls.Add(this.addressTextbox);
             this.addPatientPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addPatientPanel.Location = new System.Drawing.Point(180, 3);
             this.addPatientPanel.Name = "addPatientPanel";
             this.addPatientPanel.Size = new System.Drawing.Size(1082, 574);
             this.addPatientPanel.TabIndex = 1;
             // 
+            // addPatientClearBtn
+            // 
+            this.addPatientClearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.addPatientClearBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.addPatientClearBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.addPatientClearBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
+            this.addPatientClearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addPatientClearBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addPatientClearBtn.ForeColor = System.Drawing.Color.White;
+            this.addPatientClearBtn.Location = new System.Drawing.Point(700, 466);
+            this.addPatientClearBtn.Name = "addPatientClearBtn";
+            this.addPatientClearBtn.Size = new System.Drawing.Size(171, 50);
+            this.addPatientClearBtn.TabIndex = 39;
+            this.addPatientClearBtn.Text = "Clear All";
+            this.addPatientClearBtn.UseVisualStyleBackColor = false;
+            this.addPatientClearBtn.Click += new System.EventHandler(this.addPatientClearBtn_Click);
+            // 
+            // addPatientSaveBtn
+            // 
+            this.addPatientSaveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.addPatientSaveBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.addPatientSaveBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
+            this.addPatientSaveBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
+            this.addPatientSaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addPatientSaveBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addPatientSaveBtn.ForeColor = System.Drawing.Color.White;
+            this.addPatientSaveBtn.Location = new System.Drawing.Point(877, 466);
+            this.addPatientSaveBtn.Name = "addPatientSaveBtn";
+            this.addPatientSaveBtn.Size = new System.Drawing.Size(171, 50);
+            this.addPatientSaveBtn.TabIndex = 38;
+            this.addPatientSaveBtn.Text = "Save";
+            this.addPatientSaveBtn.UseVisualStyleBackColor = false;
+            // 
+            // PatientPhoneTextbox
+            // 
+            this.PatientPhoneTextbox.Location = new System.Drawing.Point(374, 400);
+            this.PatientPhoneTextbox.Name = "PatientPhoneTextbox";
+            this.PatientPhoneTextbox.Size = new System.Drawing.Size(328, 22);
+            this.PatientPhoneTextbox.TabIndex = 37;
+            // 
+            // PatientEmailTextbox
+            // 
+            this.PatientEmailTextbox.Location = new System.Drawing.Point(41, 400);
+            this.PatientEmailTextbox.Name = "PatientEmailTextbox";
+            this.PatientEmailTextbox.Size = new System.Drawing.Size(328, 22);
+            this.PatientEmailTextbox.TabIndex = 36;
+            // 
+            // PatientPhoneLabel
+            // 
+            this.PatientPhoneLabel.AutoSize = true;
+            this.PatientPhoneLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientPhoneLabel.Location = new System.Drawing.Point(370, 376);
+            this.PatientPhoneLabel.Name = "PatientPhoneLabel";
+            this.PatientPhoneLabel.Size = new System.Drawing.Size(116, 21);
+            this.PatientPhoneLabel.TabIndex = 35;
+            this.PatientPhoneLabel.Text = "Phone Number";
+            // 
+            // PatientEmailLabel
+            // 
+            this.PatientEmailLabel.AutoSize = true;
+            this.PatientEmailLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientEmailLabel.Location = new System.Drawing.Point(39, 376);
+            this.PatientEmailLabel.Name = "PatientEmailLabel";
+            this.PatientEmailLabel.Size = new System.Drawing.Size(108, 21);
+            this.PatientEmailLabel.TabIndex = 34;
+            this.PatientEmailLabel.Text = "Email Address";
+            // 
+            // PatientWeightTexbox
+            // 
+            this.PatientWeightTexbox.Location = new System.Drawing.Point(878, 310);
+            this.PatientWeightTexbox.Name = "PatientWeightTexbox";
+            this.PatientWeightTexbox.Size = new System.Drawing.Size(158, 22);
+            this.PatientWeightTexbox.TabIndex = 33;
+            // 
+            // PatientHeightTextbox
+            // 
+            this.PatientHeightTextbox.Location = new System.Drawing.Point(707, 310);
+            this.PatientHeightTextbox.Name = "PatientHeightTextbox";
+            this.PatientHeightTextbox.Size = new System.Drawing.Size(164, 22);
+            this.PatientHeightTextbox.TabIndex = 32;
+            // 
+            // PatientBirthdateTimePicker
+            // 
+            this.PatientBirthdateTimePicker.Location = new System.Drawing.Point(374, 310);
+            this.PatientBirthdateTimePicker.Name = "PatientBirthdateTimePicker";
+            this.PatientBirthdateTimePicker.Size = new System.Drawing.Size(327, 22);
+            this.PatientBirthdateTimePicker.TabIndex = 31;
+            // 
+            // PatientWeightLabel
+            // 
+            this.PatientWeightLabel.AutoSize = true;
+            this.PatientWeightLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientWeightLabel.Location = new System.Drawing.Point(874, 285);
+            this.PatientWeightLabel.Name = "PatientWeightLabel";
+            this.PatientWeightLabel.Size = new System.Drawing.Size(90, 21);
+            this.PatientWeightLabel.TabIndex = 27;
+            this.PatientWeightLabel.Text = "Weight (kg)";
+            // 
+            // PatientHeightLabel
+            // 
+            this.PatientHeightLabel.AutoSize = true;
+            this.PatientHeightLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientHeightLabel.Location = new System.Drawing.Point(708, 285);
+            this.PatientHeightLabel.Name = "PatientHeightLabel";
+            this.PatientHeightLabel.Size = new System.Drawing.Size(80, 21);
+            this.PatientHeightLabel.TabIndex = 26;
+            this.PatientHeightLabel.Text = "Height (ft)";
+            // 
+            // PatientGenderOthersTextbox
+            // 
+            this.PatientGenderOthersTextbox.Enabled = false;
+            this.PatientGenderOthersTextbox.Location = new System.Drawing.Point(230, 310);
+            this.PatientGenderOthersTextbox.Name = "PatientGenderOthersTextbox";
+            this.PatientGenderOthersTextbox.Size = new System.Drawing.Size(138, 22);
+            this.PatientGenderOthersTextbox.TabIndex = 23;
+            // 
+            // PatientGenderOthersRadio
+            // 
+            this.PatientGenderOthersRadio.AutoSize = true;
+            this.PatientGenderOthersRadio.Location = new System.Drawing.Point(166, 314);
+            this.PatientGenderOthersRadio.Name = "PatientGenderOthersRadio";
+            this.PatientGenderOthersRadio.Size = new System.Drawing.Size(60, 17);
+            this.PatientGenderOthersRadio.TabIndex = 22;
+            this.PatientGenderOthersRadio.TabStop = true;
+            this.PatientGenderOthersRadio.Text = "Others";
+            this.PatientGenderOthersRadio.UseVisualStyleBackColor = true;
+            this.PatientGenderOthersRadio.CheckedChanged += new System.EventHandler(this.genderOthersRadio_CheckedChanged);
+            // 
+            // PatientGenderFemaleRadio
+            // 
+            this.PatientGenderFemaleRadio.AutoSize = true;
+            this.PatientGenderFemaleRadio.Location = new System.Drawing.Point(99, 314);
+            this.PatientGenderFemaleRadio.Name = "PatientGenderFemaleRadio";
+            this.PatientGenderFemaleRadio.Size = new System.Drawing.Size(61, 17);
+            this.PatientGenderFemaleRadio.TabIndex = 21;
+            this.PatientGenderFemaleRadio.TabStop = true;
+            this.PatientGenderFemaleRadio.Text = "Female";
+            this.PatientGenderFemaleRadio.UseVisualStyleBackColor = true;
+            this.PatientGenderFemaleRadio.CheckedChanged += new System.EventHandler(this.genderFemaleRadio_CheckedChanged);
+            // 
+            // PatientGenderMaleRadio
+            // 
+            this.PatientGenderMaleRadio.AutoSize = true;
+            this.PatientGenderMaleRadio.Location = new System.Drawing.Point(40, 315);
+            this.PatientGenderMaleRadio.Name = "PatientGenderMaleRadio";
+            this.PatientGenderMaleRadio.Size = new System.Drawing.Size(50, 17);
+            this.PatientGenderMaleRadio.TabIndex = 19;
+            this.PatientGenderMaleRadio.TabStop = true;
+            this.PatientGenderMaleRadio.Text = "Male";
+            this.PatientGenderMaleRadio.UseVisualStyleBackColor = true;
+            this.PatientGenderMaleRadio.CheckedChanged += new System.EventHandler(this.genderMaleRadio_CheckedChanged);
+            // 
+            // PatientGenderLabel
+            // 
+            this.PatientGenderLabel.AutoSize = true;
+            this.PatientGenderLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientGenderLabel.Location = new System.Drawing.Point(39, 285);
+            this.PatientGenderLabel.Name = "PatientGenderLabel";
+            this.PatientGenderLabel.Size = new System.Drawing.Size(61, 21);
+            this.PatientGenderLabel.TabIndex = 20;
+            this.PatientGenderLabel.Text = "Gender";
+            // 
+            // PatientNameLabel
+            // 
+            this.PatientNameLabel.AutoSize = true;
+            this.PatientNameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientNameLabel.Location = new System.Drawing.Point(39, 129);
+            this.PatientNameLabel.Name = "PatientNameLabel";
+            this.PatientNameLabel.Size = new System.Drawing.Size(132, 21);
+            this.PatientNameLabel.TabIndex = 13;
+            this.PatientNameLabel.Text = "Full Patient Name";
+            // 
+            // PatientBirthdateLabel
+            // 
+            this.PatientBirthdateLabel.AutoSize = true;
+            this.PatientBirthdateLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PatientBirthdateLabel.Location = new System.Drawing.Point(374, 285);
+            this.PatientBirthdateLabel.Name = "PatientBirthdateLabel";
+            this.PatientBirthdateLabel.Size = new System.Drawing.Size(73, 21);
+            this.PatientBirthdateLabel.TabIndex = 12;
+            this.PatientBirthdateLabel.Text = "Birthdate";
+            // 
             // addPatientLabel
             // 
             this.addPatientLabel.AutoSize = true;
             this.addPatientLabel.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addPatientLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.addPatientLabel.Location = new System.Drawing.Point(32, 35);
+            this.addPatientLabel.Location = new System.Drawing.Point(0, 0);
             this.addPatientLabel.Name = "addPatientLabel";
             this.addPatientLabel.Size = new System.Drawing.Size(273, 65);
             this.addPatientLabel.TabIndex = 2;
             this.addPatientLabel.Text = "Add Patient";
             // 
-            // firstnameLabel
+            // PatientFirstnameLabel
             // 
-            this.firstnameLabel.AutoSize = true;
-            this.firstnameLabel.Location = new System.Drawing.Point(40, 119);
-            this.firstnameLabel.Name = "firstnameLabel";
-            this.firstnameLabel.Size = new System.Drawing.Size(57, 13);
-            this.firstnameLabel.TabIndex = 6;
-            this.firstnameLabel.Text = "Firstname";
+            this.PatientFirstnameLabel.AutoSize = true;
+            this.PatientFirstnameLabel.Location = new System.Drawing.Point(40, 178);
+            this.PatientFirstnameLabel.Name = "PatientFirstnameLabel";
+            this.PatientFirstnameLabel.Size = new System.Drawing.Size(57, 13);
+            this.PatientFirstnameLabel.TabIndex = 6;
+            this.PatientFirstnameLabel.Text = "Firstname";
             // 
-            // middlenameLabel
+            // PatientMiddlenameLabel
             // 
-            this.middlenameLabel.AutoSize = true;
-            this.middlenameLabel.Location = new System.Drawing.Point(705, 119);
-            this.middlenameLabel.Name = "middlenameLabel";
-            this.middlenameLabel.Size = new System.Drawing.Size(71, 13);
-            this.middlenameLabel.TabIndex = 8;
-            this.middlenameLabel.Text = "Middlename";
+            this.PatientMiddlenameLabel.AutoSize = true;
+            this.PatientMiddlenameLabel.Location = new System.Drawing.Point(705, 178);
+            this.PatientMiddlenameLabel.Name = "PatientMiddlenameLabel";
+            this.PatientMiddlenameLabel.Size = new System.Drawing.Size(71, 13);
+            this.PatientMiddlenameLabel.TabIndex = 8;
+            this.PatientMiddlenameLabel.Text = "Middlename";
             // 
-            // lastnameLabel
+            // PatientLastnameLabel
             // 
-            this.lastnameLabel.AutoSize = true;
-            this.lastnameLabel.Location = new System.Drawing.Point(371, 119);
-            this.lastnameLabel.Name = "lastnameLabel";
-            this.lastnameLabel.Size = new System.Drawing.Size(55, 13);
-            this.lastnameLabel.TabIndex = 7;
-            this.lastnameLabel.Text = "Lastname";
+            this.PatientLastnameLabel.AutoSize = true;
+            this.PatientLastnameLabel.Location = new System.Drawing.Point(371, 178);
+            this.PatientLastnameLabel.Name = "PatientLastnameLabel";
+            this.PatientLastnameLabel.Size = new System.Drawing.Size(55, 13);
+            this.PatientLastnameLabel.TabIndex = 7;
+            this.PatientLastnameLabel.Text = "Lastname";
             // 
             // addressLabel
             // 
             this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(40, 181);
+            this.addressLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addressLabel.Location = new System.Drawing.Point(39, 213);
             this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(48, 13);
+            this.addressLabel.Size = new System.Drawing.Size(66, 21);
             this.addressLabel.TabIndex = 10;
             this.addressLabel.Text = "Address";
             // 
-            // firstnameTextbox
+            // PatientFirstnameTextbox
             // 
-            this.firstnameTextbox.Location = new System.Drawing.Point(40, 138);
-            this.firstnameTextbox.Name = "firstnameTextbox";
-            this.firstnameTextbox.Size = new System.Drawing.Size(328, 22);
-            this.firstnameTextbox.TabIndex = 3;
+            this.PatientFirstnameTextbox.Location = new System.Drawing.Point(40, 153);
+            this.PatientFirstnameTextbox.Name = "PatientFirstnameTextbox";
+            this.PatientFirstnameTextbox.Size = new System.Drawing.Size(328, 22);
+            this.PatientFirstnameTextbox.TabIndex = 3;
             // 
-            // middlenameTextbox
+            // PatientMiddlenameTextbox
             // 
-            this.middlenameTextbox.Location = new System.Drawing.Point(708, 138);
-            this.middlenameTextbox.Name = "middlenameTextbox";
-            this.middlenameTextbox.Size = new System.Drawing.Size(328, 22);
-            this.middlenameTextbox.TabIndex = 5;
+            this.PatientMiddlenameTextbox.Location = new System.Drawing.Point(708, 153);
+            this.PatientMiddlenameTextbox.Name = "PatientMiddlenameTextbox";
+            this.PatientMiddlenameTextbox.Size = new System.Drawing.Size(328, 22);
+            this.PatientMiddlenameTextbox.TabIndex = 5;
             // 
-            // lastnameTextbox
+            // PatientLastnameTextbox
             // 
-            this.lastnameTextbox.Location = new System.Drawing.Point(374, 138);
-            this.lastnameTextbox.Name = "lastnameTextbox";
-            this.lastnameTextbox.Size = new System.Drawing.Size(328, 22);
-            this.lastnameTextbox.TabIndex = 4;
+            this.PatientLastnameTextbox.Location = new System.Drawing.Point(374, 153);
+            this.PatientLastnameTextbox.Name = "PatientLastnameTextbox";
+            this.PatientLastnameTextbox.Size = new System.Drawing.Size(328, 22);
+            this.PatientLastnameTextbox.TabIndex = 4;
             // 
-            // addressTextbox
+            // PatientAddressTextbox
             // 
-            this.addressTextbox.Location = new System.Drawing.Point(40, 200);
-            this.addressTextbox.Name = "addressTextbox";
-            this.addressTextbox.Size = new System.Drawing.Size(996, 22);
-            this.addressTextbox.TabIndex = 9;
+            this.PatientAddressTextbox.Location = new System.Drawing.Point(40, 237);
+            this.PatientAddressTextbox.Name = "PatientAddressTextbox";
+            this.PatientAddressTextbox.Size = new System.Drawing.Size(996, 22);
+            this.PatientAddressTextbox.TabIndex = 9;
             // 
             // navigationBar
             // 
@@ -336,15 +553,6 @@ namespace hospital_management_system
             this.profileLabel.Size = new System.Drawing.Size(451, 65);
             this.profileLabel.TabIndex = 0;
             this.profileLabel.Text = "Hello Administrator,";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 250);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Birthdate";
             // 
             // mainWindow
             // 
@@ -382,16 +590,33 @@ namespace hospital_management_system
         private System.Windows.Forms.Button addDoctorsBtn;
         private System.Windows.Forms.Button logoutBtn;
         private System.Windows.Forms.Panel addPatientPanel;
-        private System.Windows.Forms.TextBox middlenameTextbox;
-        private System.Windows.Forms.TextBox lastnameTextbox;
-        private System.Windows.Forms.TextBox firstnameTextbox;
+        private System.Windows.Forms.TextBox PatientMiddlenameTextbox;
+        private System.Windows.Forms.TextBox PatientLastnameTextbox;
+        private System.Windows.Forms.TextBox PatientFirstnameTextbox;
         private System.Windows.Forms.Label addPatientLabel;
-        private System.Windows.Forms.Label firstnameLabel;
-        private System.Windows.Forms.Label middlenameLabel;
-        private System.Windows.Forms.Label lastnameLabel;
+        private System.Windows.Forms.Label PatientFirstnameLabel;
+        private System.Windows.Forms.Label PatientMiddlenameLabel;
+        private System.Windows.Forms.Label PatientLastnameLabel;
         private System.Windows.Forms.Label addressLabel;
-        private System.Windows.Forms.TextBox addressTextbox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox PatientAddressTextbox;
+        private System.Windows.Forms.Label PatientBirthdateLabel;
+        private System.Windows.Forms.Label PatientNameLabel;
+        private System.Windows.Forms.Label PatientWeightLabel;
+        private System.Windows.Forms.Label PatientHeightLabel;
+        private System.Windows.Forms.TextBox PatientGenderOthersTextbox;
+        private System.Windows.Forms.RadioButton PatientGenderOthersRadio;
+        private System.Windows.Forms.RadioButton PatientGenderFemaleRadio;
+        private System.Windows.Forms.RadioButton PatientGenderMaleRadio;
+        private System.Windows.Forms.Label PatientGenderLabel;
+        private System.Windows.Forms.TextBox PatientWeightTexbox;
+        private System.Windows.Forms.TextBox PatientHeightTextbox;
+        private System.Windows.Forms.DateTimePicker PatientBirthdateTimePicker;
+        private System.Windows.Forms.TextBox PatientPhoneTextbox;
+        private System.Windows.Forms.TextBox PatientEmailTextbox;
+        private System.Windows.Forms.Label PatientPhoneLabel;
+        private System.Windows.Forms.Label PatientEmailLabel;
+        private System.Windows.Forms.Button addPatientSaveBtn;
+        private System.Windows.Forms.Button addPatientClearBtn;
     }
 }
 

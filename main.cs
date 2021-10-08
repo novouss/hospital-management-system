@@ -32,6 +32,14 @@ namespace hospital_management_system
             removePatientBtn.Visible = false;
             removeDoctorBtn.Visible = false;
         }
+        //
+        // Add Patient
+        //
+        private void resetGenderOthers()
+        {
+            PatientGenderOthersTextbox.Enabled = false;
+            PatientGenderOthersTextbox.Text = "";
+        }
 
         private void patientBtn_Click(object sender, EventArgs e)
         {
@@ -51,6 +59,37 @@ namespace hospital_management_system
         {
             resetDisplayPanel();
             addPatientPanel.Visible = true;
+        }
+
+        private void genderOthersRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            PatientGenderOthersTextbox.Enabled = true;
+        }
+
+        private void genderMaleRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            resetGenderOthers();
+        }
+
+        private void genderFemaleRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            resetGenderOthers();
+        }
+
+        private void addPatientClearBtn_Click(object sender, EventArgs e)
+        {
+            PatientFirstnameTextbox.Text = "";
+            PatientLastnameTextbox.Text = "";
+            PatientMiddlenameTextbox.Text = "";
+            PatientAddressTextbox.Text = "";
+            PatientGenderMaleRadio.Checked = false;
+            PatientGenderFemaleRadio.Checked = false;
+            PatientGenderOthersRadio.Checked = false;
+            PatientGenderOthersTextbox.Text =  "";
+            PatientHeightTextbox.Text = "";
+            PatientWeightTexbox.Text = "";
+            PatientEmailTextbox.Text = "";
+            PatientPhoneTextbox.Text = "";
         }
     }
 }
