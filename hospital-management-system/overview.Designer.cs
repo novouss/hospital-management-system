@@ -105,6 +105,7 @@ namespace hospital_management_system
             // 
             // patient_label
             // 
+            this.patient_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.patient_label.AutoSize = true;
             this.patient_label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.patient_label.ForeColor = System.Drawing.Color.White;
@@ -117,11 +118,13 @@ namespace hospital_management_system
             // 
             // patient_count
             // 
+            this.patient_count.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.patient_count.AutoSize = true;
+            this.patient_count.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.patient_count.ForeColor = System.Drawing.Color.White;
             this.patient_count.Location = new System.Drawing.Point(210, 0);
             this.patient_count.Name = "patient_count";
-            this.patient_count.Size = new System.Drawing.Size(54, 65);
+            this.patient_count.Size = new System.Drawing.Size(56, 65);
             this.patient_count.TabIndex = 2;
             this.patient_count.Text = "0";
             this.patient_count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -174,6 +177,7 @@ namespace hospital_management_system
             // 
             // doctor_label
             // 
+            this.doctor_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.doctor_label.AutoSize = true;
             this.doctor_label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.doctor_label.ForeColor = System.Drawing.Color.White;
@@ -186,11 +190,13 @@ namespace hospital_management_system
             // 
             // doctor_count
             // 
+            this.doctor_count.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.doctor_count.AutoSize = true;
+            this.doctor_count.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.doctor_count.ForeColor = System.Drawing.Color.White;
             this.doctor_count.Location = new System.Drawing.Point(210, 0);
             this.doctor_count.Name = "doctor_count";
-            this.doctor_count.Size = new System.Drawing.Size(54, 65);
+            this.doctor_count.Size = new System.Drawing.Size(56, 65);
             this.doctor_count.TabIndex = 5;
             this.doctor_count.Text = "0";
             this.doctor_count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -242,6 +248,7 @@ namespace hospital_management_system
             // 
             // appointment_label
             // 
+            this.appointment_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.appointment_label.AutoSize = true;
             this.appointment_label.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.appointment_label.ForeColor = System.Drawing.Color.White;
@@ -254,11 +261,13 @@ namespace hospital_management_system
             // 
             // appointment_count
             // 
+            this.appointment_count.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.appointment_count.AutoSize = true;
+            this.appointment_count.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.appointment_count.ForeColor = System.Drawing.Color.White;
             this.appointment_count.Location = new System.Drawing.Point(213, 0);
             this.appointment_count.Name = "appointment_count";
-            this.appointment_count.Size = new System.Drawing.Size(54, 65);
+            this.appointment_count.Size = new System.Drawing.Size(56, 65);
             this.appointment_count.TabIndex = 8;
             this.appointment_count.Text = "0";
             this.appointment_count.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -361,6 +370,7 @@ namespace hospital_management_system
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1064, 576);
             this.Controls.Add(this.overview_group);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

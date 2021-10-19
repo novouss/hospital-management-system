@@ -19,6 +19,5 @@ namespace hospital_management_system
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new window());
         }
-
     }
 }

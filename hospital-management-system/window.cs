@@ -102,7 +102,7 @@ namespace hospital_management_system
 
         private void addPatient_btn_Click(object sender, EventArgs e)
         {
-            openChildWindow(new patientForm());
+            openChildWindow(new patientForm("new"));
         }
 
         #endregion

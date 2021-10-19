@@ -430,6 +430,7 @@ namespace hospital_management_system
             // 
             // display_child_window
             // 
+            this.display_child_window.AutoScroll = true;
             this.display_child_window.Dock = System.Windows.Forms.DockStyle.Fill;
             this.display_child_window.Location = new System.Drawing.Point(200, 105);
             this.display_child_window.Name = "display_child_window";
@@ -444,6 +445,7 @@ namespace hospital_management_system
             this.Controls.Add(this.display_child_window);
             this.Controls.Add(this.navigation_menu);
             this.Controls.Add(this.navigation_bar);
+            this.MinimumSize = new System.Drawing.Size(510, 650);
             this.Name = "window";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hospital Information System";
