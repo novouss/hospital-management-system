@@ -124,6 +124,7 @@ namespace hospital_management_system
             this.removeBill_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.removeBill_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.removeBill_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeBill_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.removeBill_btn.Location = new System.Drawing.Point(0, 50);
             this.removeBill_btn.Name = "removeBill_btn";
             this.removeBill_btn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -140,6 +141,7 @@ namespace hospital_management_system
             this.addBill_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.addBill_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.addBill_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addBill_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addBill_btn.Location = new System.Drawing.Point(0, 0);
             this.addBill_btn.Name = "addBill_btn";
             this.addBill_btn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -156,6 +158,7 @@ namespace hospital_management_system
             this.billing_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
             this.billing_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             this.billing_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.billing_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.billing_btn.ForeColor = System.Drawing.Color.White;
             this.billing_btn.Location = new System.Drawing.Point(0, 650);
             this.billing_btn.Name = "billing_btn";
@@ -185,6 +188,7 @@ namespace hospital_management_system
             this.removeLab_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.removeLab_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.removeLab_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeLab_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.removeLab_btn.Location = new System.Drawing.Point(0, 50);
             this.removeLab_btn.Name = "removeLab_btn";
             this.removeLab_btn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -201,6 +205,7 @@ namespace hospital_management_system
             this.addLab_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.addLab_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.addLab_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addLab_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addLab_btn.Location = new System.Drawing.Point(0, 0);
             this.addLab_btn.Name = "addLab_btn";
             this.addLab_btn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -217,6 +222,7 @@ namespace hospital_management_system
             this.laboratory_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
             this.laboratory_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             this.laboratory_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.laboratory_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.laboratory_btn.ForeColor = System.Drawing.Color.White;
             this.laboratory_btn.Location = new System.Drawing.Point(0, 500);
             this.laboratory_btn.Name = "laboratory_btn";
@@ -246,12 +252,13 @@ namespace hospital_management_system
             this.removeApp_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.removeApp_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.removeApp_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeApp_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.removeApp_btn.Location = new System.Drawing.Point(0, 50);
             this.removeApp_btn.Name = "removeApp_btn";
             this.removeApp_btn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.removeApp_btn.Size = new System.Drawing.Size(183, 50);
             this.removeApp_btn.TabIndex = 2;
-            this.removeApp_btn.Text = "Remove Appointment";
+            this.removeApp_btn.Text = "Remove Registration";
             this.removeApp_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.removeApp_btn.UseVisualStyleBackColor = true;
             // 
@@ -262,12 +269,13 @@ namespace hospital_management_system
             this.addApp_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.addApp_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.addApp_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addApp_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addApp_btn.Location = new System.Drawing.Point(0, 0);
             this.addApp_btn.Name = "addApp_btn";
             this.addApp_btn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.addApp_btn.Size = new System.Drawing.Size(183, 50);
             this.addApp_btn.TabIndex = 1;
-            this.addApp_btn.Text = "Add Appointment";
+            this.addApp_btn.Text = "Add Registration";
             this.addApp_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addApp_btn.UseVisualStyleBackColor = true;
             // 
@@ -278,12 +286,13 @@ namespace hospital_management_system
             this.appointment_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
             this.appointment_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             this.appointment_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.appointment_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.appointment_btn.ForeColor = System.Drawing.Color.White;
             this.appointment_btn.Location = new System.Drawing.Point(0, 350);
             this.appointment_btn.Name = "appointment_btn";
             this.appointment_btn.Size = new System.Drawing.Size(183, 50);
             this.appointment_btn.TabIndex = 5;
-            this.appointment_btn.Text = "Appointment";
+            this.appointment_btn.Text = "Registration";
             this.appointment_btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.appointment_btn.UseVisualStyleBackColor = true;
             this.appointment_btn.Click += new System.EventHandler(this.appointment_btn_Click);
@@ -307,6 +316,7 @@ namespace hospital_management_system
             this.removeDoc_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.removeDoc_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.removeDoc_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeDoc_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.removeDoc_btn.Location = new System.Drawing.Point(0, 50);
             this.removeDoc_btn.Name = "removeDoc_btn";
             this.removeDoc_btn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -323,6 +333,7 @@ namespace hospital_management_system
             this.addDoc_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.addDoc_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.addDoc_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addDoc_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addDoc_btn.Location = new System.Drawing.Point(0, 0);
             this.addDoc_btn.Name = "addDoc_btn";
             this.addDoc_btn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -339,6 +350,7 @@ namespace hospital_management_system
             this.doctor_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
             this.doctor_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             this.doctor_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.doctor_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.doctor_btn.ForeColor = System.Drawing.Color.White;
             this.doctor_btn.Location = new System.Drawing.Point(0, 200);
             this.doctor_btn.Name = "doctor_btn";
@@ -368,6 +380,7 @@ namespace hospital_management_system
             this.removePat_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.removePat_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.removePat_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removePat_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.removePat_btn.Location = new System.Drawing.Point(0, 50);
             this.removePat_btn.Name = "removePat_btn";
             this.removePat_btn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -384,6 +397,7 @@ namespace hospital_management_system
             this.addPat_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.addPat_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.addPat_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addPat_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.addPat_btn.Location = new System.Drawing.Point(0, 0);
             this.addPat_btn.Name = "addPat_btn";
             this.addPat_btn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
@@ -401,6 +415,7 @@ namespace hospital_management_system
             this.patient_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
             this.patient_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             this.patient_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.patient_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.patient_btn.ForeColor = System.Drawing.Color.White;
             this.patient_btn.Location = new System.Drawing.Point(0, 50);
             this.patient_btn.Name = "patient_btn";
@@ -418,6 +433,7 @@ namespace hospital_management_system
             this.overview_btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Highlight;
             this.overview_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             this.overview_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.overview_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.overview_btn.ForeColor = System.Drawing.Color.White;
             this.overview_btn.Location = new System.Drawing.Point(0, 0);
             this.overview_btn.Name = "overview_btn";

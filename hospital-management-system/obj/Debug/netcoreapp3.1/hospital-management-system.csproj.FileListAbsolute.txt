@@ -20,3 +20,11 @@ C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-ma
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\netcoreapp3.1\hospital_management_system.patient.resources
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\netcoreapp3.1\hospital_management_system.register.resources
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\netcoreapp3.1\hospital_management_system.patientForm.resources
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\netcoreapp3.1\hospital_management_system.login.resources
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\netcoreapp3.1\hospital-management-system.dll.config

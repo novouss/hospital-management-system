@@ -1,19 +1,19 @@
 /**********************************************
--- 1. CREATING DATABASE
+-- CREATING DATABASE
 **********************************************/
-IF DB_ID('hospital-management-system') IS NULL
+IF DB_ID('hospital-management-database') IS NULL
 BEGIN
-	CREATE DATABASE hospital-management-system
+	CREATE DATABASE hospital-management-database
 END
 
 GO
 
 /**********************************************
--- 2. CREATING TABLES
+-- CREATING TABLES
 **********************************************/
 
 -----------------------------------------------
--- 2.1 Tables [dbo.PatientDetails]
+-- Tables [dbo.PatientDetails]
 -----------------------------------------------
 
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.PatientDetails') AND OBJECTPROPERTY(id, N'isTable' = 1)
@@ -38,11 +38,11 @@ CREATE TABLE [dbo].[PatientDetails](
 	PRIMARY KEY CLUSTERED 
 	(
 		[PatientID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] )
 GO
 
 -----------------------------------------------
--- 2.2 Table [dbo].[EmployeeDetails]
+-- Table [dbo].[EmployeeDetails]
 -----------------------------------------------
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.EmployeeDetails') AND OBJECTPROPERTY(id, N'isTable' = 1)
 BEGIN
@@ -62,17 +62,18 @@ CREATE TABLE [dbo].[EmployeeDetails](
 	[PhoneNumber] VARCHAR(50) NULL,
 	[AddressID] INT NULL,
 	[RoleID] INT NULL,
-	[Passowrd] VARCHAR(50) NULL,
+	[Password] VARCHAR(50) NULL,
 	[CreatedOn] DATETIME NULL,
 	[ModifiedOn] DATETIME NULL
 	PRIMARY KEY CLUSTERED 
 	(
 		[EmployeeID] ASC
 	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+)
 GO
 
 -----------------------------------------------
--- 2.3 Table [dbo].[PatientRegistration]
+-- Table [dbo].[PatientRegistration]
 -----------------------------------------------
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.PatientRegistration') AND OBJECTPROPERTY(id, N'isTable' = 1)
 BEGIN
@@ -90,29 +91,31 @@ CREATE TABLE [dbo].[PatientRegistration](
 	PRIMARY KEY CLUSTERED 
 	(
 		[RegistrationID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+)
 GO
 
 -----------------------------------------------
--- 2.4 Table [dbo].[EmployeeDepatment]
+-- Table [dbo].[EmployeeDepartment]
 -----------------------------------------------
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.EmployeeDepatment') AND OBJECTPROPERTY(id, N'isTable' = 1)
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.EmployeeDepartment') AND OBJECTPROPERTY(id, N'isTable' = 1)
 BEGIN
-	DROP TABLE dbo.EmployeeDepatment
+	DROP TABLE dbo.EmployeeDepartment
 END
 
-CREATE TABLE [dbo].[EmployeeDepatment](
+CREATE TABLE [dbo].[EmployeeDepartment](
 	[EmployeeID] INT IDENTITY(1,1) NOT NULL,
 	[DepartmentID] INT NULL,
-	[Status] VARCHAR(50) NULL
+	[Status] BIT NULL
 	PRIMARY KEY CLUSTERED 
 	(
 		[EmployeeID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+)
 GO
 
 -----------------------------------------------
--- 2.5 Table [dbo].[Address]
+-- Table [dbo].[Address]
 -----------------------------------------------
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.Address') AND OBJECTPROPERTY(id, N'isTable' = 1)
 BEGIN
@@ -129,11 +132,12 @@ CREATE TABLE [dbo].[Address](
 	PRIMARY KEY CLUSTERED 
 	(
 		[AddressID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+)
 GO
 
 -----------------------------------------------
--- 2.6 Table [dbo].[Role]
+-- Table [dbo].[Role]
 -----------------------------------------------
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.Role') AND OBJECTPROPERTY(id, N'isTable' = 1)
 BEGIN
@@ -146,11 +150,12 @@ CREATE TABLE [dbo].[Role](
 	PRIMARY KEY CLUSTERED 
 	(
 		[RoleID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+)
 GO
 
 -----------------------------------------------
--- 2.7 Table [dbo].[Department]
+-- Table [dbo].[Department]
 -----------------------------------------------
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.Department') AND OBJECTPROPERTY(id, N'isTable' = 1)
 BEGIN
@@ -159,16 +164,17 @@ END
 
 CREATE TABLE [dbo].[Department](
 	[DepartmentID] INT IDENTITY(1,1) NOT NULL,
-	[Description] VARCHAR(50) NULL,
+	[DepartmentName] VARCHAR(50) NULL,
 	[DepCharge] INT NULL
 	PRIMARY KEY CLUSTERED 
 	(
 		[EmployeeID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+)
 GO
 
 -----------------------------------------------
--- 2.8 Table [dbo].[Room]
+-- Table [dbo].[Room]
 -----------------------------------------------
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.Room') AND OBJECTPROPERTY(id, N'isTable' = 1)
 BEGIN
@@ -182,11 +188,12 @@ CREATE TABLE [dbo].[Room](
 	PRIMARY KEY CLUSTERED 
 	(
 		[RoleID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+)
 GO
 
 -----------------------------------------------
--- 2.9 Table [dbo].[Laboratory]
+-- Table [dbo].[Laboratory]
 -----------------------------------------------
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.Laboratory') AND OBJECTPROPERTY(id, N'isTable' = 1)
 BEGIN
@@ -200,11 +207,12 @@ CREATE TABLE [dbo].[Laboratory](
 	PRIMARY KEY CLUSTERED 
 	(
 		[LaboratoryID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+)
 GO
 
 -----------------------------------------------
--- 2.10 Table [dbo].[LaboratoryDetails]
+-- Table [dbo].[LaboratoryDetails]
 -----------------------------------------------
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.LaboratoryDetails') AND OBJECTPROPERTY(id, N'isTable' = 1)
 BEGIN
@@ -214,33 +222,16 @@ END
 CREATE TABLE [dbo].[LaboratoryDetails](
 	[ReportID] INT IDENTITY(1,1) NOT NULL,
 	[RegistrationID] INT NOT NULL
-	[Comments] VARCHAR(50) NULL
+	[Results] VARCHAR(50) NULL
 	PRIMARY KEY CLUSTERED 
 	(
 		[ReportID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+)
 GO
 
 -----------------------------------------------
--- 2.11 Table [dbo].[Room]
------------------------------------------------
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.Room') AND OBJECTPROPERTY(id, N'isTable' = 1)
-BEGIN
-	DROP TABLE dbo.Room
-END
-
-CREATE TABLE [dbo].[Room](
-	[RoomID] INT IDENTITY(1,1) NOT NULL,
-	[Status] VARCHAR(50) NULL,
-	[RoomCharge] INT NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[RoomID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-
------------------------------------------------
--- 2.12 Table [dbo].[Billing]
+-- Table [dbo].[Billing]
 -----------------------------------------------
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'dbo.Billing') AND OBJECTPROPERTY(id, N'isTable' = 1)
 BEGIN
@@ -253,52 +244,55 @@ CREATE TABLE [dbo].[Billing](
 	[RoomCharge] INT NULL,
 	[LabCharge] INT NULL,
 	[DepCharge] INT NULL,
-	[Status] VARCHAR(50) NULL
+	[Status] BIT NULL
 	PRIMARY KEY CLUSTERED 
 	(
 		[BillingID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+)
 GO
 
 /**********************************************
--- 3. CREATE CONSTRAINTS
+-- CREATE CONSTRAINTS (FK, UNIQUE, DEFAULT)
 **********************************************/
 
--- [database]: [column] [Entity Relatioship] [database]: [column]
+-- CREATE FOREGIN KEY CONSTRAINT
 
 -- PatientDetails: AddressID >|-----|- Address: AddressID
-ALTER TABLE dbo.PatientDetails WITH CHECK ADD CONSTRAINT [FK_PatientDetails_Address] FOREIGN KEY ([AddressID]) REFERENCES dbo.Address (AddressID)
+ALTER TABLE dbo.PatientDetails WITH CHECK ADD CONSTRAINT [FK_PatientDetails_Address_ID] FOREIGN KEY ([AddressID]) REFERENCES dbo.Address (AddressID)
 
 -- EmployeeDetails: AddressID >|-----|- Address: AddressID
-ALTER TABLE dbo.EmployeeDetails WITH CHECK ADD CONSTRAINT [FK_EmployeeDetails_Address] FOREIGN KEY ([AddressID]) REFERENCES dbo.Address (AddressID)
+ALTER TABLE dbo.EmployeeDetails WITH CHECK ADD CONSTRAINT [FK_EmployeeDetails_Address_ID] FOREIGN KEY ([AddressID]) REFERENCES dbo.Address (AddressID)
 
--- EmployeeDetails: RoleID >|-----|= Role: RoleID
-ALTER TABLE dbo.EmployeeDetails WITH CHECK ADD CONSTRAINT [FK_EmployeeDetails_Role] FOREIGN KEY ([RoleID]) REFERENCES dbo.Role (RoleID)
+-- EmployeeDetails: RoleID >|-----|- Role: RoleID
+ALTER TABLE dbo.EmployeeDetails WITH CHECK ADD CONSTRAINT [FK_EmployeeDetails_Role_ID] FOREIGN KEY ([RoleID]) REFERENCES dbo.Role (RoleID)
 
 -- PatientRegistration: PatientID >|-----|- PatientDetails: PatientID
-ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Patient] FOREIGN KEY ([PatientID]) REFERENCES dbo.PatientDetails (PatientID)
+ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Patient_ID] FOREIGN KEY ([PatientID]) REFERENCES dbo.PatientDetails (PatientID)
 
 -- PatientRegistration: EmployeeID >|-----|- EmployeeDepartment: Employee
-ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Employee] FOREIGN KEY ([EmployeeID]) REFERENCES dbo.EmployeeDepartment (EmployeeID)
+ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Employee_ID] FOREIGN KEY ([EmployeeID]) REFERENCES dbo.EmployeeDepartment (EmployeeID)
 
 -- PatientRegistration: RoomID >|-----|- Room: RoomID
-ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Room] FOREIGN KEY ([RoomID]) REFERENCES dbo.Room (RoomID)
+ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Room_ID] FOREIGN KEY ([RoomID]) REFERENCES dbo.Room (RoomID)
 
 -- PatientRegistration: LaboratoryID >|-----|- Laboratory: LaboratoryID
-ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Laboratory] FOREIGN KEY ([LaboratoryID]) REFERENCES dbo.Laboratory (LaboratoryID)
+ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Laboratory_ID] FOREIGN KEY ([LaboratoryID]) REFERENCES dbo.Laboratory (LaboratoryID)
 
 -- EmployeeDepartment: EmployeeID >|-----|- EmployeeDetails: EmployeeID
-ALTER TABLE dbo.EmployeeDepatment WITH CHECK ADD CONSTRAINT [FK_EmployeeDepartment_Employee] FOREIGN KEY ([EmployeeID]) REFERENCES dbo.EmployeeDetails (EmployeeID)
+ALTER TABLE dbo.EmployeeDepartment WITH CHECK ADD CONSTRAINT [FK_EmployeeDepartment_Employee_ID] FOREIGN KEY ([EmployeeID]) REFERENCES dbo.EmployeeDetails (EmployeeID)
 
 -- EmployeeDepartment: EmployeeDepartment >|-----|- Department: DepartmentID
-ALTER TABLE dbo.EmployeeDepartment WITH CHECK ADD CONSTRAINT [FK_EmployeeDepartment_Department] FOREIGN KEY ([DepartmentID]) REFERENCES dbo.Department (DepartmentID)
+ALTER TABLE dbo.EmployeeDepartment WITH CHECK ADD CONSTRAINT [FK_EmployeeDepartment_Department_ID] FOREIGN KEY ([DepartmentID]) REFERENCES dbo.Department (DepartmentID)
 
 -- LaboratoryDetails: RegistrationID >|-----|- PatientRegistration: RegistrationID
-ALTER TABLE dbo.LaboratoryDetails WITH CHECK ADD CONSTRAINT [FK_LaboratoryDetails_Registration] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.PatientRegistration (RegistrationID)
+ALTER TABLE dbo.LaboratoryDetails WITH CHECK ADD CONSTRAINT [FK_LaboratoryDetails_Registration_ID] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.PatientRegistration (RegistrationID)
 
 -- Billing: RegistrationID >|-----|- PatientRegistration: RegistrationID
-ALTER TABLE dbo.Billing WITH CHECK ADD CONSTRAINT [FK_Billing_Registration] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.PatientRegistration (RegistrationID)
+ALTER TABLE dbo.Billing WITH CHECK ADD CONSTRAINT [FK_Billing_Registration_ID] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.PatientRegistration (RegistrationID)
 
+-- (Raymond) Unecessary Relationships
+/*
 -- Billing: RoomCharge >|-----|- Room: RoomCharge
 ALTER TABLE dbo.Billing WITH CHECK ADD CONSTRAINT [FK_Billing_RoomCharge] FOREIGN KEY ([RoomCharge]) REFERENCES dbo.Room (RoomCharge)
 
@@ -307,3 +301,56 @@ ALTER TABLE dbo.Billing WITH CHECK ADD CONSTRAINT [FK_Billing_LabCharge] FOREIGN
 
 -- Billing: DepCharge >|-----|- Department: DepCharge
 ALTER TABLE dbo.Billing WITH CHECK ADD CONSTRAINT [FK_Billing_DepCharge] FOREIGN KEY ([DepCharge]) REFERENCES dbo.Department (DepCharge)
+*/
+
+-- CREATE UNIQUE CONSTRAINT
+ALTER TABLE dbo.PatientDetails ADD CONSTRAINT UQ_PatientDetails_PatientID UNIQUE NONCLUSTERED (PatientID)
+ALTER TABLE dbo.EmployeeDetails ADD CONSTRAINT UQ_EmployeeDetails_EmployeeID UNIQUE NONCLUSTERED (EmployeeID)
+ALTER TABLE dbo.Address ADD CONSTRAINT UQ_Address UNIQUE NONCLUSTERED([Address],[City],[Province],[Zipcode],[Country])
+ALTER TABLE dbo.LaboratoryDetails ADD CONSTRAINT UQ_LaboratoryDetails UNIQUE NONCLUSTERED ([RegistrationID], [ReportID])
+
+-- CREATE DEFAULT CONSTRAINTS
+ALTER TABLE dbo.PatientDetails ADD CONSTRAINT DF_PatientDetails_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
+ALTER TABLE dbo.EmployeeDetails ADD CONSTRAINT DF_EmployeeDetails_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
+ALTER TABLE dbo.PatientRegistration ADD CONSTRAINT DF_PatientRegistration_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
+
+GO
+
+/**********************************************
+-- CREATE USER DEFINE TABLE TYPES
+**********************************************/
+
+CREATE TYPE [dbo].[UDT_Employee] AS TABLE (
+	[Email] VARCHAR(50) NOT NULL,
+	[Password] VARCHAR(50) NOT NULL,
+	[FirstName] VARCHAR(50) NOT NULL,
+	[LastName] VARCHAR(50) NOT NULL,
+	[Birthdate] DATE NOT NULL,
+	[Gender] VARCHAR(50) NOT NULL,
+	[PhoneNumber] VARCHAR(50) NOT NULL,
+	[Role] VARCHAR(50) NULL,
+	[DepartmentName] VARCHAR(50) NULL,
+	[CreatedBy] INT
+)
+
+CREATE TYPE [dbo].[UDT_AddressInput] AS TABLE (
+	[Address] VARCHAR(50) NOT NULL,
+	[City] VARCHAR(50) NOT NULL,
+	[Province] VARCHAR(50) NOT NULL,
+	[Zipcode] VARCHAR(50) NOT NULL,
+	[Country] VARCHAR(50) NOT NULL,
+)
+
+CREATE TYPE [dbo].[UDT_Patient] AS TABLE (
+	[Email] VARCHAR(50) NULL,
+	[FirstName] VARCHAR(50) NULL,
+	[LastName] VARCHAR(50) NULL,
+	[Birthdate] DATE NULL,
+	[Gender] VARCHAR(50) NULL,
+	[PhoneNumber] VARCHAR(50) NULL
+)
+
+CREATE TYPE [dbo].[UDT_LaboratoryResult] AS TABLE (
+	[ReportID] VARCHAR(45) NULL,
+	[Results] VARCHAR(45) NULL
+)		
