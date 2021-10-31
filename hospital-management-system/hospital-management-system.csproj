@@ -48,8 +48,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dapper.2.0.90\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>packages\ServiceStack.Common.5.12.0\lib\net472\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>packages\ServiceStack.Interfaces.5.12.0\lib\net472\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>packages\ServiceStack.Text.5.12.0\lib\net45\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,72 +95,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classes\dataAccess.cs" />
-    <Compile Include="classes\patient.cs" />
-    <Compile Include="gui\forms\appointmentForm.cs">
+    <Compile Include="classes\dbAccess.cs" />
+    <Compile Include="classes\models\Address.cs" />
+    <Compile Include="classes\dbConnection.cs" />
+    <Compile Include="classes\models\EmployeeDetails.cs" />
+    <Compile Include="classes\models\PatientDetails.cs" />
+    <Compile Include="gui\pages\PageRegister.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\forms\appointmentForm.Designer.cs">
-      <DependentUpon>appointmentForm.cs</DependentUpon>
+    <Compile Include="gui\pages\PageRegister.Designer.cs">
+      <DependentUpon>PageRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\forms\dashboardForm.cs">
+    <Compile Include="gui\pages\PageDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\forms\dashboardForm.Designer.cs">
-      <DependentUpon>dashboardForm.cs</DependentUpon>
+    <Compile Include="gui\pages\PageDashboard.Designer.cs">
+      <DependentUpon>PageDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\forms\billingForm.cs">
+    <Compile Include="gui\pages\PageBilling.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\forms\billingForm.Designer.cs">
-      <DependentUpon>billingForm.cs</DependentUpon>
+    <Compile Include="gui\pages\PageBilling.Designer.cs">
+      <DependentUpon>PageBilling.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\forms\mainForm.cs">
+    <Compile Include="gui\forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\forms\mainForm.Designer.cs">
-      <DependentUpon>mainForm.cs</DependentUpon>
+    <Compile Include="gui\forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\forms\employeeForm.cs">
+    <Compile Include="gui\pages\PageEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\forms\employeeForm.Designer.cs">
-      <DependentUpon>employeeForm.cs</DependentUpon>
+    <Compile Include="gui\pages\PageEmployee.Designer.cs">
+      <DependentUpon>PageEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\forms\loginForm.cs">
+    <Compile Include="gui\pages\PagePatient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\forms\loginForm.Designer.cs">
-      <DependentUpon>loginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="gui\forms\patientForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="gui\forms\patientForm.Designer.cs">
-      <DependentUpon>patientForm.cs</DependentUpon>
+    <Compile Include="gui\pages\PagePatient.Designer.cs">
+      <DependentUpon>PagePatient.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="gui\forms\appointmentForm.resx">
-      <DependentUpon>appointmentForm.cs</DependentUpon>
+    <EmbeddedResource Include="gui\pages\PageRegister.resx">
+      <DependentUpon>PageRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\forms\dashboardForm.resx">
-      <DependentUpon>dashboardForm.cs</DependentUpon>
+    <EmbeddedResource Include="gui\pages\PageDashboard.resx">
+      <DependentUpon>PageDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\forms\billingForm.resx">
-      <DependentUpon>billingForm.cs</DependentUpon>
+    <EmbeddedResource Include="gui\pages\PageBilling.resx">
+      <DependentUpon>PageBilling.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\forms\mainForm.resx">
-      <DependentUpon>mainForm.cs</DependentUpon>
+    <EmbeddedResource Include="gui\forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\forms\employeeForm.resx">
-      <DependentUpon>employeeForm.cs</DependentUpon>
+    <EmbeddedResource Include="gui\pages\PageEmployee.resx">
+      <DependentUpon>PageEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\forms\loginForm.resx">
-      <DependentUpon>loginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="gui\forms\patientForm.resx">
-      <DependentUpon>patientForm.cs</DependentUpon>
+    <EmbeddedResource Include="gui\pages\PagePatient.resx">
+      <DependentUpon>PagePatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -137,6 +165,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
