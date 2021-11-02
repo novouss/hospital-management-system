@@ -14,9 +14,8 @@ namespace hospital_management_system.gui.forms
 
     public partial class FormMain : Form
     {
-        private System.Drawing.Color white = System.Drawing.Color.White;
-        private System.Drawing.Color black = System.Drawing.Color.Black;
         private System.Drawing.Color blue = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+        private EmployeeDetails employee;
 
         public void enableNavigationMenu()
         {
@@ -135,6 +134,12 @@ namespace hospital_management_system.gui.forms
 
         private void showSubMenu(Panel submenu)
         {
+            if (submenu == null)
+            {
+                hideSubMenu();
+                return;
+            }
+
             if (submenu.Visible == false)
             {
                 hideSubMenu();
@@ -151,10 +156,16 @@ namespace hospital_management_system.gui.forms
 
         #region Button Effect Functions
 
+        private void buttonEffect(Button btn, Panel submenu = null)
+        {
+            showActiveButton(btn);
+            showSubMenu(submenu);
+        }
+
         private void showInactiveButton(Button btn)
         {
-            btn.BackColor = white;
-            btn.ForeColor = black;
+            btn.BackColor = Color.White;
+            btn.ForeColor = Color.Black;
         }
 
         private void showActiveButton(Button btn)
@@ -168,17 +179,7 @@ namespace hospital_management_system.gui.forms
             showInactiveButton(billBtn);
             btn.BackColor = blue;
             btn.FlatAppearance.BorderColor = blue;
-            btn.ForeColor = white;
-        }
-
-        #endregion
-
-        #region Full Button Functions
-
-        private void buttonEffect(Button btn, Panel submenu)
-        {
-            showActiveButton(btn);
-            showSubMenu(submenu);
+            btn.ForeColor = Color.White;
         }
 
         #endregion
@@ -187,47 +188,48 @@ namespace hospital_management_system.gui.forms
 
         private void dashboardBtn_Click(object sender, EventArgs e)
         {
-            openChildWindow(new PageDashboard());
-            showActiveButton(dashboardBtn);
+            openChildWindow(new PageDashboard(this.employee));
+            buttonEffect(dashboardBtn);
         }
 
         private void patientBtn_Click(object sender, EventArgs e)
         {
-            openChildWindow(new patientForm());
+            openChildWindow(new PageView("patient"));
             buttonEffect(patientBtn, patientSubMenu);
             
         }
 
         private void doctorBtn_Click(object sender, EventArgs e)
         {
-            openChildWindow(new employeeForm());
+            // openChildWindow(new employeeForm());
             buttonEffect(doctorBtn, doctorSubMenu);
         }
 
         private void regBtn_Click(object sender, EventArgs e)
         {
-            openChildWindow(new appointmentForm());
+            // openChildWindow(new appointmentForm());
             buttonEffect(regBtn, regSubMenu);
         }
 
         private void labBtn_Click(object sender, EventArgs e)
         {
-            showActiveButton(labBtn);
+            buttonEffect(labBtn);
         }
 
         private void roomBtn_Click(object sender, EventArgs e)
         {
-            showActiveButton(roomBtn);
+            buttonEffect(roomBtn);
         }
 
         private void billBtn_Click(object sender, EventArgs e)
         {
-            openChildWindow(new billingForm());
+            // openChildWindow(new billingForm());
             buttonEffect(billBtn, billSubMenu);
         }
 
         #endregion
 
+        #region Login Functions
         private void loginBtn_Click(object sender, EventArgs e)
         {
             dbAccess db = new dbAccess();
@@ -238,14 +240,31 @@ namespace hospital_management_system.gui.forms
             {
                 emailText.ForeColor = Color.Red;
                 passwordText.ForeColor = Color.Red;
+                emailText.Text = "* Incorrect Email Address";
+                passwordText.Text = "* Incorrect Password";
                 emailTextbox.Text = "";
-                passwordText.Text = "";
+                passwordTextbox.Text = "";
                 return;
             }
 
-            openChildWindow(new PageDashboard());
+            this.employee = account[0];
+            openChildWindow(new PageDashboard(this.employee));
             navigationMenu.Enabled = true;
             loginPanel.Hide();
         }
+
+        private void emailTextbox_Click(object sender, EventArgs e)
+        {
+            emailText.ForeColor = Color.Black;
+            emailText.Text = "Email Address";
+        }
+
+        private void passwordTextbox_Click(object sender, EventArgs e)
+        {
+            passwordText.ForeColor = Color.Black;
+            passwordText.Text = "Password";
+        }
+
+        #endregion
     }
 }

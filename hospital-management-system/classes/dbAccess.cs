@@ -18,11 +18,21 @@ namespace hospital_management_system.classes
 
                 if (output.Count() == 1)
                 {
-                    return (List<EmployeeDetails>)output;
+                    return (List<EmployeeDetails>) output;
                 }
 
                 return null;
                 
+            }
+        }
+
+        public List<PatientDetails> viewPatients()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var output = connection.Query<PatientDetails>($"SELECT * FROM dbo.PatientDetails");
+
+                return (List<PatientDetails>) output;
             }
         }
     }

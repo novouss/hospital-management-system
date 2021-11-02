@@ -100,11 +100,11 @@
     <Compile Include="classes\dbConnection.cs" />
     <Compile Include="classes\models\EmployeeDetails.cs" />
     <Compile Include="classes\models\PatientDetails.cs" />
-    <Compile Include="gui\pages\PageRegister.cs">
+    <Compile Include="gui\pages\PageView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\pages\PageRegister.Designer.cs">
-      <DependentUpon>PageRegister.cs</DependentUpon>
+    <Compile Include="gui\pages\PageView.Designer.cs">
+      <DependentUpon>PageView.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\pages\PageDashboard.cs">
       <SubType>Form</SubType>
@@ -112,49 +112,22 @@
     <Compile Include="gui\pages\PageDashboard.Designer.cs">
       <DependentUpon>PageDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\pages\PageBilling.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="gui\pages\PageBilling.Designer.cs">
-      <DependentUpon>PageBilling.cs</DependentUpon>
-    </Compile>
     <Compile Include="gui\forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="gui\forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\pages\PageEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="gui\pages\PageEmployee.Designer.cs">
-      <DependentUpon>PageEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="gui\pages\PagePatient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="gui\pages\PagePatient.Designer.cs">
-      <DependentUpon>PagePatient.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="gui\pages\PageRegister.resx">
-      <DependentUpon>PageRegister.cs</DependentUpon>
+    <EmbeddedResource Include="gui\pages\PageView.resx">
+      <DependentUpon>PageView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\pages\PageDashboard.resx">
       <DependentUpon>PageDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\pages\PageBilling.resx">
-      <DependentUpon>PageBilling.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="gui\forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="gui\pages\PageEmployee.resx">
-      <DependentUpon>PageEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="gui\pages\PagePatient.resx">
-      <DependentUpon>PagePatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -3,10 +3,6 @@
 **********************************************/
 
 /**********************************************
--- CREATING DATABASE
-**********************************************/
-
-/**********************************************
 -- DROPPING CONSTRAINTS (FK, UQ, DF)
 **********************************************/
 
@@ -743,7 +739,7 @@ GO
 -- CREATE PROCEDURE FOR dbo.Billing
 -----------------------------------------------
 
-CREATE PROCEDURE dbo.AddBilling
+CREATE PROCEDURE dbo.USP_AddBilling
 	@RegistrationID INT
 AS
 BEGIN
@@ -785,7 +781,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE dbo.ModifyBilling
+CREATE PROCEDURE dbo.USP_ModifyBilling
 	@BillingID INT,
 	@RoomCharge	INT,
 	@LabCharge INT,
@@ -809,7 +805,99 @@ BEGIN
 END
 GO
 
--- DELETE FROM dbo.Billing WHERE BillingID = @BillingID
+-----------------------------------------------
+-- CREATE PROCEDURE FOR dbo.FindAccount
+-----------------------------------------------
+
+CREATE PROCEDURE dbo.USP_FindAccount
+	@Email VARCHAR(50),
+	@Password VARCHAR(50)
+AS
+BEGIN
+	SELECT * FROM dbo.EmployeeDetails WHERE Email = @Email AND Password = @Password
+END
+GO
+
+
+-----------------------------------------------
+-- CREATE PROCEDURE FOR dbo.Search{Functions}
+-----------------------------------------------
+
+CREATE PROCEDURE dbo.USP_SearchPatient
+	@stringSearch VARCHAR(50)
+AS
+BEGIN
+	SELECT * FROM dbo.PatientDetails 
+	WHERE 
+		PatientID LIKE '%' + @stringSearch + '%' OR
+		FirstName LIKE '%' + @stringSearch + '%' OR
+		LastName LIKE '%' + @stringSearch + '%' OR
+		MiddleName LIKE '%' + @stringSearch + '%' OR
+		Birthdate LIKE '%' + @stringSearch + '%' OR
+		Age LIKE '%' + @stringSearch + '%' OR
+		Gender LIKE '%' + @stringSearch + '%' OR
+		Religion LIKE '%' + @stringSearch + '%' OR
+		Email LIKE '%' + @stringSearch + '%' OR
+		PhoneNumber LIKE '%' + @stringSearch + '%'
+END
+GO
+
+CREATE PROCEDURE dbo.USP_SearchEmployee
+	@stringSearch VARCHAR(50)
+AS
+BEGIN
+	SELECT * FROM dbo.EmployeeDetails 
+	WHERE 
+		PatientID LIKE '%' + @stringSearch + '%' OR
+		FirstName LIKE '%' + @stringSearch + '%' OR
+		LastName LIKE '%' + @stringSearch + '%' OR
+		MiddleName LIKE '%' + @stringSearch + '%' OR
+		Birthdate LIKE '%' + @stringSearch + '%' OR
+		Age LIKE '%' + @stringSearch + '%' OR
+		Gender LIKE '%' + @stringSearch + '%' OR
+		Religion LIKE '%' + @stringSearch + '%' OR
+		Email LIKE '%' + @stringSearch + '%' OR
+		PhoneNumber LIKE '%' + @stringSearch + '%'
+END
+GO
+
+CREATE PROCEDURE dbo.USP_SearchRegistration
+	@stringSearch VARCHAR(50)
+AS
+BEGIN
+	SELECT * FROM dbo.PatientRegistration 
+	WHERE 
+		RegistrationID LIKE '%' + @stringSearch + '%' OR
+		PatientID LIKE '%' + @stringSearch + '%'
+END
+GO
+
+CREATE PROCEDURE dbo.USP_SearchBilling
+	@stringSearch VARCHAR(50)
+AS
+BEGIN
+	SELECT * FROM dbo.Billing 
+	WHERE BIllingID LIKE '%' + @stringSearch + '%' 
+END
+GO
+
+CREATE PROCEDURE dbo.USP_SearchRoom
+	@stringSearch VARCHAR(50)
+AS
+BEGIN
+	SELECT * FROM dbo.Room 
+	WHERE RoomID LIKE '%' + @stringSearch + '%' 
+END
+GO
+
+CREATE PROCEDURE dbo.USP_SearchLaboratory
+	@stringSearch VARCHAR(50)
+AS
+BEGIN
+	SELECT * FROM dbo.Laboratory 
+	WHERE LaboratoryID LIKE '%' + @stringSearch + '%' 
+END
+GO
 
 /**********************************************
 -- INSERT INTO TABLE VALUES
