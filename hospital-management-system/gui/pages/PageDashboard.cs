@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using hospital_management_system.classes;
+using hospital_management_system.gui.forms;
 
 namespace hospital_management_system.gui.forms
 {
@@ -18,5 +19,6 @@ namespace hospital_management_system.gui.forms
             InitializeComponent();
             greetingsText.Text = $"Welcome back { employee.FirstName }, ";
         }
+
     }
 }

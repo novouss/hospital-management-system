@@ -53,13 +53,8 @@ namespace hospital_management_system.gui.forms
             // 
             // search_btn
             // 
-            this.search_btn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.search_btn.BackColor = System.Drawing.Color.White;
             this.search_btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.search_btn.FlatAppearance.BorderSize = 0;
-            this.search_btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.search_btn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             this.search_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.search_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.search_btn.ForeColor = System.Drawing.Color.Black;
@@ -72,8 +67,6 @@ namespace hospital_management_system.gui.forms
             // 
             // search_panel
             // 
-            this.search_panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.search_panel.BackColor = System.Drawing.Color.White;
             this.search_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.search_panel.Controls.Add(this.search_textbox);

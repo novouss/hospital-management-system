@@ -22,15 +22,25 @@ namespace hospital_management_system.gui.forms
                 case "patient":
                     loadPatient();
                     break;
-                case "doctor":
+                case "employee":
+                    loadEmployee();
                     break;
                 case "appointment":
+                case "registration":
+                    loadAppointment();
                     break;
                 case "room":
+                    loadRoom();
                     break;
                 case "laboratory":
+                    loadLaboratory();
                     break;
                 case "billing":
+                    loadBilling();
+                    break;
+
+                default:
+                    viewGroup.Text = "Error";
                     break;
             }
         }
@@ -38,6 +48,31 @@ namespace hospital_management_system.gui.forms
         private void loadPatient()
         {
             viewGroup.Text = "Patients";
+        }
+
+        private void loadEmployee()
+        {
+            viewGroup.Text = "Employees";
+        }
+
+        private void loadAppointment()
+        {
+            viewGroup.Text = "Appointments";
+        }
+
+        private void loadRoom()
+        {
+            viewGroup.Text = "Rooms";
+        }
+
+        private void loadLaboratory()
+        {
+            viewGroup.Text = "Laboratories";
+        }
+
+        private void loadBilling()
+        {
+            viewGroup.Text = "Billings";
         }
     }
 }

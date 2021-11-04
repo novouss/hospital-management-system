@@ -66,6 +66,7 @@ namespace hospital_management_system.gui.forms
             this.loginBtn = new System.Windows.Forms.Button();
             this.passwordText = new System.Windows.Forms.Label();
             this.emailText = new System.Windows.Forms.Label();
+            this.logoutBtn = new System.Windows.Forms.Button();
             this.navigationBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maximizeIcon)).BeginInit();
@@ -161,6 +162,7 @@ namespace hospital_management_system.gui.forms
             | System.Windows.Forms.AnchorStyles.Left)));
             this.navigationMenu.AutoScroll = true;
             this.navigationMenu.BackColor = System.Drawing.Color.White;
+            this.navigationMenu.Controls.Add(this.logoutBtn);
             this.navigationMenu.Controls.Add(this.billSubMenu);
             this.navigationMenu.Controls.Add(this.billBtn);
             this.navigationMenu.Controls.Add(this.roomBtn);
@@ -583,6 +585,21 @@ namespace hospital_management_system.gui.forms
             this.emailText.TabIndex = 1;
             this.emailText.Text = "Email Address";
             // 
+            // logoutBtn
+            // 
+            this.logoutBtn.BackColor = System.Drawing.Color.White;
+            this.logoutBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.logoutBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.logoutBtn.FlatAppearance.BorderSize = 0;
+            this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logoutBtn.Location = new System.Drawing.Point(0, 675);
+            this.logoutBtn.Name = "logoutBtn";
+            this.logoutBtn.Size = new System.Drawing.Size(183, 45);
+            this.logoutBtn.TabIndex = 11;
+            this.logoutBtn.Text = "Logout";
+            this.logoutBtn.UseVisualStyleBackColor = false;
+            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -656,5 +673,6 @@ namespace hospital_management_system.gui.forms
         private System.Windows.Forms.Panel passwordPanel;
         private System.Windows.Forms.TextBox passwordTextbox;
         private System.Windows.Forms.Panel emailPanel;
+        private System.Windows.Forms.Button logoutBtn;
     }
 }

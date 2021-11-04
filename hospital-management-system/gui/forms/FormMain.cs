@@ -17,16 +17,6 @@ namespace hospital_management_system.gui.forms
         private System.Drawing.Color blue = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
         private EmployeeDetails employee;
 
-        public void enableNavigationMenu()
-        {
-            navigationMenu.Enabled = true;
-        }
-
-        public void disableNavigationMenu()
-        {
-            navigationMenu.Enabled = false;
-        }
-
         public FormMain()
         {
             InitializeComponent();
@@ -82,10 +72,10 @@ namespace hospital_management_system.gui.forms
         }
         #endregion
 
-        #region Display Forms Function
+        #region Display Pages Function
 
         private Form active_window = null;
-        public void openChildWindow(Form childWindow)
+        public void OpenChildWindow(Form childWindow)
         {
             if (active_window == childWindow)
             {
@@ -111,7 +101,7 @@ namespace hospital_management_system.gui.forms
 
         #region Display Sub Menu Functions
 
-        private void hideSubMenu()
+        private void HideSubMenu()
         {
             if (patientSubMenu.Visible)
             {
@@ -132,17 +122,17 @@ namespace hospital_management_system.gui.forms
 
         }
 
-        private void showSubMenu(Panel submenu)
+        private void ShowSubMenu(Panel submenu)
         {
             if (submenu == null)
             {
-                hideSubMenu();
+                HideSubMenu();
                 return;
             }
 
             if (submenu.Visible == false)
             {
-                hideSubMenu();
+                HideSubMenu();
                 submenu.Visible = true;
             }
             else
@@ -156,30 +146,35 @@ namespace hospital_management_system.gui.forms
 
         #region Button Effect Functions
 
-        private void buttonEffect(Button btn, Panel submenu = null)
+        private void ButtonEffect(Button btn, Panel submenu = null)
         {
-            showActiveButton(btn);
-            showSubMenu(submenu);
+            ShowActiveButton(btn);
+            ShowSubMenu(submenu);
         }
 
-        private void showInactiveButton(Button btn)
+        private void ShowInactiveButton(Button btn)
         {
             btn.BackColor = Color.White;
             btn.ForeColor = Color.Black;
         }
 
-        private void showActiveButton(Button btn)
+        private void ShowActiveButton(Button btn)
         {
-            showInactiveButton(dashboardBtn);
-            showInactiveButton(patientBtn);
-            showInactiveButton(doctorBtn);
-            showInactiveButton(regBtn);
-            showInactiveButton(labBtn);
-            showInactiveButton(roomBtn);
-            showInactiveButton(billBtn);
+            ResetButtonEffects();
             btn.BackColor = blue;
             btn.FlatAppearance.BorderColor = blue;
             btn.ForeColor = Color.White;
+        }
+
+        private void ResetButtonEffects()
+        {
+            ShowInactiveButton(dashboardBtn);
+            ShowInactiveButton(patientBtn);
+            ShowInactiveButton(doctorBtn);
+            ShowInactiveButton(regBtn);
+            ShowInactiveButton(labBtn);
+            ShowInactiveButton(roomBtn);
+            ShowInactiveButton(billBtn);
         }
 
         #endregion
@@ -188,48 +183,51 @@ namespace hospital_management_system.gui.forms
 
         private void dashboardBtn_Click(object sender, EventArgs e)
         {
-            openChildWindow(new PageDashboard(this.employee));
-            buttonEffect(dashboardBtn);
+            OpenChildWindow(new PageDashboard(this.employee));
+            ButtonEffect(dashboardBtn);
         }
 
-        private void patientBtn_Click(object sender, EventArgs e)
+        public void patientBtn_Click(object sender, EventArgs e)
         {
-            openChildWindow(new PageView("patient"));
-            buttonEffect(patientBtn, patientSubMenu);
+            OpenChildWindow(new PageView("patient"));
+            ButtonEffect(patientBtn, patientSubMenu);
             
         }
 
         private void doctorBtn_Click(object sender, EventArgs e)
         {
-            // openChildWindow(new employeeForm());
-            buttonEffect(doctorBtn, doctorSubMenu);
+            OpenChildWindow(new PageView("employee"));
+            ButtonEffect(doctorBtn, doctorSubMenu);
         }
 
         private void regBtn_Click(object sender, EventArgs e)
         {
-            // openChildWindow(new appointmentForm());
-            buttonEffect(regBtn, regSubMenu);
+            OpenChildWindow(new PageView("appointment"));
+            
+            ButtonEffect(regBtn, regSubMenu);
         }
 
         private void labBtn_Click(object sender, EventArgs e)
         {
-            buttonEffect(labBtn);
+            OpenChildWindow(new PageView("laboratory"));
+            ButtonEffect(labBtn);
         }
 
         private void roomBtn_Click(object sender, EventArgs e)
         {
-            buttonEffect(roomBtn);
+            OpenChildWindow(new PageView("room"));
+            ButtonEffect(roomBtn);
         }
 
         private void billBtn_Click(object sender, EventArgs e)
         {
-            // openChildWindow(new billingForm());
-            buttonEffect(billBtn, billSubMenu);
+            OpenChildWindow(new PageView("billing"));
+            ButtonEffect(billBtn, billSubMenu);
         }
 
         #endregion
 
-        #region Login Functions
+        #region Login and Logout Functions
         private void loginBtn_Click(object sender, EventArgs e)
         {
             dbAccess db = new dbAccess();
@@ -248,9 +246,23 @@ namespace hospital_management_system.gui.forms
             }
 
             this.employee = account[0];
-            openChildWindow(new PageDashboard(this.employee));
+            OpenChildWindow(new PageDashboard(this.employee));
             navigationMenu.Enabled = true;
             loginPanel.Hide();
+        }
+
+        private void logoutBtn_Click(object sender, EventArgs e)
+        {
+            active_window.Close();
+            active_window = null;
+            
+            HideSubMenu();
+            ResetButtonEffects();
+            navigationMenu.Enabled = false;
+            
+            loginPanel.Show();
+            emailTextbox.Text = "";
+            passwordTextbox.Text = "";
         }
 
         private void emailTextbox_Click(object sender, EventArgs e)
@@ -266,5 +278,6 @@ namespace hospital_management_system.gui.forms
         }
 
         #endregion
+
     }
 }
