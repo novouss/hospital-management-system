@@ -24,6 +24,7 @@ namespace hospital_management_system.classes
                 return null;
                 
             }
+            
         }
 
         public List<PatientDetails> viewPatients()

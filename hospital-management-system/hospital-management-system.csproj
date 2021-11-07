@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\dbAccess.cs" />
+    <Compile Include="classes\effects\ButtonEffect.cs" />
     <Compile Include="classes\models\Address.cs" />
     <Compile Include="classes\dbConnection.cs" />
     <Compile Include="classes\models\EmployeeDetails.cs" />
@@ -118,6 +119,12 @@
     <Compile Include="gui\forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\forms\FormPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\forms\FormPatient.Designer.cs">
+      <DependentUpon>FormPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="gui\pages\PageView.resx">
@@ -128,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\forms\FormPatient.resx">
+      <DependentUpon>FormPatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "COXQTiUoslM+E0PTSfLLnNk3gmcVtB2zQYSjSfQETKEndO9H/EH49dB1as0CJIj6oGlNniWu4ICrP0oF36Htng==",
+  "dgSpecHash": "XTmZbPX3ql39KqxDMI6hjIpLg9X+ywSa2/ZsrEplKhePpeZfHXEOcktsepmFg41CLXaqjpI/nGUYAEf5y5jywQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Raymond Gorospe\\Documents\\GitHub\\hospital-management-system\\hospital-management-system\\hospital-management-system.csproj",
+  "projectFilePath": "C:\\Users\\Raymond Gorospe\\Documents\\GitHub\\hospital-management-system\\hospital-management-system (22.10.2021 build)\\hospital-management-system.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Raymond Gorospe\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Raymond Gorospe\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

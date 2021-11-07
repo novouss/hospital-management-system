@@ -460,11 +460,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Raymond Gorospe\\Documents\\GitHub\\hospital-management-system\\hospital-management-system\\hospital-management-system.csproj",
+      "projectUniqueName": "C:\\Users\\Raymond Gorospe\\Documents\\GitHub\\hospital-management-system\\hospital-management-system (22.10.2021 build)\\hospital-management-system.csproj",
       "projectName": "hospital-management-system",
-      "projectPath": "C:\\Users\\Raymond Gorospe\\Documents\\GitHub\\hospital-management-system\\hospital-management-system\\hospital-management-system.csproj",
+      "projectPath": "C:\\Users\\Raymond Gorospe\\Documents\\GitHub\\hospital-management-system\\hospital-management-system (22.10.2021 build)\\hospital-management-system.csproj",
       "packagesPath": "C:\\Users\\Raymond Gorospe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Raymond Gorospe\\Documents\\GitHub\\hospital-management-system\\hospital-management-system\\obj\\",
+      "outputPath": "C:\\Users\\Raymond Gorospe\\Documents\\GitHub\\hospital-management-system\\hospital-management-system (22.10.2021 build)\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

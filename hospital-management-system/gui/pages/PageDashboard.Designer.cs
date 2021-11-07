@@ -1,8 +1,8 @@
-﻿
-namespace hospital_management_system.gui.forms
+﻿namespace hospital_management_system.gui.forms
 {
     partial class PageDashboard
     {
+        
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -156,6 +156,7 @@ namespace hospital_management_system.gui.forms
             | System.Windows.Forms.AnchorStyles.Left)));
             this.bill_img.Image = ((System.Drawing.Image)(resources.GetObject("bill_img.Image")));
             this.bill_img.Location = new System.Drawing.Point(3, 3);
+            this.bill_img.MinimumSize = new System.Drawing.Size(115, 115);
             this.bill_img.Name = "bill_img";
             this.bill_img.Size = new System.Drawing.Size(115, 115);
             this.bill_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -220,6 +221,7 @@ namespace hospital_management_system.gui.forms
             | System.Windows.Forms.AnchorStyles.Left)));
             this.app_img.Image = ((System.Drawing.Image)(resources.GetObject("app_img.Image")));
             this.app_img.Location = new System.Drawing.Point(3, 3);
+            this.app_img.MinimumSize = new System.Drawing.Size(115, 115);
             this.app_img.Name = "app_img";
             this.app_img.Size = new System.Drawing.Size(115, 115);
             this.app_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -284,6 +286,7 @@ namespace hospital_management_system.gui.forms
             | System.Windows.Forms.AnchorStyles.Left)));
             this.room_img.Image = ((System.Drawing.Image)(resources.GetObject("room_img.Image")));
             this.room_img.Location = new System.Drawing.Point(3, 3);
+            this.room_img.MinimumSize = new System.Drawing.Size(115, 115);
             this.room_img.Name = "room_img";
             this.room_img.Size = new System.Drawing.Size(115, 115);
             this.room_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -348,6 +351,7 @@ namespace hospital_management_system.gui.forms
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lab_img.Image = ((System.Drawing.Image)(resources.GetObject("lab_img.Image")));
             this.lab_img.Location = new System.Drawing.Point(3, 3);
+            this.lab_img.MinimumSize = new System.Drawing.Size(115, 115);
             this.lab_img.Name = "lab_img";
             this.lab_img.Size = new System.Drawing.Size(115, 115);
             this.lab_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -412,6 +416,7 @@ namespace hospital_management_system.gui.forms
             | System.Windows.Forms.AnchorStyles.Left)));
             this.patient_img.Image = ((System.Drawing.Image)(resources.GetObject("patient_img.Image")));
             this.patient_img.Location = new System.Drawing.Point(3, 3);
+            this.patient_img.MinimumSize = new System.Drawing.Size(115, 115);
             this.patient_img.Name = "patient_img";
             this.patient_img.Size = new System.Drawing.Size(115, 115);
             this.patient_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -476,6 +481,7 @@ namespace hospital_management_system.gui.forms
             | System.Windows.Forms.AnchorStyles.Left)));
             this.doctor_img.Image = ((System.Drawing.Image)(resources.GetObject("doctor_img.Image")));
             this.doctor_img.Location = new System.Drawing.Point(3, 3);
+            this.doctor_img.MinimumSize = new System.Drawing.Size(115, 115);
             this.doctor_img.Name = "doctor_img";
             this.doctor_img.Size = new System.Drawing.Size(115, 115);
             this.doctor_img.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -518,6 +524,7 @@ namespace hospital_management_system.gui.forms
             this.Controls.Add(this.dashboardGroup);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(115, 736);
             this.Name = "PageDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "dashboardForm";
@@ -581,5 +588,18 @@ namespace hospital_management_system.gui.forms
         private System.Windows.Forms.Label bill_count;
         private System.Windows.Forms.PictureBox bill_img;
         private System.Windows.Forms.Button bill_view;
+
+        private FormMain FormMain;
+        private void InitalizeButtonFunctions(FormMain FormMain)
+        {
+            this.FormMain = FormMain;
+            this.patient_view.Click += new System.EventHandler(this.FormMain.patientBtn_Click);
+            this.doctor_view.Click += new System.EventHandler(this.FormMain.doctorBtn_Click);
+            this.app_view.Click += new System.EventHandler(this.FormMain.regBtn_Click);
+            this.room_view.Click += new System.EventHandler(this.FormMain.roomBtn_Click);
+            this.lab_view.Click += new System.EventHandler(this.FormMain.labBtn_Click);
+            this.bill_view.Click += new System.EventHandler(this.FormMain.billBtn_Click);
+        }
+
     }
 }

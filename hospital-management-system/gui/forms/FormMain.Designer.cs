@@ -29,14 +29,8 @@ namespace hospital_management_system.gui.forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.navigationBar = new System.Windows.Forms.Panel();
-            this.minimizeIcon = new System.Windows.Forms.PictureBox();
-            this.maximizeIcon = new System.Windows.Forms.PictureBox();
-            this.closeIcon = new System.Windows.Forms.PictureBox();
-            this.hamburgerIcon = new System.Windows.Forms.PictureBox();
-            this.navigationText = new System.Windows.Forms.Label();
             this.navigationMenu = new System.Windows.Forms.Panel();
+            this.logoutBtn = new System.Windows.Forms.Button();
             this.billSubMenu = new System.Windows.Forms.Panel();
             this.removeBillBtn = new System.Windows.Forms.Button();
             this.addBillBtn = new System.Windows.Forms.Button();
@@ -58,20 +52,14 @@ namespace hospital_management_system.gui.forms
             this.dashboardBtn = new System.Windows.Forms.Button();
             this.displayPanel = new System.Windows.Forms.Panel();
             this.loginPanel = new System.Windows.Forms.Panel();
-            this.passwordPanel = new System.Windows.Forms.Panel();
-            this.passwordTextbox = new System.Windows.Forms.TextBox();
+            this.loginGroup = new System.Windows.Forms.GroupBox();
             this.emailPanel = new System.Windows.Forms.Panel();
             this.emailTextbox = new System.Windows.Forms.TextBox();
-            this.titleText = new System.Windows.Forms.Label();
-            this.loginBtn = new System.Windows.Forms.Button();
-            this.passwordText = new System.Windows.Forms.Label();
+            this.passwordPanel = new System.Windows.Forms.Panel();
+            this.passwordTextbox = new System.Windows.Forms.TextBox();
             this.emailText = new System.Windows.Forms.Label();
-            this.logoutBtn = new System.Windows.Forms.Button();
-            this.navigationBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.minimizeIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maximizeIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.closeIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hamburgerIcon)).BeginInit();
+            this.passwordText = new System.Windows.Forms.Label();
+            this.loginBtn = new System.Windows.Forms.Button();
             this.navigationMenu.SuspendLayout();
             this.billSubMenu.SuspendLayout();
             this.regSubMenu.SuspendLayout();
@@ -79,87 +67,13 @@ namespace hospital_management_system.gui.forms
             this.patientSubMenu.SuspendLayout();
             this.displayPanel.SuspendLayout();
             this.loginPanel.SuspendLayout();
-            this.passwordPanel.SuspendLayout();
+            this.loginGroup.SuspendLayout();
             this.emailPanel.SuspendLayout();
+            this.passwordPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // navigationBar
-            // 
-            this.navigationBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.navigationBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.navigationBar.Controls.Add(this.minimizeIcon);
-            this.navigationBar.Controls.Add(this.maximizeIcon);
-            this.navigationBar.Controls.Add(this.closeIcon);
-            this.navigationBar.Controls.Add(this.hamburgerIcon);
-            this.navigationBar.Controls.Add(this.navigationText);
-            this.navigationBar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.navigationBar.ForeColor = System.Drawing.Color.White;
-            this.navigationBar.Location = new System.Drawing.Point(12, 12);
-            this.navigationBar.Name = "navigationBar";
-            this.navigationBar.Size = new System.Drawing.Size(1256, 45);
-            this.navigationBar.TabIndex = 0;
-            // 
-            // minimizeIcon
-            // 
-            this.minimizeIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.minimizeIcon.Image = ((System.Drawing.Image)(resources.GetObject("minimizeIcon.Image")));
-            this.minimizeIcon.Location = new System.Drawing.Point(1109, 0);
-            this.minimizeIcon.Name = "minimizeIcon";
-            this.minimizeIcon.Size = new System.Drawing.Size(45, 45);
-            this.minimizeIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.minimizeIcon.TabIndex = 4;
-            this.minimizeIcon.TabStop = false;
-            this.minimizeIcon.Click += new System.EventHandler(this.minimizeIcon_Click);
-            // 
-            // maximizeIcon
-            // 
-            this.maximizeIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maximizeIcon.Image = ((System.Drawing.Image)(resources.GetObject("maximizeIcon.Image")));
-            this.maximizeIcon.Location = new System.Drawing.Point(1160, 0);
-            this.maximizeIcon.Name = "maximizeIcon";
-            this.maximizeIcon.Size = new System.Drawing.Size(45, 45);
-            this.maximizeIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.maximizeIcon.TabIndex = 3;
-            this.maximizeIcon.TabStop = false;
-            this.maximizeIcon.Click += new System.EventHandler(this.maximizeIcon_Click);
-            // 
-            // closeIcon
-            // 
-            this.closeIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeIcon.Image = ((System.Drawing.Image)(resources.GetObject("closeIcon.Image")));
-            this.closeIcon.Location = new System.Drawing.Point(1211, 0);
-            this.closeIcon.Name = "closeIcon";
-            this.closeIcon.Size = new System.Drawing.Size(45, 45);
-            this.closeIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.closeIcon.TabIndex = 2;
-            this.closeIcon.TabStop = false;
-            this.closeIcon.Click += new System.EventHandler(this.closeIcon_Click);
-            // 
-            // hamburgerIcon
-            // 
-            this.hamburgerIcon.Image = ((System.Drawing.Image)(resources.GetObject("hamburgerIcon.Image")));
-            this.hamburgerIcon.Location = new System.Drawing.Point(0, 0);
-            this.hamburgerIcon.Name = "hamburgerIcon";
-            this.hamburgerIcon.Size = new System.Drawing.Size(45, 45);
-            this.hamburgerIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hamburgerIcon.TabIndex = 1;
-            this.hamburgerIcon.TabStop = false;
-            // 
-            // navigationText
-            // 
-            this.navigationText.AutoSize = true;
-            this.navigationText.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.navigationText.Location = new System.Drawing.Point(51, 12);
-            this.navigationText.Name = "navigationText";
-            this.navigationText.Size = new System.Drawing.Size(304, 21);
-            this.navigationText.TabIndex = 0;
-            this.navigationText.Text = "Hosptial Management Information System";
             // 
             // navigationMenu
             // 
-            this.navigationMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.navigationMenu.AutoScroll = true;
             this.navigationMenu.BackColor = System.Drawing.Color.White;
             this.navigationMenu.Controls.Add(this.logoutBtn);
@@ -174,10 +88,26 @@ namespace hospital_management_system.gui.forms
             this.navigationMenu.Controls.Add(this.patientSubMenu);
             this.navigationMenu.Controls.Add(this.patientBtn);
             this.navigationMenu.Controls.Add(this.dashboardBtn);
-            this.navigationMenu.Location = new System.Drawing.Point(13, 63);
+            this.navigationMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.navigationMenu.Location = new System.Drawing.Point(0, 0);
             this.navigationMenu.Name = "navigationMenu";
-            this.navigationMenu.Size = new System.Drawing.Size(200, 645);
+            this.navigationMenu.Size = new System.Drawing.Size(200, 681);
             this.navigationMenu.TabIndex = 1;
+            // 
+            // logoutBtn
+            // 
+            this.logoutBtn.BackColor = System.Drawing.Color.White;
+            this.logoutBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.logoutBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.logoutBtn.FlatAppearance.BorderSize = 0;
+            this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logoutBtn.Location = new System.Drawing.Point(0, 675);
+            this.logoutBtn.Name = "logoutBtn";
+            this.logoutBtn.Size = new System.Drawing.Size(183, 45);
+            this.logoutBtn.TabIndex = 11;
+            this.logoutBtn.Text = "Logout";
+            this.logoutBtn.UseVisualStyleBackColor = false;
+            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
             // 
             // billSubMenu
             // 
@@ -430,6 +360,7 @@ namespace hospital_management_system.gui.forms
             this.addPatientBtn.Text = "Add Patient";
             this.addPatientBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addPatientBtn.UseVisualStyleBackColor = false;
+            this.addPatientBtn.Click += new System.EventHandler(this.addPatientBtn_Click);
             // 
             // patientBtn
             // 
@@ -465,28 +396,61 @@ namespace hospital_management_system.gui.forms
             // 
             // displayPanel
             // 
-            this.displayPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.displayPanel.Controls.Add(this.loginPanel);
-            this.displayPanel.Location = new System.Drawing.Point(220, 63);
+            this.displayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.displayPanel.Location = new System.Drawing.Point(200, 0);
             this.displayPanel.Name = "displayPanel";
-            this.displayPanel.Size = new System.Drawing.Size(1048, 645);
+            this.displayPanel.Size = new System.Drawing.Size(1064, 681);
             this.displayPanel.TabIndex = 2;
             // 
             // loginPanel
             // 
-            this.loginPanel.Controls.Add(this.passwordPanel);
-            this.loginPanel.Controls.Add(this.emailPanel);
-            this.loginPanel.Controls.Add(this.titleText);
-            this.loginPanel.Controls.Add(this.loginBtn);
-            this.loginPanel.Controls.Add(this.passwordText);
-            this.loginPanel.Controls.Add(this.emailText);
+            this.loginPanel.Controls.Add(this.loginGroup);
             this.loginPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginPanel.Location = new System.Drawing.Point(0, 0);
+            this.loginPanel.MinimumSize = new System.Drawing.Size(520, 286);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(1048, 645);
+            this.loginPanel.Size = new System.Drawing.Size(1064, 681);
             this.loginPanel.TabIndex = 3;
+            // 
+            // loginGroup
+            // 
+            this.loginGroup.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.loginGroup.Controls.Add(this.emailPanel);
+            this.loginGroup.Controls.Add(this.passwordPanel);
+            this.loginGroup.Controls.Add(this.emailText);
+            this.loginGroup.Controls.Add(this.passwordText);
+            this.loginGroup.Controls.Add(this.loginBtn);
+            this.loginGroup.Font = new System.Drawing.Font("Segoe UI", 36F);
+            this.loginGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.loginGroup.Location = new System.Drawing.Point(357, 197);
+            this.loginGroup.Name = "loginGroup";
+            this.loginGroup.Size = new System.Drawing.Size(350, 286);
+            this.loginGroup.TabIndex = 7;
+            this.loginGroup.TabStop = false;
+            this.loginGroup.Text = "Login";
+            // 
+            // emailPanel
+            // 
+            this.emailPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.emailPanel.BackColor = System.Drawing.Color.White;
+            this.emailPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.emailPanel.Controls.Add(this.emailTextbox);
+            this.emailPanel.Location = new System.Drawing.Point(17, 94);
+            this.emailPanel.Name = "emailPanel";
+            this.emailPanel.Size = new System.Drawing.Size(323, 38);
+            this.emailPanel.TabIndex = 5;
+            // 
+            // emailTextbox
+            // 
+            this.emailTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.emailTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailTextbox.Location = new System.Drawing.Point(3, 9);
+            this.emailTextbox.Name = "emailTextbox";
+            this.emailTextbox.Size = new System.Drawing.Size(489, 19);
+            this.emailTextbox.TabIndex = 0;
+            this.emailTextbox.Click += new System.EventHandler(this.emailTextbox_Click);
             // 
             // passwordPanel
             // 
@@ -495,9 +459,9 @@ namespace hospital_management_system.gui.forms
             this.passwordPanel.BackColor = System.Drawing.Color.White;
             this.passwordPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordPanel.Controls.Add(this.passwordTextbox);
-            this.passwordPanel.Location = new System.Drawing.Point(292, 344);
+            this.passwordPanel.Location = new System.Drawing.Point(17, 158);
             this.passwordPanel.Name = "passwordPanel";
-            this.passwordPanel.Size = new System.Drawing.Size(465, 38);
+            this.passwordPanel.Size = new System.Drawing.Size(323, 38);
             this.passwordPanel.TabIndex = 6;
             // 
             // passwordTextbox
@@ -509,42 +473,31 @@ namespace hospital_management_system.gui.forms
             this.passwordTextbox.Location = new System.Drawing.Point(3, 9);
             this.passwordTextbox.Name = "passwordTextbox";
             this.passwordTextbox.PasswordChar = '*';
-            this.passwordTextbox.Size = new System.Drawing.Size(457, 19);
+            this.passwordTextbox.Size = new System.Drawing.Size(315, 19);
             this.passwordTextbox.TabIndex = 0;
             this.passwordTextbox.Click += new System.EventHandler(this.passwordTextbox_Click);
             // 
-            // emailPanel
+            // emailText
             // 
-            this.emailPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.emailPanel.BackColor = System.Drawing.Color.White;
-            this.emailPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.emailPanel.Controls.Add(this.emailTextbox);
-            this.emailPanel.Location = new System.Drawing.Point(292, 280);
-            this.emailPanel.Name = "emailPanel";
-            this.emailPanel.Size = new System.Drawing.Size(465, 38);
-            this.emailPanel.TabIndex = 5;
+            this.emailText.AutoSize = true;
+            this.emailText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailText.ForeColor = System.Drawing.Color.Black;
+            this.emailText.Location = new System.Drawing.Point(13, 71);
+            this.emailText.Name = "emailText";
+            this.emailText.Size = new System.Drawing.Size(111, 20);
+            this.emailText.TabIndex = 1;
+            this.emailText.Text = "Email Address";
             // 
-            // emailTextbox
+            // passwordText
             // 
-            this.emailTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.emailTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailTextbox.Location = new System.Drawing.Point(3, 9);
-            this.emailTextbox.Name = "emailTextbox";
-            this.emailTextbox.Size = new System.Drawing.Size(457, 19);
-            this.emailTextbox.TabIndex = 0;
-            this.emailTextbox.Click += new System.EventHandler(this.emailTextbox_Click);
-            // 
-            // titleText
-            // 
-            this.titleText.AutoSize = true;
-            this.titleText.Font = new System.Drawing.Font("Segoe UI", 36F);
-            this.titleText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.titleText.Location = new System.Drawing.Point(281, 192);
-            this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(146, 65);
-            this.titleText.TabIndex = 4;
-            this.titleText.Text = "Login";
+            this.passwordText.AutoSize = true;
+            this.passwordText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordText.ForeColor = System.Drawing.Color.Black;
+            this.passwordText.Location = new System.Drawing.Point(13, 135);
+            this.passwordText.Name = "passwordText";
+            this.passwordText.Size = new System.Drawing.Size(78, 20);
+            this.passwordText.TabIndex = 2;
+            this.passwordText.Text = "Password";
             // 
             // loginBtn
             // 
@@ -556,69 +509,27 @@ namespace hospital_management_system.gui.forms
             this.loginBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
             this.loginBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loginBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.loginBtn.ForeColor = System.Drawing.Color.White;
-            this.loginBtn.Location = new System.Drawing.Point(292, 388);
+            this.loginBtn.Location = new System.Drawing.Point(17, 202);
             this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(465, 45);
+            this.loginBtn.Size = new System.Drawing.Size(323, 45);
             this.loginBtn.TabIndex = 2;
             this.loginBtn.Text = "Login";
             this.loginBtn.UseVisualStyleBackColor = false;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
-            // passwordText
-            // 
-            this.passwordText.AutoSize = true;
-            this.passwordText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordText.Location = new System.Drawing.Point(288, 321);
-            this.passwordText.Name = "passwordText";
-            this.passwordText.Size = new System.Drawing.Size(78, 20);
-            this.passwordText.TabIndex = 2;
-            this.passwordText.Text = "Password";
-            // 
-            // emailText
-            // 
-            this.emailText.AutoSize = true;
-            this.emailText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailText.Location = new System.Drawing.Point(288, 257);
-            this.emailText.Name = "emailText";
-            this.emailText.Size = new System.Drawing.Size(111, 20);
-            this.emailText.TabIndex = 1;
-            this.emailText.Text = "Email Address";
-            // 
-            // logoutBtn
-            // 
-            this.logoutBtn.BackColor = System.Drawing.Color.White;
-            this.logoutBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.logoutBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.logoutBtn.FlatAppearance.BorderSize = 0;
-            this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logoutBtn.Location = new System.Drawing.Point(0, 675);
-            this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Size = new System.Drawing.Size(183, 45);
-            this.logoutBtn.TabIndex = 11;
-            this.logoutBtn.Text = "Logout";
-            this.logoutBtn.UseVisualStyleBackColor = false;
-            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.displayPanel);
             this.Controls.Add(this.navigationMenu);
-            this.Controls.Add(this.navigationBar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(610, 515);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "mainWindow";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.draggable_window);
-            this.navigationBar.ResumeLayout(false);
-            this.navigationBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.minimizeIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maximizeIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.closeIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hamburgerIcon)).EndInit();
+            this.Text = "Hospital Information Management System";
             this.navigationMenu.ResumeLayout(false);
             this.billSubMenu.ResumeLayout(false);
             this.regSubMenu.ResumeLayout(false);
@@ -626,19 +537,17 @@ namespace hospital_management_system.gui.forms
             this.patientSubMenu.ResumeLayout(false);
             this.displayPanel.ResumeLayout(false);
             this.loginPanel.ResumeLayout(false);
-            this.loginPanel.PerformLayout();
-            this.passwordPanel.ResumeLayout(false);
-            this.passwordPanel.PerformLayout();
+            this.loginGroup.ResumeLayout(false);
+            this.loginGroup.PerformLayout();
             this.emailPanel.ResumeLayout(false);
             this.emailPanel.PerformLayout();
+            this.passwordPanel.ResumeLayout(false);
+            this.passwordPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel navigationBar;
-        private System.Windows.Forms.Label navigationText;
         private System.Windows.Forms.Panel navigationMenu;
         private System.Windows.Forms.Button dashboardBtn;
         private System.Windows.Forms.Button patientBtn;
@@ -660,12 +569,7 @@ namespace hospital_management_system.gui.forms
         private System.Windows.Forms.Button removeRegBtn;
         private System.Windows.Forms.Button addRegBtn;
         private System.Windows.Forms.Panel displayPanel;
-        private System.Windows.Forms.PictureBox closeIcon;
-        private System.Windows.Forms.PictureBox hamburgerIcon;
-        private System.Windows.Forms.PictureBox minimizeIcon;
-        private System.Windows.Forms.PictureBox maximizeIcon;
         private System.Windows.Forms.Panel loginPanel;
-        private System.Windows.Forms.Label titleText;
         private System.Windows.Forms.Button loginBtn;
         private System.Windows.Forms.Label passwordText;
         private System.Windows.Forms.Label emailText;
@@ -674,5 +578,6 @@ namespace hospital_management_system.gui.forms
         private System.Windows.Forms.TextBox passwordTextbox;
         private System.Windows.Forms.Panel emailPanel;
         private System.Windows.Forms.Button logoutBtn;
+        private System.Windows.Forms.GroupBox loginGroup;
     }
 }

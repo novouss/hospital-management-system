@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using hospital_management_system.classes;
+using hospital_management_system.classes.effects;
 
 namespace hospital_management_system.gui.forms
 {
@@ -23,28 +24,6 @@ namespace hospital_management_system.gui.forms
             navigationMenu.Enabled = false;
 
         }
-
-        #region Draggable Window Function
-
-        // Source: https://stackoverflow.com/questions/1592876/make-a-borderless-form-movable
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        private void draggable_window(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        #endregion
 
         #region Navigation Bar Icon Functions
 
@@ -146,44 +125,33 @@ namespace hospital_management_system.gui.forms
 
         #region Button Effect Functions
 
+        private ButtonEffect btn_effects = new ButtonEffect();
+
         private void ButtonEffect(Button btn, Panel submenu = null)
         {
-            ShowActiveButton(btn);
-            ShowSubMenu(submenu);
-        }
-
-        private void ShowInactiveButton(Button btn)
-        {
-            btn.BackColor = Color.White;
-            btn.ForeColor = Color.Black;
-        }
-
-        private void ShowActiveButton(Button btn)
-        {
             ResetButtonEffects();
-            btn.BackColor = blue;
-            btn.FlatAppearance.BorderColor = blue;
-            btn.ForeColor = Color.White;
+            this.btn_effects.ShowActiveButton(btn);
+            ShowSubMenu(submenu);
         }
 
         private void ResetButtonEffects()
         {
-            ShowInactiveButton(dashboardBtn);
-            ShowInactiveButton(patientBtn);
-            ShowInactiveButton(doctorBtn);
-            ShowInactiveButton(regBtn);
-            ShowInactiveButton(labBtn);
-            ShowInactiveButton(roomBtn);
-            ShowInactiveButton(billBtn);
+            this.btn_effects.ShowInactiveButton(dashboardBtn);
+            this.btn_effects.ShowInactiveButton(patientBtn);
+            this.btn_effects.ShowInactiveButton(doctorBtn);
+            this.btn_effects.ShowInactiveButton(regBtn);
+            this.btn_effects.ShowInactiveButton(labBtn);
+            this.btn_effects.ShowInactiveButton(roomBtn);
+            this.btn_effects.ShowInactiveButton(billBtn);
         }
 
         #endregion
 
         #region Navigation Menu Functions
 
-        private void dashboardBtn_Click(object sender, EventArgs e)
+        public void dashboardBtn_Click(object sender, EventArgs e)
         {
-            OpenChildWindow(new PageDashboard(this.employee));
+            OpenChildWindow(new PageDashboard(this, this.employee));
             ButtonEffect(dashboardBtn);
         }
 
@@ -194,32 +162,32 @@ namespace hospital_management_system.gui.forms
             
         }
 
-        private void doctorBtn_Click(object sender, EventArgs e)
+        public void doctorBtn_Click(object sender, EventArgs e)
         {
             OpenChildWindow(new PageView("employee"));
             ButtonEffect(doctorBtn, doctorSubMenu);
         }
 
-        private void regBtn_Click(object sender, EventArgs e)
+        public void regBtn_Click(object sender, EventArgs e)
         {
             OpenChildWindow(new PageView("appointment"));
             
             ButtonEffect(regBtn, regSubMenu);
         }
 
-        private void labBtn_Click(object sender, EventArgs e)
+        public void labBtn_Click(object sender, EventArgs e)
         {
             OpenChildWindow(new PageView("laboratory"));
             ButtonEffect(labBtn);
         }
 
-        private void roomBtn_Click(object sender, EventArgs e)
+        public void roomBtn_Click(object sender, EventArgs e)
         {
             OpenChildWindow(new PageView("room"));
             ButtonEffect(roomBtn);
         }
 
-        private void billBtn_Click(object sender, EventArgs e)
+        public void billBtn_Click(object sender, EventArgs e)
         {
             OpenChildWindow(new PageView("billing"));
             ButtonEffect(billBtn, billSubMenu);
@@ -234,20 +202,31 @@ namespace hospital_management_system.gui.forms
 
             var account = db.findAccount(emailTextbox.Text, passwordTextbox.Text);
 
-            if (account == null)
+            if (account == null || account.Count > 1)
             {
-                emailText.ForeColor = Color.Red;
-                passwordText.ForeColor = Color.Red;
-                emailText.Text = "* Incorrect Email Address";
-                passwordText.Text = "* Incorrect Password";
-                emailTextbox.Text = "";
-                passwordTextbox.Text = "";
+                AccountDoesNotExist();
                 return;
             }
 
-            this.employee = account[0];
-            OpenChildWindow(new PageDashboard(this.employee));
+            AccountExists(account[0]);
+        }
+
+        private void AccountDoesNotExist()
+        {
+            emailText.ForeColor = Color.Red;
+            passwordText.ForeColor = Color.Red;
+            emailText.Text = "* Incorrect Email Address";
+            passwordText.Text = "* Incorrect Password";
+            emailTextbox.Text = "";
+            passwordTextbox.Text = "";
+        }
+
+        private void AccountExists(EmployeeDetails employee)
+        {
+            this.employee = employee;
+            OpenChildWindow(new PageDashboard(this, this.employee));
             navigationMenu.Enabled = true;
+            this.btn_effects.ShowActiveButton(dashboardBtn);
             loginPanel.Hide();
         }
 
@@ -279,5 +258,10 @@ namespace hospital_management_system.gui.forms
 
         #endregion
 
+        private void addPatientBtn_Click(object sender, EventArgs e)
+        {
+            FormPatient form = new FormPatient("add");
+            form.Show();
+        }
     }
 }
