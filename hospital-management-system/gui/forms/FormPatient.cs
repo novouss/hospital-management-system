@@ -21,15 +21,15 @@ namespace hospital_management_system
             switch (function)
             {
                 case "view":
-                    viewForm.Text = "View Patient ID: " + id;
+                    patientForm.Text = "View Patient ID: " + id;
                     viewPatient(id);
                     break;
                 case "modify":
-                    viewForm.Text = "Modify Patient ID: " + id;
+                    patientForm.Text = "Modify Patient ID: " + id;
                     modifyPatient(id);
                     break;
                 case "add":
-                    viewForm.Text = "Add Patient";
+                    patientForm.Text = "Add Patient";
                     addPatient();
                     break;
                 default:
@@ -43,10 +43,12 @@ namespace hospital_management_system
             // Visualize information
             infoGroup.Visible = true;
             addressGroup.Visible = true;
+            appointmentGroup.Visible = false;
 
             // Allow for user input
             infoGroup.Enabled = true;
             addressGroup.Enabled = true;
+            appointmentGroup.Visible = false;
 
             // Add Functions
         }
@@ -56,12 +58,12 @@ namespace hospital_management_system
             // Visualize information
             infoGroup.Visible = true;
             addressGroup.Visible = true;
-            appGroup.Visible = true;
+            appointmentGroup.Visible = true;
 
             // Do not allow for user input
             infoGroup.Enabled = false;
             addressGroup.Enabled = false;
-            appGroup.Enabled = false;
+            appointmentGroup.Enabled = false;
 
             // View Functions
         }
@@ -71,13 +73,14 @@ namespace hospital_management_system
             // Visualize information
             infoGroup.Visible = true;
             addressGroup.Visible = true;
-            appGroup.Visible = true;
+            appointmentGroup.Visible = true;
 
             // Allow for user input
             infoGroup.Enabled = true;
             addressGroup.Enabled = true;
-            appGroup.Enabled = true;
+            appointmentGroup.Enabled = true;
 
+            // Modify Function
         }
 
     }

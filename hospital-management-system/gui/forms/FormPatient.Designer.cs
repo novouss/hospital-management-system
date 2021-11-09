@@ -29,9 +29,9 @@ namespace hospital_management_system
         /// </summary>
         private void InitializeComponent()
         {
-            this.viewForm = new System.Windows.Forms.GroupBox();
-            this.viewPanel = new System.Windows.Forms.Panel();
-            this.appGroup = new System.Windows.Forms.GroupBox();
+            this.patientForm = new System.Windows.Forms.GroupBox();
+            this.patientPanel = new System.Windows.Forms.Panel();
+            this.appointmentGroup = new System.Windows.Forms.GroupBox();
             this.addressGroup = new System.Windows.Forms.GroupBox();
             this.addressTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.zipcodePanel = new System.Windows.Forms.Panel();
@@ -63,9 +63,9 @@ namespace hospital_management_system
             this.anyGenderPanel = new System.Windows.Forms.Panel();
             this.anyGenderTextbox = new System.Windows.Forms.TextBox();
             this.genderPanel = new System.Windows.Forms.Panel();
-            this.othersRadio = new System.Windows.Forms.RadioButton();
-            this.femailRadio = new System.Windows.Forms.RadioButton();
             this.maleRadio = new System.Windows.Forms.RadioButton();
+            this.femailRadio = new System.Windows.Forms.RadioButton();
+            this.othersRadio = new System.Windows.Forms.RadioButton();
             this.genderLabel = new System.Windows.Forms.Label();
             this.birthdatePanel = new System.Windows.Forms.Panel();
             this.birthdateCalendar = new System.Windows.Forms.DateTimePicker();
@@ -82,8 +82,8 @@ namespace hospital_management_system
             this.religionPanel = new System.Windows.Forms.Panel();
             this.religionTextbox = new System.Windows.Forms.TextBox();
             this.religionLabel = new System.Windows.Forms.Label();
-            this.viewForm.SuspendLayout();
-            this.viewPanel.SuspendLayout();
+            this.patientForm.SuspendLayout();
+            this.patientPanel.SuspendLayout();
             this.addressGroup.SuspendLayout();
             this.addressTableLayout.SuspendLayout();
             this.zipcodePanel.SuspendLayout();
@@ -105,45 +105,45 @@ namespace hospital_management_system
             this.religionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // viewForm
+            // patientForm
             // 
-            this.viewForm.AutoSize = true;
-            this.viewForm.Controls.Add(this.viewPanel);
-            this.viewForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewForm.Font = new System.Drawing.Font("Segoe UI", 36F);
-            this.viewForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.viewForm.Location = new System.Drawing.Point(0, 0);
-            this.viewForm.Name = "viewForm";
-            this.viewForm.Padding = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.viewForm.Size = new System.Drawing.Size(1080, 720);
-            this.viewForm.TabIndex = 5;
-            this.viewForm.TabStop = false;
-            this.viewForm.Text = "{function}_patient";
+            this.patientForm.AutoSize = true;
+            this.patientForm.Controls.Add(this.patientPanel);
+            this.patientForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.patientForm.Font = new System.Drawing.Font("Segoe UI", 36F);
+            this.patientForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.patientForm.Location = new System.Drawing.Point(0, 0);
+            this.patientForm.Name = "patientForm";
+            this.patientForm.Padding = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.patientForm.Size = new System.Drawing.Size(1080, 720);
+            this.patientForm.TabIndex = 5;
+            this.patientForm.TabStop = false;
+            this.patientForm.Text = "{function}_patient";
             // 
-            // viewPanel
+            // patientPanel
             // 
-            this.viewPanel.AutoScroll = true;
-            this.viewPanel.Controls.Add(this.appGroup);
-            this.viewPanel.Controls.Add(this.addressGroup);
-            this.viewPanel.Controls.Add(this.infoGroup);
-            this.viewPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewPanel.Location = new System.Drawing.Point(9, 67);
-            this.viewPanel.Name = "viewPanel";
-            this.viewPanel.Size = new System.Drawing.Size(1062, 650);
-            this.viewPanel.TabIndex = 3;
+            this.patientPanel.AutoScroll = true;
+            this.patientPanel.Controls.Add(this.appointmentGroup);
+            this.patientPanel.Controls.Add(this.addressGroup);
+            this.patientPanel.Controls.Add(this.infoGroup);
+            this.patientPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.patientPanel.Location = new System.Drawing.Point(9, 67);
+            this.patientPanel.Name = "patientPanel";
+            this.patientPanel.Size = new System.Drawing.Size(1062, 650);
+            this.patientPanel.TabIndex = 3;
             // 
-            // appGroup
+            // appointmentGroup
             // 
-            this.appGroup.BackColor = System.Drawing.Color.White;
-            this.appGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.appGroup.Font = new System.Drawing.Font("Segoe UI", 20.25F);
-            this.appGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.appGroup.Location = new System.Drawing.Point(0, 510);
-            this.appGroup.Name = "appGroup";
-            this.appGroup.Size = new System.Drawing.Size(1045, 201);
-            this.appGroup.TabIndex = 2;
-            this.appGroup.TabStop = false;
-            this.appGroup.Text = "Appointment History";
+            this.appointmentGroup.BackColor = System.Drawing.Color.White;
+            this.appointmentGroup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.appointmentGroup.Font = new System.Drawing.Font("Segoe UI", 20.25F);
+            this.appointmentGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.appointmentGroup.Location = new System.Drawing.Point(0, 510);
+            this.appointmentGroup.Name = "appointmentGroup";
+            this.appointmentGroup.Size = new System.Drawing.Size(1045, 201);
+            this.appointmentGroup.TabIndex = 2;
+            this.appointmentGroup.TabStop = false;
+            this.appointmentGroup.Text = "Appointment History";
             // 
             // addressGroup
             // 
@@ -483,21 +483,21 @@ namespace hospital_management_system
             this.genderPanel.Size = new System.Drawing.Size(340, 55);
             this.genderPanel.TabIndex = 4;
             // 
-            // othersRadio
+            // maleRadio
             // 
-            this.othersRadio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.maleRadio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.othersRadio.AutoSize = true;
-            this.othersRadio.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.othersRadio.ForeColor = System.Drawing.Color.Black;
-            this.othersRadio.Location = new System.Drawing.Point(140, 30);
-            this.othersRadio.Margin = new System.Windows.Forms.Padding(0);
-            this.othersRadio.Name = "othersRadio";
-            this.othersRadio.Size = new System.Drawing.Size(187, 25);
-            this.othersRadio.TabIndex = 7;
-            this.othersRadio.TabStop = true;
-            this.othersRadio.Text = "Others (Please Specify)";
-            this.othersRadio.UseVisualStyleBackColor = true;
+            this.maleRadio.AutoSize = true;
+            this.maleRadio.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.maleRadio.ForeColor = System.Drawing.Color.Black;
+            this.maleRadio.Location = new System.Drawing.Point(0, 30);
+            this.maleRadio.Margin = new System.Windows.Forms.Padding(0);
+            this.maleRadio.Name = "maleRadio";
+            this.maleRadio.Size = new System.Drawing.Size(62, 25);
+            this.maleRadio.TabIndex = 5;
+            this.maleRadio.TabStop = true;
+            this.maleRadio.Text = "Male";
+            this.maleRadio.UseVisualStyleBackColor = true;
             // 
             // femailRadio
             // 
@@ -515,21 +515,21 @@ namespace hospital_management_system
             this.femailRadio.Text = "Female";
             this.femailRadio.UseVisualStyleBackColor = true;
             // 
-            // maleRadio
+            // othersRadio
             // 
-            this.maleRadio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.othersRadio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.maleRadio.AutoSize = true;
-            this.maleRadio.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.maleRadio.ForeColor = System.Drawing.Color.Black;
-            this.maleRadio.Location = new System.Drawing.Point(0, 30);
-            this.maleRadio.Margin = new System.Windows.Forms.Padding(0);
-            this.maleRadio.Name = "maleRadio";
-            this.maleRadio.Size = new System.Drawing.Size(62, 25);
-            this.maleRadio.TabIndex = 5;
-            this.maleRadio.TabStop = true;
-            this.maleRadio.Text = "Male";
-            this.maleRadio.UseVisualStyleBackColor = true;
+            this.othersRadio.AutoSize = true;
+            this.othersRadio.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.othersRadio.ForeColor = System.Drawing.Color.Black;
+            this.othersRadio.Location = new System.Drawing.Point(140, 30);
+            this.othersRadio.Margin = new System.Windows.Forms.Padding(0);
+            this.othersRadio.Name = "othersRadio";
+            this.othersRadio.Size = new System.Drawing.Size(187, 25);
+            this.othersRadio.TabIndex = 7;
+            this.othersRadio.TabStop = true;
+            this.othersRadio.Text = "Others (Please Specify)";
+            this.othersRadio.UseVisualStyleBackColor = true;
             // 
             // genderLabel
             // 
@@ -695,10 +695,11 @@ namespace hospital_management_system
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1080, 720);
-            this.Controls.Add(this.viewForm);
+            this.Controls.Add(this.patientForm);
             this.Name = "FormPatient";
-            this.viewForm.ResumeLayout(false);
-            this.viewPanel.ResumeLayout(false);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.patientForm.ResumeLayout(false);
+            this.patientPanel.ResumeLayout(false);
             this.addressGroup.ResumeLayout(false);
             this.addressTableLayout.ResumeLayout(false);
             this.zipcodePanel.ResumeLayout(false);
@@ -740,11 +741,11 @@ namespace hospital_management_system
 
         #endregion
 
-        private System.Windows.Forms.GroupBox viewForm;
-        private System.Windows.Forms.GroupBox appGroup;
+        private System.Windows.Forms.GroupBox patientForm;
+        private System.Windows.Forms.GroupBox appointmentGroup;
         private System.Windows.Forms.GroupBox addressGroup;
         private System.Windows.Forms.GroupBox infoGroup;
-        private System.Windows.Forms.Panel viewPanel;
+        private System.Windows.Forms.Panel patientPanel;
         private System.Windows.Forms.TableLayoutPanel infoPanel;
         private System.Windows.Forms.Panel anyGenderPanel;
         private System.Windows.Forms.Panel genderPanel;

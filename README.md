@@ -30,10 +30,10 @@ Employees include workers such as Doctors, Staffs, and Nurses. They're mostly re
 * Can Add, View, or Modify Billing Information.
 * Can Add, or View Laboratory Details.
 
-# Patient Permission
+# Staff Permission
 
-Patient don't necessarily participate on the Hospital's Information System. Hence they're only given a number of access to the system.
+Staff don't necessarily participate on the Hospital's Information System. Hence they're only given a number of access to the system.
 
-* Can Add, View, or Modify (their own) Patient Details (including Address Details).
-* Can Add, or View (their own) Patient Registration
-* Can View (their own) Billing Information.
+* Can Add, View, or Modify Patient Details (including Address Details).
+* Can Add, or View Patient Registration
+* Can View Billing Information.

@@ -101,6 +101,12 @@
     <Compile Include="classes\dbConnection.cs" />
     <Compile Include="classes\models\EmployeeDetails.cs" />
     <Compile Include="classes\models\PatientDetails.cs" />
+    <Compile Include="gui\forms\FormTreatments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\forms\FormTreatments.Designer.cs">
+      <DependentUpon>FormTreatments.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\pages\PageView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="gui\forms\FormTreatments.resx">
+      <DependentUpon>FormTreatments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\pages\PageView.resx">
       <DependentUpon>PageView.cs</DependentUpon>
     </EmbeddedResource>
