@@ -38,7 +38,7 @@ namespace hospital_management_system.classes
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
                 // At exactly 4:45 am 10th of November 2021, Raymond Brian D. Gorospe (@Novous) has finally fixed a bug on this exact line that's been causing 3 hours of back pain, stress, anger, anxiety, and loss of hope, to finally fix a bug caused a misspelling error. 
-                // The Adminssion Incident of November 10 2021, AdmissionON was spelled AdminssionOn.
+                // The Adminssion Incident of November 10 2021, AdmissionOn was spelled AdminssionOn.
                 connection.Execute($"dbo.USP_AddRegistration @PatientID, @AdmissionOn, @DischargeOn, @EmployeeID, @RoomID, @LaboratoryID, @Results", registration);
             }
         }
