@@ -37,14 +37,14 @@ namespace hospital_management_system.gui.forms
             this.billBtn = new System.Windows.Forms.Button();
             this.roomBtn = new System.Windows.Forms.Button();
             this.labBtn = new System.Windows.Forms.Button();
-            this.regSubMenu = new System.Windows.Forms.Panel();
-            this.removeRegBtn = new System.Windows.Forms.Button();
-            this.addRegBtn = new System.Windows.Forms.Button();
-            this.regBtn = new System.Windows.Forms.Button();
-            this.doctorSubMenu = new System.Windows.Forms.Panel();
-            this.removeDoctorBtn = new System.Windows.Forms.Button();
-            this.addDoctorBtn = new System.Windows.Forms.Button();
-            this.doctorBtn = new System.Windows.Forms.Button();
+            this.appSubMenu = new System.Windows.Forms.Panel();
+            this.removeAppBtn = new System.Windows.Forms.Button();
+            this.addAppBtn = new System.Windows.Forms.Button();
+            this.appBtn = new System.Windows.Forms.Button();
+            this.employeeSubMenu = new System.Windows.Forms.Panel();
+            this.removeEmployeeBtn = new System.Windows.Forms.Button();
+            this.addEmployeeBtn = new System.Windows.Forms.Button();
+            this.employeeBtn = new System.Windows.Forms.Button();
             this.patientSubMenu = new System.Windows.Forms.Panel();
             this.removePatientBtn = new System.Windows.Forms.Button();
             this.addPatientBtn = new System.Windows.Forms.Button();
@@ -62,8 +62,8 @@ namespace hospital_management_system.gui.forms
             this.loginBtn = new System.Windows.Forms.Button();
             this.navigationMenu.SuspendLayout();
             this.billSubMenu.SuspendLayout();
-            this.regSubMenu.SuspendLayout();
-            this.doctorSubMenu.SuspendLayout();
+            this.appSubMenu.SuspendLayout();
+            this.employeeSubMenu.SuspendLayout();
             this.patientSubMenu.SuspendLayout();
             this.displayPanel.SuspendLayout();
             this.loginPanel.SuspendLayout();
@@ -81,10 +81,10 @@ namespace hospital_management_system.gui.forms
             this.navigationMenu.Controls.Add(this.billBtn);
             this.navigationMenu.Controls.Add(this.roomBtn);
             this.navigationMenu.Controls.Add(this.labBtn);
-            this.navigationMenu.Controls.Add(this.regSubMenu);
-            this.navigationMenu.Controls.Add(this.regBtn);
-            this.navigationMenu.Controls.Add(this.doctorSubMenu);
-            this.navigationMenu.Controls.Add(this.doctorBtn);
+            this.navigationMenu.Controls.Add(this.appSubMenu);
+            this.navigationMenu.Controls.Add(this.appBtn);
+            this.navigationMenu.Controls.Add(this.employeeSubMenu);
+            this.navigationMenu.Controls.Add(this.employeeBtn);
             this.navigationMenu.Controls.Add(this.patientSubMenu);
             this.navigationMenu.Controls.Add(this.patientBtn);
             this.navigationMenu.Controls.Add(this.dashboardBtn);
@@ -200,123 +200,125 @@ namespace hospital_management_system.gui.forms
             this.labBtn.UseVisualStyleBackColor = false;
             this.labBtn.Click += new System.EventHandler(this.labBtn_Click);
             // 
-            // regSubMenu
+            // appSubMenu
             // 
-            this.regSubMenu.Controls.Add(this.removeRegBtn);
-            this.regSubMenu.Controls.Add(this.addRegBtn);
-            this.regSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.regSubMenu.Location = new System.Drawing.Point(0, 360);
-            this.regSubMenu.Name = "regSubMenu";
-            this.regSubMenu.Size = new System.Drawing.Size(183, 90);
-            this.regSubMenu.TabIndex = 10;
-            this.regSubMenu.Visible = false;
+            this.appSubMenu.Controls.Add(this.removeAppBtn);
+            this.appSubMenu.Controls.Add(this.addAppBtn);
+            this.appSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.appSubMenu.Location = new System.Drawing.Point(0, 360);
+            this.appSubMenu.Name = "appSubMenu";
+            this.appSubMenu.Size = new System.Drawing.Size(183, 90);
+            this.appSubMenu.TabIndex = 10;
+            this.appSubMenu.Visible = false;
             // 
-            // removeRegBtn
+            // removeAppBtn
             // 
-            this.removeRegBtn.BackColor = System.Drawing.Color.White;
-            this.removeRegBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.removeRegBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.removeRegBtn.FlatAppearance.BorderSize = 0;
-            this.removeRegBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeRegBtn.Location = new System.Drawing.Point(0, 45);
-            this.removeRegBtn.Name = "removeRegBtn";
-            this.removeRegBtn.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.removeRegBtn.Size = new System.Drawing.Size(183, 45);
-            this.removeRegBtn.TabIndex = 3;
-            this.removeRegBtn.Text = "Remove Registration";
-            this.removeRegBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.removeRegBtn.UseVisualStyleBackColor = false;
+            this.removeAppBtn.BackColor = System.Drawing.Color.White;
+            this.removeAppBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.removeAppBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.removeAppBtn.FlatAppearance.BorderSize = 0;
+            this.removeAppBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeAppBtn.Location = new System.Drawing.Point(0, 45);
+            this.removeAppBtn.Name = "removeAppBtn";
+            this.removeAppBtn.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.removeAppBtn.Size = new System.Drawing.Size(183, 45);
+            this.removeAppBtn.TabIndex = 3;
+            this.removeAppBtn.Text = "Remove Appointment";
+            this.removeAppBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.removeAppBtn.UseVisualStyleBackColor = false;
             // 
-            // addRegBtn
+            // addAppBtn
             // 
-            this.addRegBtn.BackColor = System.Drawing.Color.White;
-            this.addRegBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addRegBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.addRegBtn.FlatAppearance.BorderSize = 0;
-            this.addRegBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addRegBtn.Location = new System.Drawing.Point(0, 0);
-            this.addRegBtn.Name = "addRegBtn";
-            this.addRegBtn.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.addRegBtn.Size = new System.Drawing.Size(183, 45);
-            this.addRegBtn.TabIndex = 2;
-            this.addRegBtn.Text = "Add Registration";
-            this.addRegBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addRegBtn.UseVisualStyleBackColor = false;
+            this.addAppBtn.BackColor = System.Drawing.Color.White;
+            this.addAppBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addAppBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.addAppBtn.FlatAppearance.BorderSize = 0;
+            this.addAppBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addAppBtn.Location = new System.Drawing.Point(0, 0);
+            this.addAppBtn.Name = "addAppBtn";
+            this.addAppBtn.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.addAppBtn.Size = new System.Drawing.Size(183, 45);
+            this.addAppBtn.TabIndex = 2;
+            this.addAppBtn.Text = "Add Appointment";
+            this.addAppBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.addAppBtn.UseVisualStyleBackColor = false;
+            this.addAppBtn.Click += new System.EventHandler(this.addRegBtn_Click);
             // 
-            // regBtn
+            // appBtn
             // 
-            this.regBtn.BackColor = System.Drawing.Color.White;
-            this.regBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.regBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.regBtn.FlatAppearance.BorderSize = 0;
-            this.regBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.regBtn.Location = new System.Drawing.Point(0, 315);
-            this.regBtn.Name = "regBtn";
-            this.regBtn.Size = new System.Drawing.Size(183, 45);
-            this.regBtn.TabIndex = 9;
-            this.regBtn.Text = "Registration";
-            this.regBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.regBtn.UseVisualStyleBackColor = false;
-            this.regBtn.Click += new System.EventHandler(this.regBtn_Click);
+            this.appBtn.BackColor = System.Drawing.Color.White;
+            this.appBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.appBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.appBtn.FlatAppearance.BorderSize = 0;
+            this.appBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.appBtn.Location = new System.Drawing.Point(0, 315);
+            this.appBtn.Name = "appBtn";
+            this.appBtn.Size = new System.Drawing.Size(183, 45);
+            this.appBtn.TabIndex = 9;
+            this.appBtn.Text = "Appointment";
+            this.appBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.appBtn.UseVisualStyleBackColor = false;
+            this.appBtn.Click += new System.EventHandler(this.regBtn_Click);
             // 
-            // doctorSubMenu
+            // employeeSubMenu
             // 
-            this.doctorSubMenu.Controls.Add(this.removeDoctorBtn);
-            this.doctorSubMenu.Controls.Add(this.addDoctorBtn);
-            this.doctorSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.doctorSubMenu.Location = new System.Drawing.Point(0, 225);
-            this.doctorSubMenu.Name = "doctorSubMenu";
-            this.doctorSubMenu.Size = new System.Drawing.Size(183, 90);
-            this.doctorSubMenu.TabIndex = 4;
-            this.doctorSubMenu.Visible = false;
+            this.employeeSubMenu.Controls.Add(this.removeEmployeeBtn);
+            this.employeeSubMenu.Controls.Add(this.addEmployeeBtn);
+            this.employeeSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.employeeSubMenu.Location = new System.Drawing.Point(0, 225);
+            this.employeeSubMenu.Name = "employeeSubMenu";
+            this.employeeSubMenu.Size = new System.Drawing.Size(183, 90);
+            this.employeeSubMenu.TabIndex = 4;
+            this.employeeSubMenu.Visible = false;
             // 
-            // removeDoctorBtn
+            // removeEmployeeBtn
             // 
-            this.removeDoctorBtn.BackColor = System.Drawing.Color.White;
-            this.removeDoctorBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.removeDoctorBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.removeDoctorBtn.FlatAppearance.BorderSize = 0;
-            this.removeDoctorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeDoctorBtn.Location = new System.Drawing.Point(0, 45);
-            this.removeDoctorBtn.Name = "removeDoctorBtn";
-            this.removeDoctorBtn.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.removeDoctorBtn.Size = new System.Drawing.Size(183, 45);
-            this.removeDoctorBtn.TabIndex = 3;
-            this.removeDoctorBtn.Text = "Remove Doctor";
-            this.removeDoctorBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.removeDoctorBtn.UseVisualStyleBackColor = false;
+            this.removeEmployeeBtn.BackColor = System.Drawing.Color.White;
+            this.removeEmployeeBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.removeEmployeeBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.removeEmployeeBtn.FlatAppearance.BorderSize = 0;
+            this.removeEmployeeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeEmployeeBtn.Location = new System.Drawing.Point(0, 45);
+            this.removeEmployeeBtn.Name = "removeEmployeeBtn";
+            this.removeEmployeeBtn.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.removeEmployeeBtn.Size = new System.Drawing.Size(183, 45);
+            this.removeEmployeeBtn.TabIndex = 3;
+            this.removeEmployeeBtn.Text = "Remove Employee";
+            this.removeEmployeeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.removeEmployeeBtn.UseVisualStyleBackColor = false;
             // 
-            // addDoctorBtn
+            // addEmployeeBtn
             // 
-            this.addDoctorBtn.BackColor = System.Drawing.Color.White;
-            this.addDoctorBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addDoctorBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.addDoctorBtn.FlatAppearance.BorderSize = 0;
-            this.addDoctorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addDoctorBtn.Location = new System.Drawing.Point(0, 0);
-            this.addDoctorBtn.Name = "addDoctorBtn";
-            this.addDoctorBtn.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.addDoctorBtn.Size = new System.Drawing.Size(183, 45);
-            this.addDoctorBtn.TabIndex = 2;
-            this.addDoctorBtn.Text = "Add Doctor";
-            this.addDoctorBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addDoctorBtn.UseVisualStyleBackColor = false;
+            this.addEmployeeBtn.BackColor = System.Drawing.Color.White;
+            this.addEmployeeBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addEmployeeBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.addEmployeeBtn.FlatAppearance.BorderSize = 0;
+            this.addEmployeeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addEmployeeBtn.Location = new System.Drawing.Point(0, 0);
+            this.addEmployeeBtn.Name = "addEmployeeBtn";
+            this.addEmployeeBtn.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.addEmployeeBtn.Size = new System.Drawing.Size(183, 45);
+            this.addEmployeeBtn.TabIndex = 2;
+            this.addEmployeeBtn.Text = "Add Employee";
+            this.addEmployeeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.addEmployeeBtn.UseVisualStyleBackColor = false;
+            this.addEmployeeBtn.Click += new System.EventHandler(this.addEmployeeBtn_Click);
             // 
-            // doctorBtn
+            // employeeBtn
             // 
-            this.doctorBtn.BackColor = System.Drawing.Color.White;
-            this.doctorBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.doctorBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.doctorBtn.FlatAppearance.BorderSize = 0;
-            this.doctorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.doctorBtn.Location = new System.Drawing.Point(0, 180);
-            this.doctorBtn.Name = "doctorBtn";
-            this.doctorBtn.Size = new System.Drawing.Size(183, 45);
-            this.doctorBtn.TabIndex = 3;
-            this.doctorBtn.Text = "Doctor";
-            this.doctorBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.doctorBtn.UseVisualStyleBackColor = false;
-            this.doctorBtn.Click += new System.EventHandler(this.doctorBtn_Click);
+            this.employeeBtn.BackColor = System.Drawing.Color.White;
+            this.employeeBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.employeeBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.employeeBtn.FlatAppearance.BorderSize = 0;
+            this.employeeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.employeeBtn.Location = new System.Drawing.Point(0, 180);
+            this.employeeBtn.Name = "employeeBtn";
+            this.employeeBtn.Size = new System.Drawing.Size(183, 45);
+            this.employeeBtn.TabIndex = 3;
+            this.employeeBtn.Text = "Employee";
+            this.employeeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.employeeBtn.UseVisualStyleBackColor = false;
+            this.employeeBtn.Click += new System.EventHandler(this.doctorBtn_Click);
             // 
             // patientSubMenu
             // 
@@ -425,7 +427,7 @@ namespace hospital_management_system.gui.forms
             this.loginGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
             this.loginGroup.Location = new System.Drawing.Point(357, 197);
             this.loginGroup.Name = "loginGroup";
-            this.loginGroup.Size = new System.Drawing.Size(350, 286);
+            this.loginGroup.Size = new System.Drawing.Size(350, 266);
             this.loginGroup.TabIndex = 7;
             this.loginGroup.TabStop = false;
             this.loginGroup.Text = "Login";
@@ -448,7 +450,7 @@ namespace hospital_management_system.gui.forms
             this.emailTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailTextbox.Location = new System.Drawing.Point(3, 9);
             this.emailTextbox.Name = "emailTextbox";
-            this.emailTextbox.Size = new System.Drawing.Size(489, 19);
+            this.emailTextbox.Size = new System.Drawing.Size(315, 19);
             this.emailTextbox.TabIndex = 0;
             this.emailTextbox.Click += new System.EventHandler(this.emailTextbox_Click);
             // 
@@ -506,8 +508,6 @@ namespace hospital_management_system.gui.forms
             this.loginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
             this.loginBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
             this.loginBtn.FlatAppearance.BorderSize = 0;
-            this.loginBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.loginBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loginBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.loginBtn.ForeColor = System.Drawing.Color.White;
@@ -532,8 +532,8 @@ namespace hospital_management_system.gui.forms
             this.Text = "Hospital Information Management System";
             this.navigationMenu.ResumeLayout(false);
             this.billSubMenu.ResumeLayout(false);
-            this.regSubMenu.ResumeLayout(false);
-            this.doctorSubMenu.ResumeLayout(false);
+            this.appSubMenu.ResumeLayout(false);
+            this.employeeSubMenu.ResumeLayout(false);
             this.patientSubMenu.ResumeLayout(false);
             this.displayPanel.ResumeLayout(false);
             this.loginPanel.ResumeLayout(false);
@@ -557,17 +557,17 @@ namespace hospital_management_system.gui.forms
         private System.Windows.Forms.Button billBtn;
         private System.Windows.Forms.Button roomBtn;
         private System.Windows.Forms.Button labBtn;
-        private System.Windows.Forms.Panel doctorSubMenu;
-        private System.Windows.Forms.Button removeDoctorBtn;
-        private System.Windows.Forms.Button addDoctorBtn;
-        private System.Windows.Forms.Button doctorBtn;
+        private System.Windows.Forms.Panel employeeSubMenu;
+        private System.Windows.Forms.Button removeEmployeeBtn;
+        private System.Windows.Forms.Button addEmployeeBtn;
+        private System.Windows.Forms.Button employeeBtn;
         private System.Windows.Forms.Panel patientSubMenu;
         private System.Windows.Forms.Button removePatientBtn;
         private System.Windows.Forms.Button addPatientBtn;
-        private System.Windows.Forms.Button regBtn;
-        private System.Windows.Forms.Panel regSubMenu;
-        private System.Windows.Forms.Button removeRegBtn;
-        private System.Windows.Forms.Button addRegBtn;
+        private System.Windows.Forms.Button appBtn;
+        private System.Windows.Forms.Panel appSubMenu;
+        private System.Windows.Forms.Button removeAppBtn;
+        private System.Windows.Forms.Button addAppBtn;
         private System.Windows.Forms.Panel displayPanel;
         private System.Windows.Forms.Panel loginPanel;
         private System.Windows.Forms.Button loginBtn;

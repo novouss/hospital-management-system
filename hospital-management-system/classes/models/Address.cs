@@ -1,14 +1,14 @@
-﻿using ServiceStack.DataAnnotations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ServiceStack.DataAnnotations;
 
 namespace hospital_management_system.classes
 {
-    [Alias("address")]
-    public class address
+    [Alias("Address")]
+    public class Address
     {
         public int AddressID { get; set; }
         public string Address1 { get; set; }

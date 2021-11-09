@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "hospital-management-system": {
-      "commandName": "Project",
-      "sqlDebugging": true
-    }
-  }
-}

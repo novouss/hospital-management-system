@@ -15,7 +15,6 @@ namespace hospital_management_system.gui.forms
 
     public partial class FormMain : Form
     {
-        private System.Drawing.Color blue = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
         private EmployeeDetails employee;
 
         public FormMain()
@@ -86,13 +85,13 @@ namespace hospital_management_system.gui.forms
             {
                 patientSubMenu.Visible = false; 
             }
-            if (doctorSubMenu.Visible)
+            if (employeeSubMenu.Visible)
             {
-                doctorSubMenu.Visible = false; 
+                employeeSubMenu.Visible = false; 
             }
-            if (regSubMenu.Visible)
+            if (appSubMenu.Visible)
             {
-                regSubMenu.Visible = false; 
+                appSubMenu.Visible = false; 
             }
             if (billSubMenu.Visible)
             {
@@ -138,8 +137,8 @@ namespace hospital_management_system.gui.forms
         {
             this.btn_effects.ShowInactiveButton(dashboardBtn);
             this.btn_effects.ShowInactiveButton(patientBtn);
-            this.btn_effects.ShowInactiveButton(doctorBtn);
-            this.btn_effects.ShowInactiveButton(regBtn);
+            this.btn_effects.ShowInactiveButton(employeeBtn);
+            this.btn_effects.ShowInactiveButton(appBtn);
             this.btn_effects.ShowInactiveButton(labBtn);
             this.btn_effects.ShowInactiveButton(roomBtn);
             this.btn_effects.ShowInactiveButton(billBtn);
@@ -165,14 +164,14 @@ namespace hospital_management_system.gui.forms
         public void doctorBtn_Click(object sender, EventArgs e)
         {
             OpenChildWindow(new PageView("employee"));
-            ButtonEffect(doctorBtn, doctorSubMenu);
+            ButtonEffect(employeeBtn, employeeSubMenu);
         }
 
         public void regBtn_Click(object sender, EventArgs e)
         {
             OpenChildWindow(new PageView("appointment"));
             
-            ButtonEffect(regBtn, regSubMenu);
+            ButtonEffect(appBtn, appSubMenu);
         }
 
         public void labBtn_Click(object sender, EventArgs e)
@@ -213,8 +212,8 @@ namespace hospital_management_system.gui.forms
 
         private void AccountDoesNotExist()
         {
-            emailText.ForeColor = Color.Red;
-            passwordText.ForeColor = Color.Red;
+            emailText.ForeColor = Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(67)))), ((int)(((byte)(67)))));
+            passwordText.ForeColor = Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(67)))), ((int)(((byte)(67)))));
             emailText.Text = "* Incorrect Email Address";
             passwordText.Text = "* Incorrect Password";
             emailTextbox.Text = "";
@@ -261,6 +260,18 @@ namespace hospital_management_system.gui.forms
         private void addPatientBtn_Click(object sender, EventArgs e)
         {
             FormPatient form = new FormPatient("add");
+            form.Show();
+        }
+
+        private void addRegBtn_Click(object sender, EventArgs e)
+        {
+            FormAppointment form = new FormAppointment("add");
+            form.Show();
+        }
+
+        private void addEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            FormEmployee form = new FormEmployee("add");
             form.Show();
         }
     }

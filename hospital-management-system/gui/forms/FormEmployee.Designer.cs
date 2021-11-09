@@ -1,7 +1,7 @@
 ﻿
 namespace hospital_management_system
 {
-    partial class FormPatient
+    partial class FormEmployee
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,18 @@ namespace hospital_management_system
         /// </summary>
         private void InitializeComponent()
         {
-            this.patientForm = new System.Windows.Forms.GroupBox();
+            this.employeeForm = new System.Windows.Forms.GroupBox();
             this.patientPanel = new System.Windows.Forms.Panel();
             this.buttonFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.saveBtn = new System.Windows.Forms.Button();
             this.modifyBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
-            this.appointmentGroup = new System.Windows.Forms.GroupBox();
+            this.departmentGroup = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.departmentCombobox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.addressGroup = new System.Windows.Forms.GroupBox();
             this.addressTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.zipcodePanel = new System.Windows.Forms.Panel();
@@ -57,6 +61,17 @@ namespace hospital_management_system
             this.address1Panel = new System.Windows.Forms.Panel();
             this.address1Textbox = new System.Windows.Forms.TextBox();
             this.address1Label = new System.Windows.Forms.Label();
+            this.accountGroup = new System.Windows.Forms.GroupBox();
+            this.accountTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.confirmPasswordPanel = new System.Windows.Forms.Panel();
+            this.confirmPasswordTextbox = new System.Windows.Forms.TextBox();
+            this.confirmPasswordLabel = new System.Windows.Forms.Label();
+            this.passwordPanel = new System.Windows.Forms.Panel();
+            this.passwordTextbox = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.rolePanel = new System.Windows.Forms.Panel();
+            this.roleCombobox = new System.Windows.Forms.ComboBox();
+            this.roleLabel = new System.Windows.Forms.Label();
             this.infoGroup = new System.Windows.Forms.GroupBox();
             this.infoPanel = new System.Windows.Forms.TableLayoutPanel();
             this.phonePanel = new System.Windows.Forms.Panel();
@@ -87,9 +102,12 @@ namespace hospital_management_system
             this.religionPanel = new System.Windows.Forms.Panel();
             this.religionTextbox = new System.Windows.Forms.TextBox();
             this.religionLabel = new System.Windows.Forms.Label();
-            this.patientForm.SuspendLayout();
+            this.employeeForm.SuspendLayout();
             this.patientPanel.SuspendLayout();
             this.buttonFlowLayout.SuspendLayout();
+            this.departmentGroup.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.addressGroup.SuspendLayout();
             this.addressTableLayout.SuspendLayout();
             this.zipcodePanel.SuspendLayout();
@@ -98,6 +116,11 @@ namespace hospital_management_system
             this.statePanel.SuspendLayout();
             this.address2Panel.SuspendLayout();
             this.address1Panel.SuspendLayout();
+            this.accountGroup.SuspendLayout();
+            this.accountTableLayout.SuspendLayout();
+            this.confirmPasswordPanel.SuspendLayout();
+            this.passwordPanel.SuspendLayout();
+            this.rolePanel.SuspendLayout();
             this.infoGroup.SuspendLayout();
             this.infoPanel.SuspendLayout();
             this.phonePanel.SuspendLayout();
@@ -111,27 +134,28 @@ namespace hospital_management_system
             this.religionPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // patientForm
+            // employeeForm
             // 
-            this.patientForm.AutoSize = true;
-            this.patientForm.Controls.Add(this.patientPanel);
-            this.patientForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.patientForm.Font = new System.Drawing.Font("Segoe UI", 36F);
-            this.patientForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.patientForm.Location = new System.Drawing.Point(0, 0);
-            this.patientForm.Name = "patientForm";
-            this.patientForm.Padding = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.patientForm.Size = new System.Drawing.Size(1080, 628);
-            this.patientForm.TabIndex = 5;
-            this.patientForm.TabStop = false;
-            this.patientForm.Text = "{function}_patient";
+            this.employeeForm.AutoSize = true;
+            this.employeeForm.Controls.Add(this.patientPanel);
+            this.employeeForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employeeForm.Font = new System.Drawing.Font("Segoe UI", 36F);
+            this.employeeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.employeeForm.Location = new System.Drawing.Point(0, 0);
+            this.employeeForm.Name = "employeeForm";
+            this.employeeForm.Padding = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.employeeForm.Size = new System.Drawing.Size(1080, 628);
+            this.employeeForm.TabIndex = 5;
+            this.employeeForm.TabStop = false;
+            this.employeeForm.Text = "{function}_employee";
             // 
             // patientPanel
             // 
             this.patientPanel.AutoScroll = true;
             this.patientPanel.Controls.Add(this.buttonFlowLayout);
-            this.patientPanel.Controls.Add(this.appointmentGroup);
+            this.patientPanel.Controls.Add(this.departmentGroup);
             this.patientPanel.Controls.Add(this.addressGroup);
+            this.patientPanel.Controls.Add(this.accountGroup);
             this.patientPanel.Controls.Add(this.infoGroup);
             this.patientPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.patientPanel.Location = new System.Drawing.Point(9, 67);
@@ -147,7 +171,7 @@ namespace hospital_management_system
             this.buttonFlowLayout.Controls.Add(this.deleteBtn);
             this.buttonFlowLayout.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.buttonFlowLayout.Location = new System.Drawing.Point(0, 710);
+            this.buttonFlowLayout.Location = new System.Drawing.Point(0, 706);
             this.buttonFlowLayout.Name = "buttonFlowLayout";
             this.buttonFlowLayout.Size = new System.Drawing.Size(1045, 51);
             this.buttonFlowLayout.TabIndex = 4;
@@ -220,18 +244,64 @@ namespace hospital_management_system
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = false;
             // 
-            // appointmentGroup
+            // departmentGroup
             // 
-            this.appointmentGroup.BackColor = System.Drawing.SystemColors.Control;
-            this.appointmentGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.appointmentGroup.Font = new System.Drawing.Font("Segoe UI", 20.25F);
-            this.appointmentGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.appointmentGroup.Location = new System.Drawing.Point(0, 510);
-            this.appointmentGroup.Name = "appointmentGroup";
-            this.appointmentGroup.Size = new System.Drawing.Size(1045, 200);
-            this.appointmentGroup.TabIndex = 2;
-            this.appointmentGroup.TabStop = false;
-            this.appointmentGroup.Text = "Appointment History";
+            this.departmentGroup.BackColor = System.Drawing.SystemColors.Control;
+            this.departmentGroup.Controls.Add(this.tableLayoutPanel2);
+            this.departmentGroup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.departmentGroup.Font = new System.Drawing.Font("Segoe UI", 20.25F);
+            this.departmentGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.departmentGroup.Location = new System.Drawing.Point(0, 608);
+            this.departmentGroup.Name = "departmentGroup";
+            this.departmentGroup.Size = new System.Drawing.Size(1045, 98);
+            this.departmentGroup.TabIndex = 2;
+            this.departmentGroup.TabStop = false;
+            this.departmentGroup.Text = "Department Information";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 40);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1039, 55);
+            this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.departmentCombobox);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(340, 49);
+            this.panel2.TabIndex = 7;
+            // 
+            // departmentCombobox
+            // 
+            this.departmentCombobox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.departmentCombobox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.departmentCombobox.FormattingEnabled = true;
+            this.departmentCombobox.Location = new System.Drawing.Point(0, 20);
+            this.departmentCombobox.Name = "departmentCombobox";
+            this.departmentCombobox.Size = new System.Drawing.Size(340, 29);
+            this.departmentCombobox.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 21);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Department";
             // 
             // addressGroup
             // 
@@ -242,7 +312,7 @@ namespace hospital_management_system
             this.addressGroup.Dock = System.Windows.Forms.DockStyle.Top;
             this.addressGroup.Font = new System.Drawing.Font("Segoe UI", 20.25F);
             this.addressGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.addressGroup.Location = new System.Drawing.Point(0, 228);
+            this.addressGroup.Location = new System.Drawing.Point(0, 326);
             this.addressGroup.Name = "addressGroup";
             this.addressGroup.Size = new System.Drawing.Size(1045, 282);
             this.addressGroup.TabIndex = 1;
@@ -291,7 +361,7 @@ namespace hospital_management_system
             // 
             this.zipcodeLabel.AutoSize = true;
             this.zipcodeLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.zipcodeLabel.Location = new System.Drawing.Point(3, 6);
+            this.zipcodeLabel.Location = new System.Drawing.Point(0, 0);
             this.zipcodeLabel.Name = "zipcodeLabel";
             this.zipcodeLabel.Size = new System.Drawing.Size(159, 21);
             this.zipcodeLabel.TabIndex = 5;
@@ -320,7 +390,7 @@ namespace hospital_management_system
             // 
             this.countryLabel.AutoSize = true;
             this.countryLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.countryLabel.Location = new System.Drawing.Point(3, 6);
+            this.countryLabel.Location = new System.Drawing.Point(0, 0);
             this.countryLabel.Name = "countryLabel";
             this.countryLabel.Size = new System.Drawing.Size(66, 21);
             this.countryLabel.TabIndex = 5;
@@ -349,7 +419,7 @@ namespace hospital_management_system
             // 
             this.cityLabel.AutoSize = true;
             this.cityLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.cityLabel.Location = new System.Drawing.Point(3, 6);
+            this.cityLabel.Location = new System.Drawing.Point(0, 0);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(37, 21);
             this.cityLabel.TabIndex = 5;
@@ -378,7 +448,7 @@ namespace hospital_management_system
             // 
             this.stateLabel.AutoSize = true;
             this.stateLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.stateLabel.Location = new System.Drawing.Point(3, 6);
+            this.stateLabel.Location = new System.Drawing.Point(0, 0);
             this.stateLabel.Name = "stateLabel";
             this.stateLabel.Size = new System.Drawing.Size(110, 21);
             this.stateLabel.TabIndex = 6;
@@ -441,6 +511,127 @@ namespace hospital_management_system
             this.address1Label.Size = new System.Drawing.Size(79, 21);
             this.address1Label.TabIndex = 9;
             this.address1Label.Text = "Address 1";
+            // 
+            // accountGroup
+            // 
+            this.accountGroup.BackColor = System.Drawing.SystemColors.Control;
+            this.accountGroup.Controls.Add(this.accountTableLayout);
+            this.accountGroup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.accountGroup.Font = new System.Drawing.Font("Segoe UI", 20.25F);
+            this.accountGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.accountGroup.Location = new System.Drawing.Point(0, 228);
+            this.accountGroup.Name = "accountGroup";
+            this.accountGroup.Size = new System.Drawing.Size(1045, 98);
+            this.accountGroup.TabIndex = 3;
+            this.accountGroup.TabStop = false;
+            this.accountGroup.Text = "Account Information";
+            // 
+            // accountTableLayout
+            // 
+            this.accountTableLayout.ColumnCount = 3;
+            this.accountTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.accountTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.accountTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.accountTableLayout.Controls.Add(this.confirmPasswordPanel, 0, 0);
+            this.accountTableLayout.Controls.Add(this.passwordPanel, 0, 0);
+            this.accountTableLayout.Controls.Add(this.rolePanel, 0, 0);
+            this.accountTableLayout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.accountTableLayout.Location = new System.Drawing.Point(3, 40);
+            this.accountTableLayout.Name = "accountTableLayout";
+            this.accountTableLayout.RowCount = 1;
+            this.accountTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.accountTableLayout.Size = new System.Drawing.Size(1039, 55);
+            this.accountTableLayout.TabIndex = 0;
+            // 
+            // confirmPasswordPanel
+            // 
+            this.confirmPasswordPanel.Controls.Add(this.confirmPasswordTextbox);
+            this.confirmPasswordPanel.Controls.Add(this.confirmPasswordLabel);
+            this.confirmPasswordPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.confirmPasswordPanel.Location = new System.Drawing.Point(695, 3);
+            this.confirmPasswordPanel.Name = "confirmPasswordPanel";
+            this.confirmPasswordPanel.Size = new System.Drawing.Size(341, 49);
+            this.confirmPasswordPanel.TabIndex = 12;
+            // 
+            // confirmPasswordTextbox
+            // 
+            this.confirmPasswordTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.confirmPasswordTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.confirmPasswordTextbox.Location = new System.Drawing.Point(0, 20);
+            this.confirmPasswordTextbox.Name = "confirmPasswordTextbox";
+            this.confirmPasswordTextbox.Size = new System.Drawing.Size(341, 29);
+            this.confirmPasswordTextbox.TabIndex = 8;
+            this.confirmPasswordTextbox.TextChanged += new System.EventHandler(this.confirmPasswordTextbox_TextChanged);
+            // 
+            // confirmPasswordLabel
+            // 
+            this.confirmPasswordLabel.AutoSize = true;
+            this.confirmPasswordLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.confirmPasswordLabel.Location = new System.Drawing.Point(0, 0);
+            this.confirmPasswordLabel.Name = "confirmPasswordLabel";
+            this.confirmPasswordLabel.Size = new System.Drawing.Size(137, 21);
+            this.confirmPasswordLabel.TabIndex = 5;
+            this.confirmPasswordLabel.Text = "Confirm Password";
+            // 
+            // passwordPanel
+            // 
+            this.passwordPanel.Controls.Add(this.passwordTextbox);
+            this.passwordPanel.Controls.Add(this.passwordLabel);
+            this.passwordPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.passwordPanel.Location = new System.Drawing.Point(349, 3);
+            this.passwordPanel.Name = "passwordPanel";
+            this.passwordPanel.Size = new System.Drawing.Size(340, 49);
+            this.passwordPanel.TabIndex = 11;
+            // 
+            // passwordTextbox
+            // 
+            this.passwordTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.passwordTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.passwordTextbox.Location = new System.Drawing.Point(0, 20);
+            this.passwordTextbox.Name = "passwordTextbox";
+            this.passwordTextbox.Size = new System.Drawing.Size(340, 29);
+            this.passwordTextbox.TabIndex = 8;
+            this.passwordTextbox.TextChanged += new System.EventHandler(this.passwordTextbox_TextChanged);
+            // 
+            // passwordLabel
+            // 
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.passwordLabel.Location = new System.Drawing.Point(0, 0);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(76, 21);
+            this.passwordLabel.TabIndex = 5;
+            this.passwordLabel.Text = "Password";
+            // 
+            // rolePanel
+            // 
+            this.rolePanel.Controls.Add(this.roleCombobox);
+            this.rolePanel.Controls.Add(this.roleLabel);
+            this.rolePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rolePanel.Location = new System.Drawing.Point(3, 3);
+            this.rolePanel.Name = "rolePanel";
+            this.rolePanel.Size = new System.Drawing.Size(340, 49);
+            this.rolePanel.TabIndex = 10;
+            // 
+            // roleCombobox
+            // 
+            this.roleCombobox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.roleCombobox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.roleCombobox.FormattingEnabled = true;
+            this.roleCombobox.Location = new System.Drawing.Point(0, 20);
+            this.roleCombobox.Name = "roleCombobox";
+            this.roleCombobox.Size = new System.Drawing.Size(340, 29);
+            this.roleCombobox.TabIndex = 7;
+            // 
+            // roleLabel
+            // 
+            this.roleLabel.AutoSize = true;
+            this.roleLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.roleLabel.Location = new System.Drawing.Point(0, 0);
+            this.roleLabel.Name = "roleLabel";
+            this.roleLabel.Size = new System.Drawing.Size(41, 21);
+            this.roleLabel.TabIndex = 5;
+            this.roleLabel.Text = "Role";
             // 
             // infoGroup
             // 
@@ -505,7 +696,7 @@ namespace hospital_management_system
             // 
             this.phoneLabel.AutoSize = true;
             this.phoneLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.phoneLabel.Location = new System.Drawing.Point(3, 6);
+            this.phoneLabel.Location = new System.Drawing.Point(0, 0);
             this.phoneLabel.Name = "phoneLabel";
             this.phoneLabel.Size = new System.Drawing.Size(116, 21);
             this.phoneLabel.TabIndex = 7;
@@ -534,7 +725,7 @@ namespace hospital_management_system
             // 
             this.emailLabel.AutoSize = true;
             this.emailLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.emailLabel.Location = new System.Drawing.Point(3, 6);
+            this.emailLabel.Location = new System.Drawing.Point(0, 0);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(108, 21);
             this.emailLabel.TabIndex = 6;
@@ -626,7 +817,7 @@ namespace hospital_management_system
             // 
             this.genderLabel.AutoSize = true;
             this.genderLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.genderLabel.Location = new System.Drawing.Point(3, 6);
+            this.genderLabel.Location = new System.Drawing.Point(0, 0);
             this.genderLabel.Name = "genderLabel";
             this.genderLabel.Size = new System.Drawing.Size(61, 21);
             this.genderLabel.TabIndex = 4;
@@ -658,7 +849,7 @@ namespace hospital_management_system
             // 
             this.birthdateLabel.AutoSize = true;
             this.birthdateLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.birthdateLabel.Location = new System.Drawing.Point(3, 6);
+            this.birthdateLabel.Location = new System.Drawing.Point(0, 0);
             this.birthdateLabel.Name = "birthdateLabel";
             this.birthdateLabel.Size = new System.Drawing.Size(97, 21);
             this.birthdateLabel.TabIndex = 3;
@@ -687,7 +878,7 @@ namespace hospital_management_system
             // 
             this.middlenameLabel.AutoSize = true;
             this.middlenameLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.middlenameLabel.Location = new System.Drawing.Point(3, 6);
+            this.middlenameLabel.Location = new System.Drawing.Point(0, 0);
             this.middlenameLabel.Name = "middlenameLabel";
             this.middlenameLabel.Size = new System.Drawing.Size(97, 21);
             this.middlenameLabel.TabIndex = 2;
@@ -716,7 +907,7 @@ namespace hospital_management_system
             // 
             this.lastnameLabel.AutoSize = true;
             this.lastnameLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lastnameLabel.Location = new System.Drawing.Point(3, 6);
+            this.lastnameLabel.Location = new System.Drawing.Point(0, 0);
             this.lastnameLabel.Name = "lastnameLabel";
             this.lastnameLabel.Size = new System.Drawing.Size(77, 21);
             this.lastnameLabel.TabIndex = 1;
@@ -745,7 +936,7 @@ namespace hospital_management_system
             // 
             this.firstnameLabel.AutoSize = true;
             this.firstnameLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.firstnameLabel.Location = new System.Drawing.Point(3, 6);
+            this.firstnameLabel.Location = new System.Drawing.Point(0, 0);
             this.firstnameLabel.Name = "firstnameLabel";
             this.firstnameLabel.Size = new System.Drawing.Size(79, 21);
             this.firstnameLabel.TabIndex = 0;
@@ -774,25 +965,29 @@ namespace hospital_management_system
             // 
             this.religionLabel.AutoSize = true;
             this.religionLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.religionLabel.Location = new System.Drawing.Point(3, 6);
+            this.religionLabel.Location = new System.Drawing.Point(0, 0);
             this.religionLabel.Name = "religionLabel";
             this.religionLabel.Size = new System.Drawing.Size(67, 21);
             this.religionLabel.TabIndex = 5;
             this.religionLabel.Text = "Religion";
             // 
-            // FormPatient
+            // FormEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1080, 628);
-            this.Controls.Add(this.patientForm);
-            this.Name = "FormPatient";
+            this.Controls.Add(this.employeeForm);
+            this.Name = "FormEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.patientForm.ResumeLayout(false);
+            this.employeeForm.ResumeLayout(false);
             this.patientPanel.ResumeLayout(false);
             this.buttonFlowLayout.ResumeLayout(false);
+            this.departmentGroup.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.addressGroup.ResumeLayout(false);
             this.addressTableLayout.ResumeLayout(false);
             this.zipcodePanel.ResumeLayout(false);
@@ -807,6 +1002,14 @@ namespace hospital_management_system
             this.address2Panel.PerformLayout();
             this.address1Panel.ResumeLayout(false);
             this.address1Panel.PerformLayout();
+            this.accountGroup.ResumeLayout(false);
+            this.accountTableLayout.ResumeLayout(false);
+            this.confirmPasswordPanel.ResumeLayout(false);
+            this.confirmPasswordPanel.PerformLayout();
+            this.passwordPanel.ResumeLayout(false);
+            this.passwordPanel.PerformLayout();
+            this.rolePanel.ResumeLayout(false);
+            this.rolePanel.PerformLayout();
             this.infoGroup.ResumeLayout(false);
             this.infoPanel.ResumeLayout(false);
             this.phonePanel.ResumeLayout(false);
@@ -834,8 +1037,8 @@ namespace hospital_management_system
 
         #endregion
 
-        private System.Windows.Forms.GroupBox patientForm;
-        private System.Windows.Forms.GroupBox appointmentGroup;
+        private System.Windows.Forms.GroupBox employeeForm;
+        private System.Windows.Forms.GroupBox departmentGroup;
         private System.Windows.Forms.GroupBox addressGroup;
         private System.Windows.Forms.GroupBox infoGroup;
         private System.Windows.Forms.Panel patientPanel;
@@ -892,5 +1095,20 @@ namespace hospital_management_system
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button modifyBtn;
+        private System.Windows.Forms.GroupBox accountGroup;
+        private System.Windows.Forms.TableLayoutPanel accountTableLayout;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox departmentCombobox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel passwordPanel;
+        private System.Windows.Forms.TextBox passwordTextbox;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Panel rolePanel;
+        private System.Windows.Forms.ComboBox roleCombobox;
+        private System.Windows.Forms.Label roleLabel;
+        private System.Windows.Forms.Panel confirmPasswordPanel;
+        private System.Windows.Forms.TextBox confirmPasswordTextbox;
+        private System.Windows.Forms.Label confirmPasswordLabel;
     }
 }

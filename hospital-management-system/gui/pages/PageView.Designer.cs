@@ -29,16 +29,22 @@ namespace hospital_management_system.gui.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.viewGroup = new System.Windows.Forms.GroupBox();
             this.search_panel = new System.Windows.Forms.Panel();
             this.search_btn = new System.Windows.Forms.Button();
             this.search_textbox = new System.Windows.Forms.TextBox();
+            this.viewDatagrid = new System.Windows.Forms.DataGridView();
             this.viewGroup.SuspendLayout();
             this.search_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewDatagrid)).BeginInit();
             this.SuspendLayout();
             // 
             // viewGroup
             // 
+            this.viewGroup.Controls.Add(this.viewDatagrid);
             this.viewGroup.Controls.Add(this.search_panel);
             this.viewGroup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewGroup.Font = new System.Drawing.Font("Segoe UI", 36F);
@@ -90,6 +96,46 @@ namespace hospital_management_system.gui.forms
             this.search_textbox.Size = new System.Drawing.Size(432, 19);
             this.search_textbox.TabIndex = 0;
             // 
+            // viewDatagrid
+            // 
+            this.viewDatagrid.AllowUserToAddRows = false;
+            this.viewDatagrid.AllowUserToDeleteRows = false;
+            this.viewDatagrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.viewDatagrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.viewDatagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.viewDatagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.viewDatagrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.viewDatagrid.Location = new System.Drawing.Point(13, 115);
+            this.viewDatagrid.Name = "viewDatagrid";
+            this.viewDatagrid.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.viewDatagrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.viewDatagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.viewDatagrid.Size = new System.Drawing.Size(1055, 593);
+            this.viewDatagrid.TabIndex = 7;
+            // 
             // PageView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -104,6 +150,7 @@ namespace hospital_management_system.gui.forms
             this.viewGroup.ResumeLayout(false);
             this.search_panel.ResumeLayout(false);
             this.search_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.viewDatagrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -114,5 +161,6 @@ namespace hospital_management_system.gui.forms
         private System.Windows.Forms.Panel search_panel;
         private System.Windows.Forms.TextBox search_textbox;
         private System.Windows.Forms.Button search_btn;
+        private System.Windows.Forms.DataGridView viewDatagrid;
     }
 }

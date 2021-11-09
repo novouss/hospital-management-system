@@ -46,3 +46,5 @@ C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-ma
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\Dapper.xml
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.PageView.resources
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.FormPatient.resources
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.FormAppointment.resources
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.FormEmployee.resources

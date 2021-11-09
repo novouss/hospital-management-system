@@ -11,7 +11,7 @@ ALTER TABLE dbo.PatientDetails DROP CONSTRAINT [FK_PatientDetails_Address_ID]
 ALTER TABLE dbo.EmployeeDetails DROP CONSTRAINT [FK_EmployeeDetails_Address_ID] 
 ALTER TABLE dbo.EmployeeDetails DROP CONSTRAINT [FK_EmployeeDetails_Role_ID] 
 ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT [FK_PatientRegistration_Patient_ID]
-ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT [FK_PatientRegistration_Employee_ID]
+--ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT [FK_PatientRegistration_Employee_ID]
 ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT [FK_PatientRegistration_Room_ID]
 ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT [FK_PatientRegistration_Laboratory_ID]
 ALTER TABLE dbo.EmployeeDepartment DROP CONSTRAINT [FK_EmployeeDepartment_Employee_ID]
@@ -29,8 +29,23 @@ ALTER TABLE dbo.LaboratoryDetails DROP CONSTRAINT UQ_LaboratoryDetails
 ALTER TABLE dbo.PatientDetails DROP CONSTRAINT DF_PatientDetails_CreatedOn
 ALTER TABLE dbo.EmployeeDetails DROP CONSTRAINT DF_EmployeeDetails_CreatedOn
 ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT DF_PatientRegistration_CreatedOn
-GO
 
+GO
+/**********************************************
+-- DROPPING USER STORED PROCEDURES (USP)
+**********************************************/
+DROP PROCEDURE dbo.USP_AddRegistration;
+DROP PROCEDURE dbo.USP_ModifyRegistration;
+DROP PROCEDURE dbo.USP_DeleteRegistration;
+
+GO
+/**********************************************
+-- DROPPING VIEWS (V)
+**********************************************/
+DROP VIEW dbo.V_PatientInformation;
+DROP VIEW dbo.V_EmployeeInformation;
+
+GO
 /**********************************************
 -- CREATING FUNCTIONS
 **********************************************/
@@ -146,14 +161,10 @@ IF OBJECT_ID(N'dbo.EmployeeDepartment', N'U') IS NOT NULL
    DROP TABLE [dbo].[EmployeeDepartment];  
 GO
 
-CREATE TABLE [dbo].[EmployeeDepartment](
-	[EmployeeID] INT NOT NULL,
-	[DepartmentID] INT NULL,
-	[Status] BIT NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[EmployeeID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+CREATE TABLE [dbo].[EmployeeDepartment] (
+    [EmployeeID] INT NOT NULL,
+    [DepartmentID] INT NULL,
+    [Status] BIT NULL,
 )
 GO
 
@@ -312,7 +323,7 @@ ALTER TABLE dbo.EmployeeDetails WITH CHECK ADD CONSTRAINT [FK_EmployeeDetails_Ro
 ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Patient_ID] FOREIGN KEY ([PatientID]) REFERENCES dbo.PatientDetails (PatientID)
 
 -- PatientRegistration: EmployeeID >|-----|- EmployeeDepartment: Employee
-ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Employee_ID] FOREIGN KEY ([EmployeeID]) REFERENCES dbo.EmployeeDepartment (EmployeeID)
+-- ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Employee_ID] FOREIGN KEY ([EmployeeID]) REFERENCES dbo.EmployeeDepartment (EmployeeID)
 
 -- PatientRegistration: RoomID >|-----|- Room: RoomID
 ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Room_ID] FOREIGN KEY ([RoomID]) REFERENCES dbo.Room (RoomID)
@@ -347,7 +358,7 @@ ALTER TABLE dbo.Billing WITH CHECK ADD CONSTRAINT [FK_Billing_DepCharge] FOREIGN
 -- CREATE UNIQUE CONSTRAINT
 ALTER TABLE dbo.PatientDetails ADD CONSTRAINT UQ_PatientDetails_PatientID UNIQUE NONCLUSTERED (PatientID)
 ALTER TABLE dbo.EmployeeDetails ADD CONSTRAINT UQ_EmployeeDetails_EmployeeID UNIQUE NONCLUSTERED (EmployeeID)
-ALTER TABLE dbo.Address ADD CONSTRAINT UQ_Address UNIQUE NONCLUSTERED([Address],[City],[Province],[Zipcode],[Country])
+ALTER TABLE dbo.Address ADD CONSTRAINT UQ_Address UNIQUE NONCLUSTERED([Address1], [Address2], [City],[Province],[Zipcode],[Country])
 ALTER TABLE dbo.LaboratoryDetails ADD CONSTRAINT UQ_LaboratoryDetails UNIQUE NONCLUSTERED ([RegistrationID], [ReportID])
 
 -- CREATE DEFAULT CONSTRAINTS
@@ -422,7 +433,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE dbo.USP_UpdateAddress
+CREATE PROCEDURE dbo.USP_ModifyAddress
 	@AddressID INT,
 	@Address1 VARCHAR(50),
 	@Address2 VARCHAR(50),
@@ -465,6 +476,7 @@ CREATE PROCEDURE dbo.USP_AddPatient
 	@Religion VARCHAR(50),
 	@Email VARCHAR(50),
 	@PhoneNumber VARCHAR(50),
+	@DepartmentID INT,
 	@Address1 VARCHAR(50),
 	@Address2 VARCHAR(50),
 	@City VARCHAR(50),
@@ -475,19 +487,19 @@ AS
 BEGIN
 	DECLARE @Today DATETIME = GETDATE();
 	DECLARE @AddressNumber INT;
-
-	SET @AddressNumber = (SELECT COUNT(AddressID) FROM dbo.Address) + 1
-	
-	INSERT INTO dbo.PatientDetails (FirstName, LastName, MiddleName, Birthdate, Age, Gender, Religion, Email, PhoneNumber, AddressID, CreatedOn) 
-	VALUES (@FirstName,	@LastName, @MiddleName, @Birthdate, dbo.FN_CalculateAge(@Birthdate) ,@Gender, @Religion, @Email, @PhoneNumber, @AddressNumber, @Today)
 	
 	EXEC dbo.USP_AddAddress @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
 	
+	SET @AddressNumber = (SELECT COUNT(AddressID) FROM dbo.Address)
+	
+	INSERT INTO dbo.PatientDetails (FirstName, LastName, MiddleName, Birthdate, Age, Gender, Religion, Email, PhoneNumber, AddressID, CreatedOn) 
+	VALUES (@FirstName,	@LastName, @MiddleName, @Birthdate, dbo.FN_CalculateAge(@Birthdate) ,@Gender, @Religion, @Email, @PhoneNumber, @AddressNumber, @Today)
+		
 END
 GO
 
-CREATE PROCEDURE dbo.USP_UpdatePatient
-	@PatientNumber INT,
+CREATE PROCEDURE dbo.USP_ModifyPatient
+	@PatientID INT,
 	@FirstName VARCHAR(50),
 	@LastName VARCHAR(50),
 	@MiddleName VARCHAR(50),
@@ -519,19 +531,19 @@ BEGIN
 		Email = @Email, 
 		PhoneNumber = @PhoneNumber, 
 		ModifiedOn = @Today
-	WHERE PatientID = @PatientNumber
+	WHERE PatientID = @PatientID
 
-	EXEC dbo.USP_UpdateAddress @AddressID = @AddressNumber, @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
+	EXEC dbo.USP_ModifyAddress @AddressID = @AddressNumber, @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
 END
 GO
 
 CREATE PROCEDURE dbo.USP_DeletePatient
-	@PatientNumber INT
+	@PatientID INT
 AS
 BEGIN
-	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.PatientDetails WHERE @PatientNumber = PatientID);
+	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.PatientDetails WHERE @PatientID = PatientID);
 	
-	DELETE FROM dbo.PatientDetails WHERE PatientID = @PatientNumber
+	DELETE FROM dbo.PatientDetails WHERE PatientID = @PatientID
 	
 	EXEC dbo.USP_DeleteAddress @AddressID = @AddressNumber
 END
@@ -566,26 +578,26 @@ BEGIN
 	DECLARE @DepartmentNumber INT;
 	DECLARE @EmployeeNumber INT;
 
-	SET @AddressNumber = (SELECT COUNT(AddressID) FROM dbo.Address) + 1
 	SET @DepartmentNumber = (SELECT DepartmentID FROM dbo.Department WHERE @DepartmentID = DepartmentID)
 
+	EXEC dbo.USP_AddAddress @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
+	
+	SET @AddressNumber = (SELECT COUNT(AddressID) FROM dbo.Address)
+	
 	INSERT INTO dbo.EmployeeDetails (FirstName, LastName, MiddleName, Birthdate, Age, Gender, Religion, Email, PhoneNumber, Password, RoleID, AddressID, CreatedOn) 
 	VALUES (@FirstName,	@LastName, @MiddleName, @Birthdate, dbo.FN_CalculateAge(@Birthdate), @Gender, @Religion, @Email, @PhoneNumber, @Password, @RoleID, @AddressNumber, @Today)
+
+	SET @EmployeeNumber = (SELECT COUNT(EmployeeID) FROM dbo.EmployeeDetails)
 
 	INSERT INTO dbo.EmployeeDepartment (EmployeeID, DepartmentID)
 	VALUES (@EmployeeNumber, @DepartmentNumber)
 	
-	SET @EmployeeNumber = (SELECT COUNT(EmployeeID) FROM dbo.EmployeeDetails) + 1
-	
 	INSERT INTO dbo.EmployeeDepartment (EmployeeID, DepartmentID, Status)
 	VALUES (@EmployeeNumber, @DepartmentNumber, 0)
-	
-	EXEC dbo.USP_AddAddress @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
-	
 END
 GO
 
-CREATE PROCEDURE dbo.USP_ModifiyEmployee
+CREATE PROCEDURE dbo.USP_ModifyEmployee
 	@EmployeeNumber INT,
 	@FirstName VARCHAR(50),
 	@LastName VARCHAR(50),
@@ -598,7 +610,6 @@ CREATE PROCEDURE dbo.USP_ModifiyEmployee
 	@Password VARCHAR(50),
 	@RoleID INT,
 	@DepartmentID INT,
-	@Status BIT,
 	@Address1 VARCHAR(50),
 	@Address2 VARCHAR(50),
 	@City VARCHAR(50),
@@ -629,11 +640,10 @@ BEGIN
 	UPDATE dbo.EmployeeDepartment
 	SET
 		EmployeeID = @EmployeeNumber,
-		DepartmentID = @DepartmentID,
-		Status = @Status
+		DepartmentID = @DepartmentID
 	WHERE EmployeeID = @EmployeeNumber
 
-	EXEC dbo.USP_UpdateAddress @AddressID = @AddressNumber, @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
+	EXEC dbo.USP_ModifyAddress @AddressID = @AddressNumber, @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
 END
 GO
 
@@ -660,11 +670,13 @@ CREATE PROCEDURE dbo.USP_AddRegistration
 	@DischargeOn DATETIME,
 	@EmployeeID INT,
 	@RoomID INT,
-	@LaboratoryID INT
+	@LaboratoryID INT,
+	@Results VARCHAR(50)
 AS
 BEGIN
 	DECLARE @Today DATETIME = GETDATE();
-	
+	DECLARE @RegistrationNumber INT;
+		
 	UPDATE dbo.Room
 	SET
 		Status = 1
@@ -682,6 +694,11 @@ BEGIN
 	
 	INSERT INTO dbo.PatientRegistration (PatientID, AdmissionOn, DischargeOn, EmployeeID, RoomID, LaboratoryID, CreatedOn)
 	VALUES (@PatientID, @AdmissionOn, @DischargeOn, @EmployeeID, @RoomID, @LaboratoryID, @Today)
+	
+	SET @RegistrationNumber = (SELECT COUNT(RegistrationID) FROM dbo.PatientRegistration)
+	
+	INSERT INTO dbo.LaboratoryDetails (RegistrationID, Results)
+	VALUES (@RegistrationNumber, @Results)
 END
 GO
 
@@ -692,7 +709,8 @@ CREATE PROCEDURE dbo.USP_ModifyRegistration
 	@DischargeOn DATETIME,
 	@EmployeeID INT,
 	@RoomID INT,
-	@LaboratoryID INT
+	@LaboratoryID INT,
+	@Results VARCHAR(50)
 AS
 BEGIN
 	DECLARE @Today DATETIME = GETDATE();
@@ -706,6 +724,11 @@ BEGIN
 		RoomID = @RoomID,
 		LaboratoryID = @LaboratoryID,
 		ModifiedOn = @Today
+	WHERE RegistrationID = @RegistrationID
+	
+	UPDATE dbo.LaboratoryDetails
+	SET
+		Results = @Results
 	WHERE RegistrationID = @RegistrationID
 END
 GO	
@@ -731,9 +754,9 @@ BEGIN
 	WHERE LaboratoryID = @LaboratoryID
 
 	DELETE FROM dbo.PatientRegistration WHERE RegistrationID = @RegistrationID
+	DELETE FROM dbo.LaboratoryDetails WHERE RegistrationID = @RegistrationID
 END
 GO
-	
 
 -----------------------------------------------
 -- CREATE PROCEDURE FOR dbo.Billing
@@ -757,7 +780,6 @@ BEGIN
 		ON DEPARTMENT.DepartmentID = EMPLOYEE.DepartmentID
 		JOIN dbo.PatientRegistration AS REGISTRATION
 		ON REGISTRATION.RegistrationID = @RegistrationID
-
 	)
 	
 	SET @RoomCharge = (
@@ -818,7 +840,6 @@ BEGIN
 END
 GO
 
-
 -----------------------------------------------
 -- CREATE PROCEDURE FOR dbo.Search{Functions}
 -----------------------------------------------
@@ -848,7 +869,7 @@ AS
 BEGIN
 	SELECT * FROM dbo.EmployeeDetails 
 	WHERE 
-		PatientID LIKE '%' + @stringSearch + '%' OR
+		EmployeeID LIKE '%' + @stringSearch + '%' OR
 		FirstName LIKE '%' + @stringSearch + '%' OR
 		LastName LIKE '%' + @stringSearch + '%' OR
 		MiddleName LIKE '%' + @stringSearch + '%' OR
@@ -899,6 +920,192 @@ BEGIN
 END
 GO
 
+-----------------------------------------------
+-- CREATE PROCEDURE FOR dbo.FindDepartmentEmployees
+-----------------------------------------------
+
+CREATE PROCEDURE dbo.USP_FindDepartmentEmployees
+	@DepartmentID INT
+AS
+BEGIN
+	SELECT
+		DEPARTMENT.DepartmentID,
+		DEPARTMENT.DepartmentName,
+		EMPLOYEE.EmployeeID, 
+		EMPLOYEE.FirstName, 
+		EMPLOYEE.LastName, 
+		EMPLOYEE.MiddleName, 
+		EMP_DEP.Status
+	FROM EmployeeDepartment AS EMP_DEP
+	JOIN EmployeeDetails AS EMPLOYEE
+	ON EMP_DEP.DepartmentID = @DepartmentID AND EMP_DEP.EmployeeID = EMPLOYEE.EmployeeID
+	JOIN Department AS DEPARTMENT
+	ON DEPARTMENT.DepartmentID = @DepartmentID
+END
+GO
+
+-----------------------------------------------
+-- CREATE PROCEDURE FOR dbo.FindRole and dbo.FindDepartment
+-----------------------------------------------
+
+CREATE PROCEDURE dbo.USP_FindRole
+	@RoleID INT
+AS
+BEGIN
+	SELECT * 
+	FROM dbo.Role 
+	WHERE RoleID = @RoleID
+END
+GO
+
+CREATE PROCEDURE dbo.USP_FindDepartment
+	@DepartmentID INT
+AS
+BEGIN
+	SELECT * 
+	FROM dbo.Department 
+	WHERE DepartmentID = @DepartmentID
+END
+GO
+
+-----------------------------------------------
+-- CREATE PROCEDURE FOR dbo.FindAvailable(Functions)
+-----------------------------------------------
+
+CREATE PROCEDURE dbo.USP_FindAvailableEmployees
+	@DepartmentID INT,
+	@Status INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.EmployeeDetails AS EMPLOYEE
+	JOIN dbo.EmployeeDepartment AS EMP_DEP
+	ON EMPLOYEE.EmployeeID = EMP_DEP.EmployeeID AND EMP_DEP.Status = @Status
+	JOIN dbo.Department AS DEPARTMENT
+	ON DEPARTMENT.DepartmentID = @DepartmentID AND EMP_DEP.DepartmentID = @DepartmentID
+END
+GO
+
+CREATE PROCEDURE dbo.USP_FindAvailableRooms
+	@Status BIT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Rooms
+	WHERE @Status = Status
+END
+GO
+
+CREATE PROCEDURE dbo.USP_FindAvailableLaboratories
+	@Status BIT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Laboratory
+	WHERE @Status = Status
+END
+GO
+
+/**********************************************
+-- CREATE VIEWS (V)
+**********************************************/
+
+CREATE VIEW dbo.V_PatientInformation 
+AS
+	-- Each Column Needed to be Unique
+	SELECT 
+		PATIENT.PatientID, 
+		PATIENT.FirstName, 
+		PATIENT.LastName, 
+		PATIENT.MiddleName, 
+		PATIENT.Birthdate, 
+		PATIENT.Age, 
+		PATIENT.Gender, 
+		PATIENT.Religion, 
+		PATIENT.Email, 
+		PATIENT.PhoneNumber, 
+		PATIENT.AddressID, 
+		ADDRESS.Address1, 
+		ADDRESS.Address2, 
+		ADDRESS.City, 
+		ADDRESS.Province, 
+		ADDRESS.Zipcode, 
+		ADDRESS.Country
+	FROM dbo.PatientDetails AS PATIENT
+	FULL JOIN dbo.Address AS ADDRESS
+	ON PATIENT.AddressID = ADDRESS.AddressID
+GO
+
+CREATE VIEW dbo.V_EmployeeInformation
+AS
+	SELECT 
+		EMPLOYEE.EmployeeID, 
+		EMPLOYEE.FirstName, 
+		EMPLOYEE.LastName, 
+		EMPLOYEE.MiddleName, 
+		EMPLOYEE.Birthdate, 
+		EMPLOYEE.Age, 
+		EMPLOYEE.Gender, 
+		EMPLOYEE.Religion, 
+		EMPLOYEE.Email, 
+		EMPLOYEE.PhoneNumber, 
+		EMPLOYEE.RoleID,
+		EMPLOYEE.Password,
+		EMP_DEP.DepartmentID,
+		EMPLOYEE.AddressID, 
+		ADDRESS.Address1, 
+		ADDRESS.Address2, 
+		ADDRESS.City, 
+		ADDRESS.Province, 
+		ADDRESS.Zipcode, 
+		ADDRESS.Country
+	FROM dbo.EmployeeDetails AS EMPLOYEE
+	JOIN dbo.Address AS ADDRESS
+	ON EMPLOYEE.AddressID = ADDRESS.AddressID
+	JOIN EmployeeDepartment AS EMP_DEP
+	ON EMPLOYEE.EmployeeID = EMP_DEP.EmployeeID
+GO
+
+CREATE VIEW dbo.V_RegisterInformation
+AS
+	SELECT 
+		REGISTRATION.PatientID,
+		REGISTRATION.RegistrationID,
+		REGISTRATION.EmployeeID,
+		REGISTRATION.RoomID,
+		REGISTRATION.LaboratoryID,
+		REGISTRATION.AdmissionOn,
+		REGISTRATION.DischargeOn,
+		LAB_DETAILS.ReportID,
+		LAB_DETAILS.Results
+	FROM dbo.PatientRegistration AS REGISTRATION
+	JOIN dbo.LaboratoryDetails AS LAB_DETAILS
+	ON REGISTRATION.RegistrationID = LAB_DETAILS.RegistrationID
+GO
+
+CREATE VIEW dbo.V_RoleInformation
+AS
+	SELECT *
+	FROM dbo.Role
+GO
+
+CREATE VIEW dbo.V_DepartmentInformation
+AS
+	SELECT *
+	FROM dbo.DEPARTMENT
+GO
+
+CREATE VIEW dbo.V_RoomInformation
+AS
+	SELECT *
+	FROM dbo.Room
+GO
+
+CREATE VIEW dbo.V_LaboratoryInformation
+AS
+	SELECT *
+	FROM dbo.Laboratory
+GO
 /**********************************************
 -- INSERT INTO TABLE VALUES
 **********************************************/
