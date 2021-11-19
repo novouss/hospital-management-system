@@ -16,5 +16,10 @@ namespace hospital_management_system.gui.forms
         {
             InitializeComponent();
         }
+
+        private void emailTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
