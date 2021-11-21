@@ -9,17 +9,17 @@ namespace hospital_management_system.classes
     {
         public List<EmployeeDetails> findAccount(string email, string password)
         {
-            using (IDbConnection CONNECTION = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = CONNECTION.Query<EmployeeDetails>($"dbo.USP_FindAccount @Email = '{ email }', @Password = '{ password }'");
+            /* using (IDbConnection CONNECTION = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+             {
+                 var output = CONNECTION.Query<EmployeeDetails>($"dbo.USP_FindAccount @Email = '{ email }', @Password = '{ password }'");
 
-                if (output.Count() == 1)
-                {
-                    return (List<EmployeeDetails>)output;
-                }
-
-                return null;
-            }
+                 if (output.Count() == 1)
+                 {
+                     return (List<EmployeeDetails>)output;
+                 }
+             */
+                    return null; 
+            //}
         }
 
         public List<EmployeeDepartment> findDepartmentEmployees(int departmentID)
