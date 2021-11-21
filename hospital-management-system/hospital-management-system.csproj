@@ -108,6 +108,24 @@
     <Compile Include="classes\models\Laboratory.cs" />
     <Compile Include="classes\models\Role.cs" />
     <Compile Include="classes\models\Room.cs" />
+    <Compile Include="gui\components\InformationComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="gui\components\InformationComboBox.Designer.cs">
+      <DependentUpon>InformationComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\components\InformationDateTimePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="gui\components\InformationDateTimePicker.Designer.cs">
+      <DependentUpon>InformationDateTimePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\components\InformationRadio.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="gui\components\InformationRadio.Designer.cs">
+      <DependentUpon>InformationRadio.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\forms\FormBilling.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +143,12 @@
     </Compile>
     <Compile Include="gui\forms\FormEmployee.Designer.cs">
       <DependentUpon>FormEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\components\InformationTextbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="gui\components\InformationTextbox.Designer.cs">
+      <DependentUpon>InformationTextbox.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\pages\PageView.cs">
       <SubType>Form</SubType>
@@ -152,6 +176,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="gui\components\InformationComboBox.resx">
+      <DependentUpon>InformationComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\components\InformationDateTimePicker.resx">
+      <DependentUpon>InformationDateTimePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\components\InformationRadio.resx">
+      <DependentUpon>InformationRadio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\forms\FormAppointment.resx">
       <DependentUpon>FormAppointment.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\forms\FormEmployee.resx">
       <DependentUpon>FormEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\components\InformationTextbox.resx">
+      <DependentUpon>InformationTextbox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\pages\PageView.resx">
       <DependentUpon>PageView.cs</DependentUpon>

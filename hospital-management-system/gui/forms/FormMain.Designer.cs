@@ -151,6 +151,7 @@ namespace hospital_management_system.gui.forms
             this.addBillBtn.Text = "Add Billing";
             this.addBillBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.addBillBtn.UseVisualStyleBackColor = false;
+            this.addBillBtn.Click += new System.EventHandler(this.addBillBtn_Click);
             // 
             // billBtn
             // 

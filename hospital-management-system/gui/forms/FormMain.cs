@@ -170,7 +170,6 @@ namespace hospital_management_system.gui.forms
         public void regBtn_Click(object sender, EventArgs e)
         {
             OpenChildWindow(new PageView("appointment"));
-            
             ButtonEffect(appBtn, appSubMenu);
         }
 
@@ -263,15 +262,21 @@ namespace hospital_management_system.gui.forms
             form.Show();
         }
 
+        private void addEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            FormEmployee form = new FormEmployee("add");
+            form.Show();
+        }
+
         private void addRegBtn_Click(object sender, EventArgs e)
         {
             FormAppointment form = new FormAppointment("add");
             form.Show();
         }
 
-        private void addEmployeeBtn_Click(object sender, EventArgs e)
+        private void addBillBtn_Click(object sender, EventArgs e)
         {
-            FormEmployee form = new FormEmployee("add");
+            FormBilling form = new FormBilling("add");
             form.Show();
         }
     }

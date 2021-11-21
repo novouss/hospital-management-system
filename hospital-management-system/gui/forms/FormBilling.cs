@@ -3,23 +3,43 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using hospital_management_system.classes;
 
-namespace hospital_management_system.gui.forms
+namespace hospital_management_system
 {
     public partial class FormBilling : Form
     {
-        public FormBilling()
+
+        private dbAccess db = new dbAccess();
+        private PatientDetails patient = null;
+        public FormBilling(string function)
         {
             InitializeComponent();
+            loadBilling(function);
         }
 
-        private void labChargeTextBox_TextChanged(object sender, EventArgs e)
+        private void loadBilling(string function)
         {
+            switch (function)
+            {
+                case "view":
+                    billingForm.Text = "View Billing: " + patient.PatientID;
+                    // viewPatient(this.patient);
+                    break;
+                case "modify":
+                    billingForm.Text = "Modify Billing: " + patient.PatientID;
+                    // modifyPatient();
+                    break;
+                case "add":
+                    billingForm.Text = "Add Billing";
+                    // addPatient();
+                    break;
+                default:
+                    break;
 
+            }
         }
     }
 }

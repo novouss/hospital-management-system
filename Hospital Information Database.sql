@@ -34,9 +34,23 @@ GO
 /**********************************************
 -- DROPPING USER STORED PROCEDURES (USP)
 **********************************************/
+
+
+DROP PROCEDURE dbo.USP_AddAddress;
+DROP PROCEDURE dbo.USP_ModifyAddress;
+DROP PROCEDURE dbo.USP_DeleteAddress;
+
+DROP PROCEDURE dbo.USP_AddPatient;
+DROP PROCEDURE dbo.USP_DeletePatient;
+DROP PROCEDURE dbo.USP_ModifyPatient;
+
+DROP PROCEDURE dbo.USP_AddEmployee;
+DROP PROCEDURE dbo.USP_DeleteEmployee;
+DROP PROCEDURE dbo.USP_ModifyPatient;
+
 DROP PROCEDURE dbo.USP_AddRegistration;
-DROP PROCEDURE dbo.USP_ModifyRegistration;
 DROP PROCEDURE dbo.USP_DeleteRegistration;
+DROP PROCEDURE dbo.USP_ModifyRegistration;
 
 GO
 /**********************************************

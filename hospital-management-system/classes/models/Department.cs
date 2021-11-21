@@ -8,7 +8,7 @@ using ServiceStack.DataAnnotations;
 namespace hospital_management_system.classes
 {
     [Alias("Department")]
-    public class Department : EmployeeDetails
+    public class Department
     {
         public int DepartmentID { get; set; }
         public string DepartmentName { get; set; }

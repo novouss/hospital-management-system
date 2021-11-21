@@ -70,7 +70,7 @@ namespace hospital_management_system.gui.forms
             
             if (departmentCombobox.SelectedValue != null)
             {
-                Department department = (Department)departmentCombobox.SelectedValue;
+                Department department = (Department) departmentCombobox.SelectedValue;
                 
                 List<EmployeeDepartment> emps_dep = new List<EmployeeDepartment>();
                 emps_dep = db.findDepartmentEmployees(department.DepartmentID);

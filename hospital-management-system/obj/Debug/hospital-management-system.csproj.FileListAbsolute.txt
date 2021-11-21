@@ -14,7 +14,6 @@ C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-ma
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.employeeForm.resources
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.patientForm.resources
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.loginForm.resources
-C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.csproj.AssemblyReference.cache
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.Properties.Resources.resources
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.csproj.GenerateResource.cache
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.csproj.CoreCompileInputs.cache
@@ -48,3 +47,8 @@ C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-ma
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.FormPatient.resources
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.FormAppointment.resources
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.FormEmployee.resources
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.FormBilling.resources
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.InformationComboBox.resources
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.InformationTextbox.resources
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.InformationDateTimePicker.resources
+C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.InformationRadio.resources
