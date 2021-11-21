@@ -196,7 +196,7 @@ namespace hospital_management_system.gui.forms
         #region Login and Logout Functions
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            dbAccess db = new dbAccess();
+            /*dbAccess db = new dbAccess();
 
             var account = db.findAccount(emailTextbox.Text, passwordTextbox.Text);
 
@@ -206,7 +206,7 @@ namespace hospital_management_system.gui.forms
                 return;
             }
 
-            AccountExists(account[0]);
+            AccountExists(account[0]);*/
         }
 
         private void AccountDoesNotExist()

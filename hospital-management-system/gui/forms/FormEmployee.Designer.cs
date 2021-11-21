@@ -30,114 +30,51 @@ namespace hospital_management_system
         private void InitializeComponent()
         {
             this.employeeForm = new System.Windows.Forms.GroupBox();
-            this.patientPanel = new System.Windows.Forms.Panel();
+            this.employeePanel = new System.Windows.Forms.Panel();
             this.buttonFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.saveBtn = new System.Windows.Forms.Button();
             this.modifyBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
-            this.departmentGroup = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.departmentCombobox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.addressGroup = new System.Windows.Forms.GroupBox();
-            this.addressTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.zipcodePanel = new System.Windows.Forms.Panel();
-            this.zipcodeTextbox = new System.Windows.Forms.TextBox();
-            this.zipcodeLabel = new System.Windows.Forms.Label();
-            this.countryPanel = new System.Windows.Forms.Panel();
-            this.countryTextbox = new System.Windows.Forms.TextBox();
-            this.countryLabel = new System.Windows.Forms.Label();
-            this.cityPanel = new System.Windows.Forms.Panel();
-            this.cityTextbox = new System.Windows.Forms.TextBox();
-            this.cityLabel = new System.Windows.Forms.Label();
-            this.statePanel = new System.Windows.Forms.Panel();
-            this.stateTextbox = new System.Windows.Forms.TextBox();
-            this.stateLabel = new System.Windows.Forms.Label();
-            this.address2Panel = new System.Windows.Forms.Panel();
-            this.address2Textbox = new System.Windows.Forms.TextBox();
-            this.address2Label = new System.Windows.Forms.Label();
-            this.address1Panel = new System.Windows.Forms.Panel();
-            this.address1Textbox = new System.Windows.Forms.TextBox();
-            this.address1Label = new System.Windows.Forms.Label();
-            this.accountGroup = new System.Windows.Forms.GroupBox();
-            this.accountTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.confirmPasswordPanel = new System.Windows.Forms.Panel();
-            this.confirmPasswordTextbox = new System.Windows.Forms.TextBox();
-            this.confirmPasswordLabel = new System.Windows.Forms.Label();
-            this.passwordPanel = new System.Windows.Forms.Panel();
-            this.passwordTextbox = new System.Windows.Forms.TextBox();
-            this.passwordLabel = new System.Windows.Forms.Label();
-            this.rolePanel = new System.Windows.Forms.Panel();
-            this.roleCombobox = new System.Windows.Forms.ComboBox();
-            this.roleLabel = new System.Windows.Forms.Label();
-            this.infoGroup = new System.Windows.Forms.GroupBox();
-            this.infoPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.phonePanel = new System.Windows.Forms.Panel();
-            this.phoneTextbox = new System.Windows.Forms.TextBox();
-            this.phoneLabel = new System.Windows.Forms.Label();
-            this.emailPanel = new System.Windows.Forms.Panel();
-            this.emailTextbox = new System.Windows.Forms.TextBox();
-            this.emailLabel = new System.Windows.Forms.Label();
-            this.anyGenderPanel = new System.Windows.Forms.Panel();
-            this.anyGenderTextbox = new System.Windows.Forms.TextBox();
-            this.genderPanel = new System.Windows.Forms.Panel();
-            this.maleRadio = new System.Windows.Forms.RadioButton();
-            this.femaleRadio = new System.Windows.Forms.RadioButton();
-            this.othersRadio = new System.Windows.Forms.RadioButton();
-            this.genderLabel = new System.Windows.Forms.Label();
-            this.birthdatePanel = new System.Windows.Forms.Panel();
-            this.birthdateCalendar = new System.Windows.Forms.DateTimePicker();
-            this.birthdateLabel = new System.Windows.Forms.Label();
-            this.middlenamePanel = new System.Windows.Forms.Panel();
-            this.middlenameTextbox = new System.Windows.Forms.TextBox();
-            this.middlenameLabel = new System.Windows.Forms.Label();
-            this.lastnamePanel = new System.Windows.Forms.Panel();
-            this.lastnameTextbox = new System.Windows.Forms.TextBox();
-            this.lastnameLabel = new System.Windows.Forms.Label();
-            this.surnamePanel1 = new System.Windows.Forms.Panel();
-            this.firstnameTextbox = new System.Windows.Forms.TextBox();
-            this.firstnameLabel = new System.Windows.Forms.Label();
-            this.religionPanel = new System.Windows.Forms.Panel();
-            this.religionTextbox = new System.Windows.Forms.TextBox();
-            this.religionLabel = new System.Windows.Forms.Label();
+            this.personalAddressInfoTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.personalInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.contactNoInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.emailAddressInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.religionInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.birthdateInfoBox = new hospital_management_system.gui.components.InformationDateTimePicker();
+            this.lastnameInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.middlenameInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.firstnameInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.addressInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.address1InfoBox = new hospital_management_system.gui.components.InformationTextbox();
+            this.address2Infobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.countryInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.postInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.stateInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.cityInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.informationTextbox2 = new hospital_management_system.gui.components.InformationTextbox();
+            this.informationTextbox1 = new hospital_management_system.gui.components.InformationTextbox();
+            this.informationComboBox2 = new hospital_management_system.gui.components.InformationComboBox();
+            this.informationComboBox1 = new hospital_management_system.gui.components.InformationComboBox();
+            this.StaffInfoTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.genderInfobox = new hospital_management_system.gui.components.InformationRadio();
             this.employeeForm.SuspendLayout();
-            this.patientPanel.SuspendLayout();
+            this.employeePanel.SuspendLayout();
             this.buttonFlowLayout.SuspendLayout();
-            this.departmentGroup.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.addressGroup.SuspendLayout();
-            this.addressTableLayout.SuspendLayout();
-            this.zipcodePanel.SuspendLayout();
-            this.countryPanel.SuspendLayout();
-            this.cityPanel.SuspendLayout();
-            this.statePanel.SuspendLayout();
-            this.address2Panel.SuspendLayout();
-            this.address1Panel.SuspendLayout();
-            this.accountGroup.SuspendLayout();
-            this.accountTableLayout.SuspendLayout();
-            this.confirmPasswordPanel.SuspendLayout();
-            this.passwordPanel.SuspendLayout();
-            this.rolePanel.SuspendLayout();
-            this.infoGroup.SuspendLayout();
-            this.infoPanel.SuspendLayout();
-            this.phonePanel.SuspendLayout();
-            this.emailPanel.SuspendLayout();
-            this.anyGenderPanel.SuspendLayout();
-            this.genderPanel.SuspendLayout();
-            this.birthdatePanel.SuspendLayout();
-            this.middlenamePanel.SuspendLayout();
-            this.lastnamePanel.SuspendLayout();
-            this.surnamePanel1.SuspendLayout();
-            this.religionPanel.SuspendLayout();
+            this.personalAddressInfoTableLayout.SuspendLayout();
+            this.personalInfoGroupBox.SuspendLayout();
+            this.addressInfoGroupBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.StaffInfoTableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
             // employeeForm
             // 
             this.employeeForm.AutoSize = true;
-            this.employeeForm.Controls.Add(this.patientPanel);
+            this.employeeForm.Controls.Add(this.employeePanel);
             this.employeeForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeeForm.Font = new System.Drawing.Font("Segoe UI", 36F);
             this.employeeForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
@@ -149,32 +86,31 @@ namespace hospital_management_system
             this.employeeForm.TabStop = false;
             this.employeeForm.Text = "{function}_employee";
             // 
-            // patientPanel
+            // employeePanel
             // 
-            this.patientPanel.AutoScroll = true;
-            this.patientPanel.Controls.Add(this.buttonFlowLayout);
-            this.patientPanel.Controls.Add(this.departmentGroup);
-            this.patientPanel.Controls.Add(this.addressGroup);
-            this.patientPanel.Controls.Add(this.accountGroup);
-            this.patientPanel.Controls.Add(this.infoGroup);
-            this.patientPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.patientPanel.Location = new System.Drawing.Point(9, 67);
-            this.patientPanel.Name = "patientPanel";
-            this.patientPanel.Size = new System.Drawing.Size(1062, 558);
-            this.patientPanel.TabIndex = 3;
+            this.employeePanel.AutoScroll = true;
+            this.employeePanel.Controls.Add(this.StaffInfoTableLayout);
+            this.employeePanel.Controls.Add(this.buttonFlowLayout);
+            this.employeePanel.Controls.Add(this.personalAddressInfoTableLayout);
+            this.employeePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.employeePanel.Location = new System.Drawing.Point(9, 67);
+            this.employeePanel.Name = "employeePanel";
+            this.employeePanel.Size = new System.Drawing.Size(1062, 558);
+            this.employeePanel.TabIndex = 0;
             // 
             // buttonFlowLayout
             // 
+            this.buttonFlowLayout.AutoSize = true;
             this.buttonFlowLayout.Controls.Add(this.saveBtn);
             this.buttonFlowLayout.Controls.Add(this.modifyBtn);
             this.buttonFlowLayout.Controls.Add(this.cancelBtn);
             this.buttonFlowLayout.Controls.Add(this.deleteBtn);
             this.buttonFlowLayout.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.buttonFlowLayout.Location = new System.Drawing.Point(0, 706);
+            this.buttonFlowLayout.Location = new System.Drawing.Point(0, 526);
             this.buttonFlowLayout.Name = "buttonFlowLayout";
             this.buttonFlowLayout.Size = new System.Drawing.Size(1045, 51);
-            this.buttonFlowLayout.TabIndex = 4;
+            this.buttonFlowLayout.TabIndex = 5;
             // 
             // saveBtn
             // 
@@ -244,732 +180,310 @@ namespace hospital_management_system
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = false;
             // 
-            // departmentGroup
-            // 
-            this.departmentGroup.BackColor = System.Drawing.SystemColors.Control;
-            this.departmentGroup.Controls.Add(this.tableLayoutPanel2);
-            this.departmentGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.departmentGroup.Font = new System.Drawing.Font("Segoe UI", 20.25F);
-            this.departmentGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.departmentGroup.Location = new System.Drawing.Point(0, 608);
-            this.departmentGroup.Name = "departmentGroup";
-            this.departmentGroup.Size = new System.Drawing.Size(1045, 98);
-            this.departmentGroup.TabIndex = 2;
-            this.departmentGroup.TabStop = false;
-            this.departmentGroup.Text = "Department Information";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 40);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1039, 55);
-            this.tableLayoutPanel2.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.departmentCombobox);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(340, 49);
-            this.panel2.TabIndex = 7;
-            // 
-            // departmentCombobox
-            // 
-            this.departmentCombobox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.departmentCombobox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.departmentCombobox.FormattingEnabled = true;
-            this.departmentCombobox.Location = new System.Drawing.Point(0, 20);
-            this.departmentCombobox.Name = "departmentCombobox";
-            this.departmentCombobox.Size = new System.Drawing.Size(340, 29);
-            this.departmentCombobox.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 21);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Department";
-            // 
-            // addressGroup
-            // 
-            this.addressGroup.BackColor = System.Drawing.SystemColors.Control;
-            this.addressGroup.Controls.Add(this.addressTableLayout);
-            this.addressGroup.Controls.Add(this.address2Panel);
-            this.addressGroup.Controls.Add(this.address1Panel);
-            this.addressGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addressGroup.Font = new System.Drawing.Font("Segoe UI", 20.25F);
-            this.addressGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.addressGroup.Location = new System.Drawing.Point(0, 326);
-            this.addressGroup.Name = "addressGroup";
-            this.addressGroup.Size = new System.Drawing.Size(1045, 282);
-            this.addressGroup.TabIndex = 1;
-            this.addressGroup.TabStop = false;
-            this.addressGroup.Text = "Address Information";
-            // 
-            // addressTableLayout
-            // 
-            this.addressTableLayout.ColumnCount = 2;
-            this.addressTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.addressTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.addressTableLayout.Controls.Add(this.zipcodePanel, 0, 1);
-            this.addressTableLayout.Controls.Add(this.countryPanel, 0, 1);
-            this.addressTableLayout.Controls.Add(this.cityPanel, 0, 0);
-            this.addressTableLayout.Controls.Add(this.statePanel, 1, 0);
-            this.addressTableLayout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.addressTableLayout.Location = new System.Drawing.Point(3, 155);
-            this.addressTableLayout.Name = "addressTableLayout";
-            this.addressTableLayout.RowCount = 2;
-            this.addressTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
-            this.addressTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
-            this.addressTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
-            this.addressTableLayout.Size = new System.Drawing.Size(1039, 126);
-            this.addressTableLayout.TabIndex = 1;
-            // 
-            // zipcodePanel
-            // 
-            this.zipcodePanel.Controls.Add(this.zipcodeTextbox);
-            this.zipcodePanel.Controls.Add(this.zipcodeLabel);
-            this.zipcodePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.zipcodePanel.Location = new System.Drawing.Point(3, 64);
-            this.zipcodePanel.Name = "zipcodePanel";
-            this.zipcodePanel.Size = new System.Drawing.Size(513, 59);
-            this.zipcodePanel.TabIndex = 3;
-            // 
-            // zipcodeTextbox
-            // 
-            this.zipcodeTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.zipcodeTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.zipcodeTextbox.Location = new System.Drawing.Point(0, 30);
-            this.zipcodeTextbox.Name = "zipcodeTextbox";
-            this.zipcodeTextbox.Size = new System.Drawing.Size(513, 29);
-            this.zipcodeTextbox.TabIndex = 4;
-            // 
-            // zipcodeLabel
-            // 
-            this.zipcodeLabel.AutoSize = true;
-            this.zipcodeLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.zipcodeLabel.Location = new System.Drawing.Point(0, 0);
-            this.zipcodeLabel.Name = "zipcodeLabel";
-            this.zipcodeLabel.Size = new System.Drawing.Size(159, 21);
-            this.zipcodeLabel.TabIndex = 5;
-            this.zipcodeLabel.Text = "Postal Code/Zip Code";
-            // 
-            // countryPanel
-            // 
-            this.countryPanel.Controls.Add(this.countryTextbox);
-            this.countryPanel.Controls.Add(this.countryLabel);
-            this.countryPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.countryPanel.Location = new System.Drawing.Point(522, 64);
-            this.countryPanel.Name = "countryPanel";
-            this.countryPanel.Size = new System.Drawing.Size(514, 59);
-            this.countryPanel.TabIndex = 4;
-            // 
-            // countryTextbox
-            // 
-            this.countryTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.countryTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.countryTextbox.Location = new System.Drawing.Point(0, 30);
-            this.countryTextbox.Name = "countryTextbox";
-            this.countryTextbox.Size = new System.Drawing.Size(514, 29);
-            this.countryTextbox.TabIndex = 5;
-            // 
-            // countryLabel
-            // 
-            this.countryLabel.AutoSize = true;
-            this.countryLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.countryLabel.Location = new System.Drawing.Point(0, 0);
-            this.countryLabel.Name = "countryLabel";
-            this.countryLabel.Size = new System.Drawing.Size(66, 21);
-            this.countryLabel.TabIndex = 5;
-            this.countryLabel.Text = "Country";
-            // 
-            // cityPanel
-            // 
-            this.cityPanel.Controls.Add(this.cityTextbox);
-            this.cityPanel.Controls.Add(this.cityLabel);
-            this.cityPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cityPanel.Location = new System.Drawing.Point(3, 3);
-            this.cityPanel.Name = "cityPanel";
-            this.cityPanel.Size = new System.Drawing.Size(513, 55);
-            this.cityPanel.TabIndex = 1;
-            // 
-            // cityTextbox
-            // 
-            this.cityTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cityTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.cityTextbox.Location = new System.Drawing.Point(0, 26);
-            this.cityTextbox.Name = "cityTextbox";
-            this.cityTextbox.Size = new System.Drawing.Size(513, 29);
-            this.cityTextbox.TabIndex = 2;
-            // 
-            // cityLabel
-            // 
-            this.cityLabel.AutoSize = true;
-            this.cityLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.cityLabel.Location = new System.Drawing.Point(0, 0);
-            this.cityLabel.Name = "cityLabel";
-            this.cityLabel.Size = new System.Drawing.Size(37, 21);
-            this.cityLabel.TabIndex = 5;
-            this.cityLabel.Text = "City";
-            // 
-            // statePanel
-            // 
-            this.statePanel.Controls.Add(this.stateTextbox);
-            this.statePanel.Controls.Add(this.stateLabel);
-            this.statePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statePanel.Location = new System.Drawing.Point(522, 3);
-            this.statePanel.Name = "statePanel";
-            this.statePanel.Size = new System.Drawing.Size(514, 55);
-            this.statePanel.TabIndex = 2;
-            // 
-            // stateTextbox
-            // 
-            this.stateTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.stateTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.stateTextbox.Location = new System.Drawing.Point(0, 26);
-            this.stateTextbox.Name = "stateTextbox";
-            this.stateTextbox.Size = new System.Drawing.Size(514, 29);
-            this.stateTextbox.TabIndex = 3;
-            // 
-            // stateLabel
-            // 
-            this.stateLabel.AutoSize = true;
-            this.stateLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.stateLabel.Location = new System.Drawing.Point(0, 0);
-            this.stateLabel.Name = "stateLabel";
-            this.stateLabel.Size = new System.Drawing.Size(110, 21);
-            this.stateLabel.TabIndex = 6;
-            this.stateLabel.Text = "State/Province";
-            // 
-            // address2Panel
-            // 
-            this.address2Panel.Controls.Add(this.address2Textbox);
-            this.address2Panel.Controls.Add(this.address2Label);
-            this.address2Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.address2Panel.Location = new System.Drawing.Point(3, 97);
-            this.address2Panel.Name = "address2Panel";
-            this.address2Panel.Size = new System.Drawing.Size(1039, 58);
-            this.address2Panel.TabIndex = 0;
-            // 
-            // address2Textbox
-            // 
-            this.address2Textbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.address2Textbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.address2Textbox.Location = new System.Drawing.Point(0, 29);
-            this.address2Textbox.Name = "address2Textbox";
-            this.address2Textbox.Size = new System.Drawing.Size(1039, 29);
-            this.address2Textbox.TabIndex = 1;
-            // 
-            // address2Label
-            // 
-            this.address2Label.AutoSize = true;
-            this.address2Label.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.address2Label.Location = new System.Drawing.Point(5, 3);
-            this.address2Label.Name = "address2Label";
-            this.address2Label.Size = new System.Drawing.Size(79, 21);
-            this.address2Label.TabIndex = 9;
-            this.address2Label.Text = "Address 2";
-            // 
-            // address1Panel
-            // 
-            this.address1Panel.Controls.Add(this.address1Textbox);
-            this.address1Panel.Controls.Add(this.address1Label);
-            this.address1Panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.address1Panel.Location = new System.Drawing.Point(3, 39);
-            this.address1Panel.Name = "address1Panel";
-            this.address1Panel.Size = new System.Drawing.Size(1039, 58);
-            this.address1Panel.TabIndex = 11;
-            // 
-            // address1Textbox
-            // 
-            this.address1Textbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.address1Textbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.address1Textbox.Location = new System.Drawing.Point(0, 29);
-            this.address1Textbox.Name = "address1Textbox";
-            this.address1Textbox.Size = new System.Drawing.Size(1039, 29);
-            this.address1Textbox.TabIndex = 0;
-            // 
-            // address1Label
-            // 
-            this.address1Label.AutoSize = true;
-            this.address1Label.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.address1Label.Location = new System.Drawing.Point(5, 3);
-            this.address1Label.Name = "address1Label";
-            this.address1Label.Size = new System.Drawing.Size(79, 21);
-            this.address1Label.TabIndex = 9;
-            this.address1Label.Text = "Address 1";
-            // 
-            // accountGroup
-            // 
-            this.accountGroup.BackColor = System.Drawing.SystemColors.Control;
-            this.accountGroup.Controls.Add(this.accountTableLayout);
-            this.accountGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.accountGroup.Font = new System.Drawing.Font("Segoe UI", 20.25F);
-            this.accountGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.accountGroup.Location = new System.Drawing.Point(0, 228);
-            this.accountGroup.Name = "accountGroup";
-            this.accountGroup.Size = new System.Drawing.Size(1045, 98);
-            this.accountGroup.TabIndex = 3;
-            this.accountGroup.TabStop = false;
-            this.accountGroup.Text = "Account Information";
-            // 
-            // accountTableLayout
-            // 
-            this.accountTableLayout.ColumnCount = 3;
-            this.accountTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.accountTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.accountTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.accountTableLayout.Controls.Add(this.confirmPasswordPanel, 0, 0);
-            this.accountTableLayout.Controls.Add(this.passwordPanel, 0, 0);
-            this.accountTableLayout.Controls.Add(this.rolePanel, 0, 0);
-            this.accountTableLayout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.accountTableLayout.Location = new System.Drawing.Point(3, 40);
-            this.accountTableLayout.Name = "accountTableLayout";
-            this.accountTableLayout.RowCount = 1;
-            this.accountTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.accountTableLayout.Size = new System.Drawing.Size(1039, 55);
-            this.accountTableLayout.TabIndex = 0;
-            // 
-            // confirmPasswordPanel
-            // 
-            this.confirmPasswordPanel.Controls.Add(this.confirmPasswordTextbox);
-            this.confirmPasswordPanel.Controls.Add(this.confirmPasswordLabel);
-            this.confirmPasswordPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.confirmPasswordPanel.Location = new System.Drawing.Point(695, 3);
-            this.confirmPasswordPanel.Name = "confirmPasswordPanel";
-            this.confirmPasswordPanel.Size = new System.Drawing.Size(341, 49);
-            this.confirmPasswordPanel.TabIndex = 12;
-            // 
-            // confirmPasswordTextbox
-            // 
-            this.confirmPasswordTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.confirmPasswordTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.confirmPasswordTextbox.Location = new System.Drawing.Point(0, 20);
-            this.confirmPasswordTextbox.Name = "confirmPasswordTextbox";
-            this.confirmPasswordTextbox.Size = new System.Drawing.Size(341, 29);
-            this.confirmPasswordTextbox.TabIndex = 8;
-            this.confirmPasswordTextbox.TextChanged += new System.EventHandler(this.confirmPasswordTextbox_TextChanged);
-            // 
-            // confirmPasswordLabel
-            // 
-            this.confirmPasswordLabel.AutoSize = true;
-            this.confirmPasswordLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.confirmPasswordLabel.Location = new System.Drawing.Point(0, 0);
-            this.confirmPasswordLabel.Name = "confirmPasswordLabel";
-            this.confirmPasswordLabel.Size = new System.Drawing.Size(137, 21);
-            this.confirmPasswordLabel.TabIndex = 5;
-            this.confirmPasswordLabel.Text = "Confirm Password";
-            // 
-            // passwordPanel
-            // 
-            this.passwordPanel.Controls.Add(this.passwordTextbox);
-            this.passwordPanel.Controls.Add(this.passwordLabel);
-            this.passwordPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.passwordPanel.Location = new System.Drawing.Point(349, 3);
-            this.passwordPanel.Name = "passwordPanel";
-            this.passwordPanel.Size = new System.Drawing.Size(340, 49);
-            this.passwordPanel.TabIndex = 11;
-            // 
-            // passwordTextbox
-            // 
-            this.passwordTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.passwordTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.passwordTextbox.Location = new System.Drawing.Point(0, 20);
-            this.passwordTextbox.Name = "passwordTextbox";
-            this.passwordTextbox.Size = new System.Drawing.Size(340, 29);
-            this.passwordTextbox.TabIndex = 8;
-            this.passwordTextbox.TextChanged += new System.EventHandler(this.passwordTextbox_TextChanged);
-            // 
-            // passwordLabel
-            // 
-            this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.passwordLabel.Location = new System.Drawing.Point(0, 0);
-            this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(76, 21);
-            this.passwordLabel.TabIndex = 5;
-            this.passwordLabel.Text = "Password";
-            // 
-            // rolePanel
-            // 
-            this.rolePanel.Controls.Add(this.roleCombobox);
-            this.rolePanel.Controls.Add(this.roleLabel);
-            this.rolePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rolePanel.Location = new System.Drawing.Point(3, 3);
-            this.rolePanel.Name = "rolePanel";
-            this.rolePanel.Size = new System.Drawing.Size(340, 49);
-            this.rolePanel.TabIndex = 10;
-            // 
-            // roleCombobox
-            // 
-            this.roleCombobox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.roleCombobox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.roleCombobox.FormattingEnabled = true;
-            this.roleCombobox.Location = new System.Drawing.Point(0, 20);
-            this.roleCombobox.Name = "roleCombobox";
-            this.roleCombobox.Size = new System.Drawing.Size(340, 29);
-            this.roleCombobox.TabIndex = 7;
-            // 
-            // roleLabel
-            // 
-            this.roleLabel.AutoSize = true;
-            this.roleLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.roleLabel.Location = new System.Drawing.Point(0, 0);
-            this.roleLabel.Name = "roleLabel";
-            this.roleLabel.Size = new System.Drawing.Size(41, 21);
-            this.roleLabel.TabIndex = 5;
-            this.roleLabel.Text = "Role";
-            // 
-            // infoGroup
-            // 
-            this.infoGroup.BackColor = System.Drawing.SystemColors.Control;
-            this.infoGroup.Controls.Add(this.infoPanel);
-            this.infoGroup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.infoGroup.Enabled = false;
-            this.infoGroup.Font = new System.Drawing.Font("Segoe UI", 20.25F);
-            this.infoGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.infoGroup.Location = new System.Drawing.Point(0, 0);
-            this.infoGroup.Name = "infoGroup";
-            this.infoGroup.Size = new System.Drawing.Size(1045, 228);
-            this.infoGroup.TabIndex = 0;
-            this.infoGroup.TabStop = false;
-            this.infoGroup.Text = "Personal Information";
-            // 
-            // infoPanel
-            // 
-            this.infoPanel.ColumnCount = 3;
-            this.infoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.infoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.infoPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.infoPanel.Controls.Add(this.phonePanel, 0, 2);
-            this.infoPanel.Controls.Add(this.emailPanel, 0, 2);
-            this.infoPanel.Controls.Add(this.anyGenderPanel, 2, 1);
-            this.infoPanel.Controls.Add(this.genderPanel, 1, 1);
-            this.infoPanel.Controls.Add(this.birthdatePanel, 0, 1);
-            this.infoPanel.Controls.Add(this.middlenamePanel, 2, 0);
-            this.infoPanel.Controls.Add(this.lastnamePanel, 1, 0);
-            this.infoPanel.Controls.Add(this.surnamePanel1, 0, 0);
-            this.infoPanel.Controls.Add(this.religionPanel, 0, 2);
-            this.infoPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.infoPanel.Location = new System.Drawing.Point(3, 39);
-            this.infoPanel.Name = "infoPanel";
-            this.infoPanel.RowCount = 3;
-            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
-            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
-            this.infoPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
-            this.infoPanel.Size = new System.Drawing.Size(1039, 187);
-            this.infoPanel.TabIndex = 0;
-            // 
-            // phonePanel
-            // 
-            this.phonePanel.Controls.Add(this.phoneTextbox);
-            this.phonePanel.Controls.Add(this.phoneLabel);
-            this.phonePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.phonePanel.Location = new System.Drawing.Point(695, 125);
-            this.phonePanel.Name = "phonePanel";
-            this.phonePanel.Size = new System.Drawing.Size(341, 59);
-            this.phonePanel.TabIndex = 8;
-            // 
-            // phoneTextbox
-            // 
-            this.phoneTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.phoneTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.phoneTextbox.Location = new System.Drawing.Point(0, 30);
-            this.phoneTextbox.Name = "phoneTextbox";
-            this.phoneTextbox.Size = new System.Drawing.Size(341, 29);
-            this.phoneTextbox.TabIndex = 10;
-            // 
-            // phoneLabel
-            // 
-            this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.phoneLabel.Location = new System.Drawing.Point(0, 0);
-            this.phoneLabel.Name = "phoneLabel";
-            this.phoneLabel.Size = new System.Drawing.Size(116, 21);
-            this.phoneLabel.TabIndex = 7;
-            this.phoneLabel.Text = "Phone Number";
-            // 
-            // emailPanel
-            // 
-            this.emailPanel.Controls.Add(this.emailTextbox);
-            this.emailPanel.Controls.Add(this.emailLabel);
-            this.emailPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.emailPanel.Location = new System.Drawing.Point(349, 125);
-            this.emailPanel.Name = "emailPanel";
-            this.emailPanel.Size = new System.Drawing.Size(340, 59);
-            this.emailPanel.TabIndex = 7;
-            // 
-            // emailTextbox
-            // 
-            this.emailTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.emailTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.emailTextbox.Location = new System.Drawing.Point(0, 30);
-            this.emailTextbox.Name = "emailTextbox";
-            this.emailTextbox.Size = new System.Drawing.Size(340, 29);
-            this.emailTextbox.TabIndex = 9;
-            // 
-            // emailLabel
-            // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.emailLabel.Location = new System.Drawing.Point(0, 0);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(108, 21);
-            this.emailLabel.TabIndex = 6;
-            this.emailLabel.Text = "Email Address";
-            // 
-            // anyGenderPanel
-            // 
-            this.anyGenderPanel.Controls.Add(this.anyGenderTextbox);
-            this.anyGenderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.anyGenderPanel.Location = new System.Drawing.Point(695, 64);
-            this.anyGenderPanel.Name = "anyGenderPanel";
-            this.anyGenderPanel.Size = new System.Drawing.Size(341, 55);
-            this.anyGenderPanel.TabIndex = 5;
-            // 
-            // anyGenderTextbox
-            // 
-            this.anyGenderTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.anyGenderTextbox.Enabled = false;
-            this.anyGenderTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.anyGenderTextbox.Location = new System.Drawing.Point(0, 26);
-            this.anyGenderTextbox.Name = "anyGenderTextbox";
-            this.anyGenderTextbox.Size = new System.Drawing.Size(341, 29);
-            this.anyGenderTextbox.TabIndex = 8;
-            // 
-            // genderPanel
-            // 
-            this.genderPanel.Controls.Add(this.maleRadio);
-            this.genderPanel.Controls.Add(this.femaleRadio);
-            this.genderPanel.Controls.Add(this.othersRadio);
-            this.genderPanel.Controls.Add(this.genderLabel);
-            this.genderPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.genderPanel.Location = new System.Drawing.Point(349, 64);
-            this.genderPanel.Name = "genderPanel";
-            this.genderPanel.Size = new System.Drawing.Size(340, 55);
-            this.genderPanel.TabIndex = 4;
-            // 
-            // maleRadio
-            // 
-            this.maleRadio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.maleRadio.AutoSize = true;
-            this.maleRadio.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.maleRadio.ForeColor = System.Drawing.Color.Black;
-            this.maleRadio.Location = new System.Drawing.Point(0, 30);
-            this.maleRadio.Margin = new System.Windows.Forms.Padding(0);
-            this.maleRadio.Name = "maleRadio";
-            this.maleRadio.Size = new System.Drawing.Size(62, 25);
-            this.maleRadio.TabIndex = 5;
-            this.maleRadio.TabStop = true;
-            this.maleRadio.Text = "Male";
-            this.maleRadio.UseVisualStyleBackColor = true;
-            this.maleRadio.CheckedChanged += new System.EventHandler(this.maleRadio_CheckedChanged);
-            // 
-            // femaleRadio
-            // 
-            this.femaleRadio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.femaleRadio.AutoSize = true;
-            this.femaleRadio.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.femaleRadio.ForeColor = System.Drawing.Color.Black;
-            this.femaleRadio.Location = new System.Drawing.Point(62, 30);
-            this.femaleRadio.Margin = new System.Windows.Forms.Padding(0);
-            this.femaleRadio.Name = "femaleRadio";
-            this.femaleRadio.Size = new System.Drawing.Size(78, 25);
-            this.femaleRadio.TabIndex = 6;
-            this.femaleRadio.TabStop = true;
-            this.femaleRadio.Text = "Female";
-            this.femaleRadio.UseVisualStyleBackColor = true;
-            this.femaleRadio.CheckedChanged += new System.EventHandler(this.femaleRadio_CheckedChanged);
-            // 
-            // othersRadio
-            // 
-            this.othersRadio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.othersRadio.AutoSize = true;
-            this.othersRadio.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.othersRadio.ForeColor = System.Drawing.Color.Black;
-            this.othersRadio.Location = new System.Drawing.Point(140, 30);
-            this.othersRadio.Margin = new System.Windows.Forms.Padding(0);
-            this.othersRadio.Name = "othersRadio";
-            this.othersRadio.Size = new System.Drawing.Size(187, 25);
-            this.othersRadio.TabIndex = 7;
-            this.othersRadio.TabStop = true;
-            this.othersRadio.Text = "Others (Please Specify)";
-            this.othersRadio.UseVisualStyleBackColor = true;
-            this.othersRadio.CheckedChanged += new System.EventHandler(this.othersRadio_CheckedChanged);
-            // 
-            // genderLabel
-            // 
-            this.genderLabel.AutoSize = true;
-            this.genderLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.genderLabel.Location = new System.Drawing.Point(0, 0);
-            this.genderLabel.Name = "genderLabel";
-            this.genderLabel.Size = new System.Drawing.Size(61, 21);
-            this.genderLabel.TabIndex = 4;
-            this.genderLabel.Text = "Gender";
-            // 
-            // birthdatePanel
-            // 
-            this.birthdatePanel.Controls.Add(this.birthdateCalendar);
-            this.birthdatePanel.Controls.Add(this.birthdateLabel);
-            this.birthdatePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.birthdatePanel.Location = new System.Drawing.Point(3, 64);
-            this.birthdatePanel.Name = "birthdatePanel";
-            this.birthdatePanel.Size = new System.Drawing.Size(340, 55);
-            this.birthdatePanel.TabIndex = 3;
-            // 
-            // birthdateCalendar
-            // 
-            this.birthdateCalendar.CalendarFont = new System.Drawing.Font("Segoe UI", 12F);
-            this.birthdateCalendar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.birthdateCalendar.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.birthdateCalendar.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.birthdateCalendar.Location = new System.Drawing.Point(0, 26);
-            this.birthdateCalendar.Name = "birthdateCalendar";
-            this.birthdateCalendar.Size = new System.Drawing.Size(340, 29);
-            this.birthdateCalendar.TabIndex = 4;
-            this.birthdateCalendar.Value = new System.DateTime(2021, 10, 19, 0, 0, 0, 0);
-            // 
-            // birthdateLabel
-            // 
-            this.birthdateLabel.AutoSize = true;
-            this.birthdateLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.birthdateLabel.Location = new System.Drawing.Point(0, 0);
-            this.birthdateLabel.Name = "birthdateLabel";
-            this.birthdateLabel.Size = new System.Drawing.Size(97, 21);
-            this.birthdateLabel.TabIndex = 3;
-            this.birthdateLabel.Text = "Date of Birth";
-            // 
-            // middlenamePanel
-            // 
-            this.middlenamePanel.Controls.Add(this.middlenameTextbox);
-            this.middlenamePanel.Controls.Add(this.middlenameLabel);
-            this.middlenamePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.middlenamePanel.Location = new System.Drawing.Point(695, 3);
-            this.middlenamePanel.Name = "middlenamePanel";
-            this.middlenamePanel.Size = new System.Drawing.Size(341, 55);
-            this.middlenamePanel.TabIndex = 2;
-            // 
-            // middlenameTextbox
-            // 
-            this.middlenameTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.middlenameTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.middlenameTextbox.Location = new System.Drawing.Point(0, 26);
-            this.middlenameTextbox.Name = "middlenameTextbox";
-            this.middlenameTextbox.Size = new System.Drawing.Size(341, 29);
-            this.middlenameTextbox.TabIndex = 3;
-            // 
-            // middlenameLabel
-            // 
-            this.middlenameLabel.AutoSize = true;
-            this.middlenameLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.middlenameLabel.Location = new System.Drawing.Point(0, 0);
-            this.middlenameLabel.Name = "middlenameLabel";
-            this.middlenameLabel.Size = new System.Drawing.Size(97, 21);
-            this.middlenameLabel.TabIndex = 2;
-            this.middlenameLabel.Text = "Middlename";
-            // 
-            // lastnamePanel
-            // 
-            this.lastnamePanel.Controls.Add(this.lastnameTextbox);
-            this.lastnamePanel.Controls.Add(this.lastnameLabel);
-            this.lastnamePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lastnamePanel.Location = new System.Drawing.Point(349, 3);
-            this.lastnamePanel.Name = "lastnamePanel";
-            this.lastnamePanel.Size = new System.Drawing.Size(340, 55);
-            this.lastnamePanel.TabIndex = 1;
-            // 
-            // lastnameTextbox
-            // 
-            this.lastnameTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lastnameTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lastnameTextbox.Location = new System.Drawing.Point(0, 26);
-            this.lastnameTextbox.Name = "lastnameTextbox";
-            this.lastnameTextbox.Size = new System.Drawing.Size(340, 29);
-            this.lastnameTextbox.TabIndex = 2;
-            // 
-            // lastnameLabel
-            // 
-            this.lastnameLabel.AutoSize = true;
-            this.lastnameLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lastnameLabel.Location = new System.Drawing.Point(0, 0);
-            this.lastnameLabel.Name = "lastnameLabel";
-            this.lastnameLabel.Size = new System.Drawing.Size(77, 21);
-            this.lastnameLabel.TabIndex = 1;
-            this.lastnameLabel.Text = "Lastname";
-            // 
-            // surnamePanel1
-            // 
-            this.surnamePanel1.Controls.Add(this.firstnameTextbox);
-            this.surnamePanel1.Controls.Add(this.firstnameLabel);
-            this.surnamePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.surnamePanel1.Location = new System.Drawing.Point(3, 3);
-            this.surnamePanel1.Name = "surnamePanel1";
-            this.surnamePanel1.Size = new System.Drawing.Size(340, 55);
-            this.surnamePanel1.TabIndex = 0;
-            // 
-            // firstnameTextbox
-            // 
-            this.firstnameTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.firstnameTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.firstnameTextbox.Location = new System.Drawing.Point(0, 26);
-            this.firstnameTextbox.Name = "firstnameTextbox";
-            this.firstnameTextbox.Size = new System.Drawing.Size(340, 29);
-            this.firstnameTextbox.TabIndex = 1;
-            // 
-            // firstnameLabel
-            // 
-            this.firstnameLabel.AutoSize = true;
-            this.firstnameLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.firstnameLabel.Location = new System.Drawing.Point(0, 0);
-            this.firstnameLabel.Name = "firstnameLabel";
-            this.firstnameLabel.Size = new System.Drawing.Size(79, 21);
-            this.firstnameLabel.TabIndex = 0;
-            this.firstnameLabel.Text = "Firstname";
-            // 
-            // religionPanel
-            // 
-            this.religionPanel.Controls.Add(this.religionTextbox);
-            this.religionPanel.Controls.Add(this.religionLabel);
-            this.religionPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.religionPanel.Location = new System.Drawing.Point(3, 125);
-            this.religionPanel.Name = "religionPanel";
-            this.religionPanel.Size = new System.Drawing.Size(340, 59);
-            this.religionPanel.TabIndex = 6;
-            // 
-            // religionTextbox
-            // 
-            this.religionTextbox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.religionTextbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.religionTextbox.Location = new System.Drawing.Point(0, 30);
-            this.religionTextbox.Name = "religionTextbox";
-            this.religionTextbox.Size = new System.Drawing.Size(340, 29);
-            this.religionTextbox.TabIndex = 8;
-            // 
-            // religionLabel
-            // 
-            this.religionLabel.AutoSize = true;
-            this.religionLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.religionLabel.Location = new System.Drawing.Point(0, 0);
-            this.religionLabel.Name = "religionLabel";
-            this.religionLabel.Size = new System.Drawing.Size(67, 21);
-            this.religionLabel.TabIndex = 5;
-            this.religionLabel.Text = "Religion";
+            // personalAddressInfoTableLayout
+            // 
+            this.personalAddressInfoTableLayout.ColumnCount = 2;
+            this.personalAddressInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.personalAddressInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.personalAddressInfoTableLayout.Controls.Add(this.personalInfoGroupBox, 0, 0);
+            this.personalAddressInfoTableLayout.Controls.Add(this.addressInfoGroupBox, 1, 0);
+            this.personalAddressInfoTableLayout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.personalAddressInfoTableLayout.Location = new System.Drawing.Point(0, 0);
+            this.personalAddressInfoTableLayout.Name = "personalAddressInfoTableLayout";
+            this.personalAddressInfoTableLayout.RowCount = 1;
+            this.personalAddressInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.53933F));
+            this.personalAddressInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.personalAddressInfoTableLayout.Size = new System.Drawing.Size(1045, 378);
+            this.personalAddressInfoTableLayout.TabIndex = 0;
+            // 
+            // personalInfoGroupBox
+            // 
+            this.personalInfoGroupBox.Controls.Add(this.genderInfobox);
+            this.personalInfoGroupBox.Controls.Add(this.contactNoInfobox);
+            this.personalInfoGroupBox.Controls.Add(this.emailAddressInfobox);
+            this.personalInfoGroupBox.Controls.Add(this.religionInfobox);
+            this.personalInfoGroupBox.Controls.Add(this.birthdateInfoBox);
+            this.personalInfoGroupBox.Controls.Add(this.lastnameInfobox);
+            this.personalInfoGroupBox.Controls.Add(this.middlenameInfobox);
+            this.personalInfoGroupBox.Controls.Add(this.firstnameInfobox);
+            this.personalInfoGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.personalInfoGroupBox.Font = new System.Drawing.Font("Segoe UI", 20.25F);
+            this.personalInfoGroupBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.personalInfoGroupBox.Location = new System.Drawing.Point(3, 3);
+            this.personalInfoGroupBox.Name = "personalInfoGroupBox";
+            this.personalInfoGroupBox.Size = new System.Drawing.Size(516, 372);
+            this.personalInfoGroupBox.TabIndex = 0;
+            this.personalInfoGroupBox.TabStop = false;
+            this.personalInfoGroupBox.Text = "Personal Information";
+            this.personalInfoGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // contactNoInfobox
+            // 
+            this.contactNoInfobox.ColumnWidth0 = 165F;
+            this.contactNoInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.contactNoInfobox.LabelText = "Contact Number";
+            this.contactNoInfobox.Location = new System.Drawing.Point(3, 249);
+            this.contactNoInfobox.Name = "contactNoInfobox";
+            this.contactNoInfobox.Size = new System.Drawing.Size(510, 35);
+            this.contactNoInfobox.TabIndex = 12;
+            this.contactNoInfobox.TextboxText = "";
+            // 
+            // emailAddressInfobox
+            // 
+            this.emailAddressInfobox.ColumnWidth0 = 165F;
+            this.emailAddressInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.emailAddressInfobox.LabelText = "Email Address";
+            this.emailAddressInfobox.Location = new System.Drawing.Point(3, 214);
+            this.emailAddressInfobox.Name = "emailAddressInfobox";
+            this.emailAddressInfobox.Size = new System.Drawing.Size(510, 35);
+            this.emailAddressInfobox.TabIndex = 10;
+            this.emailAddressInfobox.TextboxText = "";
+            // 
+            // religionInfobox
+            // 
+            this.religionInfobox.ColumnWidth0 = 165F;
+            this.religionInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.religionInfobox.LabelText = "Religion";
+            this.religionInfobox.Location = new System.Drawing.Point(3, 179);
+            this.religionInfobox.Name = "religionInfobox";
+            this.religionInfobox.Size = new System.Drawing.Size(510, 35);
+            this.religionInfobox.TabIndex = 9;
+            this.religionInfobox.TextboxText = "";
+            // 
+            // birthdateInfoBox
+            // 
+            this.birthdateInfoBox.ColumnWidth0 = 165F;
+            this.birthdateInfoBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.birthdateInfoBox.LabelText = "Birthdate";
+            this.birthdateInfoBox.Location = new System.Drawing.Point(3, 144);
+            this.birthdateInfoBox.Name = "birthdateInfoBox";
+            this.birthdateInfoBox.Size = new System.Drawing.Size(510, 35);
+            this.birthdateInfoBox.TabIndex = 5;
+            // 
+            // lastnameInfobox
+            // 
+            this.lastnameInfobox.ColumnWidth0 = 165F;
+            this.lastnameInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lastnameInfobox.LabelText = "Lastname";
+            this.lastnameInfobox.Location = new System.Drawing.Point(3, 109);
+            this.lastnameInfobox.Name = "lastnameInfobox";
+            this.lastnameInfobox.Size = new System.Drawing.Size(510, 35);
+            this.lastnameInfobox.TabIndex = 2;
+            this.lastnameInfobox.TextboxText = "";
+            // 
+            // middlenameInfobox
+            // 
+            this.middlenameInfobox.ColumnWidth0 = 165F;
+            this.middlenameInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.middlenameInfobox.LabelText = "Middlename";
+            this.middlenameInfobox.Location = new System.Drawing.Point(3, 74);
+            this.middlenameInfobox.Name = "middlenameInfobox";
+            this.middlenameInfobox.Size = new System.Drawing.Size(510, 35);
+            this.middlenameInfobox.TabIndex = 1;
+            this.middlenameInfobox.TextboxText = "";
+            this.middlenameInfobox.Load += new System.EventHandler(this.middlenameInfobox_Load);
+            // 
+            // firstnameInfobox
+            // 
+            this.firstnameInfobox.ColumnWidth0 = 165F;
+            this.firstnameInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.firstnameInfobox.LabelText = "Firstname";
+            this.firstnameInfobox.Location = new System.Drawing.Point(3, 39);
+            this.firstnameInfobox.Name = "firstnameInfobox";
+            this.firstnameInfobox.Size = new System.Drawing.Size(510, 35);
+            this.firstnameInfobox.TabIndex = 0;
+            this.firstnameInfobox.TextboxText = "";
+            this.firstnameInfobox.Load += new System.EventHandler(this.firstnameInfobox_Load);
+            // 
+            // addressInfoGroupBox
+            // 
+            this.addressInfoGroupBox.Controls.Add(this.countryInfobox);
+            this.addressInfoGroupBox.Controls.Add(this.postInfobox);
+            this.addressInfoGroupBox.Controls.Add(this.stateInfobox);
+            this.addressInfoGroupBox.Controls.Add(this.cityInfobox);
+            this.addressInfoGroupBox.Controls.Add(this.address2Infobox);
+            this.addressInfoGroupBox.Controls.Add(this.address1InfoBox);
+            this.addressInfoGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addressInfoGroupBox.Font = new System.Drawing.Font("Segoe UI", 20.25F);
+            this.addressInfoGroupBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.addressInfoGroupBox.Location = new System.Drawing.Point(525, 3);
+            this.addressInfoGroupBox.Name = "addressInfoGroupBox";
+            this.addressInfoGroupBox.Size = new System.Drawing.Size(517, 372);
+            this.addressInfoGroupBox.TabIndex = 1;
+            this.addressInfoGroupBox.TabStop = false;
+            this.addressInfoGroupBox.Text = "Address Information";
+            // 
+            // address1InfoBox
+            // 
+            this.address1InfoBox.ColumnWidth0 = 165F;
+            this.address1InfoBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.address1InfoBox.LabelText = "Address 1";
+            this.address1InfoBox.Location = new System.Drawing.Point(3, 39);
+            this.address1InfoBox.Name = "address1InfoBox";
+            this.address1InfoBox.Size = new System.Drawing.Size(511, 35);
+            this.address1InfoBox.TabIndex = 17;
+            this.address1InfoBox.TextboxText = "";
+            // 
+            // address2Infobox
+            // 
+            this.address2Infobox.ColumnWidth0 = 165F;
+            this.address2Infobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.address2Infobox.LabelText = "Address 2";
+            this.address2Infobox.Location = new System.Drawing.Point(3, 74);
+            this.address2Infobox.Name = "address2Infobox";
+            this.address2Infobox.Size = new System.Drawing.Size(511, 35);
+            this.address2Infobox.TabIndex = 31;
+            this.address2Infobox.TextboxText = "";
+            // 
+            // countryInfobox
+            // 
+            this.countryInfobox.ColumnWidth0 = 165F;
+            this.countryInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.countryInfobox.LabelText = "Country";
+            this.countryInfobox.Location = new System.Drawing.Point(3, 214);
+            this.countryInfobox.Name = "countryInfobox";
+            this.countryInfobox.Size = new System.Drawing.Size(511, 35);
+            this.countryInfobox.TabIndex = 35;
+            this.countryInfobox.TextboxText = "";
+            // 
+            // postInfobox
+            // 
+            this.postInfobox.ColumnWidth0 = 165F;
+            this.postInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.postInfobox.LabelText = "Postal/Zip Code";
+            this.postInfobox.Location = new System.Drawing.Point(3, 179);
+            this.postInfobox.Name = "postInfobox";
+            this.postInfobox.Size = new System.Drawing.Size(511, 35);
+            this.postInfobox.TabIndex = 34;
+            this.postInfobox.TextboxText = "";
+            // 
+            // stateInfobox
+            // 
+            this.stateInfobox.ColumnWidth0 = 165F;
+            this.stateInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.stateInfobox.LabelText = "State/Province";
+            this.stateInfobox.Location = new System.Drawing.Point(3, 144);
+            this.stateInfobox.Name = "stateInfobox";
+            this.stateInfobox.Size = new System.Drawing.Size(511, 35);
+            this.stateInfobox.TabIndex = 33;
+            this.stateInfobox.TextboxText = "";
+            // 
+            // cityInfobox
+            // 
+            this.cityInfobox.ColumnWidth0 = 165F;
+            this.cityInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cityInfobox.LabelText = "City/Municipality";
+            this.cityInfobox.Location = new System.Drawing.Point(3, 109);
+            this.cityInfobox.Name = "cityInfobox";
+            this.cityInfobox.Size = new System.Drawing.Size(511, 35);
+            this.cityInfobox.TabIndex = 32;
+            this.cityInfobox.TextboxText = "";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tableLayoutPanel3);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 20.25F);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1039, 142);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Staff Information";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.AutoScroll = true;
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.informationComboBox1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.informationComboBox2, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.informationTextbox1, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.informationTextbox2, 1, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 39);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1033, 90);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // informationTextbox2
+            // 
+            this.informationTextbox2.ColumnWidth0 = 165F;
+            this.informationTextbox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.informationTextbox2.LabelText = "Confirm Password";
+            this.informationTextbox2.Location = new System.Drawing.Point(519, 47);
+            this.informationTextbox2.Name = "informationTextbox2";
+            this.informationTextbox2.Size = new System.Drawing.Size(511, 35);
+            this.informationTextbox2.TabIndex = 3;
+            this.informationTextbox2.TextboxText = "";
+            // 
+            // informationTextbox1
+            // 
+            this.informationTextbox1.ColumnWidth0 = 165F;
+            this.informationTextbox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.informationTextbox1.LabelText = "Password";
+            this.informationTextbox1.Location = new System.Drawing.Point(3, 47);
+            this.informationTextbox1.Name = "informationTextbox1";
+            this.informationTextbox1.Size = new System.Drawing.Size(510, 35);
+            this.informationTextbox1.TabIndex = 2;
+            this.informationTextbox1.TextboxText = "";
+            // 
+            // informationComboBox2
+            // 
+            this.informationComboBox2.ColumnWidth0 = 165F;
+            this.informationComboBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.informationComboBox2.LabelText = "Role";
+            this.informationComboBox2.Location = new System.Drawing.Point(519, 3);
+            this.informationComboBox2.Name = "informationComboBox2";
+            this.informationComboBox2.Size = new System.Drawing.Size(511, 35);
+            this.informationComboBox2.TabIndex = 1;
+            // 
+            // informationComboBox1
+            // 
+            this.informationComboBox1.ColumnWidth0 = 165F;
+            this.informationComboBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.informationComboBox1.LabelText = "Department ";
+            this.informationComboBox1.Location = new System.Drawing.Point(3, 3);
+            this.informationComboBox1.Name = "informationComboBox1";
+            this.informationComboBox1.Size = new System.Drawing.Size(510, 35);
+            this.informationComboBox1.TabIndex = 0;
+            // 
+            // StaffInfoTableLayout
+            // 
+            this.StaffInfoTableLayout.AutoScroll = true;
+            this.StaffInfoTableLayout.ColumnCount = 1;
+            this.StaffInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.StaffInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.StaffInfoTableLayout.Controls.Add(this.groupBox1, 0, 0);
+            this.StaffInfoTableLayout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.StaffInfoTableLayout.Location = new System.Drawing.Point(0, 378);
+            this.StaffInfoTableLayout.Name = "StaffInfoTableLayout";
+            this.StaffInfoTableLayout.RowCount = 1;
+            this.StaffInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.StaffInfoTableLayout.Size = new System.Drawing.Size(1045, 148);
+            this.StaffInfoTableLayout.TabIndex = 6;
+            // 
+            // genderInfobox
+            // 
+            this.genderInfobox.ColumnWidth0 = 245F;
+            this.genderInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.genderInfobox.LabelText = "Gender";
+            this.genderInfobox.Location = new System.Drawing.Point(3, 284);
+            this.genderInfobox.Name = "genderInfobox";
+            this.genderInfobox.RadioForeColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.genderInfobox.RadioForeColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.genderInfobox.RadioForeColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.genderInfobox.RadioText1 = "Male";
+            this.genderInfobox.RadioText2 = "Female";
+            this.genderInfobox.RadioText3 = "Others:";
+            this.genderInfobox.Size = new System.Drawing.Size(510, 70);
+            this.genderInfobox.TabIndex = 36;
+            this.genderInfobox.TextboxText = "";
             // 
             // FormEmployee
             // 
@@ -982,54 +496,15 @@ namespace hospital_management_system
             this.Name = "FormEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.employeeForm.ResumeLayout(false);
-            this.patientPanel.ResumeLayout(false);
+            this.employeePanel.ResumeLayout(false);
+            this.employeePanel.PerformLayout();
             this.buttonFlowLayout.ResumeLayout(false);
-            this.departmentGroup.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.addressGroup.ResumeLayout(false);
-            this.addressTableLayout.ResumeLayout(false);
-            this.zipcodePanel.ResumeLayout(false);
-            this.zipcodePanel.PerformLayout();
-            this.countryPanel.ResumeLayout(false);
-            this.countryPanel.PerformLayout();
-            this.cityPanel.ResumeLayout(false);
-            this.cityPanel.PerformLayout();
-            this.statePanel.ResumeLayout(false);
-            this.statePanel.PerformLayout();
-            this.address2Panel.ResumeLayout(false);
-            this.address2Panel.PerformLayout();
-            this.address1Panel.ResumeLayout(false);
-            this.address1Panel.PerformLayout();
-            this.accountGroup.ResumeLayout(false);
-            this.accountTableLayout.ResumeLayout(false);
-            this.confirmPasswordPanel.ResumeLayout(false);
-            this.confirmPasswordPanel.PerformLayout();
-            this.passwordPanel.ResumeLayout(false);
-            this.passwordPanel.PerformLayout();
-            this.rolePanel.ResumeLayout(false);
-            this.rolePanel.PerformLayout();
-            this.infoGroup.ResumeLayout(false);
-            this.infoPanel.ResumeLayout(false);
-            this.phonePanel.ResumeLayout(false);
-            this.phonePanel.PerformLayout();
-            this.emailPanel.ResumeLayout(false);
-            this.emailPanel.PerformLayout();
-            this.anyGenderPanel.ResumeLayout(false);
-            this.anyGenderPanel.PerformLayout();
-            this.genderPanel.ResumeLayout(false);
-            this.genderPanel.PerformLayout();
-            this.birthdatePanel.ResumeLayout(false);
-            this.birthdatePanel.PerformLayout();
-            this.middlenamePanel.ResumeLayout(false);
-            this.middlenamePanel.PerformLayout();
-            this.lastnamePanel.ResumeLayout(false);
-            this.lastnamePanel.PerformLayout();
-            this.surnamePanel1.ResumeLayout(false);
-            this.surnamePanel1.PerformLayout();
-            this.religionPanel.ResumeLayout(false);
-            this.religionPanel.PerformLayout();
+            this.personalAddressInfoTableLayout.ResumeLayout(false);
+            this.personalInfoGroupBox.ResumeLayout(false);
+            this.addressInfoGroupBox.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.StaffInfoTableLayout.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1038,77 +513,35 @@ namespace hospital_management_system
         #endregion
 
         private System.Windows.Forms.GroupBox employeeForm;
-        private System.Windows.Forms.GroupBox departmentGroup;
-        private System.Windows.Forms.GroupBox addressGroup;
-        private System.Windows.Forms.GroupBox infoGroup;
-        private System.Windows.Forms.Panel patientPanel;
-        private System.Windows.Forms.TableLayoutPanel infoPanel;
-        private System.Windows.Forms.Panel anyGenderPanel;
-        private System.Windows.Forms.Panel genderPanel;
-        private System.Windows.Forms.Panel birthdatePanel;
-        private System.Windows.Forms.DateTimePicker birthdateCalendar;
-        private System.Windows.Forms.Label birthdateLabel;
-        private System.Windows.Forms.Panel middlenamePanel;
-        private System.Windows.Forms.Label middlenameLabel;
-        private System.Windows.Forms.TextBox middlenameTextbox;
-        private System.Windows.Forms.Panel lastnamePanel;
-        private System.Windows.Forms.TextBox lastnameTextbox;
-        private System.Windows.Forms.Label lastnameLabel;
-        private System.Windows.Forms.Panel surnamePanel1;
-        private System.Windows.Forms.Label firstnameLabel;
-        private System.Windows.Forms.TextBox firstnameTextbox;
-        private System.Windows.Forms.TextBox anyGenderTextbox;
-        private System.Windows.Forms.RadioButton othersRadio;
-        private System.Windows.Forms.RadioButton femaleRadio;
-        private System.Windows.Forms.RadioButton maleRadio;
-        private System.Windows.Forms.Label genderLabel;
-        private System.Windows.Forms.Panel religionPanel;
-        private System.Windows.Forms.TextBox religionTextbox;
-        private System.Windows.Forms.Label religionLabel;
-        private System.Windows.Forms.Panel phonePanel;
-        private System.Windows.Forms.TextBox phoneTextbox;
-        private System.Windows.Forms.Label phoneLabel;
-        private System.Windows.Forms.Panel emailPanel;
-        private System.Windows.Forms.TextBox emailTextbox;
-        private System.Windows.Forms.Label emailLabel;
-        private System.Windows.Forms.TableLayoutPanel addressTableLayout;
-        private System.Windows.Forms.Panel zipcodePanel;
-        private System.Windows.Forms.TextBox zipcodeTextbox;
-        private System.Windows.Forms.Label zipcodeLabel;
-        private System.Windows.Forms.Panel countryPanel;
-        private System.Windows.Forms.TextBox countryTextbox;
-        private System.Windows.Forms.Label countryLabel;
-        private System.Windows.Forms.Panel cityPanel;
-        private System.Windows.Forms.TextBox cityTextbox;
-        private System.Windows.Forms.Label cityLabel;
-        private System.Windows.Forms.Panel statePanel;
-        private System.Windows.Forms.TextBox stateTextbox;
-        private System.Windows.Forms.Label stateLabel;
-        private System.Windows.Forms.Panel address2Panel;
-        private System.Windows.Forms.TextBox address2Textbox;
-        private System.Windows.Forms.Label address2Label;
-        private System.Windows.Forms.Panel address1Panel;
-        private System.Windows.Forms.TextBox address1Textbox;
-        private System.Windows.Forms.Label address1Label;
-        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Panel employeePanel;
+        private System.Windows.Forms.TableLayoutPanel personalAddressInfoTableLayout;
+        private System.Windows.Forms.GroupBox personalInfoGroupBox;
+        private gui.components.InformationTextbox firstnameInfobox;
+        private gui.components.InformationTextbox contactNoInfobox;
+        private gui.components.InformationTextbox emailAddressInfobox;
+        private gui.components.InformationTextbox religionInfobox;
+        private gui.components.InformationDateTimePicker birthdateInfoBox;
+        private gui.components.InformationTextbox lastnameInfobox;
+        private gui.components.InformationTextbox middlenameInfobox;
+        private System.Windows.Forms.GroupBox addressInfoGroupBox;
+        private gui.components.InformationTextbox address1InfoBox;
         private System.Windows.Forms.FlowLayoutPanel buttonFlowLayout;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Button modifyBtn;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.Button modifyBtn;
-        private System.Windows.Forms.GroupBox accountGroup;
-        private System.Windows.Forms.TableLayoutPanel accountTableLayout;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox departmentCombobox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel passwordPanel;
-        private System.Windows.Forms.TextBox passwordTextbox;
-        private System.Windows.Forms.Label passwordLabel;
-        private System.Windows.Forms.Panel rolePanel;
-        private System.Windows.Forms.ComboBox roleCombobox;
-        private System.Windows.Forms.Label roleLabel;
-        private System.Windows.Forms.Panel confirmPasswordPanel;
-        private System.Windows.Forms.TextBox confirmPasswordTextbox;
-        private System.Windows.Forms.Label confirmPasswordLabel;
+        private gui.components.InformationTextbox countryInfobox;
+        private gui.components.InformationTextbox postInfobox;
+        private gui.components.InformationTextbox stateInfobox;
+        private gui.components.InformationTextbox cityInfobox;
+        private gui.components.InformationTextbox address2Infobox;
+        private System.Windows.Forms.TableLayoutPanel StaffInfoTableLayout;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private gui.components.InformationComboBox informationComboBox1;
+        private gui.components.InformationComboBox informationComboBox2;
+        private gui.components.InformationTextbox informationTextbox1;
+        private gui.components.InformationTextbox informationTextbox2;
+        private gui.components.InformationRadio genderInfobox;
     }
 }
