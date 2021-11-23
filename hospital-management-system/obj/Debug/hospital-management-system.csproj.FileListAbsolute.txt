@@ -70,3 +70,21 @@ C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-s
 C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.exe
 C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.pdb
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.csproj.AssemblyReference.cache
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.csproj.AssemblyReference.cache
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.InformationComboBox.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.InformationDateTimePicker.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.InformationRadio.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.FormAppointment.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.FormBilling.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.FormEmployee.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.InformationTextbox.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.PageView.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.PageDashboard.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.FormMain.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.FormPatient.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.Properties.Resources.resources
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.csproj.GenerateResource.cache
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.csproj.CoreCompileInputs.cache
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.exe
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.pdb
+C:\Users\pajid\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.formReport.resources

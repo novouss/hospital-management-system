@@ -68,7 +68,7 @@ namespace hospital_management_system.gui.components
             this.ComboBox.FormattingEnabled = true;
             this.ComboBox.Location = new System.Drawing.Point(168, 3);
             this.ComboBox.Name = "ComboBox";
-            this.ComboBox.Size = new System.Drawing.Size(555, 29);
+            this.ComboBox.Size = new System.Drawing.Size(555, 36);
             this.ComboBox.TabIndex = 1;
             // 
             // InformationComboBox
