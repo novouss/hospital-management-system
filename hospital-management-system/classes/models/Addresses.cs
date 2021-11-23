@@ -7,8 +7,8 @@ using ServiceStack.DataAnnotations;
 
 namespace hospital_management_system.classes
 {
-    [Alias("Address")]
-    public class Address
+    [Alias("Addresses")]
+    public class Addresses
     {
         public int AddressID { get; set; }
         public string Address1 { get; set; }

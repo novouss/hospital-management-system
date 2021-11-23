@@ -31,13 +31,20 @@ namespace hospital_management_system
         {
             this.employeeForm = new System.Windows.Forms.GroupBox();
             this.employeePanel = new System.Windows.Forms.Panel();
+            this.staffInfoGroupbox = new System.Windows.Forms.GroupBox();
+            this.staffTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.depInfobox = new hospital_management_system.gui.components.InformationComboBox();
+            this.roleInfobox = new hospital_management_system.gui.components.InformationComboBox();
+            this.passwordInfobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.confirmInfobox = new hospital_management_system.gui.components.InformationTextbox();
             this.buttonFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.saveBtn = new System.Windows.Forms.Button();
             this.modifyBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
-            this.personalAddressInfoTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.TableLayout1 = new System.Windows.Forms.TableLayoutPanel();
             this.personalInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.genderInfobox = new hospital_management_system.gui.components.InformationRadio();
             this.contactNoInfobox = new hospital_management_system.gui.components.InformationTextbox();
             this.emailAddressInfobox = new hospital_management_system.gui.components.InformationTextbox();
             this.religionInfobox = new hospital_management_system.gui.components.InformationTextbox();
@@ -46,29 +53,20 @@ namespace hospital_management_system
             this.middlenameInfobox = new hospital_management_system.gui.components.InformationTextbox();
             this.firstnameInfobox = new hospital_management_system.gui.components.InformationTextbox();
             this.addressInfoGroupBox = new System.Windows.Forms.GroupBox();
-            this.address1InfoBox = new hospital_management_system.gui.components.InformationTextbox();
-            this.address2Infobox = new hospital_management_system.gui.components.InformationTextbox();
             this.countryInfobox = new hospital_management_system.gui.components.InformationTextbox();
             this.postInfobox = new hospital_management_system.gui.components.InformationTextbox();
             this.stateInfobox = new hospital_management_system.gui.components.InformationTextbox();
             this.cityInfobox = new hospital_management_system.gui.components.InformationTextbox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.informationTextbox2 = new hospital_management_system.gui.components.InformationTextbox();
-            this.informationTextbox1 = new hospital_management_system.gui.components.InformationTextbox();
-            this.informationComboBox2 = new hospital_management_system.gui.components.InformationComboBox();
-            this.informationComboBox1 = new hospital_management_system.gui.components.InformationComboBox();
-            this.StaffInfoTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.genderInfobox = new hospital_management_system.gui.components.InformationRadio();
+            this.address2Infobox = new hospital_management_system.gui.components.InformationTextbox();
+            this.address1InfoBox = new hospital_management_system.gui.components.InformationTextbox();
             this.employeeForm.SuspendLayout();
             this.employeePanel.SuspendLayout();
+            this.staffInfoGroupbox.SuspendLayout();
+            this.staffTableLayout.SuspendLayout();
             this.buttonFlowLayout.SuspendLayout();
-            this.personalAddressInfoTableLayout.SuspendLayout();
+            this.TableLayout1.SuspendLayout();
             this.personalInfoGroupBox.SuspendLayout();
             this.addressInfoGroupBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.StaffInfoTableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
             // employeeForm
@@ -89,14 +87,88 @@ namespace hospital_management_system
             // employeePanel
             // 
             this.employeePanel.AutoScroll = true;
-            this.employeePanel.Controls.Add(this.StaffInfoTableLayout);
             this.employeePanel.Controls.Add(this.buttonFlowLayout);
-            this.employeePanel.Controls.Add(this.personalAddressInfoTableLayout);
+            this.employeePanel.Controls.Add(this.staffInfoGroupbox);
+            this.employeePanel.Controls.Add(this.TableLayout1);
             this.employeePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.employeePanel.Location = new System.Drawing.Point(9, 67);
             this.employeePanel.Name = "employeePanel";
             this.employeePanel.Size = new System.Drawing.Size(1062, 558);
             this.employeePanel.TabIndex = 0;
+            // 
+            // staffInfoGroupbox
+            // 
+            this.staffInfoGroupbox.Controls.Add(this.staffTableLayout);
+            this.staffInfoGroupbox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.staffInfoGroupbox.Font = new System.Drawing.Font("Segoe UI", 20.25F);
+            this.staffInfoGroupbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.staffInfoGroupbox.Location = new System.Drawing.Point(0, 378);
+            this.staffInfoGroupbox.Name = "staffInfoGroupbox";
+            this.staffInfoGroupbox.Size = new System.Drawing.Size(1045, 142);
+            this.staffInfoGroupbox.TabIndex = 0;
+            this.staffInfoGroupbox.TabStop = false;
+            this.staffInfoGroupbox.Text = "Staff Information";
+            // 
+            // staffTableLayout
+            // 
+            this.staffTableLayout.AutoScroll = true;
+            this.staffTableLayout.ColumnCount = 2;
+            this.staffTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.staffTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.staffTableLayout.Controls.Add(this.depInfobox, 0, 0);
+            this.staffTableLayout.Controls.Add(this.roleInfobox, 1, 0);
+            this.staffTableLayout.Controls.Add(this.passwordInfobox, 0, 1);
+            this.staffTableLayout.Controls.Add(this.confirmInfobox, 1, 1);
+            this.staffTableLayout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.staffTableLayout.Location = new System.Drawing.Point(3, 39);
+            this.staffTableLayout.Name = "staffTableLayout";
+            this.staffTableLayout.RowCount = 2;
+            this.staffTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.staffTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.staffTableLayout.Size = new System.Drawing.Size(1039, 90);
+            this.staffTableLayout.TabIndex = 0;
+            // 
+            // depInfobox
+            // 
+            this.depInfobox.ColumnWidth0 = 165F;
+            this.depInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.depInfobox.LabelText = "Department ";
+            this.depInfobox.Location = new System.Drawing.Point(3, 3);
+            this.depInfobox.Name = "depInfobox";
+            this.depInfobox.Size = new System.Drawing.Size(513, 35);
+            this.depInfobox.TabIndex = 0;
+            // 
+            // roleInfobox
+            // 
+            this.roleInfobox.ColumnWidth0 = 165F;
+            this.roleInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.roleInfobox.LabelText = "Role";
+            this.roleInfobox.Location = new System.Drawing.Point(522, 3);
+            this.roleInfobox.Name = "roleInfobox";
+            this.roleInfobox.Size = new System.Drawing.Size(514, 35);
+            this.roleInfobox.TabIndex = 1;
+            // 
+            // passwordInfobox
+            // 
+            this.passwordInfobox.ColumnWidth0 = 165F;
+            this.passwordInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.passwordInfobox.LabelText = "Password";
+            this.passwordInfobox.Location = new System.Drawing.Point(3, 47);
+            this.passwordInfobox.Name = "passwordInfobox";
+            this.passwordInfobox.Size = new System.Drawing.Size(513, 35);
+            this.passwordInfobox.TabIndex = 2;
+            this.passwordInfobox.TextboxText = "";
+            // 
+            // confirmInfobox
+            // 
+            this.confirmInfobox.ColumnWidth0 = 165F;
+            this.confirmInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.confirmInfobox.LabelText = "Confirm Password";
+            this.confirmInfobox.Location = new System.Drawing.Point(522, 47);
+            this.confirmInfobox.Name = "confirmInfobox";
+            this.confirmInfobox.Size = new System.Drawing.Size(514, 35);
+            this.confirmInfobox.TabIndex = 3;
+            this.confirmInfobox.TextboxText = "";
             // 
             // buttonFlowLayout
             // 
@@ -107,7 +179,7 @@ namespace hospital_management_system
             this.buttonFlowLayout.Controls.Add(this.deleteBtn);
             this.buttonFlowLayout.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonFlowLayout.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.buttonFlowLayout.Location = new System.Drawing.Point(0, 526);
+            this.buttonFlowLayout.Location = new System.Drawing.Point(0, 520);
             this.buttonFlowLayout.Name = "buttonFlowLayout";
             this.buttonFlowLayout.Size = new System.Drawing.Size(1045, 51);
             this.buttonFlowLayout.TabIndex = 5;
@@ -180,21 +252,21 @@ namespace hospital_management_system
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = false;
             // 
-            // personalAddressInfoTableLayout
+            // TableLayout1
             // 
-            this.personalAddressInfoTableLayout.ColumnCount = 2;
-            this.personalAddressInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.personalAddressInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.personalAddressInfoTableLayout.Controls.Add(this.personalInfoGroupBox, 0, 0);
-            this.personalAddressInfoTableLayout.Controls.Add(this.addressInfoGroupBox, 1, 0);
-            this.personalAddressInfoTableLayout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.personalAddressInfoTableLayout.Location = new System.Drawing.Point(0, 0);
-            this.personalAddressInfoTableLayout.Name = "personalAddressInfoTableLayout";
-            this.personalAddressInfoTableLayout.RowCount = 1;
-            this.personalAddressInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.53933F));
-            this.personalAddressInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.personalAddressInfoTableLayout.Size = new System.Drawing.Size(1045, 378);
-            this.personalAddressInfoTableLayout.TabIndex = 0;
+            this.TableLayout1.ColumnCount = 2;
+            this.TableLayout1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayout1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayout1.Controls.Add(this.personalInfoGroupBox, 0, 0);
+            this.TableLayout1.Controls.Add(this.addressInfoGroupBox, 1, 0);
+            this.TableLayout1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TableLayout1.Location = new System.Drawing.Point(0, 0);
+            this.TableLayout1.Name = "TableLayout1";
+            this.TableLayout1.RowCount = 1;
+            this.TableLayout1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.53933F));
+            this.TableLayout1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 378F));
+            this.TableLayout1.Size = new System.Drawing.Size(1045, 378);
+            this.TableLayout1.TabIndex = 0;
             // 
             // personalInfoGroupBox
             // 
@@ -215,7 +287,23 @@ namespace hospital_management_system
             this.personalInfoGroupBox.TabIndex = 0;
             this.personalInfoGroupBox.TabStop = false;
             this.personalInfoGroupBox.Text = "Personal Information";
-            this.personalInfoGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // genderInfobox
+            // 
+            this.genderInfobox.ColumnWidth0 = 245F;
+            this.genderInfobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.genderInfobox.LabelText = "Gender";
+            this.genderInfobox.Location = new System.Drawing.Point(3, 284);
+            this.genderInfobox.Name = "genderInfobox";
+            this.genderInfobox.RadioForeColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.genderInfobox.RadioForeColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.genderInfobox.RadioForeColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
+            this.genderInfobox.RadioText1 = "Others:";
+            this.genderInfobox.RadioText2 = "Female";
+            this.genderInfobox.RadioText3 = "Others:";
+            this.genderInfobox.Size = new System.Drawing.Size(510, 70);
+            this.genderInfobox.TabIndex = 36;
+            this.genderInfobox.TextboxText = "";
             // 
             // contactNoInfobox
             // 
@@ -281,7 +369,6 @@ namespace hospital_management_system
             this.middlenameInfobox.Size = new System.Drawing.Size(510, 35);
             this.middlenameInfobox.TabIndex = 1;
             this.middlenameInfobox.TextboxText = "";
-            this.middlenameInfobox.Load += new System.EventHandler(this.middlenameInfobox_Load);
             // 
             // firstnameInfobox
             // 
@@ -293,7 +380,6 @@ namespace hospital_management_system
             this.firstnameInfobox.Size = new System.Drawing.Size(510, 35);
             this.firstnameInfobox.TabIndex = 0;
             this.firstnameInfobox.TextboxText = "";
-            this.firstnameInfobox.Load += new System.EventHandler(this.firstnameInfobox_Load);
             // 
             // addressInfoGroupBox
             // 
@@ -312,28 +398,6 @@ namespace hospital_management_system
             this.addressInfoGroupBox.TabIndex = 1;
             this.addressInfoGroupBox.TabStop = false;
             this.addressInfoGroupBox.Text = "Address Information";
-            // 
-            // address1InfoBox
-            // 
-            this.address1InfoBox.ColumnWidth0 = 165F;
-            this.address1InfoBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.address1InfoBox.LabelText = "Address 1";
-            this.address1InfoBox.Location = new System.Drawing.Point(3, 39);
-            this.address1InfoBox.Name = "address1InfoBox";
-            this.address1InfoBox.Size = new System.Drawing.Size(511, 35);
-            this.address1InfoBox.TabIndex = 17;
-            this.address1InfoBox.TextboxText = "";
-            // 
-            // address2Infobox
-            // 
-            this.address2Infobox.ColumnWidth0 = 165F;
-            this.address2Infobox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.address2Infobox.LabelText = "Address 2";
-            this.address2Infobox.Location = new System.Drawing.Point(3, 74);
-            this.address2Infobox.Name = "address2Infobox";
-            this.address2Infobox.Size = new System.Drawing.Size(511, 35);
-            this.address2Infobox.TabIndex = 31;
-            this.address2Infobox.TextboxText = "";
             // 
             // countryInfobox
             // 
@@ -379,111 +443,27 @@ namespace hospital_management_system
             this.cityInfobox.TabIndex = 32;
             this.cityInfobox.TextboxText = "";
             // 
-            // groupBox1
+            // address2Infobox
             // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel3);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 20.25F);
-            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1039, 142);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Staff Information";
+            this.address2Infobox.ColumnWidth0 = 165F;
+            this.address2Infobox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.address2Infobox.LabelText = "Address 2";
+            this.address2Infobox.Location = new System.Drawing.Point(3, 74);
+            this.address2Infobox.Name = "address2Infobox";
+            this.address2Infobox.Size = new System.Drawing.Size(511, 35);
+            this.address2Infobox.TabIndex = 31;
+            this.address2Infobox.TextboxText = "";
             // 
-            // tableLayoutPanel3
+            // address1InfoBox
             // 
-            this.tableLayoutPanel3.AutoScroll = true;
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.informationComboBox1, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.informationComboBox2, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.informationTextbox1, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.informationTextbox2, 1, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 39);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1033, 90);
-            this.tableLayoutPanel3.TabIndex = 0;
-            // 
-            // informationTextbox2
-            // 
-            this.informationTextbox2.ColumnWidth0 = 165F;
-            this.informationTextbox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.informationTextbox2.LabelText = "Confirm Password";
-            this.informationTextbox2.Location = new System.Drawing.Point(519, 47);
-            this.informationTextbox2.Name = "informationTextbox2";
-            this.informationTextbox2.Size = new System.Drawing.Size(511, 35);
-            this.informationTextbox2.TabIndex = 3;
-            this.informationTextbox2.TextboxText = "";
-            // 
-            // informationTextbox1
-            // 
-            this.informationTextbox1.ColumnWidth0 = 165F;
-            this.informationTextbox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.informationTextbox1.LabelText = "Password";
-            this.informationTextbox1.Location = new System.Drawing.Point(3, 47);
-            this.informationTextbox1.Name = "informationTextbox1";
-            this.informationTextbox1.Size = new System.Drawing.Size(510, 35);
-            this.informationTextbox1.TabIndex = 2;
-            this.informationTextbox1.TextboxText = "";
-            // 
-            // informationComboBox2
-            // 
-            this.informationComboBox2.ColumnWidth0 = 165F;
-            this.informationComboBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.informationComboBox2.LabelText = "Role";
-            this.informationComboBox2.Location = new System.Drawing.Point(519, 3);
-            this.informationComboBox2.Name = "informationComboBox2";
-            this.informationComboBox2.Size = new System.Drawing.Size(511, 35);
-            this.informationComboBox2.TabIndex = 1;
-            // 
-            // informationComboBox1
-            // 
-            this.informationComboBox1.ColumnWidth0 = 165F;
-            this.informationComboBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.informationComboBox1.LabelText = "Department ";
-            this.informationComboBox1.Location = new System.Drawing.Point(3, 3);
-            this.informationComboBox1.Name = "informationComboBox1";
-            this.informationComboBox1.Size = new System.Drawing.Size(510, 35);
-            this.informationComboBox1.TabIndex = 0;
-            // 
-            // StaffInfoTableLayout
-            // 
-            this.StaffInfoTableLayout.AutoScroll = true;
-            this.StaffInfoTableLayout.ColumnCount = 1;
-            this.StaffInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.StaffInfoTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.StaffInfoTableLayout.Controls.Add(this.groupBox1, 0, 0);
-            this.StaffInfoTableLayout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.StaffInfoTableLayout.Location = new System.Drawing.Point(0, 378);
-            this.StaffInfoTableLayout.Name = "StaffInfoTableLayout";
-            this.StaffInfoTableLayout.RowCount = 1;
-            this.StaffInfoTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.StaffInfoTableLayout.Size = new System.Drawing.Size(1045, 148);
-            this.StaffInfoTableLayout.TabIndex = 6;
-            // 
-            // genderInfobox
-            // 
-            this.genderInfobox.ColumnWidth0 = 245F;
-            this.genderInfobox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.genderInfobox.LabelText = "Gender";
-            this.genderInfobox.Location = new System.Drawing.Point(3, 284);
-            this.genderInfobox.Name = "genderInfobox";
-            this.genderInfobox.RadioForeColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.genderInfobox.RadioForeColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.genderInfobox.RadioForeColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
-            this.genderInfobox.RadioText1 = "Male";
-            this.genderInfobox.RadioText2 = "Female";
-            this.genderInfobox.RadioText3 = "Others:";
-            this.genderInfobox.Size = new System.Drawing.Size(510, 70);
-            this.genderInfobox.TabIndex = 36;
-            this.genderInfobox.TextboxText = "";
+            this.address1InfoBox.ColumnWidth0 = 165F;
+            this.address1InfoBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.address1InfoBox.LabelText = "Address 1";
+            this.address1InfoBox.Location = new System.Drawing.Point(3, 39);
+            this.address1InfoBox.Name = "address1InfoBox";
+            this.address1InfoBox.Size = new System.Drawing.Size(511, 35);
+            this.address1InfoBox.TabIndex = 17;
+            this.address1InfoBox.TextboxText = "";
             // 
             // FormEmployee
             // 
@@ -498,13 +478,12 @@ namespace hospital_management_system
             this.employeeForm.ResumeLayout(false);
             this.employeePanel.ResumeLayout(false);
             this.employeePanel.PerformLayout();
+            this.staffInfoGroupbox.ResumeLayout(false);
+            this.staffTableLayout.ResumeLayout(false);
             this.buttonFlowLayout.ResumeLayout(false);
-            this.personalAddressInfoTableLayout.ResumeLayout(false);
+            this.TableLayout1.ResumeLayout(false);
             this.personalInfoGroupBox.ResumeLayout(false);
             this.addressInfoGroupBox.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.StaffInfoTableLayout.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -514,7 +493,7 @@ namespace hospital_management_system
 
         private System.Windows.Forms.GroupBox employeeForm;
         private System.Windows.Forms.Panel employeePanel;
-        private System.Windows.Forms.TableLayoutPanel personalAddressInfoTableLayout;
+        private System.Windows.Forms.TableLayoutPanel TableLayout1;
         private System.Windows.Forms.GroupBox personalInfoGroupBox;
         private gui.components.InformationTextbox firstnameInfobox;
         private gui.components.InformationTextbox contactNoInfobox;
@@ -535,13 +514,12 @@ namespace hospital_management_system
         private gui.components.InformationTextbox stateInfobox;
         private gui.components.InformationTextbox cityInfobox;
         private gui.components.InformationTextbox address2Infobox;
-        private System.Windows.Forms.TableLayoutPanel StaffInfoTableLayout;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private gui.components.InformationComboBox informationComboBox1;
-        private gui.components.InformationComboBox informationComboBox2;
-        private gui.components.InformationTextbox informationTextbox1;
-        private gui.components.InformationTextbox informationTextbox2;
+        private System.Windows.Forms.GroupBox staffInfoGroupbox;
+        private System.Windows.Forms.TableLayoutPanel staffTableLayout;
+        private gui.components.InformationComboBox depInfobox;
+        private gui.components.InformationComboBox roleInfobox;
+        private gui.components.InformationTextbox passwordInfobox;
+        private gui.components.InformationTextbox confirmInfobox;
         private gui.components.InformationRadio genderInfobox;
     }
 }

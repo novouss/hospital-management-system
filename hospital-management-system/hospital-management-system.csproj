@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -97,17 +97,17 @@
   <ItemGroup>
     <Compile Include="classes\dbAccess.cs" />
     <Compile Include="classes\effects\ButtonEffect.cs" />
-    <Compile Include="classes\models\Address.cs" />
+    <Compile Include="classes\models\Addresses.cs" />
     <Compile Include="classes\dbConnection.cs" />
-    <Compile Include="classes\models\Department.cs" />
-    <Compile Include="classes\models\EmployeeDepartment.cs" />
-    <Compile Include="classes\models\EmployeeDetails.cs" />
-    <Compile Include="classes\models\LaboratoryDetails.cs" />
-    <Compile Include="classes\models\PatientDetails.cs" />
-    <Compile Include="classes\models\PatientRegistration.cs" />
-    <Compile Include="classes\models\Laboratory.cs" />
-    <Compile Include="classes\models\Role.cs" />
-    <Compile Include="classes\models\Room.cs" />
+    <Compile Include="classes\models\Billings.cs" />
+    <Compile Include="classes\models\Departments.cs" />
+    <Compile Include="classes\models\Employees.cs" />
+    <Compile Include="classes\models\Reports.cs" />
+    <Compile Include="classes\models\Patients.cs" />
+    <Compile Include="classes\models\Registrations.cs" />
+    <Compile Include="classes\models\Laboratories.cs" />
+    <Compile Include="classes\models\Roles.cs" />
+    <Compile Include="classes\models\Rooms.cs" />
     <Compile Include="gui\components\InformationComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -246,6 +246,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dbo\HospitalInformationDatabase.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dbo\HospitalInformationDatabase_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>HospitalInformationDatabase.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,10 +7,12 @@ using ServiceStack.DataAnnotations;
 
 namespace hospital_management_system.classes
 {
-    [Alias("Role")]
-    public class Role
+    [Alias("Rooms")]
+    public class Rooms
     {
-        public int RoleID { get; set; }
-        public string Description { get; set; }
+        public int RoomID { get; set; }
+        public String RoomNumber { get; set; }
+        public int Status { get; set; }
+        public int RoomCharge { get; set; }
     }
 }

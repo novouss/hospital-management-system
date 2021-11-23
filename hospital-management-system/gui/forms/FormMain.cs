@@ -15,7 +15,7 @@ namespace hospital_management_system.gui.forms
 
     public partial class FormMain : Form
     {
-        private EmployeeDetails employee;
+        private Employees employee;
 
         public FormMain()
         {
@@ -150,7 +150,7 @@ namespace hospital_management_system.gui.forms
 
         public void dashboardBtn_Click(object sender, EventArgs e)
         {
-            OpenChildWindow(new PageDashboard(this, this.employee));
+            // OpenChildWindow(new PageDashboard(this, this.employee));
             ButtonEffect(dashboardBtn);
         }
 
@@ -196,17 +196,17 @@ namespace hospital_management_system.gui.forms
         #region Login and Logout Functions
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            /*dbAccess db = new dbAccess();
+            dbAccess db = new dbAccess();
 
-            var account = db.findAccount(emailTextbox.Text, passwordTextbox.Text);
+            var account = db.GetEmployeeLogin(emailTextbox.Text, passwordTextbox.Text);
 
-            if (account == null || account.Count > 1)
+            if (account == null)
             {
                 AccountDoesNotExist();
                 return;
             }
 
-            AccountExists(account[0]);*/
+            AccountExists(account);
         }
 
         private void AccountDoesNotExist()
@@ -219,7 +219,7 @@ namespace hospital_management_system.gui.forms
             passwordTextbox.Text = "";
         }
 
-        private void AccountExists(EmployeeDetails employee)
+        private void AccountExists(Employees employee)
         {
             this.employee = employee;
             OpenChildWindow(new PageDashboard(this, this.employee));

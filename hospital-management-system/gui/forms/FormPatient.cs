@@ -13,14 +13,14 @@ namespace hospital_management_system
     {
 
         private dbAccess db = new dbAccess();
-        private PatientDetails patient = null;
-        public FormPatient(string function, PatientDetails patient = null)
+        private Patients patient = null;
+        public FormPatient(string function, Patients patient = null)
         {
             InitializeComponent();
-            this.patient = patient;
-            loadPatient(function);
+            // this.patient = patient;
+            // loadPatient(function);
         }
-
+        /*
         private void loadPatient(string function)
         {
             switch (function)
@@ -73,7 +73,7 @@ namespace hospital_management_system
 
         private void AddPatientSaveBtn_Click(object sender, EventArgs e)
         {
-            PatientDetails patient = new PatientDetails();
+            Patients patient = new Patients();
 
             patient.FirstName = firstnameTextbox.Text;
             patient.LastName = lastnameTextbox.Text;
@@ -107,7 +107,7 @@ namespace hospital_management_system
             this.Close();
         }
 
-        private void viewPatient(PatientDetails patient)
+        private void viewPatient(Patients patient)
         {
             this.patient = patient;
             // Visualize information
@@ -233,5 +233,6 @@ namespace hospital_management_system
             anyGenderTextbox.Enabled = othersRadio.Checked;
             anyGenderTextbox.Text = "";
         }
+        */
     }
 }

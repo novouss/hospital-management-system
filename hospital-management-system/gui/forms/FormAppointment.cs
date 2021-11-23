@@ -14,15 +14,16 @@ namespace hospital_management_system.gui.forms
     public partial class FormAppointment : Form
     {
         private dbAccess db = new dbAccess();
-        private PatientRegistration registration = new PatientRegistration();
-        public FormAppointment(string function, PatientRegistration registration = null)
+        private Registrations Registrations = new Registrations();
+        public FormAppointment(string function, int id = null)
         {
             InitializeComponent();
-            InitalizeComboboxItems();
-            this.registration = registration;
-            loadAppointment(function);
+            // InitalizeComboboxItems();
+            // this.Registrations = Registrations;
+            // loadAppointment(function);
         }
 
+        /*
         private void InitalizeComboboxItems()
         {
             // Get Patients
@@ -86,11 +87,11 @@ namespace hospital_management_system.gui.forms
             switch (function)
             {
                 case "view":
-                    appointmentForm.Text = "View Appointment ID: " + registration.RegistrationID;
-                    viewAppointment(this.registration);
+                    appointmentForm.Text = "View Appointment ID: " + Registrations.RegistrationsID;
+                    viewAppointment(this.Registrations);
                     break;
                 case "modify":
-                    appointmentForm.Text = "Modify Appointment ID: " + registration.RegistrationID;
+                    appointmentForm.Text = "Modify Appointment ID: " + Registrations.RegistrationsID;
                     modifyAppointment();
                     break;
                 case "add":
@@ -120,31 +121,31 @@ namespace hospital_management_system.gui.forms
             saveBtn.Visible = true;
 
             // Button Function
-            saveBtn.Click += AddRegistrationSaveBtn_Click;
+            saveBtn.Click += AddRegistrationsSaveBtn_Click;
 
         }
 
-        private void AddRegistrationSaveBtn_Click(object sender, EventArgs e)
+        private void AddRegistrationsSaveBtn_Click(object sender, EventArgs e)
         {
-            PatientRegistration registration = new PatientRegistration();
+            Registrations Registrations = new Registrations();
 
-            registration.PatientID = int.Parse(patientCombobox.Text);
-            registration.EmployeeID = int.Parse(employeeCombobox.Text);
-            registration.RoomID = int.Parse(roomCombobox.Text);
-            registration.LaboratoryID = int.Parse(laboratoryCombobox.Text);
-            registration.AdmissionOn = new DateTime(admissionCalendar.Value.Year, admissionCalendar.Value.Month, admissionCalendar.Value.Day, admissionCalendar.Value.Hour, admissionCalendar.Value.Minute, admissionCalendar.Value.Second);            
-            registration.DischargeOn = new DateTime(dischageCalendar.Value.Year, dischageCalendar.Value.Month, dischageCalendar.Value.Day, dischageCalendar.Value.Hour, dischageCalendar.Value.Minute, dischageCalendar.Value.Second);
-            Console.WriteLine(registration.DischargeOn);
-            registration.Results = resultTextgroup.Text;
+            Registrations.PatientID = int.Parse(patientCombobox.Text);
+            Registrations.EmployeeID = int.Parse(employeeCombobox.Text);
+            Registrations.RoomID = int.Parse(roomCombobox.Text);
+            Registrations.LaboratoryID = int.Parse(laboratoryCombobox.Text);
+            Registrations.AdmissionOn = new DateTime(admissionCalendar.Value.Year, admissionCalendar.Value.Month, admissionCalendar.Value.Day, admissionCalendar.Value.Hour, admissionCalendar.Value.Minute, admissionCalendar.Value.Second);            
+            Registrations.DischargeOn = new DateTime(dischageCalendar.Value.Year, dischageCalendar.Value.Month, dischageCalendar.Value.Day, dischageCalendar.Value.Hour, dischageCalendar.Value.Minute, dischageCalendar.Value.Second);
+            Console.WriteLine(Registrations.DischargeOn);
+            Registrations.Results = resultTextgroup.Text;
 
-            db.addAppointment(registration);
+            db.addAppointment(Registrations);
 
             this.Close();
         }
 
-        private void viewAppointment(PatientRegistration registration)
+        private void viewAppointment(Registrations Registrations)
         {
-            this.registration = registration;
+            this.Registrations = Registrations;
             // Visualize information
             appointmentGroup.Visible = true;
             resultGroup.Visible = true;
@@ -160,13 +161,13 @@ namespace hospital_management_system.gui.forms
             saveBtn.Visible = false;
 
             // Visualize Information
-            patientCombobox.Text = registration.PatientID + "";
-            employeeCombobox.Text = registration.EmployeeID + "";
-            roomCombobox.Text = registration.RoomID + "";
-            laboratoryCombobox.Text = registration.LaboratoryID + "";
-            admissionCalendar.Value = registration.AdmissionOn;
-            dischageCalendar.Value = registration.DischargeOn;
-            resultTextgroup.Text = registration.Results;
+            patientCombobox.Text = Registrations.PatientID + "";
+            employeeCombobox.Text = Registrations.EmployeeID + "";
+            roomCombobox.Text = Registrations.RoomID + "";
+            laboratoryCombobox.Text = Registrations.LaboratoryID + "";
+            admissionCalendar.Value = Registrations.AdmissionOn;
+            dischageCalendar.Value = Registrations.DischargeOn;
+            resultTextgroup.Text = Registrations.Results;
 
             // Button Function
             modifyBtn.Click += ModifyAppointmentBtn_Click;
@@ -193,5 +194,6 @@ namespace hospital_management_system.gui.forms
             modifyBtn.Visible = false;
             saveBtn.Visible = true;
         }
+        */
     }
 }

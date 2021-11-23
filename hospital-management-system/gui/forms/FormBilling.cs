@@ -13,11 +13,11 @@ namespace hospital_management_system
     {
 
         private dbAccess db = new dbAccess();
-        private PatientDetails patient = null;
+        private Patients patient = null;
         public FormBilling(string function)
         {
             InitializeComponent();
-            loadBilling(function);
+            // loadBilling(function);
         }
 
         private void loadBilling(string function)

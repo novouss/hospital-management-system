@@ -1,68 +1,126 @@
-/**********************************************
--- CREATING DATABASE
-**********************************************/
 
-/**********************************************
--- DROPPING CONSTRAINTS (FK, UQ, DF)
-**********************************************/
+/*
+	TABLE OF CONTENTS:
+	-1. PRELIMINARY DROP SCRIPTS
+	
+	0. CREATE FUNCTIONS (FN)
+		0.1 CREATE FUNCTION dbo.FN_CalculateAge
+	
+	1. CREATE TABLES
+		1.1 CREATE TABLE dbo.Addresses
+		1.2 CREATE TABLE dbo.Patients
+		1.3 CREATE TABLE dbo.Employees
+		1.4 CREATE TABLE dbo.Roles
+		1.5 CREATE TABLE dbo.Departments
+		1.6 CREATE TABLE dbo.Registrations
+		1.7 CREATE TABLE dbo.Laboratories
+		1.8 CREATE TABLE dbo.Rooms
+		1.9 CREATE TABLE dbo.Reports
+		1.10 CREATE TABLE dbo.Billings
+	
+	2. CREATE CONSTRAINTS (FK, UQ, DF)
+		2.1 FOREIGN KEY CONSTRAINTS 'FK_{FOREIGN Table}_{PRIMARY Table}_{Key}'
+			2.1.1 ADD CONSTRAINT FK_Patients_Addresses_AddressID
+			2.1.2 ADD CONSTRAINT FK_Employees_Addresses_AddressID
+			2.1.3 ADD CONSTRAINT FK_Employees_Role_RoleID
+			2.1.4 ADD CONSTRAINT FK_Employees_Department_DepartmentID
+			2.1.5 ADD CONSTRAINT FK_Registrations_Patients_PatientID
+			2.1.6 ADD CONSTRAINT FK_Registrations_Rooms_RoomID
+			2.1.7 ADD CONSTRAINT FK_Reports_Registration_RegistrationID
+			2.1.8 ADD CONSTRAINT FK_Reports_Laboratories_LaboratoryID
+			2.1.9 ADD CONSTRAINT FK_Reports_Employees_EmployeeID
+			2.1.10 ADD CONSTRAINT FK_Billings_Registrations_RegistrationID
+		
+		2.2 UNIQUE KEY CONSTRAINTS 'UQ_{PK Table}_{Key}'
+			2.2.1 ADD CONSTRAINT UQ_Patients_PatientID
+			2.2.2 ADD CONSTRAINT UQ_Employees_EmployeeID
+			2.2.3 ADD CONSTRAINT UQ_Addresses_AddressID
+			2.2.4 ADD CONSTRAINT UQ_Registrations_RegistrationID
+			2.2.5 ADD CONSTRAINT UQ_Reports_ReportID
+			2.2.6 ADD CONSTRAINT UQ_Billings_BillID
+		
+		2.3 DEFAULT CONSTRAINTS 'DF_{Table}_{Key}'
+			2.3.1 ADD CONSTRAINT DF_Patients_CreatedOn
+			2.3.2 ADD CONSTRAINT DF_Employees_CreatedOn
+			2.3.3 ADD CONSTRAINT DF_Registrations_CreatedOn
+			2.3.4 ADD CONSTRAINT DF_Reports_CreatedOn
+			2.3.5 ADD CONSTRAINT DF_Billings_CreatedOn
+			2.3.6 ADD CONSTRAINT DF_Employees_Status
+			2.3.7 ADD CONSTRAINT DF_Registrations_Status
+			2.3.8 ADD CONSTRAINT DF_Laboratories_Status
+			2.3.9 ADD CONSTRAINT DF_Room_Status
+			2.3.10 ADD CONSTRAINT DF_Billings_Status
+			
+	3. CREATE USER STORED PROCEDURES (USP)
+		3.1 dbo.Addresses
+			3.1.1 CREATE PROCEDURE dbo.USP_CreateAddress
+			3.1.2 CREATE PROCEDURE dbo.USP_UpdateAddress
+			3.1.3 CREATE PROCEDURE dbo.USP_DropAddress
+			3.1.4 CREATE PROCEDURE dbo.USP_GetAddressInformation
+		3.2 dbo.Patients
+			3.2.1 CREATE PROCEDURE dbo.USP_CreatePatient
+			3.2.2 CREATE PROCEDURE dbo.USP_UpdatePatient
+			3.2.3 CREATE PROCEDURE dbo.USP_DropPatient
+			3.2.4 CREATE PROCEDURE dbo.USP_GetPaitentInformation
+		3.3 dbo.Employees
+			3.3.1 CREATE PROCEDURE dbo.USP_CreateEmployee
+			3.3.2 CREATE PROCEDURE dbo.USP_UpdateEmployee
+			3.3.3 CREATE PROCEDURE dbo.USP_DropEmployee
+			3.3.4 CREATE PROCEDURE dbo.USP_GetEmployeeInforamtion
+			3.3.5 CREATE PROCEDURE dbo.USP_GetDepartmentEmployees
+			3.3.6 CREATE PROCEDURE dbo.USP_GetEmployeeLogin
+		3.4 dbo.Registrations
+			3.4.1 CREATE PROCEDURE dbo.USP_CreateRegistration
+			3.4.2 CREATE PROCEDURE dbo.USP_UpdateRegistration
+			3.4.3 CREATE PROCEDURE dbo.USP_DropRegistration
+			3.4.4 CREATE PROCEDURE dbo.USP_GetRegistrationInformation
+		3.5 dbo.Reports
+			3.5.1 CREATE PROCEDURE dbo.USP_CreateReport
+			3.5.2 CREATE PROCEDURE dbo.USP_UpdateReport
+			3.5.3 CREATE PROCEDURE dbo.USP_DropReport
+			3.5.4 CREATE PROCEDURE dbo.USP_GetReportInfomration
+			3.5.5 CREATE PROCEDURE dbo.USP_GetRegistrationReport
+		3.6 dbo.Billings
+			3.6.1 CREATE PROCEDURE dbo.USP_CreateBilling
+			3.6.2 CREATE PROCEDURE dbo.USP_UpdateBilling
+			3.6.3 CREATE PROCEDURE dbo.USP_DropBilling
+			3.6.4 CREATE PROCEDURE dbo.USP_GetBillingInformation
+		3.7 dbo.Laboratories
+			3.7.1 CREATE PROCEDURE dbo.USP_CreateLaboratory
+			3.7.2 CREATE PROCEDURE dbo.USP_UpdateLaboratory
+			3.7.3 CREATE PROCEDURE dbo.USP_DropLaboratory
+			3.7.4 CREATE PROCEDURE dbo.USP_GetLaboratoryInformation
+			3.7.4 CREATE PROCEDURE dbo.USP_OpenLaboratory
+		3.8 dbo.Rooms
+			3.8.1 CREATE PROCEDURE dbo.USP_CreateRoom
+			3.8.2 CREATE PROCEDURE dbo.USP_UpdateRoom
+			3.8.3 CREATE PROCEDURE dbo.USP_DropRoom
+			3.8.4 CREATE PROCEDURE dbo.USP_GetRoomInformation
+			3.8.4 CREATE PROCEDURE dbo.USP_OpenRoom
+			
+	4. CREATE VIEWS 
+		4.1 CREATE VIEW V_Patients
+		4.2 CREATE VIEW V_Employees
+		4.3 CREATE VIEW V_Departments
+		4.4 CREATE VIEW V_Registration
+		4.5 CREATE VIEW V_Rooms
+		4.6 CREATE VIEW V_Laboratories
+		4.7 CREATE VIEW V_Reports
+		4.8 CREATE VIEW V_Billings
+	
+	5. INSERT VALUES INTO TABLE
+*/
 
--- DROP FOREGIN KEY CONSTRAINT
-ALTER TABLE dbo.PatientDetails DROP CONSTRAINT [FK_PatientDetails_Address_ID]
-ALTER TABLE dbo.EmployeeDetails DROP CONSTRAINT [FK_EmployeeDetails_Address_ID] 
-ALTER TABLE dbo.EmployeeDetails DROP CONSTRAINT [FK_EmployeeDetails_Role_ID] 
-ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT [FK_PatientRegistration_Patient_ID]
---ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT [FK_PatientRegistration_Employee_ID]
-ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT [FK_PatientRegistration_Room_ID]
-ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT [FK_PatientRegistration_Laboratory_ID]
-ALTER TABLE dbo.EmployeeDepartment DROP CONSTRAINT [FK_EmployeeDepartment_Employee_ID]
-ALTER TABLE dbo.EmployeeDepartment DROP CONSTRAINT [FK_EmployeeDepartment_Department_ID] 
-ALTER TABLE dbo.LaboratoryDetails DROP CONSTRAINT [FK_LaboratoryDetails_Registration_ID] 
-ALTER TABLE dbo.Billing DROP CONSTRAINT [FK_Billing_Registration_ID] 
 
--- DROP UNIQUE CONSTRAINT
-ALTER TABLE dbo.PatientDetails DROP CONSTRAINT UQ_PatientDetails_PatientID 
-ALTER TABLE dbo.EmployeeDetails DROP CONSTRAINT UQ_EmployeeDetails_EmployeeID 
-ALTER TABLE dbo.Address DROP CONSTRAINT UQ_Address 
-ALTER TABLE dbo.LaboratoryDetails DROP CONSTRAINT UQ_LaboratoryDetails 
-
--- DROP DEFAULT CONSTRAINTS
-ALTER TABLE dbo.PatientDetails DROP CONSTRAINT DF_PatientDetails_CreatedOn
-ALTER TABLE dbo.EmployeeDetails DROP CONSTRAINT DF_EmployeeDetails_CreatedOn
-ALTER TABLE dbo.PatientRegistration DROP CONSTRAINT DF_PatientRegistration_CreatedOn
-
-GO
-/**********************************************
--- DROPPING USER STORED PROCEDURES (USP)
-**********************************************/
+/********************************
+-- -1. PRELIMINARY DROP SCRIPTS
+********************************/
 
 
-DROP PROCEDURE dbo.USP_AddAddress;
-DROP PROCEDURE dbo.USP_ModifyAddress;
-DROP PROCEDURE dbo.USP_DeleteAddress;
 
-DROP PROCEDURE dbo.USP_AddPatient;
-DROP PROCEDURE dbo.USP_DeletePatient;
-DROP PROCEDURE dbo.USP_ModifyPatient;
-
-DROP PROCEDURE dbo.USP_AddEmployee;
-DROP PROCEDURE dbo.USP_DeleteEmployee;
-DROP PROCEDURE dbo.USP_ModifyPatient;
-
-DROP PROCEDURE dbo.USP_AddRegistration;
-DROP PROCEDURE dbo.USP_DeleteRegistration;
-DROP PROCEDURE dbo.USP_ModifyRegistration;
-
-GO
-/**********************************************
--- DROPPING VIEWS (V)
-**********************************************/
-DROP VIEW dbo.V_PatientInformation;
-DROP VIEW dbo.V_EmployeeInformation;
-
-GO
-/**********************************************
--- CREATING FUNCTIONS
-**********************************************/
+/********************************
+-- 0. CREATE FUNCTIONS (FN)
+********************************/
 
 CREATE FUNCTION dbo.FN_CalculateAge (
 	@Birthdate DATETIME
@@ -82,114 +140,12 @@ BEGIN
 END
 GO
 
-/**********************************************
--- CREATING TABLES
-**********************************************/
+/********************************
+-- 1. CREATE TABLES
+********************************/
 
------------------------------------------------
--- Tables [dbo.PatientDetails]
------------------------------------------------
-IF OBJECT_ID(N'dbo.PatientDetails', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[PatientDetails];  
-GO
-
-CREATE TABLE [dbo].[PatientDetails](
-	[PatientID] INT IDENTITY(1,1) NOT NULL,
-	[FirstName] VARCHAR(50) NULL,
-	[LastName] VARCHAR(50) NULL,
-	[MiddleName] VARCHAR(50) NULL,
-	[Birthdate] DATE NULL,
-	[Age] INT NULL,
-	[Gender] VARCHAR(50) NULL,
-	[Religion] VARCHAR(50) NULL,
-	[Email] VARCHAR(50) NULL,
-	[PhoneNumber] VARCHAR(50) NULL,
-	[AddressID] INT NULL,
-	[CreatedOn] DATETIME NULL,
-	[ModifiedOn] DATETIME NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[PatientID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
-)
-GO
-
------------------------------------------------
--- Table [dbo].[EmployeeDetails]
------------------------------------------------
-IF OBJECT_ID(N'dbo.EmployeeDetails', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[EmployeeDetails];  
-GO
-
-CREATE TABLE [dbo].[EmployeeDetails](
-	[EmployeeID] INT IDENTITY(1,1) NOT NULL,
-	[FirstName] VARCHAR(50) NULL,
-	[LastName] VARCHAR(50) NULL,
-	[MiddleName] VARCHAR(50) NULL,
-	[Birthdate] DATE NULL,
-	[Age] INT NULL,
-	[Gender] VARCHAR(50) NULL,
-	[Religion] VARCHAR(50) NULL,
-	[Email] VARCHAR(50) NULL,
-	[PhoneNumber] VARCHAR(50) NULL,
-	[AddressID] INT NULL,
-	[RoleID] INT NULL,
-	[Password] VARCHAR(50) NULL,
-	[CreatedOn] DATETIME NULL,
-	[ModifiedOn] DATETIME NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[EmployeeID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-)
-GO
-
------------------------------------------------
--- Table [dbo].[PatientRegistration]
------------------------------------------------
-IF OBJECT_ID(N'dbo.PatientRegistration', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[PatientRegistration];  
-GO
-
-CREATE TABLE [dbo].[PatientRegistration](
-	[RegistrationID] INT IDENTITY(1,1) NOT NULL,
-	[PatientID] INT NOT NULL,
-	[AdmissionOn] DATETIME NULL,
-	[DischargeOn] DATETIME NULL,
-	[EmployeeID] INT NOT NULL,
-	[RoomID] INT NULL,
-	[LaboratoryID] INT NULL,
-	[CreatedOn] DATETIME NULL,
-	[ModifiedOn] DATETIME NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[RegistrationID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
-)
-GO
-
------------------------------------------------
--- Table [dbo].[EmployeeDepartment]
------------------------------------------------
-IF OBJECT_ID(N'dbo.EmployeeDepartment', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[EmployeeDepartment];  
-GO
-
-CREATE TABLE [dbo].[EmployeeDepartment] (
-    [EmployeeID] INT NOT NULL,
-    [DepartmentID] INT NULL,
-    [Status] BIT NULL,
-)
-GO
-
------------------------------------------------
--- Table [dbo].[Address]
------------------------------------------------
-IF OBJECT_ID(N'dbo.Address', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[Address];  
-GO
-
-CREATE TABLE [dbo].[Address](
+-- 1.1 CREATE TABLE dbo.Addresses
+CREATE TABLE [dbo].[Addresses](
 	[AddressID] INT IDENTITY(1,1) NOT NULL,
 	[Address1] VARCHAR(50) NULL,
 	[Address2] VARCHAR(50) NULL,
@@ -197,243 +153,211 @@ CREATE TABLE [dbo].[Address](
 	[Province] VARCHAR(50) NULL,
 	[Zipcode] VARCHAR(50) NULL,
 	[Country] VARCHAR(50) NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[AddressID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
+	PRIMARY KEY CLUSTERED ( [AddressID] ASC )
 )
 GO
 
------------------------------------------------
--- Table [dbo].[Role]
------------------------------------------------
-IF OBJECT_ID(N'dbo.Role', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[Role];  
-GO
-
-CREATE TABLE [dbo].[Role](
-	[RoleID] INT NOT NULL,
-	[Description] VARCHAR(50) NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[RoleID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
-)
-GO
-
------------------------------------------------
--- Table [dbo].[Department]
------------------------------------------------
-IF OBJECT_ID(N'dbo.Department', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[Department];  
-GO
-
-CREATE TABLE [dbo].[Department](
-	[DepartmentID] INT IDENTITY(1,1) NOT NULL,
-	[DepartmentName] VARCHAR(50) NULL,
-	[DepCharge] INT NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[DepartmentID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
-)
-GO
-
------------------------------------------------
--- Table [dbo].[Room]
------------------------------------------------
-IF OBJECT_ID(N'dbo.Room', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[Room];  
-GO
-
-
-CREATE TABLE [dbo].[Room](
-	[RoomID] INT IDENTITY(1,1) NOT NULL,
-	[Status] VARCHAR(50) NULL,
-	[RoomCharge] INT NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[RoomID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
-)
-GO
-
------------------------------------------------
--- Table [dbo].[Laboratory]
------------------------------------------------
-IF OBJECT_ID(N'dbo.Laboratory', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[Laboratory];  
-GO
-
-CREATE TABLE [dbo].[Laboratory](
-	[LaboratoryID] INT IDENTITY(1,1) NOT NULL,
-	[Status] VARCHAR(50) NULL,
-	[LabCharge] INT NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[LaboratoryID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
-)
-GO
-
------------------------------------------------
--- Table [dbo].[LaboratoryDetails]
------------------------------------------------
-IF OBJECT_ID(N'dbo.LaboratoryDetails', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[LaboratoryDetails];  
-GO
-
-CREATE TABLE [dbo].[LaboratoryDetails](
-	[ReportID] INT IDENTITY(1,1) NOT NULL,
-	[RegistrationID] INT NOT NULL,
-	[Results] VARCHAR(50) NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[ReportID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
-)
-GO
-
------------------------------------------------
--- Table [dbo].[Billing]
------------------------------------------------
-IF OBJECT_ID(N'dbo.Billing', N'U') IS NOT NULL  
-   DROP TABLE [dbo].[Billing];  
-GO
-
-CREATE TABLE [dbo].[Billing](
-	[BillingID] INT IDENTITY(1,1) NOT NULL,
-	[RegistrationID] INT NOT NULL,
-	[RoomCharge] INT NULL,
-	[LabCharge] INT NULL,
-	[DepCharge] INT NULL,
-	[Total] INT NULL,
-	[Status] BIT NULL,
-	[CreatedOn] DATETIME NULL,
-	[ModifiedOn] DATETIME NULL
-	PRIMARY KEY CLUSTERED 
-	(
-		[BillingID] ASC
-	) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] 
-)
-GO
-
-/**********************************************
--- CREATE CONSTRAINTS (FK, UNIQUE, DEFAULT)
-**********************************************/
-
--- CREATE FOREGIN KEY CONSTRAINT
-
--- PatientDetails: AddressID >|-----|- Address: AddressID
-ALTER TABLE dbo.PatientDetails WITH CHECK ADD CONSTRAINT [FK_PatientDetails_Address_ID] FOREIGN KEY ([AddressID]) REFERENCES dbo.Address (AddressID)
-
--- EmployeeDetails: AddressID >|-----|- Address: AddressID
-ALTER TABLE dbo.EmployeeDetails WITH CHECK ADD CONSTRAINT [FK_EmployeeDetails_Address_ID] FOREIGN KEY ([AddressID]) REFERENCES dbo.Address (AddressID)
-
--- EmployeeDetails: RoleID >|-----|- Role: RoleID
-ALTER TABLE dbo.EmployeeDetails WITH CHECK ADD CONSTRAINT [FK_EmployeeDetails_Role_ID] FOREIGN KEY ([RoleID]) REFERENCES dbo.Role (RoleID)
-
--- PatientRegistration: PatientID >|-----|- PatientDetails: PatientID
-ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Patient_ID] FOREIGN KEY ([PatientID]) REFERENCES dbo.PatientDetails (PatientID)
-
--- PatientRegistration: EmployeeID >|-----|- EmployeeDepartment: Employee
--- ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Employee_ID] FOREIGN KEY ([EmployeeID]) REFERENCES dbo.EmployeeDepartment (EmployeeID)
-
--- PatientRegistration: RoomID >|-----|- Room: RoomID
-ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Room_ID] FOREIGN KEY ([RoomID]) REFERENCES dbo.Room (RoomID)
-
--- PatientRegistration: LaboratoryID >|-----|- Laboratory: LaboratoryID
-ALTER TABLE dbo.PatientRegistration WITH CHECK ADD CONSTRAINT [FK_PatientRegistration_Laboratory_ID] FOREIGN KEY ([LaboratoryID]) REFERENCES dbo.Laboratory (LaboratoryID)
-
--- EmployeeDepartment: EmployeeID >|-----|- EmployeeDetails: EmployeeID
-ALTER TABLE dbo.EmployeeDepartment WITH CHECK ADD CONSTRAINT [FK_EmployeeDepartment_Employee_ID] FOREIGN KEY ([EmployeeID]) REFERENCES dbo.EmployeeDetails (EmployeeID)
-
--- EmployeeDepartment: EmployeeDepartment >|-----|- Department: DepartmentID
-ALTER TABLE dbo.EmployeeDepartment WITH CHECK ADD CONSTRAINT [FK_EmployeeDepartment_Department_ID] FOREIGN KEY ([DepartmentID]) REFERENCES dbo.Department (DepartmentID)
-
--- LaboratoryDetails: RegistrationID >|-----|- PatientRegistration: RegistrationID
-ALTER TABLE dbo.LaboratoryDetails WITH CHECK ADD CONSTRAINT [FK_LaboratoryDetails_Registration_ID] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.PatientRegistration (RegistrationID)
-
--- Billing: RegistrationID >|-----|- PatientRegistration: RegistrationID
-ALTER TABLE dbo.Billing WITH CHECK ADD CONSTRAINT [FK_Billing_Registration_ID] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.PatientRegistration (RegistrationID)
-
--- (Raymond) Unnecessary Relationships
-/*
--- Billing: RoomCharge >|-----|- Room: RoomCharge
-ALTER TABLE dbo.Billing WITH CHECK ADD CONSTRAINT [FK_Billing_RoomCharge] FOREIGN KEY ([RoomCharge]) REFERENCES dbo.Room (RoomCharge)
-
--- Billing: LabCharge >|-----|- Laboratory: LabCharge
-ALTER TABLE dbo.Billing WITH CHECK ADD CONSTRAINT [FK_Billing_LabCharge] FOREIGN KEY ([LabCharge]) REFERENCES dbo.Laboratory (LabCharge)
-
--- Billing: DepCharge >|-----|- Department: DepCharge
-ALTER TABLE dbo.Billing WITH CHECK ADD CONSTRAINT [FK_Billing_DepCharge] FOREIGN KEY ([DepCharge]) REFERENCES dbo.Department (DepCharge)
-*/
-
--- CREATE UNIQUE CONSTRAINT
-ALTER TABLE dbo.PatientDetails ADD CONSTRAINT UQ_PatientDetails_PatientID UNIQUE NONCLUSTERED (PatientID)
-ALTER TABLE dbo.EmployeeDetails ADD CONSTRAINT UQ_EmployeeDetails_EmployeeID UNIQUE NONCLUSTERED (EmployeeID)
-ALTER TABLE dbo.Address ADD CONSTRAINT UQ_Address UNIQUE NONCLUSTERED([Address1], [Address2], [City],[Province],[Zipcode],[Country])
-ALTER TABLE dbo.LaboratoryDetails ADD CONSTRAINT UQ_LaboratoryDetails UNIQUE NONCLUSTERED ([RegistrationID], [ReportID])
-
--- CREATE DEFAULT CONSTRAINTS
-ALTER TABLE dbo.PatientDetails ADD CONSTRAINT DF_PatientDetails_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
-ALTER TABLE dbo.EmployeeDetails ADD CONSTRAINT DF_EmployeeDetails_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
-ALTER TABLE dbo.PatientRegistration ADD CONSTRAINT DF_PatientRegistration_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
-
-GO
-/**********************************************
--- CREATE USER DEFINE TABLE (UDT)
-**********************************************/
-
-CREATE TYPE [dbo].[UDT_Employee] AS TABLE (
-	[Email] VARCHAR(50) NOT NULL,
-	[Password] VARCHAR(50) NOT NULL,
-	[FirstName] VARCHAR(50) NOT NULL,
-	[LastName] VARCHAR(50) NOT NULL,
-	[Birthdate] DATE NOT NULL,
-	[Gender] VARCHAR(50) NOT NULL,
-	[PhoneNumber] VARCHAR(50) NOT NULL,
-	[Role] VARCHAR(50) NULL,
-	[DepartmentName] VARCHAR(50) NULL,
-	[CreatedBy] INT
-)
-
-CREATE TYPE [dbo].[UDT_AddressInput] AS TABLE (
-	[Address1] VARCHAR(50) NOT NULL,
-	[Address2] VARCHAR(50) NOT NULL,
-	[City] VARCHAR(50) NOT NULL,
-	[Province] VARCHAR(50) NOT NULL,
-	[Zipcode] VARCHAR(50) NOT NULL,
-	[Country] VARCHAR(50) NOT NULL
-)
-
-CREATE TYPE [dbo].[UDT_Patient] AS TABLE (
+-- 1.2 CREATE TABLE dbo.Patients
+CREATE TABLE [dbo].[Patients](
+	[PatientID] INT IDENTITY(1,1) NOT NULL,
+	[AddressID] INT NULL,
 	[FirstName] VARCHAR(50) NULL,
+	[MiddleName] VARCHAR(50) NULL,
 	[LastName] VARCHAR(50) NULL,
 	[Birthdate] DATE NULL,
+	[Age] INT NULL,
 	[Gender] VARCHAR(50) NULL,
+	[Religion] VARCHAR(50) NULL,
+	[Email] VARCHAR(50) NULL,
 	[PhoneNumber] VARCHAR(50) NULL,
-	[Email] VARCHAR(50) NULL
+	[CreatedOn] DATETIME NULL,
+	[ModifiedOn] DATETIME NULL
+	PRIMARY KEY CLUSTERED ( [PatientID] ASC ) 
+)
+GO
+
+-- 1.3 CREATE TABLE dbo.Employees
+CREATE TABLE [dbo].[Employees](
+	[EmployeeID] INT IDENTITY(1,1) NOT NULL,
+	[AddressID] INT NULL,
+	[RoleID] INT NULL,
+	[DepartmentID] INT NULL,
+	[Status] BIT NULL,
+	[Password] VARCHAR(50) NULL,
+	[FirstName] VARCHAR(50) NULL,
+	[MiddleName] VARCHAR(50) NULL,
+	[LastName] VARCHAR(50) NULL,
+	[Birthdate] DATE NULL,
+	[Age] INT NULL,
+	[Gender] VARCHAR(50) NULL,
+	[Religion] VARCHAR(50) NULL,
+	[Email] VARCHAR(50) NULL,
+	[PhoneNumber] VARCHAR(50) NULL,
+	[CreatedOn] DATETIME NULL,
+	[ModifiedOn] DATETIME NULL
+	PRIMARY KEY CLUSTERED ( [EmployeeID] ASC )
+)
+GO
+
+-- 1.4 CREATE TABLE dbo.Roles
+CREATE TABLE [dbo].[Roles](
+	[RoleID] INT NOT NULL,
+	[Description] VARCHAR(50) NULL
+	PRIMARY KEY CLUSTERED ( [RoleID] ASC )
+)
+GO
+
+-- 1.5 CREATE TABLE dbo.Departments
+CREATE TABLE [dbo].[Departments](
+	[DepartmentID] INT IDENTITY(1,1) NOT NULL,
+	[Description] VARCHAR(50) NULL,
+	[Fee] INT NULL
+	PRIMARY KEY CLUSTERED ( [DepartmentID] ASC )  
+)
+GO
+
+-- 1.6 CREATE TABLE dbo.Registrations
+CREATE TABLE [dbo].[Registrations](
+	[RegistrationID] INT IDENTITY(1,1) NOT NULL,
+	[PatientID] INT NOT NULL,
+	[RoomID] INT NULL,
+	[Status] BIT NULL,
+	[AdmissionOn] DATETIME NULL,
+	[DischargeOn] DATETIME NULL,
+	[CreatedOn] DATETIME NULL,
+	[ModifiedOn] DATETIME NULL
+	PRIMARY KEY CLUSTERED ( [RegistrationID] ASC )
 )
 
-CREATE TYPE [dbo].[UDT_LaboratoryResult] AS TABLE (
-	[ReportID] VARCHAR(45) NULL,
-	[Results] VARCHAR(45) NULL
+-- 1.7 CREATE TABLE dbo.Laboratories
+CREATE TABLE [dbo].[Laboratories](
+	[LaboratoryID] INT IDENTITY(1,1) NOT NULL,
+	[LaboratoryNumber] VARCHAR(50) NULL,
+	[Status] BIT NULL,
+	[Fee] INT NULL
+	PRIMARY KEY CLUSTERED ( [LaboratoryID] ASC ) 
 )
+GO
 
-/**********************************************
--- CREATE USER STORED PROCEDURE (USP)
-**********************************************/
+-- 1.8 CREATE TABLE dbo.Rooms
+CREATE TABLE [dbo].[Rooms](
+	[RoomID] INT IDENTITY(1,1) NOT NULL,
+	[RoomNumber] VARCHAR(50) NULL,
+	[Status] BIT NULL,
+	[Fee] INT NULL
+	PRIMARY KEY CLUSTERED ( [RoomID] ASC ) 
+)
+GO
+
+-- 1.9 CREATE TABLE dbo.Reports
+CREATE TABLE [dbo].[Reports] (
+	[ReportID] INT IDENTITY(1,1) NOT NULL,
+	[RegistrationID] INT NULL,
+	[EmployeeID] INT NOT NULL,
+	[LaboratoryID] INT NULL,
+	[Report] VARCHAR(50) NULL,
+	[CreatedOn] DATETIME NULL,
+	[ModifiedOn] DATETIME NULL
+	PRIMARY KEY CLUSTERED ( [ReportID] ASC )
+)
+GO
+
+-- 1.10 CREATE TABLE dbo.Billings
+CREATE TABLE [dbo].[Billings](
+	[BillingID] INT IDENTITY(1,1) NOT NULL,
+	[RegistrationID] INT NOT NULL,
+	[LaboratoryFee] INT NULL,
+	[RoomFee] INT NULL,
+	[DepartmentFee] INT NULL,
+	[Status] BIT NULL,
+	[Total] INT NULL,
+	[CreatedOn] DATETIME NULL,
+	[ModifiedOn] DATETIME NULL
+	PRIMARY KEY CLUSTERED ([BillingID] ASC )
+)
+GO
+
+/********************************
+-- 2. CREATE CONSTRAINTS (FK, UQ, DF)
+********************************/
+
+-- 2.1 FOREIGN KEY CONSTRAINTS 'FK_{FOREIGN Table}_{PRIMARY Table}_{Key}'
+
+-- 2.1.1 ADD CONSTRAINT FK_Patients_Addresses_AddressID
+ALTER TABLE dbo.Patients WITH CHECK ADD CONSTRAINT [FK_Patients_Addresses_AddressID] FOREIGN KEY ([AddressID]) REFERENCES dbo.Addresses (AddressID)
+-- 2.1.2 ADD CONSTRAINT FK_Employees_Addresses_AddressID
+ALTER TABLE dbo.Employees WITH CHECK ADD CONSTRAINT [FK_Employees_Addresses_AddressID] FOREIGN KEY ([AddressID]) REFERENCES dbo.Addresses (AddressID)
+-- 2.1.3 ADD CONSTRAINT FK_Employees_Role_RoleID
+ALTER TABLE dbo.Employees WITH CHECK ADD CONSTRAINT [FK_Employees_Roles_RoleID] FOREIGN KEY ([RoleID]) REFERENCES dbo.Roles (RoleID)
+-- 2.1.4 ADD CONSTRAINT FK_Employees_Departments_DepartmentID
+ALTER TABLE dbo.Employees WITH CHECK ADD CONSTRAINT [FK_Employees_Departments_DepartmentID] FOREIGN KEY ([DepartmentID]) REFERENCES dbo.Departments (DepartmentID)
+-- 2.1.5 ADD CONSTRAINT FK_Registrations_Patients_PatientID
+ALTER TABLE dbo.Registrations WITH CHECK ADD CONSTRAINT [FK_Registrations_Patients_PatientID] FOREIGN KEY ([PatientID]) REFERENCES dbo.Patients (PatientID)
+-- 2.1.6 ADD CONSTRAINT FK_Registrations_Rooms_RoomID
+ALTER TABLE dbo.Registrations WITH CHECK ADD CONSTRAINT [FK_Registrations_Rooms_RoomID] FOREIGN KEY ([RoomID]) REFERENCES dbo.Rooms (RoomID)
+-- 2.1.7 ADD CONSTRAINT FK_Reports_Registration_RegistrationID
+ALTER TABLE dbo.Reports WITH CHECK ADD CONSTRAINT [FK_Reports_Registration_RegistrationID] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.Registrations (RegistrationID)
+-- 2.1.8 ADD CONSTRAINT FK_Reports_Laboratories_LaboratoryID
+ALTER TABLE dbo.Reports WITH CHECK ADD CONSTRAINT [FK_Reports_Laboratories_LaboratoryID] FOREIGN KEY ([LaboratoryID]) REFERENCES dbo.Laboratories (LaboratoryID)
+-- 2.1.9 ADD CONSTRAINT FK_Reports_Employees_EmployeeID
+ALTER TABLE dbo.Reports WITH CHECK ADD CONSTRAINT [FK_Reports_Employees_EmployeeID] FOREIGN KEY (EmployeeID) REFERENCES dbo.Employees (EmployeeID)
+-- 2.1.10 ADD CONSTRAINT FK_Billings_Registrations_RegistrationID
+ALTER TABLE dbo.Billings WITH CHECK ADD CONSTRAINT [FK_Billings_Registrations_RegistrationID] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.Registrations (RegistrationID)
+
+
+
+-- 2.2 UNIQUE KEY CONSTRAINTS 'UQ_{PK Table}_{Key}'
+
+-- 2.2.1 ADD CONSTRAINT UQ_Patients_PatientID
+ALTER TABLE dbo.Patients ADD CONSTRAINT UQ_Patients_PatientID UNIQUE NONCLUSTERED (PatientID)
+-- 2.2.2 ADD CONSTRAINT UQ_Employees_EmployeeID
+ALTER TABLE dbo.Employees ADD CONSTRAINT UQ_Employees_EmployeeID UNIQUE NONCLUSTERED (EmployeeID)
+-- 2.2.3 ADD CONSTRAINT UQ_Addresses_AddressID
+ALTER TABLE dbo.Addresses ADD CONSTRAINT UQ_Addresses_AddressID UNIQUE NONCLUSTERED (AddressID)
+-- 2.2.4 ADD CONSTRAINT UQ_Registrations_RegistrationID
+ALTER TABLE dbo.Registrations ADD CONSTRAINT UQ_Registrations_RegistrationID UNIQUE NONCLUSTERED (RegistrationID)
+-- 2.2.5 ADD CONSTRAINT UQ_Reports_ReportID
+ALTER TABLE dbo.Reports ADD CONSTRAINT UQ_Reports_ReportID UNIQUE NONCLUSTERED (ReportID)
+-- 2.2.6 ADD CONSTRAINT UQ_Billings_BillID
+ALTER TABLE dbo.Billings ADD CONSTRAINT UQ_Billings_BillID UNIQUE NONCLUSTERED (BillingID)
+
+
+
+-- 2.3 DEFAULT CONSTRAINTS 'DF_{Table}_{Key}'
+
+-- 2.3.1 ADD CONSTRAINT DF_Patients_CreatedOn
+ALTER TABLE dbo.Patients ADD CONSTRAINT DF_Patients_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
+-- 2.3.2 ADD CONSTRAINT DF_Employees_CreatedOn
+ALTER TABLE dbo.Employees ADD CONSTRAINT DF_Employees_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
+-- 2.3.3 ADD CONSTRAINT DF_Registrations_CreatedOn
+ALTER TABLE dbo.Registrations ADD CONSTRAINT DF_Registrations_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
+-- 2.3.4 ADD CONSTRAINT DF_Reports_CreatedOn
+ALTER TABLE dbo.Reports ADD CONSTRAINT DF_Reports_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
+-- 2.3.5 ADD CONSTRAINT DF_Billings_CreatedOn
+ALTER TABLE dbo.Billings ADD CONSTRAINT DF_Billings_CreatedOn DEFAULT GETDATE() FOR [CreatedOn]
+-- 2.3.6 ADD CONSTRAINT DF_Employees_Status
+ALTER TABLE dbo.Employees ADD CONSTRAINT DF_Employees_Status DEFAULT 0 FOR [Status]
+-- 2.3.7 ADD CONSTRAINT DF_Registrations_Status
+ALTER TABLE dbo.Registrations ADD CONSTRAINT DF_Registrations_Status DEFAULT 0 FOR [Status]
+-- 2.3.8 ADD CONSTRAINT DF_Laboratories_Status
+ALTER TABLE dbo.Laboratories ADD CONSTRAINT DF_Laboratories_Status DEFAULT 0 FOR [Status]
+-- 2.3.9 ADD CONSTRAINT DF_Room_Status
+ALTER TABLE dbo.Room ADD CONSTRAINT DF_Room_Status DEFAULT 0 FOR [Status]
+-- 2.3.10 ADD CONSTRAINT DF_Billings_Status
+ALTER TABLE dbo.Billings ADD CONSTRAINT DF_Billings_Status DEFAULT 0 FOR [Status]
+
+/********************************
+-- 3. CREATE USER STORED PROCEDURES (USP)
+********************************/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
------------------------------------------------
--- CREATE PROCEDURE FOR dbo.Address 
------------------------------------------------
+-- 3.1 dbo.Addresses
 
-CREATE PROCEDURE dbo.USP_AddAddress
+-- 3.1.1 CREATE PROCEDURE dbo.USP_CreateAddress
+CREATE PROCEDURE dbo.USP_CreateAddress 
 	@Address1 VARCHAR(50),
 	@Address2 VARCHAR(50),
 	@City VARCHAR(50),
@@ -442,12 +366,13 @@ CREATE PROCEDURE dbo.USP_AddAddress
 	@Country VARCHAR(50)
 AS
 BEGIN
-	INSERT INTO dbo.Address (Address1, Address2, City, Province, Zipcode, Country)
+	INSERT INTO dbo.Addresses (Address1, Address2, City, Province, Zipcode, Country)
 	VALUES (@Address1, @Address2, @City, @Province, @Zipcode, @Country)
 END
 GO
 
-CREATE PROCEDURE dbo.USP_ModifyAddress
+-- 3.1.2 CREATE PROCEDURE dbo.USP_UpdateAddress
+CREATE PROCEDURE dbo.USP_UpdateAddress
 	@AddressID INT,
 	@Address1 VARCHAR(50),
 	@Address2 VARCHAR(50),
@@ -457,7 +382,7 @@ CREATE PROCEDURE dbo.USP_ModifyAddress
 	@Country VARCHAR(50)
 AS
 BEGIN
-	UPDATE dbo.Address 
+	UPDATE dbo.Addresses
 	SET 
 		Address1 = @Address1, 
 		Address2 = @Address2, 
@@ -469,22 +394,35 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE dbo.USP_DeleteAddress
+-- 3.1.3 CREATE PROCEDURE dbo.USP_DropAddress
+CREATE PROCEDURE dbo.USP_DropAddress
 	@AddressID INT
 AS
 BEGIN
-	DELETE FROM dbo.Address WHERE AddressID = @AddressID
+	DELETE FROM dbo.Addresses WHERE AddressID = @AddressID
 END
 GO
 
------------------------------------------------
--- CREATE PROCEDURE FOR dbo.PatientDetails
------------------------------------------------
+-- 3.1.4 CREATE PROCEDURE dbo.USP_GetAddresInformation
+CREATE PROCEDURE dbo.USP_GetAddresInformation
+	@AddressID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Addresses
+	WHERE AddressID = @AddressID
+END
+GO
 
-CREATE PROCEDURE dbo.USP_AddPatient 
+
+
+-- 3.2 dbo.Patients
+
+-- 3.2.1 CREATE PROCEDURE dbo.USP_CreatePatient
+CREATE PROCEDURE dbo.USP_CreatePatient 
 	@FirstName VARCHAR(50),
-	@LastName VARCHAR(50),
 	@MiddleName VARCHAR(50),
+	@LastName VARCHAR(50),
 	@Birthdate DATE,
 	@Gender VARCHAR(50),
 	@Religion VARCHAR(50),
@@ -502,21 +440,22 @@ BEGIN
 	DECLARE @Today DATETIME = GETDATE();
 	DECLARE @AddressNumber INT;
 	
-	EXEC dbo.USP_AddAddress @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
+	EXEC dbo.USP_CreateAddress @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
 	
 	SET @AddressNumber = (SELECT COUNT(AddressID) FROM dbo.Address)
 	
-	INSERT INTO dbo.PatientDetails (FirstName, LastName, MiddleName, Birthdate, Age, Gender, Religion, Email, PhoneNumber, AddressID, CreatedOn) 
-	VALUES (@FirstName,	@LastName, @MiddleName, @Birthdate, dbo.FN_CalculateAge(@Birthdate) ,@Gender, @Religion, @Email, @PhoneNumber, @AddressNumber, @Today)
-		
+	
+	INSERT INTO dbo.Patients (AddressID, FirstName, MiddleName, LastName, Birthdate, Age, Gender, Religion, Email, PhoneNumber, CreatedOn)
+	VALUES (@AddressNumber, @FirstName, @MiddleName, @LastName, @Birthdate, dbo.FN_CalculateAge(@Birthdate), @Gender, @Religion, @Email, @PhoneNumber, @Today)
 END
 GO
 
-CREATE PROCEDURE dbo.USP_ModifyPatient
+-- 3.2.2 CREATE PROCEDURE dbo.USP_UpdatePatient
+CREATE PROCEDURE dbo.USP_UpdatePatient 
 	@PatientID INT,
 	@FirstName VARCHAR(50),
-	@LastName VARCHAR(50),
 	@MiddleName VARCHAR(50),
+	@LastName VARCHAR(50),
 	@Birthdate DATE,
 	@Gender VARCHAR(50),
 	@Religion VARCHAR(50),
@@ -531,13 +470,13 @@ CREATE PROCEDURE dbo.USP_ModifyPatient
 AS
 BEGIN
 	DECLARE @Today DATETIME = GETDATE();
-	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.PatientDetails WHERE @PatientNumber = PatientID);
+	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.PatientDetails WHERE @PatientID = PatientID);
 		
-	UPDATE dbo.PatientDetails
+	UPDATE dbo.Patients
 	SET 
 		FirstName = @FirstName, 
-		LastName = @LastName, 
 		MiddleName = @MiddleName, 
+		LastName = @LastName, 
 		Birthdate = @Birthdate, 
 		Age = dbo.FN_CalculateAge(@Birthdate),
 		Gender = @Gender, 
@@ -547,38 +486,52 @@ BEGIN
 		ModifiedOn = @Today
 	WHERE PatientID = @PatientID
 
-	EXEC dbo.USP_ModifyAddress @AddressID = @AddressNumber, @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
+	EXEC dbo.USP_UpdateAddress @AddressID = @AddressNumber, @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
 END
 GO
 
-CREATE PROCEDURE dbo.USP_DeletePatient
+-- 3.2.3 CREATE PROCEDURE dbo.USP_DropPatient
+CREATE PROCEDURE dbo.USP_DropPatient
 	@PatientID INT
 AS
 BEGIN
-	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.PatientDetails WHERE @PatientID = PatientID);
+	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.Patients WHERE PatientID = @PatientID);
 	
-	DELETE FROM dbo.PatientDetails WHERE PatientID = @PatientID
+	DELETE FROM dbo.Patients WHERE PatientID = @PatientID
 	
-	EXEC dbo.USP_DeleteAddress @AddressID = @AddressNumber
+	EXEC dbo.USP_DropAddress @AddressID = @AddressNumber
 END
 GO
 
------------------------------------------------
--- CREATE PROCEDURE FOR dbo.EmployeeDetails
------------------------------------------------
+-- 3.2.4 CREATE PROCEDURE dbo.USP_GetPaitentInformation
+CREATE PROCEDURE dbo.USP_GetPaitentInformation
+	@PatientID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Patients
+	WHERE PatientID = @PatientID
+END
+GO
 
-CREATE PROCEDURE dbo.USP_AddEmployee
+
+
+-- 3.3 dbo.Employees
+
+-- 3.3.1 CREATE PROCEDURE dbo.USP_CreateEmployee
+CREATE PROCEDURE dbo.USP_CreateEmployee
+	@AddressID INT,
+	@RoleID INT,
+	@DepartmentID INT,
+	@Password VARCHAR(50),
 	@FirstName VARCHAR(50),
-	@LastName VARCHAR(50),
 	@MiddleName VARCHAR(50),
+	@LastName VARCHAR(50),
 	@Birthdate DATE,
 	@Gender VARCHAR(50),
 	@Religion VARCHAR(50),
 	@Email VARCHAR(50),
 	@PhoneNumber VARCHAR(50),
-	@Password VARCHAR(50),
-	@RoleID INT,
-	@DepartmentID INT,
 	@Address1 VARCHAR(50),
 	@Address2 VARCHAR(50),
 	@City VARCHAR(50),
@@ -589,41 +542,35 @@ AS
 BEGIN
 	DECLARE @Today DATETIME = GETDATE();
 	DECLARE @AddressNumber INT;
-	DECLARE @DepartmentNumber INT;
-	DECLARE @EmployeeNumber INT;
 
-	SET @DepartmentNumber = (SELECT DepartmentID FROM dbo.Department WHERE @DepartmentID = DepartmentID)
-
-	EXEC dbo.USP_AddAddress @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
+	-- Create ID
+	EXEC dbo.USP_CreateAddress @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
 	
-	SET @AddressNumber = (SELECT COUNT(AddressID) FROM dbo.Address)
+	-- Retrieve ID
+	SET @AddressNumber = (SELECT COUNT(AddressID) FROM dbo.Addresses)
 	
-	INSERT INTO dbo.EmployeeDetails (FirstName, LastName, MiddleName, Birthdate, Age, Gender, Religion, Email, PhoneNumber, Password, RoleID, AddressID, CreatedOn) 
-	VALUES (@FirstName,	@LastName, @MiddleName, @Birthdate, dbo.FN_CalculateAge(@Birthdate), @Gender, @Religion, @Email, @PhoneNumber, @Password, @RoleID, @AddressNumber, @Today)
-
-	SET @EmployeeNumber = (SELECT COUNT(EmployeeID) FROM dbo.EmployeeDetails)
-
-	INSERT INTO dbo.EmployeeDepartment (EmployeeID, DepartmentID)
-	VALUES (@EmployeeNumber, @DepartmentNumber)
+	-- Create ID
+	INSERT INTO dbo.Employees (AddressID, RoleID, DepartmentID, Password, FirstName, MiddleName, LastName, Birthdate, Age, Gender, Religion, Email, PhoneNumber, CreatedOn) 
+	VALUES (@AddressID, @RoleID, @DepartmentID, @Password, @FirstName, @MiddleName, @LastName, @Birthdate, dbo.FN_CalculateAge(@Birthdate), @Gender, @Religion, @Email, @PhoneNumber, @Today)
 	
-	INSERT INTO dbo.EmployeeDepartment (EmployeeID, DepartmentID, Status)
-	VALUES (@EmployeeNumber, @DepartmentNumber, 0)
 END
 GO
 
-CREATE PROCEDURE dbo.USP_ModifyEmployee
-	@EmployeeNumber INT,
+-- 3.3.2 CREATE PROCEDURE dbo.USP_UpdateEmployee
+CREATE PROCEDURE dbo.USP_UpdateEmployee
+	@EmployeeID INT,
+	@RoleID INT,
+	@DepartmentID INT,
+	@Status BIT,
+	@Password VARCHAR(50),
 	@FirstName VARCHAR(50),
-	@LastName VARCHAR(50),
 	@MiddleName VARCHAR(50),
+	@LastName VARCHAR(50),
 	@Birthdate DATE,
 	@Gender VARCHAR(50),
 	@Religion VARCHAR(50),
 	@Email VARCHAR(50),
 	@PhoneNumber VARCHAR(50),
-	@Password VARCHAR(50),
-	@RoleID INT,
-	@DepartmentID INT,
 	@Address1 VARCHAR(50),
 	@Address2 VARCHAR(50),
 	@City VARCHAR(50),
@@ -633,522 +580,581 @@ CREATE PROCEDURE dbo.USP_ModifyEmployee
 AS
 BEGIN
 	DECLARE @Today DATETIME = GETDATE();
-	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.EmployeeDetails WHERE @EmployeeNumber = EmployeeID);
+	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.Employees WHERE EmployeeID = @EmployeeID);
 	
-	UPDATE dbo.EmployeeDetails
+	UPDATE dbo.Employees
 	SET 
+		RoleID = @RoleID,
+		DepartmentID = @DepartmentID,
+		Status = @Status,
+		Password = @Password, 
 		FirstName = @FirstName, 
-		LastName = @LastName, 
 		MiddleName = @MiddleName, 
+		LastName = @LastName, 
 		Birthdate = @Birthdate, 
 		Age = dbo.FN_CalculateAge(@Birthdate),
 		Gender = @Gender, 
 		Religion = @Religion, 
 		Email = @Email, 
 		PhoneNumber = @PhoneNumber, 
-		Password = @Password,
-		RoleID = @RoleID,
 		ModifiedOn = @Today
-	WHERE EmployeeID = @EmployeeNumber
-		
-	UPDATE dbo.EmployeeDepartment
-	SET
-		EmployeeID = @EmployeeNumber,
-		DepartmentID = @DepartmentID
-	WHERE EmployeeID = @EmployeeNumber
-
-	EXEC dbo.USP_ModifyAddress @AddressID = @AddressNumber, @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
-END
-GO
-
-CREATE PROCEDURE dbo.USP_DeleteEmployee
-	@EmployeeNumber INT
-AS
-BEGIN
-	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.EmployeeDetails WHERE @EmployeeNumber = EmployeeID);
-	
-	DELETE FROM dbo.EmployeeDepartment WHERE EmployeeID = @EmployeeNumber
-	DELETE FROM dbo.EmployeeDetails WHERE EmployeeID = @EmployeeNumber
-	
-	EXEC dbo.USP_DeleteAddress @AddressID = @AddressNumber
-END
-GO
-
------------------------------------------------
--- CREATE PROCEDURE FOR dbo.PatientRegistration
------------------------------------------------
-
-CREATE PROCEDURE dbo.USP_AddRegistration
-	@PatientID INT,
-	@AdmissionOn DATETIME,
-	@DischargeOn DATETIME,
-	@EmployeeID INT,
-	@RoomID INT,
-	@LaboratoryID INT,
-	@Results VARCHAR(50)
-AS
-BEGIN
-	DECLARE @Today DATETIME = GETDATE();
-	DECLARE @RegistrationNumber INT;
-		
-	UPDATE dbo.Room
-	SET
-		Status = 1
-	WHERE RoomID = @RoomID
-	
-	UPDATE dbo.Laboratory
-	SET
-		Status = 1
-	WHERE LaboratoryID = @LaboratoryID
-	
-	UPDATE dbo.EmployeeDepartment
-	SET
-		Status = 1
 	WHERE EmployeeID = @EmployeeID
+
+	EXEC dbo.USP_UpdateAddress @AddressID = @AddressNumber, @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
+END
+GO
+-- 3.3.3 CREATE PROCEDURE dbo.USP_DropEmployee
+CREATE PROCEDURE dbo.USP_DropEmployee 
+	@EmployeeID INT
+AS
+BEGIN
+	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.Employees WHERE EmployeeID = @EmployeeID);
 	
-	INSERT INTO dbo.PatientRegistration (PatientID, AdmissionOn, DischargeOn, EmployeeID, RoomID, LaboratoryID, CreatedOn)
-	VALUES (@PatientID, @AdmissionOn, @DischargeOn, @EmployeeID, @RoomID, @LaboratoryID, @Today)
+	DELETE FROM dbo.Employees WHERE EmployeeID = @EmployeeID
 	
-	SET @RegistrationNumber = (SELECT COUNT(RegistrationID) FROM dbo.PatientRegistration)
-	
-	INSERT INTO dbo.LaboratoryDetails (RegistrationID, Results)
-	VALUES (@RegistrationNumber, @Results)
+	EXEC dbo.USP_DropAddress @AddressID = @AddressNumber
 END
 GO
 
-CREATE PROCEDURE dbo.USP_ModifyRegistration
-	@RegistrationID INT,
-	@PatientID INT,
-	@AdmissionOn DATETIME,
-	@DischargeOn DATETIME,
+-- 3.3.4 CREATE PROCEDURE dbo.USP_GetEmployeeInforamtion
+CREATE PROCEDURE dbo.USP_GetEmployeeInforamtion
+	@EmployeeID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Employees
+	WHERE EmployeeID = @EmployeeID
+END
+GO
+
+-- 3.3.5 CREATE PROCEDURE dbo.USP_GetDepartmentEmployees
+CREATE PROCEDURE dbo.USP_GetDepartmentEmployees
 	@EmployeeID INT,
-	@RoomID INT,
-	@LaboratoryID INT,
-	@Results VARCHAR(50)
+	@DepartmentID INT
 AS
 BEGIN
-	DECLARE @Today DATETIME = GETDATE();
-	
-	UPDATE dbo.PatientRegistration
-	SET
-		PatientID = @PatientID,
-		AdmissionOn = @AdmissionOn,
-		DischargeOn = @DischargeOn,
-		EmployeeID = @EmployeeId,
-		RoomID = @RoomID,
-		LaboratoryID = @LaboratoryID,
-		ModifiedOn = @Today
-	WHERE RegistrationID = @RegistrationID
-	
-	UPDATE dbo.LaboratoryDetails
-	SET
-		Results = @Results
-	WHERE RegistrationID = @RegistrationID
-END
-GO	
-
-CREATE PROCEDURE dbo.USP_DeleteRegistration
-	@RegistrationID INT
-AS 
-BEGIN
-	DECLARE @RoomID INT;
-	DECLARE @LaboratoryID INT;
-
-	SET @RoomID = (SELECT RoomID FROM dbo.PatientRegistration WHERE RegistrationID = @RegistrationID)
-	SET @LaboratoryID = (SELECT LaboratoryID FROM dbo.PatientRegistration WHERE RegistrationID = @RegistrationID)
-
-	UPDATE dbo.Room
-	SET
-		Status = 0
-	WHERE RoomID = @RoomID
-	
-	UPDATE dbo.Laboratory
-	SET
-		Status = 0
-	WHERE LaboratoryID = @LaboratoryID
-
-	DELETE FROM dbo.PatientRegistration WHERE RegistrationID = @RegistrationID
-	DELETE FROM dbo.LaboratoryDetails WHERE RegistrationID = @RegistrationID
+	SELECT *
+	FROM dbo.Employees
+	WHERE EmployeeID = @EmployeeID AND DepartmentID = @DepartmentID
 END
 GO
 
------------------------------------------------
--- CREATE PROCEDURE FOR dbo.Billing
------------------------------------------------
-
-CREATE PROCEDURE dbo.USP_AddBilling
-	@RegistrationID INT
-AS
-BEGIN
-	DECLARE @DepCharge INT;
-	DECLARE @RoomCharge INT;
-	DECLARE @LabCharge INT;
-	DECLARE @Total INT;
-	
-	DECLARE @Today DATETIME = GETDATE();
-	
-	SET @DepCharge = (
-		SELECT DepCharge
-		FROM dbo.Department AS DEPARTMENT
-		JOIN dbo.EmployeeDepartment AS EMPLOYEE
-		ON DEPARTMENT.DepartmentID = EMPLOYEE.DepartmentID
-		JOIN dbo.PatientRegistration AS REGISTRATION
-		ON REGISTRATION.RegistrationID = @RegistrationID
-	)
-	
-	SET @RoomCharge = (
-		SELECT RoomCharge 
-		FROM dbo.Room AS ROOM 
-		JOIN dbo.PatientRegistration AS REGISTRATION
-		ON ROOM.RoomID = REGISTRATION.RoomID AND REGISTRATION.RegistrationID = @RegistrationID
-	)
-	
-	SET @LabCharge = (
-		SELECT LabCharge
-		FROM dbo.Laboratory AS LABORATORY
-		JOIN dbo.PatientRegistration AS REGISTRATION
-		ON LABORATORY.LaboratoryID = REGISTRATION.LaboratoryID AND REGISTRATION.RegistrationID = @RegistrationID
-	)
-	
-	SET @Total = @DepCharge + @RoomCharge + @LabCharge;
-	
-	INSERT INTO dbo.Billing (RegistrationID, RoomCharge, LabCharge, DepCharge, Total, Status, CreatedOn)
-	VALUES (@RegistrationID, @RoomCharge, @LabCharge, @DepCharge, @Total, 0, @Today)
-END
-GO
-
-CREATE PROCEDURE dbo.USP_ModifyBilling
-	@BillingID INT,
-	@RoomCharge	INT,
-	@LabCharge INT,
-	@DepCharge INT,
-	@Total INT,
-	@Status BIT,
-	@ModifiedON DATETIME
-AS
-BEGIN
-	DECLARE @Today DATETIME = GETDATE();
-	
-	UPDATE dbo.Billing
-	SET
-		RoomCharge = @RoomCharge,
-		LabCharge = @LabCharge,
-		DepCharge = @DepCharge,
-		Total = @Total,
-		Status = @Status,
-		ModifiedOn = @Today
-	WHERE BillingID = @BillingID
-END
-GO
-
------------------------------------------------
--- CREATE PROCEDURE FOR dbo.FindAccount
------------------------------------------------
-
-CREATE PROCEDURE dbo.USP_FindAccount
+-- 3.3.6 CREATE PROCEDURE dbo.USP_GetEmployeeLogin
+CREATE PROCEDURE dbo.USP_GetEmployeeLogin
 	@Email VARCHAR(50),
 	@Password VARCHAR(50)
 AS
 BEGIN
-	SELECT * FROM dbo.EmployeeDetails WHERE Email = @Email AND Password = @Password
+	SELECT *
+	FROM dbo.Employees
+	WHERE Email = @Email AND Password = @Password
 END
 GO
 
------------------------------------------------
--- CREATE PROCEDURE FOR dbo.Search{Functions}
------------------------------------------------
+-- 3.4 dbo.Registrations
 
-CREATE PROCEDURE dbo.USP_SearchPatient
-	@stringSearch VARCHAR(50)
+-- 3.4.1 CREATE PROCEDURE dbo.USP_CreateRegistration
+CREATE PROCEDURE dbo.USP_CreateRegistration
+	@PatientID INT,
+	@RoomID INT,
+	@AdmissionOn DATETIME,
+	@DischargeOn DATETIME
 AS
 BEGIN
-	SELECT * FROM dbo.PatientDetails 
-	WHERE 
-		PatientID LIKE '%' + @stringSearch + '%' OR
-		FirstName LIKE '%' + @stringSearch + '%' OR
-		LastName LIKE '%' + @stringSearch + '%' OR
-		MiddleName LIKE '%' + @stringSearch + '%' OR
-		Birthdate LIKE '%' + @stringSearch + '%' OR
-		Age LIKE '%' + @stringSearch + '%' OR
-		Gender LIKE '%' + @stringSearch + '%' OR
-		Religion LIKE '%' + @stringSearch + '%' OR
-		Email LIKE '%' + @stringSearch + '%' OR
-		PhoneNumber LIKE '%' + @stringSearch + '%'
+	DECLARE @Today DATETIME = GETDATE();
+		
+	UPDATE dbo.Rooms
+	SET
+		Status = 1
+	WHERE RoomID = @RoomID
+	
+	INSERT INTO dbo.Registrations (PatientID, RoomID, AdmissionOn, DischargeOn, CreatedOn)
+	VALUES (@PatientID, @RoomID, @AdmissionOn, @DischargeOn, @Today)
 END
 GO
 
-CREATE PROCEDURE dbo.USP_SearchEmployee
-	@stringSearch VARCHAR(50)
+-- 3.4.2 CREATE PROCEDURE dbo.USP_UpdateRegistration
+CREATE PROCEDURE dbo.USP_UpdateRegistration
+	@RegistrationID INT,
+	@PatientID INT,
+	@RoomID INT,
+	@Status INT,
+	@AdmissionOn DATETIME,
+	@DischargeOn DATETIME
 AS
 BEGIN
-	SELECT * FROM dbo.EmployeeDetails 
-	WHERE 
-		EmployeeID LIKE '%' + @stringSearch + '%' OR
-		FirstName LIKE '%' + @stringSearch + '%' OR
-		LastName LIKE '%' + @stringSearch + '%' OR
-		MiddleName LIKE '%' + @stringSearch + '%' OR
-		Birthdate LIKE '%' + @stringSearch + '%' OR
-		Age LIKE '%' + @stringSearch + '%' OR
-		Gender LIKE '%' + @stringSearch + '%' OR
-		Religion LIKE '%' + @stringSearch + '%' OR
-		Email LIKE '%' + @stringSearch + '%' OR
-		PhoneNumber LIKE '%' + @stringSearch + '%'
+	DECLARE @Today DATETIME = GETDATE();
+	
+	UPDATE dbo.Registrations
+	SET
+		PatientID = @PatientID,
+		RoomID = @RoomID,
+		Status = @Status,
+		AdmissionOn = @AdmissionOn,
+		DischargeOn = @DischargeOn,
+		ModifiedOn = @Today
+	WHERE RegistrationID = @RegistrationID
 END
 GO
 
-CREATE PROCEDURE dbo.USP_SearchRegistration
-	@stringSearch VARCHAR(50)
+-- 3.4.3 CREATE PROCEDURE dbo.USP_DropRegistration
+CREATE PROCEDURE dbo.USP_DropRegistration
+	@RegistrationID INT
 AS
 BEGIN
-	SELECT * FROM dbo.PatientRegistration 
-	WHERE 
-		RegistrationID LIKE '%' + @stringSearch + '%' OR
-		PatientID LIKE '%' + @stringSearch + '%'
+	DECLARE @RoomID INT;
+	DECLARE @LaboratoryID INT;
+
+	SET @RoomID = (SELECT RoomID FROM dbo.Registrations WHERE RegistrationID = @RegistrationID)
+
+	UPDATE dbo.Rooms
+	SET
+		Status = 0
+	WHERE RoomID = @RoomID
+
+	DELETE FROM dbo.Billings WHERE RegistrationID = @RegistrationID
+	DELETE FROM dbo.Reports WHERE RegistrationID = @RegistrationID
+	DELETE FROM dbo.Registrations WHERE RegistrationID = @RegistrationID
 END
 GO
 
-CREATE PROCEDURE dbo.USP_SearchBilling
-	@stringSearch VARCHAR(50)
-AS
-BEGIN
-	SELECT * FROM dbo.Billing 
-	WHERE BIllingID LIKE '%' + @stringSearch + '%' 
-END
-GO
-
-CREATE PROCEDURE dbo.USP_SearchRoom
-	@stringSearch VARCHAR(50)
-AS
-BEGIN
-	SELECT * FROM dbo.Room 
-	WHERE RoomID LIKE '%' + @stringSearch + '%' 
-END
-GO
-
-CREATE PROCEDURE dbo.USP_SearchLaboratory
-	@stringSearch VARCHAR(50)
-AS
-BEGIN
-	SELECT * FROM dbo.Laboratory 
-	WHERE LaboratoryID LIKE '%' + @stringSearch + '%' 
-END
-GO
-
------------------------------------------------
--- CREATE PROCEDURE FOR dbo.FindDepartmentEmployees
------------------------------------------------
-
-CREATE PROCEDURE dbo.USP_FindDepartmentEmployees
-	@DepartmentID INT
-AS
-BEGIN
-	SELECT
-		DEPARTMENT.DepartmentID,
-		DEPARTMENT.DepartmentName,
-		EMPLOYEE.EmployeeID, 
-		EMPLOYEE.FirstName, 
-		EMPLOYEE.LastName, 
-		EMPLOYEE.MiddleName, 
-		EMP_DEP.Status
-	FROM EmployeeDepartment AS EMP_DEP
-	JOIN EmployeeDetails AS EMPLOYEE
-	ON EMP_DEP.DepartmentID = @DepartmentID AND EMP_DEP.EmployeeID = EMPLOYEE.EmployeeID
-	JOIN Department AS DEPARTMENT
-	ON DEPARTMENT.DepartmentID = @DepartmentID
-END
-GO
-
------------------------------------------------
--- CREATE PROCEDURE FOR dbo.FindRole and dbo.FindDepartment
------------------------------------------------
-
-CREATE PROCEDURE dbo.USP_FindRole
-	@RoleID INT
-AS
-BEGIN
-	SELECT * 
-	FROM dbo.Role 
-	WHERE RoleID = @RoleID
-END
-GO
-
-CREATE PROCEDURE dbo.USP_FindDepartment
-	@DepartmentID INT
-AS
-BEGIN
-	SELECT * 
-	FROM dbo.Department 
-	WHERE DepartmentID = @DepartmentID
-END
-GO
-
------------------------------------------------
--- CREATE PROCEDURE FOR dbo.FindAvailable(Functions)
------------------------------------------------
-
-CREATE PROCEDURE dbo.USP_FindAvailableEmployees
-	@DepartmentID INT,
-	@Status INT
+-- 3.4.4 CREATE PROCEDURE dbo.USP_GetRegistrationInformation
+CREATE PROCEDURE dbo.USP_GetRegistrationInformation
+	@RegistrationID INT
 AS
 BEGIN
 	SELECT *
-	FROM dbo.EmployeeDetails AS EMPLOYEE
-	JOIN dbo.EmployeeDepartment AS EMP_DEP
-	ON EMPLOYEE.EmployeeID = EMP_DEP.EmployeeID AND EMP_DEP.Status = @Status
-	JOIN dbo.Department AS DEPARTMENT
-	ON DEPARTMENT.DepartmentID = @DepartmentID AND EMP_DEP.DepartmentID = @DepartmentID
+	FROM dbo.Registrations
+	WHERE RegistrationID = @RegistrationID
 END
 GO
 
-CREATE PROCEDURE dbo.USP_FindAvailableRooms
+
+
+-- 3.5 dbo.Reports
+
+-- 3.5.1 CREATE PROCEDURE dbo.USP_CreateReport
+CREATE PROCEDURE dbo.USP_CreateReport
+	@RegistrationID INT,
+	@EmployeeID INT,
+	@LaboratoryID INT,
+	@Report VARCHAR(50)
+AS
+BEGIN
+	DECLARE @Today DATETIME = GETDATE();
+	
+	UPDATE dbo.Laboratories
+	SET
+		Status = 1
+	WHERE LaboratoryID = @LaboratoryID
+	
+	INSERT INTO dbo.Reports (RegistrationID, EmployeeID, LaboratoryID, Report, CreatedOn)
+	VALUES (@RegistrationID, @EmployeeID, @LaboratoryID, @Report, @Today)
+END
+GO
+
+-- 3.5.2 CREATE PROCEDURE dbo.USP_UpdateReport
+CREATE PROCEDURE dbo.USP_UpdateReport
+	@ReportID INT,
+	@RegistrationID INT,
+	@EmployeeID INT,
+	@LaboratoryID INT,
+	@Report VARCHAR(50)
+AS
+BEGIN
+	DECLARE @Today DATETIME = GETDATE();
+	DECLARE @LaboratoryNumber DATETIME;
+	DECLARE @EmployeeNumber INT;
+	
+	SET @LaboratoryNumber = (SELECT LaboratoryID FROM dbo.Report WHERE ReportID = @ReportID)
+	
+	SET @EmployeeNumber = (SELECT EmployeeID FROM dbo.Report WHERE ReportID = @ReportID)
+	
+	-- Set old status to off
+	UPDATE dbo.Laboratories
+	SET
+		Status = 0
+	WHERE LaboratoryID = @LaboratoryNumber
+	
+	UPDATE dbo.Employees
+	SET
+		Status = 0
+	WHERE EmployeeID = @EmployeeNumber
+	
+	-- Update new status to on
+	UPDATE dbo.Laboratories
+	SET
+		Status = 1
+	WHERE LaboratoryID = @LaboratoryID
+	
+	UPDATE dbo.Employees
+	SET
+		Status = 1
+	WHERE EmployeeID = @EmployeeID
+	-- This segment only serves to solve a problem when the user decides to change the employee or laboratory before finishing the result.
+	
+	UPDATE dbo.Reports
+	SET
+		RegistrationID = @RegistrationID,
+		EmployeeID = @EmployeeID,
+		LaboratoryID = @LaboratoryID,
+		Report = @Report,
+		ModifiedOn = @Today
+	WHERE ReportID = @ReportID
+END
+GO
+
+-- 3.5.3 CREATE PROCEDURE dbo.USP_DropReport
+CREATE PROCEDURE dbo.USP_DropReport
+	@ReportID INT
+AS
+BEGIN
+	DECLARE @LaboratoryNumber DATETIME;
+	DECLARE @EmployeeNumber INT;
+	
+	SET @LaboratoryNumber = (SELECT LaboratoryID FROM dbo.Report WHERE ReportID = @ReportID)	
+	
+	SET @EmployeeNumber = (SELECT EmployeeID FROM dbo.Report WHERE ReportID = @ReportID)
+	
+	UPDATE dbo.Laboratories
+	SET
+		Status = 0
+	WHERE LaboratoryID = @LaboratoryNumber
+	
+	UPDATE dbo.Employees
+	SET
+		Status = 0
+	WHERE EmployeeID = @EmployeeNumber
+	
+	DELETE FROM dbo.Report WHERE ReportID = @ReportID
+END
+GO
+
+-- 3.5.4 CREATE PROCEDURE dbo.USP_GetReportInfomration
+CREATE PROCEDURE dbo.USP_GetReportInfomration
+	@ReportID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Reports
+	WHERE ReportID = @ReportID
+END
+GO
+
+-- 3.5.5 CREATE PROCEDURE dbo.USP_GetRegistrationReport
+CREATE PROCEDURE dbo.USP_GetRegistrationReport
+	@RegistrationID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Reports
+	WHERE RegistrationID = @RegistrationID
+END
+GO
+
+-- 3.6 dbo.Billings
+
+-- 3.6.1 CREATE PROCEDURE dbo.USP_CreateBilling
+CREATE PROCEDURE dbo.USP_CreateBilling
+	@RegistrationID INT
+AS
+BEGIN
+	DECLARE @Today DATETIME = GETDATE();
+	DECLARE @DepartmentTotal INT;
+	DECLARE @LaboratoryTotal INT;
+	DECLARE @AdmissionOn DATETIME;
+	DECLARE @DischargeOn DATETIME;
+	DECLARE @RoomFee INT;
+	DECLARE @RoomTotal INT;
+	DECLARE @Total INT;
+	
+	SET @DepartmentTotal = (
+		SELECT SUM(DEP.Fee)
+		FROM dbo.Departments AS DEP
+		INNER JOIN (
+			-- Retrieve Departments information from Employees
+			SELECT EMP.DepartmentID
+			FROM dbo.Employees AS EMP
+			INNER JOIN (
+				-- Retrieve EmployeeID that had participated in the Reports
+				SELECT REP.EmployeeID
+				FROM dbo.Reports AS REP
+				WHERE RegistrationID = @RegistrationID
+			) AS REP_EMP
+			ON EMP.EmployeeID = REP_EMP.EmployeeID 
+		) AS EMP_DEP
+		ON DEP.DepartmentID = EMP_DEP.DepartmentID
+	)
+	
+	SET @LaboratoryTotal = (
+		SELECT SUM(LAB.Fee)
+		FROM dbo.Laboratories AS LAB
+		INNER JOIN (	
+			-- Retrieve LaboratoryID used in Reports
+			SELECT LaboratoryID	
+			FROM dbo.Reports
+			WHERE RegistrationID = @RegistrationID
+		) AS LAB_REP
+		ON LAB.LaboratoryID = LAB_REP.LaboratoryID
+	)
+	
+	SET @AdmissionOn = (SELECT AdmissionOn FROM dbo.Registrations WHERE RegistrationID = @RegistrationID)	
+	SET @DischargeOn = (SELECT DischargeOn FROM dbo.Registrations WHERE RegistrationID = @RegistrationID)
+	
+	SET @RoomFee = (SELECT RoomID FROM dbo.RegistrationID WHERE RegistrationID = @RegistrationID)
+	
+	SET @RoomTotal = ((MONTH(@DischargeOn) - MONTH(@AdmissionOn)) * 31) + ((DAY(@DischargeOn) - DAY(@AdmissionOn)) * @RoomFee)
+	
+	SET @Total = @DepartmentTotal + @LaboratoryTotal + @RoomTotal
+	
+	INSERT INTO dbo.Billings (RegistrationID, LaboratoryFee, RoomFee, DepartmentFee, Total, CreatedOn)
+	VALUES (@RegistrationID, @LaboratoryTotal, @RoomTotal, @DepartmentTotal, @Total, @Today)
+END
+GO
+
+-- 3.6.2 CREATE PROCEDURE dbo.USP_UpdateBilling
+
+/* 
+(Raymond) - Unecessary USP, since there's not much you can update on Billings. 
+			Every variable in Billing is reliant on Registrations and Reports. 
+			To solve updating issue, drop the bill that was created and create a new one instead. 
+*/
+
+-- 3.6.3 CREATE PROCEDURE dbo.USP_DropBilling
+CREATE PROCEDURE dbo.USP_DropBilling
+	@BillingID INT
+AS
+BEGIN
+	DELETE FROM dbo.Billings WHERE BillingID = @BillingID
+END
+GO
+
+-- 3.6.4 CREATE PROCEDURE dbo.USP_GetBillingInformation
+CREATE PROCEDURE dbo.USP_GetBillingInformation
+	@BillingID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Billings
+	WHERE BillingID = @BillingID
+END
+GO
+
+
+
+-- 3.7 dbo.Laboratories
+
+-- 3.7.1 CREATE PROCEDURE dbo.USP_CreateLaboratory
+CREATE PROCEDURE dbo.USP_CreateLaboratory
+	@LaboratoryNumber VARCHAR(50),
+	@Fee INT
+AS
+BEGIN
+	INSERT INTO dbo.Laboratories (LaboratoryNumber, Fee)
+	VALUES (@LaboratoryNumber, @Fee)
+END
+GO
+
+-- 3.7.2 CREATE PROCEDURE dbo.USP_UpdateLaboratory
+CREATE PROCEDURE dbo.USP_UpdateLaboratory
+	@LaboratoryID INT,
+	@LaboratoryNumber INT,
+	@Status BIT,
+	@Fee INT
+AS
+BEGIN
+	UPDATE dbo.Laboratories
+	SET
+		LaboratoryNumber = @LaboratoryNumber,
+		Status = @Status,
+		Fee = @Fee
+	WHERE LaboratoryID = @LaboratoryID
+END
+GO
+
+-- 3.7.3 CREATE PROCEDURE dbo.USP_DropLaboratory
+CREATE PROCEDURE dbo.USP_DropLaboratory
+	@LaboratoryID INT
+AS
+BEGIN 
+	DELETE FROM dbo.Laboratories WHERE LaboratoryID = @LaboratoryID
+END
+GO
+
+-- 3.7.4 CREATE PROCEDURE dbo.USP_GetLaboratoryInformation
+CREATE PROCEDURE dbo.USP_GetLaboratoryInformation
+	@LaboraotyID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Laboratories
+	WHERE LaboratoryID = @LaboraotyID
+END
+GO
+
+-- 3.7.4 CREATE PROCEDURE dbo.USP_OpenLaboratory
+CREATE PROCEDURE dbo.USP_OpenLaboratory
+	@Status BIT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Laboratories
+	WHERE Status = @Status
+END
+GO
+
+
+-- 3.8 dbo.Rooms
+
+-- 3.8.1 CREATE PROCEDURE dbo.USP_CreateRoom
+CREATE PROCEDURE dbo.USP_CreateRoom
+	@RoomNumber INT,
+	@Fee INT
+AS
+BEGIN
+	INSERT INTO dbo.Rooms (RoomNumber, Fee)
+	VALUES (@RoomNumber, @Fee)
+END
+GO
+
+-- 3.8.2 CREATE PROCEDURE dbo.USP_UpdateRoom
+CREATE PROCEDURE dbo.USP_UpdateRoom
+	@RoomID INT,
+	@RoomNumber INT,
+	@Status BIT,
+	@Fee INT
+AS
+BEGIN
+	UPDATE dbo.Rooms
+	SET
+		RoomNumber = @RoomNumber,
+		Status = @Status,
+		Fee = @Fee
+	WHERE RoomID = @RoomID
+END
+GO
+-- 3.8.3 CREATE PROCEDURE dbo.USP_DropRoom
+CREATE PROCEDURE dbo.USP_DropRoom
+	@RoomID INT
+AS
+BEGIN 
+	DELETE FROM dbo.Rooms WHERE RoomID = @RoomID
+END
+GO
+
+-- 3.8.4 CREATE PROCEDURE dbo.USP_GetRoomInformation
+CREATE PROCEDURE dbo.USP_GetRoomInformation
+	@RoomID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Rooms
+	WHERE RoomID = @RoomID
+END
+GO
+
+-- 3.8.4 CREATE PROCEDURE dbo.USP_OpenRoom
+CREATE PROCEDURE dbo.USP_OpenRoom
 	@Status BIT
 AS
 BEGIN
 	SELECT *
 	FROM dbo.Rooms
-	WHERE @Status = Status
+	WHERE Status = @Status
 END
 GO
 
-CREATE PROCEDURE dbo.USP_FindAvailableLaboratories
-	@Status BIT
-AS
-BEGIN
-	SELECT *
-	FROM dbo.Laboratory
-	WHERE @Status = Status
-END
-GO
 
-/**********************************************
--- CREATE VIEWS (V)
-**********************************************/
 
-CREATE VIEW dbo.V_PatientInformation 
-AS
-	-- Each Column Needed to be Unique
-	SELECT 
-		PATIENT.PatientID, 
-		PATIENT.FirstName, 
-		PATIENT.LastName, 
-		PATIENT.MiddleName, 
-		PATIENT.Birthdate, 
-		PATIENT.Age, 
-		PATIENT.Gender, 
-		PATIENT.Religion, 
-		PATIENT.Email, 
-		PATIENT.PhoneNumber, 
-		PATIENT.AddressID, 
-		ADDRESS.Address1, 
-		ADDRESS.Address2, 
-		ADDRESS.City, 
-		ADDRESS.Province, 
-		ADDRESS.Zipcode, 
-		ADDRESS.Country
-	FROM dbo.PatientDetails AS PATIENT
-	FULL JOIN dbo.Address AS ADDRESS
-	ON PATIENT.AddressID = ADDRESS.AddressID
-GO
+/********************************
+-- 4. CREATE VIEWS 
+********************************/
 
-CREATE VIEW dbo.V_EmployeeInformation
-AS
-	SELECT 
-		EMPLOYEE.EmployeeID, 
-		EMPLOYEE.FirstName, 
-		EMPLOYEE.LastName, 
-		EMPLOYEE.MiddleName, 
-		EMPLOYEE.Birthdate, 
-		EMPLOYEE.Age, 
-		EMPLOYEE.Gender, 
-		EMPLOYEE.Religion, 
-		EMPLOYEE.Email, 
-		EMPLOYEE.PhoneNumber, 
-		EMPLOYEE.RoleID,
-		EMPLOYEE.Password,
-		EMP_DEP.DepartmentID,
-		EMPLOYEE.AddressID, 
-		ADDRESS.Address1, 
-		ADDRESS.Address2, 
-		ADDRESS.City, 
-		ADDRESS.Province, 
-		ADDRESS.Zipcode, 
-		ADDRESS.Country
-	FROM dbo.EmployeeDetails AS EMPLOYEE
-	JOIN dbo.Address AS ADDRESS
-	ON EMPLOYEE.AddressID = ADDRESS.AddressID
-	JOIN EmployeeDepartment AS EMP_DEP
-	ON EMPLOYEE.EmployeeID = EMP_DEP.EmployeeID
-GO
-
-CREATE VIEW dbo.V_RegisterInformation
-AS
-	SELECT 
-		REGISTRATION.PatientID,
-		REGISTRATION.RegistrationID,
-		REGISTRATION.EmployeeID,
-		REGISTRATION.RoomID,
-		REGISTRATION.LaboratoryID,
-		REGISTRATION.AdmissionOn,
-		REGISTRATION.DischargeOn,
-		LAB_DETAILS.ReportID,
-		LAB_DETAILS.Results
-	FROM dbo.PatientRegistration AS REGISTRATION
-	JOIN dbo.LaboratoryDetails AS LAB_DETAILS
-	ON REGISTRATION.RegistrationID = LAB_DETAILS.RegistrationID
-GO
-
-CREATE VIEW dbo.V_RoleInformation
+-- 4.1 CREATE VIEW V_Patients
+CREATE VIEW dbo.V_Patients
 AS
 	SELECT *
-	FROM dbo.Role
+	FROM dbo.Patients
 GO
-
-CREATE VIEW dbo.V_DepartmentInformation
+	
+-- 4.2 CREATE VIEW V_Employees
+CREATE VIEW dbo.V_Employees
 AS
 	SELECT *
-	FROM dbo.DEPARTMENT
+	FROM dbo.Employees
 GO
-
-CREATE VIEW dbo.V_RoomInformation
+	
+-- 4.3 CREATE VIEW V_Departments
+CREATE VIEW dbo.V_Departments
 AS
 	SELECT *
-	FROM dbo.Room
+	FROM dbo.Departments
 GO
 
-CREATE VIEW dbo.V_LaboratoryInformation
+-- 4.4 CREATE VIEW V_Registration
+CREATE VIEW dbo.V_Registration
 AS
 	SELECT *
-	FROM dbo.Laboratory
+	FROM dbo.Registrations
 GO
-/**********************************************
--- INSERT INTO TABLE VALUES
-**********************************************/
 
-INSERT INTO dbo.Room (Status, RoomCharge)
+-- 4.5 CREATE VIEW V_Rooms
+CREATE VIEW dbo.V_Rooms
+AS
+	SELECT *
+	FROM dbo.Rooms
+GO
+
+-- 4.6 CREATE VIEW V_Laboratories
+CREATE VIEW dbo.V_Laboratories
+AS
+	SELECT *
+	FROM dbo.Laboratories
+GO
+
+-- 4.7 CREATE VIEW V_Reports
+CREATE VIEW dbo.V_Reports
+AS
+	SELECT *
+	FROM dbo.Reports
+GO
+
+-- 4.8 CREATE VIEW V_Billings
+CREATE VIEW dbo.V_Billings
+AS
+	SELECT *
+	FROM dbo.Billings
+GO
+
+/********************************
+5. INSERT VALUES INTO TABLE
+********************************/
+
+INSERT INTO dbo.Rooms (RoomNumber, Status, Fee)
 VALUES 
-(0, 250),
-(0, 250),
-(0, 300),
-(0, 350),
-(0, 350),
-(0, 450)
+('Room 1', 0, 250),
+('Room 2', 0, 250),
+('Room 3', 0, 300),
+('Room 4', 0, 350),
+('Room 5', 0, 350),
+('Room 6', 0, 450)
 
-INSERT INTO dbo.Laboratory (Status, LabCharge)
+INSERT INTO dbo.Laboratories (LaboratoryNumber, Status, Fee)
 VALUES
-(0, 400),
-(0, 400),
-(0, 400),
-(0, 600),
-(0, 600),
-(0, 600)
+('Laboratory 1', 0, 400),
+('Laboratory 2', 0, 400),
+('Laboratory 3', 0, 400),
+('Laboratory 4', 0, 600),
+('Laboratory 5', 0, 600),
+('Laboratory 6', 0, 600)
 
-INSERT INTO dbo.Role (RoleID, Description)
+INSERT INTO dbo.Roles (RoleID, Description)
 VALUES
 (0, 'Administrator'),
 (1, 'Doctor'),
 (2, 'Staff')
 
-INSERT INTO dbo.Department (DepartmentName, DepCharge)
+INSERT INTO dbo.Departments (Description, Fee)
 VALUES
 ('Cardiac radiology', 1000),
 ('Dentistry', 2500),
