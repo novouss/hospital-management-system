@@ -20,219 +20,239 @@ namespace hospital_management_system
             // this.patient = patient;
             // loadPatient(function);
         }
+
+        private void infoGroup_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void informationTextbox3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void informationTextbox6_Load(object sender, EventArgs e)
+        {
+
+        }
         /*
-        private void loadPatient(string function)
-        {
-            switch (function)
-            {
-                case "view":
-                    patientForm.Text = "View Patient ID: " + patient.PatientID;
-                    viewPatient(this.patient);
-                    break;
-                case "modify":
-                    patientForm.Text = "Modify Patient ID: " + patient.PatientID;
-                    modifyPatient();
-                    break;
-                case "add":
-                    patientForm.Text = "Add Patient";
-                    addPatient();
-                    break;
-                default:
-                    break;
+private void loadPatient(string function)
+{
+switch (function)
+{
+case "view":
+patientForm.Text = "View Patient ID: " + patient.PatientID;
+viewPatient(this.patient);
+break;
+case "modify":
+patientForm.Text = "Modify Patient ID: " + patient.PatientID;
+modifyPatient();
+break;
+case "add":
+patientForm.Text = "Add Patient";
+addPatient();
+break;
+default:
+break;
 
-            }
-        }
+}
+}
 
-        private void addPatient()
-        {
-            // Visualize information
-            infoGroup.Visible = true;
-            addressGroup.Visible = true;
-            appointmentGroup.Visible = false;
+private void addPatient()
+{
+// Visualize information
+infoGroup.Visible = true;
+addressGroup.Visible = true;
+appointmentGroup.Visible = false;
 
-            // Allow for user input
-            infoGroup.Enabled = true;
-            addressGroup.Enabled = true;
-            appointmentGroup.Visible = false;
+// Allow for user input
+infoGroup.Enabled = true;
+addressGroup.Enabled = true;
+appointmentGroup.Visible = false;
 
-            // Visualize Buttons
-            deleteBtn.Visible = false;
-            cancelBtn.Visible = true;
-            modifyBtn.Visible = false;
-            saveBtn.Visible = true;
+// Visualize Buttons
+deleteBtn.Visible = false;
+cancelBtn.Visible = true;
+modifyBtn.Visible = false;
+saveBtn.Visible = true;
 
-            // Button Function
-            saveBtn.Click += AddPatientSaveBtn_Click;
-            cancelBtn.Click += CancelBtn_Click;
-        }
+// Button Function
+saveBtn.Click += AddPatientSaveBtn_Click;
+cancelBtn.Click += CancelBtn_Click;
+}
 
-        private void CancelBtn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+private void CancelBtn_Click(object sender, EventArgs e)
+{
+this.Close();
+}
 
-        private void AddPatientSaveBtn_Click(object sender, EventArgs e)
-        {
-            Patients patient = new Patients();
+private void AddPatientSaveBtn_Click(object sender, EventArgs e)
+{
+Patients patient = new Patients();
 
-            patient.FirstName = firstnameTextbox.Text;
-            patient.LastName = lastnameTextbox.Text;
-            patient.MiddleName = middlenameTextbox.Text;
-            patient.Birthdate = new DateTime(birthdateCalendar.Value.Year, birthdateCalendar.Value.Month, birthdateCalendar.Value.Day);
-            
-            if (maleRadio.Checked)
-            {
-                patient.Gender = maleRadio.Text;
-            } else if (femaleRadio.Checked)
-            {
-                patient.Gender = femaleRadio.Text;
-            } else if (othersRadio.Checked)
-            {
-                patient.Gender = anyGenderTextbox.Text;
-            }
+patient.FirstName = firstnameTextbox.Text;
+patient.LastName = lastnameTextbox.Text;
+patient.MiddleName = middlenameTextbox.Text;
+patient.Birthdate = new DateTime(birthdateCalendar.Value.Year, birthdateCalendar.Value.Month, birthdateCalendar.Value.Day);
 
-            patient.Religion = religionTextbox.Text;
-            patient.Email = emailTextbox.Text;
-            patient.PhoneNumber = phoneTextbox.Text;
+if (maleRadio.Checked)
+{
+patient.Gender = maleRadio.Text;
+} else if (femaleRadio.Checked)
+{
+patient.Gender = femaleRadio.Text;
+} else if (othersRadio.Checked)
+{
+patient.Gender = anyGenderTextbox.Text;
+}
 
-            patient.Address1 = address1Textbox.Text;
-            patient.Address2 = address2Textbox.Text;
-            patient.City = cityTextbox.Text;
-            patient.Province = stateTextbox.Text;
-            patient.Zipcode = zipcodeTextbox.Text;
-            patient.Country = countryTextbox.Text;
+patient.Religion = religionTextbox.Text;
+patient.Email = emailTextbox.Text;
+patient.PhoneNumber = phoneTextbox.Text;
 
-            db.addPatient(patient);
+patient.Address1 = address1Textbox.Text;
+patient.Address2 = address2Textbox.Text;
+patient.City = cityTextbox.Text;
+patient.Province = stateTextbox.Text;
+patient.Zipcode = zipcodeTextbox.Text;
+patient.Country = countryTextbox.Text;
 
-            this.Close();
-        }
+db.addPatient(patient);
 
-        private void viewPatient(Patients patient)
-        {
-            this.patient = patient;
-            // Visualize information
-            infoGroup.Visible = true;
-            addressGroup.Visible = true;
-            appointmentGroup.Visible = true;
+this.Close();
+}
 
-            // Do not allow for user input
-            infoGroup.Enabled = false;
-            addressGroup.Enabled = false;
-            appointmentGroup.Enabled = false;
+private void viewPatient(Patients patient)
+{
+this.patient = patient;
+// Visualize information
+infoGroup.Visible = true;
+addressGroup.Visible = true;
+appointmentGroup.Visible = true;
 
-            // Visualize Buttons
-            deleteBtn.Visible = true;
-            cancelBtn.Visible = false;
-            modifyBtn.Visible = true;
-            saveBtn.Visible = false;
+// Do not allow for user input
+infoGroup.Enabled = false;
+addressGroup.Enabled = false;
+appointmentGroup.Enabled = false;
 
-            // Visualize Information
-            firstnameTextbox.Text = patient.FirstName;
-            lastnameTextbox.Text = patient.LastName;
-            middlenameTextbox.Text = patient.MiddleName;
-            birthdateCalendar.Value = patient.Birthdate;
-            
-            maleRadio.Checked = patient.Gender == "Male";
-            femaleRadio.Checked = patient.Gender == "Female";
+// Visualize Buttons
+deleteBtn.Visible = true;
+cancelBtn.Visible = false;
+modifyBtn.Visible = true;
+saveBtn.Visible = false;
 
-            if (patient.Gender != "Male" && patient.Gender != "Female")
-            {
-                othersRadio.Checked = true;
-                anyGenderTextbox.Text = patient.Gender;
-            }
+// Visualize Information
+firstnameTextbox.Text = patient.FirstName;
+lastnameTextbox.Text = patient.LastName;
+middlenameTextbox.Text = patient.MiddleName;
+birthdateCalendar.Value = patient.Birthdate;
 
-            religionTextbox.Text = patient.Religion;
-            emailTextbox.Text = patient.Email;
-            phoneTextbox.Text = patient.PhoneNumber;
+maleRadio.Checked = patient.Gender == "Male";
+femaleRadio.Checked = patient.Gender == "Female";
 
-            address1Textbox.Text = patient.Address1;
-            address2Textbox.Text = patient.Address2;
-            cityTextbox.Text = patient.City;
-            stateTextbox.Text = patient.Province;
-            zipcodeTextbox.Text = patient.Zipcode;
-            countryTextbox.Text = patient.Country;
+if (patient.Gender != "Male" && patient.Gender != "Female")
+{
+othersRadio.Checked = true;
+anyGenderTextbox.Text = patient.Gender;
+}
 
-            // Button Function
-            modifyBtn.Click += ModifyPatientBtn_Click;
-        }
+religionTextbox.Text = patient.Religion;
+emailTextbox.Text = patient.Email;
+phoneTextbox.Text = patient.PhoneNumber;
 
-        private void ModifyPatientBtn_Click(object sender, EventArgs e)
-        {
-            loadPatient("modify");
-        }
+address1Textbox.Text = patient.Address1;
+address2Textbox.Text = patient.Address2;
+cityTextbox.Text = patient.City;
+stateTextbox.Text = patient.Province;
+zipcodeTextbox.Text = patient.Zipcode;
+countryTextbox.Text = patient.Country;
 
-        private void modifyPatient()
-        {
-            // Visualize information
-            infoGroup.Visible = true;
-            addressGroup.Visible = true;
-            appointmentGroup.Visible = false;
+// Button Function
+modifyBtn.Click += ModifyPatientBtn_Click;
+}
 
-            // Allow for user input
-            infoGroup.Enabled = true;
-            addressGroup.Enabled = true;
-            appointmentGroup.Enabled = false;
+private void ModifyPatientBtn_Click(object sender, EventArgs e)
+{
+loadPatient("modify");
+}
 
-            // Visualize Buttons
-            deleteBtn.Visible = true;
-            cancelBtn.Visible = true;
-            modifyBtn.Visible = false;
-            saveBtn.Visible = true;
+private void modifyPatient()
+{
+// Visualize information
+infoGroup.Visible = true;
+addressGroup.Visible = true;
+appointmentGroup.Visible = false;
 
-            saveBtn.Click += SaveModifiedPaitentBtn_Click;
-        }
+// Allow for user input
+infoGroup.Enabled = true;
+addressGroup.Enabled = true;
+appointmentGroup.Enabled = false;
 
-        private void SaveModifiedPaitentBtn_Click(object sender, EventArgs e)
-        {
-            this.patient.FirstName = firstnameTextbox.Text;
-            this.patient.LastName = lastnameTextbox.Text;
-            this.patient.MiddleName = middlenameLabel.Text;
-            this.patient.Birthdate = new DateTime(birthdateCalendar.Value.Year, birthdateCalendar.Value.Month, birthdateCalendar.Value.Day);
+// Visualize Buttons
+deleteBtn.Visible = true;
+cancelBtn.Visible = true;
+modifyBtn.Visible = false;
+saveBtn.Visible = true;
 
-            if (maleRadio.Checked)
-            {
-                this.patient.Gender = maleRadio.Text;
-            }
-            else if (femaleRadio.Checked)
-            {
-                this.patient.Gender = femaleRadio.Text;
-            }
-            else if (othersRadio.Checked)
-            {
-                this.patient.Gender = anyGenderTextbox.Text;
-            }
+saveBtn.Click += SaveModifiedPaitentBtn_Click;
+}
 
-            this.patient.Religion = religionTextbox.Text;
-            this.patient.Email = emailTextbox.Text;
-            this.patient.PhoneNumber = phoneTextbox.Text;
+private void SaveModifiedPaitentBtn_Click(object sender, EventArgs e)
+{
+this.patient.FirstName = firstnameTextbox.Text;
+this.patient.LastName = lastnameTextbox.Text;
+this.patient.MiddleName = middlenameLabel.Text;
+this.patient.Birthdate = new DateTime(birthdateCalendar.Value.Year, birthdateCalendar.Value.Month, birthdateCalendar.Value.Day);
 
-            this.patient.Address1 = address1Textbox.Text;
-            this.patient.Address2 = address2Textbox.Text;
-            this.patient.City = cityTextbox.Text;
-            this.patient.Province = stateTextbox.Text;
-            this.patient.Zipcode = zipcodeTextbox.Text;
-            this.patient.Country = countryTextbox.Text;
+if (maleRadio.Checked)
+{
+this.patient.Gender = maleRadio.Text;
+}
+else if (femaleRadio.Checked)
+{
+this.patient.Gender = femaleRadio.Text;
+}
+else if (othersRadio.Checked)
+{
+this.patient.Gender = anyGenderTextbox.Text;
+}
 
-            db.modifyPatient(this.patient);
-            this.Close();
-        }
+this.patient.Religion = religionTextbox.Text;
+this.patient.Email = emailTextbox.Text;
+this.patient.PhoneNumber = phoneTextbox.Text;
 
-        private void othersRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            anyGenderTextbox.Enabled = othersRadio.Checked;
-        }
+this.patient.Address1 = address1Textbox.Text;
+this.patient.Address2 = address2Textbox.Text;
+this.patient.City = cityTextbox.Text;
+this.patient.Province = stateTextbox.Text;
+this.patient.Zipcode = zipcodeTextbox.Text;
+this.patient.Country = countryTextbox.Text;
 
-        private void femaleRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            anyGenderTextbox.Enabled = othersRadio.Checked;
-            anyGenderTextbox.Text = "";
-        }
+db.modifyPatient(this.patient);
+this.Close();
+}
 
-        private void maleRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            anyGenderTextbox.Enabled = othersRadio.Checked;
-            anyGenderTextbox.Text = "";
-        }
-        */
+private void othersRadio_CheckedChanged(object sender, EventArgs e)
+{
+anyGenderTextbox.Enabled = othersRadio.Checked;
+}
+
+private void femaleRadio_CheckedChanged(object sender, EventArgs e)
+{
+anyGenderTextbox.Enabled = othersRadio.Checked;
+anyGenderTextbox.Text = "";
+}
+
+private void maleRadio_CheckedChanged(object sender, EventArgs e)
+{
+anyGenderTextbox.Enabled = othersRadio.Checked;
+anyGenderTextbox.Text = "";
+}
+*/
     }
 }
