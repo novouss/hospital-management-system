@@ -126,6 +126,12 @@
     <Compile Include="gui\components\InformationRadio.Designer.cs">
       <DependentUpon>InformationRadio.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\forms\FormReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\forms\FormReport.Designer.cs">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\forms\FormBilling.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\components\InformationRadio.resx">
       <DependentUpon>InformationRadio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\forms\FormReport.resx">
+      <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\forms\FormAppointment.resx">
       <DependentUpon>FormAppointment.cs</DependentUpon>
