@@ -15,7 +15,7 @@ namespace hospital_management_system
         private dbAccess db = new dbAccess();
         private Employees employee = null;
 
-        public FormEmployee(string function, int id = null)
+        public FormEmployee(string function, int id = 0)
         {
             InitializeComponent();
             // InitalizeComboboxItems();

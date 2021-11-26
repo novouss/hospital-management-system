@@ -386,3 +386,6 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+*.cache
+hospital-management-system/.vs/hospital-management-system/v16/.suo
+hospital-management-system/.vs/hospital-management-system/v16/.suo

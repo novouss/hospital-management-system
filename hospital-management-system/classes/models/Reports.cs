@@ -12,6 +12,7 @@ namespace hospital_management_system.classes
     {
         public int ReportID { get; set; }
         public int RegistrationID { get; set; }
+        public int DepartmentID { get; set; }
         public int EmployeeID { get; set; }
         public int LaboratoryID { get; set; }
         public string Report { get; set; }

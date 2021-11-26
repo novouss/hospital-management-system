@@ -138,6 +138,12 @@
     <Compile Include="gui\forms\FormAppointment.Designer.cs">
       <DependentUpon>FormAppointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\forms\FormReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\forms\FormReport.Designer.cs">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\forms\FormEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\forms\FormBilling.resx">
       <DependentUpon>FormBilling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\forms\FormReport.resx">
+      <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\forms\FormEmployee.resx">
       <DependentUpon>FormEmployee.cs</DependentUpon>

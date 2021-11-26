@@ -253,6 +253,7 @@ GO
 CREATE TABLE [dbo].[Reports] (
 	[ReportID] INT IDENTITY(1,1) NOT NULL,
 	[RegistrationID] INT NULL,
+	[DepartmentID] INT NOT NULL,
 	[EmployeeID] INT NOT NULL,
 	[LaboratoryID] INT NULL,
 	[Report] VARCHAR(50) NULL,
@@ -736,6 +737,7 @@ GO
 -- 3.5.1 CREATE PROCEDURE dbo.USP_CreateReport
 CREATE PROCEDURE dbo.USP_CreateReport
 	@RegistrationID INT,
+	@DepartmentID INT,
 	@EmployeeID INT,
 	@LaboratoryID INT,
 	@Report VARCHAR(50)
@@ -748,8 +750,8 @@ BEGIN
 		Status = 1
 	WHERE LaboratoryID = @LaboratoryID
 	
-	INSERT INTO dbo.Reports (RegistrationID, EmployeeID, LaboratoryID, Report, CreatedOn)
-	VALUES (@RegistrationID, @EmployeeID, @LaboratoryID, @Report, @Today)
+	INSERT INTO dbo.Reports (RegistrationID, DepartmentID, EmployeeID, LaboratoryID, Report, CreatedOn)
+	VALUES (@RegistrationID, @DepartmentID, @EmployeeID, @LaboratoryID, @Report, @Today)
 END
 GO
 
@@ -757,6 +759,7 @@ GO
 CREATE PROCEDURE dbo.USP_UpdateReport
 	@ReportID INT,
 	@RegistrationID INT,
+	@DepartmentID INT,
 	@EmployeeID INT,
 	@LaboratoryID INT,
 	@Report VARCHAR(50)
@@ -796,6 +799,7 @@ BEGIN
 	UPDATE dbo.Reports
 	SET
 		RegistrationID = @RegistrationID,
+		DepartmentID = @DepartmentID,
 		EmployeeID = @EmployeeID,
 		LaboratoryID = @LaboratoryID,
 		Report = @Report,
@@ -869,21 +873,16 @@ BEGIN
 	DECLARE @Total INT;
 	
 	SET @DepartmentTotal = (
+	
 		SELECT SUM(DEP.Fee)
-		FROM dbo.Departments AS DEP
+		FROM Departments AS DEP
 		INNER JOIN (
-			-- Retrieve Departments information from Employees
-			SELECT EMP.DepartmentID
-			FROM dbo.Employees AS EMP
-			INNER JOIN (
-				-- Retrieve EmployeeID that had participated in the Reports
-				SELECT REP.EmployeeID
-				FROM dbo.Reports AS REP
-				WHERE RegistrationID = @RegistrationID
-			) AS REP_EMP
-			ON EMP.EmployeeID = REP_EMP.EmployeeID 
-		) AS EMP_DEP
-		ON DEP.DepartmentID = EMP_DEP.DepartmentID
+			-- Retrieve List of Departments that had participated in Registrations
+			SELECT DepartmentID
+			FROM dbo.Reports
+			WHERE RegistrationID = @RegistrationID
+		) AS DEP_REP
+		ON DEP.DepartmentID = DEP_REP.DepartmentID
 	)
 	
 	SET @LaboratoryTotal = (
