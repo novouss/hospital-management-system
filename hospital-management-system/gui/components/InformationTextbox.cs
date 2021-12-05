@@ -31,5 +31,11 @@ namespace hospital_management_system.gui.components
             get { return Textbox.Text; }
             set { Textbox.Text = value; }
         }
+
+        public char TextboxPasswordChar
+        {
+            get { return Textbox.PasswordChar; }
+            set { Textbox.PasswordChar = value; }
+        }
     }
 }

@@ -15,13 +15,17 @@ namespace hospital_management_system.gui.forms
     {
         private dbAccess db = new dbAccess();
         private Registrations Registrations = new Registrations();
-        public FormAppointment(string function, int id = 0)
+        public FormAppointment(string function, Registrations registration = null)
         {
             InitializeComponent();
             // InitalizeComboboxItems();
             // this.Registrations = Registrations;
             // loadAppointment(function);
         }
+
+        #region Form Methods
+
+        #endregion
 
         /*
         private void InitalizeComboboxItems()

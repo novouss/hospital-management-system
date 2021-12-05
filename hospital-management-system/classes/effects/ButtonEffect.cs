@@ -19,7 +19,7 @@ namespace hospital_management_system.classes.effects
 
         public void ShowActiveButton(Button btn)
         {
-            btn.BackColor = Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222))))); ;
+            btn.BackColor = Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
             btn.FlatAppearance.BorderColor = Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222))))); ;
             btn.ForeColor = Color.White;
         }

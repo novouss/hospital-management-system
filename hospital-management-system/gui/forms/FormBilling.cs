@@ -13,23 +13,26 @@ namespace hospital_management_system
     {
 
         private dbAccess db = new dbAccess();
-        private Patients patient = null;
-        public FormBilling(string function)
+        private Billings billing;
+        public FormBilling(string function, Billings billing = null)
         {
             InitializeComponent();
-            // loadBilling(function);
+            this.billing = billing;
+            loadBilling(function);
         }
 
+        #region Form Methods
+        
         private void loadBilling(string function)
         {
             switch (function)
             {
                 case "view":
-                    billingForm.Text = "View Billing: " + patient.PatientID;
+                    billingForm.Text = "View Billing: " + billing.BillingID;
                     // viewPatient(this.patient);
                     break;
                 case "modify":
-                    billingForm.Text = "Modify Billing: " + patient.PatientID;
+                    billingForm.Text = "Modify Billing: " + billing.BillingID;
                     // modifyPatient();
                     break;
                 case "add":
@@ -41,5 +44,7 @@ namespace hospital_management_system
 
             }
         }
+
+        #endregion
     }
 }

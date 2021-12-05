@@ -408,6 +408,7 @@ namespace hospital_management_system.gui.forms
             // 
             // loginPanel
             // 
+            this.loginPanel.BackColor = System.Drawing.SystemColors.Control;
             this.loginPanel.Controls.Add(this.loginGroup);
             this.loginPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginPanel.Location = new System.Drawing.Point(0, 0);
@@ -419,6 +420,7 @@ namespace hospital_management_system.gui.forms
             // loginGroup
             // 
             this.loginGroup.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.loginGroup.BackColor = System.Drawing.Color.White;
             this.loginGroup.Controls.Add(this.emailPanel);
             this.loginGroup.Controls.Add(this.passwordPanel);
             this.loginGroup.Controls.Add(this.emailText);

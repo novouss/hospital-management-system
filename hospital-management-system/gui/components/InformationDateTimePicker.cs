@@ -27,6 +27,12 @@ namespace hospital_management_system.gui.components
             set { TableLayout.ColumnStyles[0].Width = value; } 
         }
 
+        public DateTime DateText
+        {
+            get { return DateTimePicker.Value; }
+            set { DateTimePicker.Value = value; }
+        }
+
         public DateTime GetDateTime()
         {
             return new DateTime(DateTimePicker.Value.Year, DateTimePicker.Value.Month, DateTimePicker.Value.Day, DateTimePicker.Value.Hour, DateTimePicker.Value.Minute, DateTimePicker.Value.Second);

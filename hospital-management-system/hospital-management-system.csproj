@@ -108,6 +108,13 @@
     <Compile Include="classes\models\Laboratories.cs" />
     <Compile Include="classes\models\Roles.cs" />
     <Compile Include="classes\models\Rooms.cs" />
+    <Compile Include="classes\MoreColors.cs" />
+    <Compile Include="gui\components\DisplayPreview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="gui\components\DisplayPreview.Designer.cs">
+      <DependentUpon>DisplayPreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\components\InformationComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,6 +133,27 @@
     <Compile Include="gui\components\InformationRadio.Designer.cs">
       <DependentUpon>InformationRadio.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\components\PreviewBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="gui\components\PreviewBox.Designer.cs">
+      <DependentUpon>PreviewBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\components\PreviewCards.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="gui\components\PreviewCards.Designer.cs">
+      <DependentUpon>PreviewCards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\components\RoundedGroupbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="gui\components\RoundedGroupbox.Designer.cs">
+      <DependentUpon>RoundedGroupbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\components\RoundedPanels.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="gui\forms\FormReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,12 +171,6 @@
     </Compile>
     <Compile Include="gui\forms\FormAppointment.Designer.cs">
       <DependentUpon>FormAppointment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="gui\forms\FormReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="gui\forms\FormReport.Designer.cs">
-      <DependentUpon>FormReport.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\forms\FormEmployee.cs">
       <SubType>Form</SubType>
@@ -188,6 +210,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="gui\components\DisplayPreview.resx">
+      <DependentUpon>DisplayPreview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\components\InformationComboBox.resx">
       <DependentUpon>InformationComboBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +222,15 @@
     <EmbeddedResource Include="gui\components\InformationRadio.resx">
       <DependentUpon>InformationRadio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\components\PreviewBox.resx">
+      <DependentUpon>PreviewBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\components\PreviewCards.resx">
+      <DependentUpon>PreviewCards.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\components\RoundedGroupbox.resx">
+      <DependentUpon>RoundedGroupbox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\forms\FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,9 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\forms\FormBilling.resx">
       <DependentUpon>FormBilling.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="gui\forms\FormReport.resx">
-      <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\forms\FormEmployee.resx">
       <DependentUpon>FormEmployee.cs</DependentUpon>

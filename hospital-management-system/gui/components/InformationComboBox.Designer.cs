@@ -64,11 +64,12 @@ namespace hospital_management_system.gui.components
             // ComboBox
             // 
             this.ComboBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBox.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.ComboBox.FormattingEnabled = true;
             this.ComboBox.Location = new System.Drawing.Point(168, 3);
             this.ComboBox.Name = "ComboBox";
-            this.ComboBox.Size = new System.Drawing.Size(555, 36);
+            this.ComboBox.Size = new System.Drawing.Size(555, 29);
             this.ComboBox.TabIndex = 1;
             // 
             // InformationComboBox

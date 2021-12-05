@@ -30,14 +30,15 @@ namespace hospital_management_system.gui.components
         private void InitializeComponent()
         {
             this.TableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.Label = new System.Windows.Forms.Label();
             this.Textbox = new System.Windows.Forms.TextBox();
-            this.FlowLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.Label = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.TableLayout.SuspendLayout();
-            this.FlowLayout.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayout
@@ -45,17 +46,81 @@ namespace hospital_management_system.gui.components
             this.TableLayout.ColumnCount = 2;
             this.TableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 245F));
             this.TableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayout.Controls.Add(this.FlowLayout, 0, 1);
-            this.TableLayout.Controls.Add(this.Textbox, 0, 1);
+            this.TableLayout.Controls.Add(this.Textbox, 1, 1);
+            this.TableLayout.Controls.Add(this.panel1, 1, 0);
             this.TableLayout.Controls.Add(this.Label, 0, 0);
+            this.TableLayout.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.TableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayout.Location = new System.Drawing.Point(0, 0);
             this.TableLayout.Name = "TableLayout";
             this.TableLayout.RowCount = 2;
             this.TableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.TableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.TableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayout.Size = new System.Drawing.Size(726, 70);
             this.TableLayout.TabIndex = 2;
+            // 
+            // Textbox
+            // 
+            this.Textbox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Textbox.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.Textbox.Location = new System.Drawing.Point(248, 38);
+            this.Textbox.Name = "Textbox";
+            this.Textbox.Size = new System.Drawing.Size(475, 29);
+            this.Textbox.TabIndex = 12;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioButton3);
+            this.panel1.Controls.Add(this.radioButton2);
+            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(248, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(475, 29);
+            this.panel1.TabIndex = 9;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radioButton3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radioButton3.Location = new System.Drawing.Point(140, 0);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(78, 29);
+            this.radioButton3.TabIndex = 4;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Others:";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radioButton2.Location = new System.Drawing.Point(62, 0);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(78, 29);
+            this.radioButton2.TabIndex = 3;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Female";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radioButton1.Location = new System.Drawing.Point(0, 0);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(62, 29);
+            this.radioButton1.TabIndex = 2;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Male";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // Label
             // 
@@ -68,61 +133,13 @@ namespace hospital_management_system.gui.components
             this.Label.TabIndex = 0;
             this.Label.Text = "label1";
             // 
-            // Textbox
+            // flowLayoutPanel1
             // 
-            this.Textbox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Textbox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.Textbox.Location = new System.Drawing.Point(248, 38);
-            this.Textbox.Name = "Textbox";
-            this.Textbox.Size = new System.Drawing.Size(475, 29);
-            this.Textbox.TabIndex = 5;
-            // 
-            // FlowLayout
-            // 
-            this.FlowLayout.Controls.Add(this.radioButton1);
-            this.FlowLayout.Controls.Add(this.radioButton2);
-            this.FlowLayout.Controls.Add(this.radioButton3);
-            this.FlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayout.Location = new System.Drawing.Point(3, 38);
-            this.FlowLayout.Name = "FlowLayout";
-            this.FlowLayout.Size = new System.Drawing.Size(239, 29);
-            this.FlowLayout.TabIndex = 7;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radioButton1.Location = new System.Drawing.Point(3, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(62, 25);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Male";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radioButton2.Location = new System.Drawing.Point(71, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(78, 25);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Female";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radioButton3.Location = new System.Drawing.Point(155, 3);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(78, 25);
-            this.radioButton3.TabIndex = 4;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Others:";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 38);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(239, 29);
+            this.flowLayoutPanel1.TabIndex = 11;
             // 
             // InformationRadio
             // 
@@ -132,8 +149,8 @@ namespace hospital_management_system.gui.components
             this.Size = new System.Drawing.Size(726, 70);
             this.TableLayout.ResumeLayout(false);
             this.TableLayout.PerformLayout();
-            this.FlowLayout.ResumeLayout(false);
-            this.FlowLayout.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -142,10 +159,11 @@ namespace hospital_management_system.gui.components
 
         private System.Windows.Forms.TableLayoutPanel TableLayout;
         private System.Windows.Forms.Label Label;
-        private System.Windows.Forms.FlowLayoutPanel FlowLayout;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.TextBox Textbox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

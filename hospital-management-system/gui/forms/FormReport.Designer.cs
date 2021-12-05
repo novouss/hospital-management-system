@@ -1,4 +1,4 @@
-﻿namespace hospital_management_system.gui.forms
+namespace hospital_management_system.gui.forms
 {
     partial class formReport
     {
@@ -48,6 +48,7 @@
             // reportForm
             // 
             this.reportForm.AutoSize = true;
+            this.reportForm.BackColor = System.Drawing.Color.White;
             this.reportForm.Controls.Add(this.appointmentPanel);
             this.reportForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportForm.Font = new System.Drawing.Font("Segoe UI", 36F);
@@ -82,59 +83,80 @@
             this.resultInfobox.Font = new System.Drawing.Font("Segoe UI", 20.25F);
             this.resultInfobox.LabelText = "Result";
             this.resultInfobox.Location = new System.Drawing.Point(0, 140);
-            this.resultInfobox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.resultInfobox.Margin = new System.Windows.Forms.Padding(2);
             this.resultInfobox.Name = "resultInfobox";
             this.resultInfobox.Size = new System.Drawing.Size(482, 35);
             this.resultInfobox.TabIndex = 10;
+            this.resultInfobox.TextboxPasswordChar = '\0';
             this.resultInfobox.TextboxText = "";
             // 
             // labIdInfobox
             // 
             this.labIdInfobox.ColumnWidth0 = 200F;
+            this.labIdInfobox.ComboboxText = "";
+            this.labIdInfobox.DataSource = null;
+            this.labIdInfobox.DisplayMember = "";
             this.labIdInfobox.Dock = System.Windows.Forms.DockStyle.Top;
             this.labIdInfobox.Font = new System.Drawing.Font("Segoe UI", 20.25F);
             this.labIdInfobox.LabelText = "Laboratory ID";
             this.labIdInfobox.Location = new System.Drawing.Point(0, 105);
-            this.labIdInfobox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labIdInfobox.Margin = new System.Windows.Forms.Padding(2);
             this.labIdInfobox.Name = "labIdInfobox";
+            this.labIdInfobox.SelectedValue = null;
             this.labIdInfobox.Size = new System.Drawing.Size(482, 35);
             this.labIdInfobox.TabIndex = 9;
+            this.labIdInfobox.ValueMemeber = "";
             // 
             // empIdInfobox
             // 
             this.empIdInfobox.ColumnWidth0 = 200F;
+            this.empIdInfobox.ComboboxText = "";
+            this.empIdInfobox.DataSource = null;
+            this.empIdInfobox.DisplayMember = "";
             this.empIdInfobox.Dock = System.Windows.Forms.DockStyle.Top;
             this.empIdInfobox.Font = new System.Drawing.Font("Segoe UI", 20.25F);
             this.empIdInfobox.LabelText = "Employee ID";
             this.empIdInfobox.Location = new System.Drawing.Point(0, 70);
-            this.empIdInfobox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.empIdInfobox.Margin = new System.Windows.Forms.Padding(2);
             this.empIdInfobox.Name = "empIdInfobox";
+            this.empIdInfobox.SelectedValue = null;
             this.empIdInfobox.Size = new System.Drawing.Size(482, 35);
             this.empIdInfobox.TabIndex = 8;
+            this.empIdInfobox.ValueMemeber = "";
             // 
             // deptIdInfobox
             // 
             this.deptIdInfobox.ColumnWidth0 = 200F;
+            this.deptIdInfobox.ComboboxText = "";
+            this.deptIdInfobox.DataSource = null;
+            this.deptIdInfobox.DisplayMember = "";
             this.deptIdInfobox.Dock = System.Windows.Forms.DockStyle.Top;
             this.deptIdInfobox.Font = new System.Drawing.Font("Segoe UI", 20.25F);
             this.deptIdInfobox.LabelText = "Department ID";
             this.deptIdInfobox.Location = new System.Drawing.Point(0, 35);
-            this.deptIdInfobox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.deptIdInfobox.Margin = new System.Windows.Forms.Padding(2);
             this.deptIdInfobox.Name = "deptIdInfobox";
+            this.deptIdInfobox.SelectedValue = null;
             this.deptIdInfobox.Size = new System.Drawing.Size(482, 35);
             this.deptIdInfobox.TabIndex = 13;
+            this.deptIdInfobox.ValueMemeber = "";
             // 
             // registrataionIdInfobox
             // 
             this.registrataionIdInfobox.ColumnWidth0 = 200F;
+            this.registrataionIdInfobox.ComboboxText = "";
+            this.registrataionIdInfobox.DataSource = null;
+            this.registrataionIdInfobox.DisplayMember = "";
             this.registrataionIdInfobox.Dock = System.Windows.Forms.DockStyle.Top;
             this.registrataionIdInfobox.Font = new System.Drawing.Font("Segoe UI", 20.25F);
             this.registrataionIdInfobox.LabelText = "Registration ID";
             this.registrataionIdInfobox.Location = new System.Drawing.Point(0, 0);
-            this.registrataionIdInfobox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registrataionIdInfobox.Margin = new System.Windows.Forms.Padding(2);
             this.registrataionIdInfobox.Name = "registrataionIdInfobox";
+            this.registrataionIdInfobox.SelectedValue = null;
             this.registrataionIdInfobox.Size = new System.Drawing.Size(482, 35);
             this.registrataionIdInfobox.TabIndex = 7;
+            this.registrataionIdInfobox.ValueMemeber = "";
             // 
             // buttonFlowLayout
             // 
@@ -220,7 +242,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 535);
             this.Controls.Add(this.reportForm);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "formReport";
             this.reportForm.ResumeLayout(false);
             this.appointmentPanel.ResumeLayout(false);

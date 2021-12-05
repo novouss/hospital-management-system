@@ -24,21 +24,22 @@ namespace hospital_management_system.classes
         * Get Functions consists of public functions that returns one specific class based on their 'id.'
         * 
         * Region Contents:
-        *     GetPatient(int id)                - Returns Patient Information from 'id' parameter.
+        *     GetPatient(int id)               - Returns Patient Information from 'id' parameter.
         *     GetEmployee(int id)              - Returns Employee Information from 'id' parameter.
-        *     GetAddresses(int id)               - Returns Addresses Information from 'id' parameter.
-        *     GetRoles(int id)                  - Returns Roles Information from 'id' parameter.
-        *     GetDepartments(int id)            - Returns Departments Information from 'id' parameter.
+        *     GetAddresses(int id)             - Returns Addresses Information from 'id' parameter.
+        *     GetRoles(int id)                 - Returns Roles Information from 'id' parameter.
+        *     GetDepartments(int id)           - Returns Departments Information from 'id' parameter.
         *     GetRegistration(int id)          - Returns Registration Information from 'id' parameter.
-        *     GetRooms(int id)                  - Returns Rooms Information from 'id' parameter.
-        *     GetLaboratories(int id)            - Returns Laboratories Information from 'id' parameter.
+        *     GetRooms(int id)                 - Returns Rooms Information from 'id' parameter.
+        *     GetLaboratories(int id)          - Returns Laboratories Information from 'id' parameter.
         *     GetReport(int id)                - Returns Laboratories Report Information from 'id' parameter.
-        *     GetBillings(int id)               - Returns Billings Information from 'id' parameter.
+        *     GetBillings(int id)              - Returns Billings Information from 'id' parameter.
         *      
         * Special Cases Functions:
         *      GetDepartmentsEmployee(int emp_id, int dep_id)
-        *      - Returns a Departments's Employee Details based on 'emp_id' and 'dep_id' parameter.
+        *      - Returns a Departments'Employee Details based on 'emp_id' and 'dep_id' parameter.
         *      GetEmployeeLogin(string email, string password)
+        *      - Returns Employee Details based on 'email' and 'password'
         */
 
         public Patients GetPatient(int id)
@@ -61,33 +62,33 @@ namespace hospital_management_system.classes
             }
         }
 
-        public Addresses GetAddress(int id)
+        public List<Addresses> GetAddress(int id)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Addresses>($"dbo.USP_FindAddresses @AddressID = '{ id }'");
+                var output = connection.Query<Addresses>($"dbo.USP_GetAddressInformation @AddressID = '{ id }'");
 
-                return (Addresses)output;
+                return (List<Addresses>)output;
             }
         }
 
-        public Roles GetRoles(int id)
+        public List<Roles> GetRoles(int id)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Roles>($"dbo.USP_FindRole @RoleID = '{ id }'");
+                var output = connection.Query<Roles>($"dbo.USP_GetRoleInformation @RoleID = '{ id }'");
 
-                return (Roles)output;
+                return (List<Roles>)output;
             }
         }
 
-        public Departments GetDepartmentss(int id)
+        public List<Departments> GetDepartments(int id)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Departments>($"dbo.USP_FindDepartment @DepartmentID = '{ id }'");
+                var output = connection.Query<Departments>($"dbo.USP_GetDepartmentInformation @DepartmentID = '{ id }'");
 
-                return (Departments)output;
+                return (List<Departments>)output;
             }
         }
 
@@ -151,13 +152,13 @@ namespace hospital_management_system.classes
             }
         }
 
-        public Employees GetEmployeeLogin(string email, string password)
+        public List<Employees> GetEmployeeLogin(string email, string password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
                 var output = connection.Query<Employees>($"dbo.USP_GetEmployeeLogin @Email = '{ email }', @Password = '{ password }'");
 
-                return (Employees)output;
+                return (List<Employees>)output;
             }
         }
 
@@ -182,6 +183,8 @@ namespace hospital_management_system.classes
         *      GetListBillings()        - Returns a List of Billing Information.
         * 
         *      Special Open Functions:
+        *           GetListPatientRegistrations(int id)
+        *           - Returns a List of Registrations of a Patient from 'id' parameter.
         *           GetListOpenRooms(int status)
         *           - Returns a List of Open Roomss from 'status' parameter.
         *           GetListOpenLaboratories(int status)
@@ -194,7 +197,7 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Patients>($"dbo.V_Patients");
+                var output = connection.Query<Patients>($"SELECT * FROM dbo.V_Patients");
 
                 return (List<Patients>)output;
             }
@@ -204,7 +207,7 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Employees>($"dbo.V_Employees");
+                var output = connection.Query<Employees>($"SELECT * FROM dbo.V_Employees");
 
                 return (List<Employees>)output;
             }
@@ -214,7 +217,7 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Addresses>($"dbo.V_Addresses");
+                var output = connection.Query<Addresses>($"SELECT * FROM dbo.V_Addresses");
 
                 return (List<Addresses>)output;
             }
@@ -224,7 +227,7 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Roles>($"dbo.V_Roles");
+                var output = connection.Query<Roles>($"SELECT * FROM dbo.V_Roles");
 
                 return (List<Roles>)output;
             }
@@ -234,7 +237,7 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Departments>($"dbo.V_Departments");
+                var output = connection.Query<Departments>($"SELECT * FROM dbo.V_Departments");
 
                 return (List<Departments>)output;
             }
@@ -244,7 +247,7 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Registrations>($"dbo.V_Registrations");
+                var output = connection.Query<Registrations>($"SELECT * FROM dbo.V_Registration");
 
                 return (List<Registrations>)output;
             }
@@ -254,7 +257,7 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Rooms>($"dbo.V_Rooms");
+                var output = connection.Query<Rooms>($"SELECT * FROM dbo.V_Rooms");
 
                 return (List<Rooms>)output;
             }
@@ -264,7 +267,7 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Laboratories>($"dbo.V_Laboratories");
+                var output = connection.Query<Laboratories>($"SELECT * FROM dbo.V_Laboratories");
 
                 return (List<Laboratories>)output;
             }
@@ -274,7 +277,7 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Reports>($"dbo.V_Reports");
+                var output = connection.Query<Reports>($"SELECT * FROM dbo.V_Reports");
 
                 return (List<Reports>)output;
             }
@@ -284,9 +287,19 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Billings>($"dbo.V_Billings");
+                var output = connection.Query<Billings>($"SELECT * FROM dbo.V_Billings");
 
                 return (List<Billings>)output;
+            }
+        }
+
+        public List<Registrations> GetListPatientRegistrations(int id)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var output = connection.Query<Registrations>($"dbo.USP_GetPatientRegistration @PatientID = { id }");
+
+                return (List<Registrations>)output;
             }
         }
 
@@ -314,196 +327,188 @@ namespace hospital_management_system.classes
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Employees>($"dbo.USP_OpenDepartmentsEmployee @DepartmentsID = '{dep_id}',@Status = { status }");
+                var output = connection.Query<Employees>($"dbo.USP_OpenDepartmentsEmployee @DepartmentsID = '{dep_id}',@Status = '{ status }'");
 
                 return (List<Employees>)output;
             }
         }
 
-        #endregion
-
-        #region Appointment Functions
-        public void addAppointment(Registrations registration)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                // At exactly 4:45 am 10th of November 2021, Raymond Brian D. Gorospe (@Novous) has finally fixed a bug on this exact line that's been causing 3 hours of back pain, stress, anger, anxiety, and loss of hope, to finally fix a bug caused by a misspelling error. 
-                // The Adminssion Incident of November 10 2021, AdmissionOn was spelled AdminssionOn.
-                connection.Execute($"dbo.USP_AddRegistration @PatientID, @AdmissionOn, @DischargeOn, @EmployeeID, @RoomsID, @LaboratoriesID, @Results", registration);
-            }
-        }
-
-        public List<Registrations> getRegistrationInformation()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = connection.Query<Registrations>($"SELECT * FROM dbo.V_RegisterInformation");
-
-                return (List<Registrations>)output;
-            }
-        }
-
-        #endregion
-
-        #region Roless Functions
-
-        public List<Roles> getRoless()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = connection.Query<Roles>($"SELECT * FROM dbo.V_RolesInformation");
-
-                return (List<Roles>)output;
-            }
-        }
-
-        public List<Roles> findRoles(int Roles_id)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = connection.Query<Roles>($"dbo.USP_FindRoles @RolesID = '{ Roles_id }'");
-
-                return (List<Roles>)output;
-            }
-        }
-
-        #endregion
-
-        #region Departments Functions
-        public List<Departments> getDepartmentss()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = connection.Query<Departments>($"SELECT * FROM dbo.V_DepartmentsInformation");
-
-                return (List<Departments>)output;
-            }
-        }
-        
-        public List<Departments> findDepartments(int Departments_id)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = connection.Query<Departments>($"dbo.USP_FindDepartments @DepartmentsID = '{ Departments_id }'");
-
-                return (List<Departments>)output;
-            }
-        }
-
-        #endregion
-
-        #region Rooms Function
-        public List<Rooms> getRoomsInformation()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = connection.Query<Rooms>($"SELECT * FROM dbo.V_RoomsInformation");
-
-                return (List<Rooms>)output;
-            }
-        }
-
-        public List<Rooms> getAvailableRoomss(int status)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = connection.Query<Rooms>($"dbo.USP_FindAvailableLaboratories @Status = '{ status }'");
-
-                return (List<Rooms>)output;
-            }
-        }
-
-        #endregion
-
-        #region Laboratories Functions
-
-        public List<Laboratories> getLaboratoriesInformation()
-        {
-            using(IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = connection.Query<Laboratories>($"SELECT * FROM dbo.V_LaboratoriesInformation");
-
-                return (List<Laboratories>)output;
-            }
-        }
-
-        public List<Laboratories> getAvailableLaboratories(int status)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = connection.Query<Laboratories>($"USP_FindAvailableLaboratories @Status = '{ status }'");
-
-                return (List<Laboratories>)output;
-            }
-        }
         #endregion
 
         #region Patient Functions
 
-        public void addPatient(Patients patient)
+        /*
+         * Patient Functions consist of public functions that executes user stored procedures from the database.
+         * 
+         * Region Contents:
+         *      AddPatient(Patient patient, Addresses address)        
+         *      - Adds a patient record and address to the database.
+         *      EditPatient(Patient patient)
+         *      - Updates patient and address details.
+         *      RemovePatient(Patient patient)
+         *      - Removes patient and assigned address from database.
+         * 
+         */
+
+        public void AddPatient(Patients patient, Addresses address)
         {
+            
+            
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                connection.Execute("dbo.USP_AddPatient @FirstName, @LastName, @MiddleName, @Birthdate, @Gender, @Religion, @Email, @PhoneNumber, @Addresses1, @Addresses2, @City, @Province, @Zipcode, @Country", patient);
+                var parameters = new {
+                    FirstName = patient.FirstName,
+                    MiddleName = patient.MiddleName,
+                    LastName = patient.LastName,
+                    Birthdate = patient.Birthdate,
+                    Gender = patient.Gender,
+                    Religion = patient.Religion,
+                    Email = patient.Email,
+                    PhoneNumber = patient.PhoneNumber,
+                    Address1 = address.Address1,
+                    Address2 = address.Address2,
+                    City = address.City,
+                    Province = address.Province,
+                    Zipcode = address.Zipcode,
+                    Country = address.Country
+                };
+
+                connection.Execute("dbo.USP_CreatePatient @FirstName, @LastName, @MiddleName, @Birthdate, @Gender, @Religion, @Email, @PhoneNumber, @Address1, @Address2, @City, @Province, @Zipcode, @Country", parameters);
             }
         }
 
-        public void modifyPatient(Patients patient)
+        public void EditPatient(Patients patient, Addresses address)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                connection.Execute("dbo.USP_ModifyPatient @PatientID, @FirstName, @LastName, @MiddleName, @Birthdate, @Gender, @Religion, @Email, @PhoneNumber, @Addresses1, @Addresses2, @City, @Province, @Zipcode, @Country", patient);
+                var parameters = new
+                {
+                    PatientID = patient.PatientID,
+                    FirstName = patient.FirstName,
+                    MiddleName = patient.MiddleName,
+                    LastName = patient.LastName,
+                    Birthdate = patient.Birthdate,
+                    Gender = patient.Gender,
+                    Religion = patient.Religion,
+                    Email = patient.Email,
+                    PhoneNumber = patient.PhoneNumber,
+                    Address1 = address.Address1,
+                    Address2 = address.Address2,
+                    City = address.City,
+                    Province = address.Province,
+                    Zipcode = address.Zipcode,
+                    Country = address.Country
+                };
+
+                connection.Execute("dbo.USP_UpdatePatient @PatientID, @FirstName, @MiddleName, @LastName, @Birthdate, @Gender, @Religion, @Email, @PhoneNumber, @Address1, @Address2, @City, @Province, @Zipcode, @Country", parameters);
             }
         }
 
-        public List<Patients> getPatientInformation()
+        public void RemovePatient(Patients patient)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Patients>($"SELECT * FROM dbo.V_PatientInformation");
+                var parameters = new
+                {
+                    PatientID = patient.PatientID
+                };
 
-                return (List<Patients>)output;
+                connection.Execute("dbo.USP_DropPatient @PatientID", parameters);
             }
         }
+
         #endregion
 
         #region Employee Functions
-        
-        public void addEmployee(Employees employee)
+
+        /*
+         * Employee Functions consist of public functions that executes user stored procedures from the database.
+         * 
+         * Region Contents:
+         *      AddEmployee(Employees employee, Addresses address)        
+         *      - Adds a employee record and address to the database.
+         *      EditEmployee(Employees Employee)
+         *      - Updates employee and address details.
+         *      RemoveEmployee(Employees Employee)
+         *      - Removes employee and assigned address from database.
+         * 
+         */
+        public void AddEmployee(Employees employee, Addresses address)
         {
+
+
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                connection.Execute("dbo.USP_AddEmployee @FirstName, @LastName, @MiddleName, @Birthdate, @Gender, @Religion, @Email, @PhoneNumber, @Password, @RolesID, @DepartmentsID, @Addresses1, @Addresses2, @City, @Province, @Zipcode, @Country", employee);
+                var parameters = new
+                {
+                    RoleID = employee.RoleID,
+                    DepartmentID = employee.DepartmentID,
+                    Password = employee.Password,
+                    FirstName = employee.FirstName,
+                    MiddleName = employee.MiddleName,
+                    LastName = employee.LastName,
+                    Birthdate = employee.Birthdate,
+                    Gender = employee.Gender,
+                    Religion = employee.Religion,
+                    Email = employee.Email,
+                    PhoneNumber = employee.PhoneNumber,
+                    Address1 = address.Address1,
+                    Address2 = address.Address2,
+                    City = address.City,
+                    Province = address.Province,
+                    Zipcode = address.Zipcode,
+                    Country = address.Country
+                };
+
+                connection.Execute("dbo.USP_CreateEmployee @RoleID, @DepartmentID, @Password, @FirstName, @MiddleName, @LastName, @Birthdate, @Gender, @Religion, @Email, @PhoneNumber, @Address1, @Address2, @City, @Province, @Zipcode, @Country", parameters);
             }
         }
 
-        public void modifyEmployee(Employees employee)
+        public void EditEmployee(Employees employee, Addresses address)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                connection.Execute("dbo.USP_ModifyEmployee @EmployeeID, @FirstName, @LastName, @MiddleName, @Birthdate, @Gender, @Religion, @Email, @PhoneNumber, @Password, @RolesID, @DepartmentsID, @Addresses1, @Addresses2, @City, @Province, @Zipcode, @Country", employee);
+                var parameters = new
+                {
+                    EmployeeID = employee.EmployeeID,
+                    RoleID = employee.RoleID,
+                    DepartmentID = employee.DepartmentID,
+                    Status = employee.Status,
+                    Password = employee.Password,
+                    FirstName = employee.FirstName,
+                    MiddleName = employee.MiddleName,
+                    LastName = employee.LastName,
+                    Birthdate = employee.Birthdate,
+                    Gender = employee.Gender,
+                    Religion = employee.Religion,
+                    Email = employee.Email,
+                    PhoneNumber = employee.PhoneNumber,
+                    Address1 = address.Address1,
+                    Address2 = address.Address2,
+                    City = address.City,
+                    Province = address.Province,
+                    Zipcode = address.Zipcode,
+                    Country = address.Country
+                };
+
+                connection.Execute("dbo.USP_UpdateEmployee @EmployeeID, @RoleID, @DepartmentID, @Status, @Password, @FirstName, @MiddleName, @LastName, @Birthdate, @Gender, @Religion, @Email, @PhoneNumber, @Address1, @Address2, @City, @Province, @Zipcode, @Country", parameters);
             }
         }
 
-        public List<Employees> getEmployeeInformation()
+        public void RemoveEmployee(Employees employee)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
-                var output = connection.Query<Employees>($"SELECT * FROM dbo.V_EmployeeInformation");
+                var parameters = new
+                {
+                    EmployeeID = employee.EmployeeID
+                };
 
-                return (List<Employees>)output;
+                connection.Execute("dbo.USP_DropEmployee @EmployeeID", parameters);
             }
         }
 
-        public List<Employees> findAvailableEmployee(Employees employee)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
-            {
-                var output = connection.Query<Employees>($"USP_FindAvailableEmployees @DepartmentsID, @Status", employee);
 
-                return (List<Employees>)output;
-            }
-        }
         #endregion
 
 

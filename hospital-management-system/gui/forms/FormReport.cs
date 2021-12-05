@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +16,9 @@ namespace hospital_management_system.gui.forms
         {
             InitializeComponent();
         }
+
+        #region Form Methods
+
+        #endregion
     }
 }

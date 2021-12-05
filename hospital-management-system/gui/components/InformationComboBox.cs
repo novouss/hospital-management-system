@@ -27,25 +27,30 @@ namespace hospital_management_system.gui.components
             set { TableLayout.ColumnStyles[0].Width = value; } 
         }
 
-        public object getSelectedValue()
+        public string ComboboxText
         {
-            return ComboBox.SelectedValue;
+            get { return ComboBox.Text; }
+            set { ComboBox.Text = value; }
         }
 
-        public void setValueMemebr(string value)
-        {
-            ComboBox.ValueMember = value;
+        public string ValueMemeber {
+            get { return ComboBox.ValueMember; }
+            set { ComboBox.ValueMember = value; } 
         }
 
-        public void setDisplayMemebr(string value)
-        {
-            ComboBox.DisplayMember = value;
+        public string DisplayMember {
+            get { return ComboBox.DisplayMember; }
+            set { ComboBox.DisplayMember = value; } 
         }
 
-        public void setDataSource(List<object> value)
-        {
-            ComboBox.DataSource = value;
+        public object DataSource {
+            get { return ComboBox.DataSource; }
+            set { ComboBox.DataSource = value; } 
         }
 
+        public object SelectedValue { 
+            get { return ComboBox.SelectedValue; }
+            set { ComboBox.SelectedValue = value; } 
+        }
     }
 }

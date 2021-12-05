@@ -24,32 +24,6 @@ namespace hospital_management_system.gui.forms
 
         }
 
-        #region Navigation Bar Icon Functions
-
-        private void closeIcon_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void maximizeIcon_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-
-        }
-
-        private void minimizeIcon_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-        #endregion
-
         #region Display Pages Function
 
         private Form active_window = null;
@@ -150,7 +124,7 @@ namespace hospital_management_system.gui.forms
 
         public void dashboardBtn_Click(object sender, EventArgs e)
         {
-            // OpenChildWindow(new PageDashboard(this, this.employee));
+            OpenChildWindow(new PageDashboard(this, this.employee));
             ButtonEffect(dashboardBtn);
         }
 
@@ -196,17 +170,18 @@ namespace hospital_management_system.gui.forms
         #region Login and Logout Functions
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            dbAccess db = new dbAccess();
+            // dbAccess db = new dbAccess();
 
-            var account = db.GetEmployeeLogin(emailTextbox.Text, passwordTextbox.Text);
+            // var account = db.GetEmployeeLogin(emailTextbox.Text, passwordTextbox.Text);
 
-            if (account == null)
-            {
-                AccountDoesNotExist();
-                return;
-            }
+            // if (account == null || account.Count < 1)
+            // {
+            //    AccountDoesNotExist();
+            //    return;
+            // }
 
-            AccountExists(account);
+            // AccountExists(account[0]);
+            AccountExists(null);
         }
 
         private void AccountDoesNotExist()

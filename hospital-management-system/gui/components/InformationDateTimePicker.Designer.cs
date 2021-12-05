@@ -65,6 +65,7 @@ namespace hospital_management_system.gui.components
             // 
             this.DateTimePicker.Dock = System.Windows.Forms.DockStyle.Top;
             this.DateTimePicker.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DateTimePicker.Location = new System.Drawing.Point(168, 3);
             this.DateTimePicker.Name = "DateTimePicker";
             this.DateTimePicker.Size = new System.Drawing.Size(555, 29);
@@ -85,6 +86,6 @@ namespace hospital_management_system.gui.components
 
         private System.Windows.Forms.TableLayoutPanel TableLayout;
         private System.Windows.Forms.Label Label;
-        private System.Windows.Forms.DateTimePicker DateTimePicker;
+        public System.Windows.Forms.DateTimePicker DateTimePicker;
     }
 }

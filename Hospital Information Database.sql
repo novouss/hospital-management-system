@@ -2,7 +2,89 @@
 /*
 	TABLE OF CONTENTS:
 	-1. PRELIMINARY DROP SCRIPTS
+		-1.1 FOREIGN KEY CONSTRAINTS
+			-1.1.1 DROP CONSTRAINT FK_Patients_Addresses_AddressID
+			-1.1.2 DROP CONSTRAINT FK_Employees_Addresses_AddressID
+			-1.1.3 DROP CONSTRAINT FK_Employees_Role_RoleID
+			-1.1.4 DROP CONSTRAINT FK_Employees_Department_DepartmentID
+			-1.1.5 DROP CONSTRAINT FK_Registrations_Patients_PatientID
+			-1.1.6 DROP CONSTRAINT FK_Registrations_Rooms_RoomID
+			-1.1.7 DROP CONSTRAINT FK_Reports_Registration_RegistrationID
+			-1.1.8 DROP CONSTRAINT FK_Reports_Laboratories_LaboratoryID
+			-1.1.9 DROP CONSTRAINT FK_Reports_Employees_EmployeeID
+			-1.1.10 DROP CONSTRAINT FK_Billings_Registrations_RegistrationID
+			
+		-1.2 UNIQUE KEY CONSTAINTS
+			-1.2.1 DROP CONSTRAINT UQ_Patients_PatientID
+			-1.2.2 DROP CONSTRAINT UQ_Employees_EmployeeID
+			-1.2.3 DROP CONSTRAINT UQ_Addresses_AddressID
+			-1.2.4 DROP CONSTRAINT UQ_Registrations_RegistrationID
+			-1.2.5 DROP CONSTRAINT UQ_Reports_ReportID
+			-1.2.6 DROP CONSTRAINT UQ_Billings_BillID
 	
+		-1.3 DEFAULT CONSTRAINTS
+			-1.3.1 DROP CONSTRAINT DF_Patients_CreatedOn
+			-1.3.2 DROP CONSTRAINT DF_Employees_CreatedOn
+			-1.3.3 DROP CONSTRAINT DF_Registrations_CreatedOn
+			-1.3.4 DROP CONSTRAINT DF_Reports_CreatedOn
+			-1.3.5 DROP CONSTRAINT DF_Billings_CreatedOn
+			-1.3.6 DROP CONSTRAINT DF_Employees_Status
+			-1.3.7 DROP CONSTRAINT DF_Registrations_Status
+			-1.3.8 DROP CONSTRAINT DF_Laboratories_Status
+			-1.3.9 DROP CONSTRAINT DF_Room_Status
+			-1.3.10 DROP CONSTRAINT DF_Billings_Status
+			
+		-1.4 TABLES
+			-1.4.1 DROP TABLE dbo.Addresses
+			-1.4.2 DROP TABLE dbo.Patients
+			-1.4.3 DROP TABLE dbo.Employees
+			-1.4.4 DROP TABLE dbo.Roles
+			-1.4.5 DROP TABLE dbo.Departments
+			-1.4.6 DROP TABLE dbo.Registrations
+			-1.4.7 DROP TABLE dbo.Laboratories
+			-1.4.8 DROP TABLE dbo.Rooms
+			-1.4.9 DROP TABLE dbo.Reports
+			-1.4.10 DROP TABLE dbo.Billings
+			
+		-1.5 USER STORED PROCEDURES
+			-1.5.1 DROP PROCEDURE dbo.USP_CreateAddress
+			-1.5.2 DROP PROCEDURE dbo.USP_UpdateAddress
+			-1.5.3 DROP PROCEDURE dbo.USP_DropAddress
+			-1.5.4 DROP PROCEDURE dbo.USP_GetAddressInformation
+			-1.5.5 DROP PROCEDURE dbo.USP_CreatePatient
+			-1.5.6 DROP PROCEDURE dbo.USP_UpdatePatient
+			-1.5.7 DROP PROCEDURE dbo.USP_DropPatient
+			-1.5.8 DROP PROCEDURE dbo.USP_GetPaitentInformation
+			-1.5.9 DROP PROCEDURE dbo.USP_CreateEmployee
+			-1.5.10 DROP PROCEDURE dbo.USP_UpdateEmployee
+			-1.5.11 DROP PROCEDURE dbo.USP_DropEmployee
+			-1.5.12 DROP PROCEDURE dbo.USP_GetEmployeeInforamtion
+			-1.5.13 DROP PROCEDURE dbo.USP_GetDepartmentEmployees
+			-1.5.14 DROP PROCEDURE dbo.USP_GetEmployeeLogin
+			-1.5.15 DROP PROCEDURE dbo.USP_CreateRegistration
+			-1.5.16 DROP PROCEDURE dbo.USP_UpdateRegistration
+			-1.5.17 DROP PROCEDURE dbo.USP_DropRegistration
+			-1.5.18 DROP PROCEDURE dbo.USP_GetRegistrationInformation
+			-1.5.19 DROP PROCEDURE dbo.USP_CreateReport
+			-1.5.20 DROP PROCEDURE dbo.USP_UpdateReport
+			-1.5.21 DROP PROCEDURE dbo.USP_DropReport
+			-1.5.22 DROP PROCEDURE dbo.USP_GetReportInfomration
+			-1.5.23 DROP PROCEDURE dbo.USP_GetRegistrationReport
+			-1.5.24 DROP PROCEDURE dbo.USP_CreateBilling
+			-1.5.25 DROP PROCEDURE dbo.USP_UpdateBilling
+			-1.5.26 DROP PROCEDURE dbo.USP_DropBilling
+			-1.5.27 DROP PROCEDURE dbo.USP_GetBillingInformation
+			-1.5.28 DROP PROCEDURE dbo.USP_CreateLaboratory
+			-1.5.29 DROP PROCEDURE dbo.USP_UpdateLaboratory
+			-1.5.30 DROP PROCEDURE dbo.USP_DropLaboratory
+			-1.5.31 DROP PROCEDURE dbo.USP_GetLaboratoryInformation
+			-1.5.32 DROP PROCEDURE dbo.USP_OpenLaboratory
+			-1.5.33 DROP PROCEDURE dbo.USP_CreateRoom
+			-1.5.34 DROP PROCEDURE dbo.USP_UpdateRoom
+			-1.5.35 DROP PROCEDURE dbo.USP_DropRoom
+			-1.5.36 DROP PROCEDURE dbo.USP_GetRoomInformation
+			-1.5.37 DROP PROCEDURE dbo.USP_OpenRoom
+			
 	0. CREATE FUNCTIONS (FN)
 		0.1 CREATE FUNCTION dbo.FN_CalculateAge
 	
@@ -62,6 +144,7 @@
 			3.2.2 CREATE PROCEDURE dbo.USP_UpdatePatient
 			3.2.3 CREATE PROCEDURE dbo.USP_DropPatient
 			3.2.4 CREATE PROCEDURE dbo.USP_GetPaitentInformation
+			3.2.5 CREATE PROCEDURE dbo.USP_GetPatientRegistration
 		3.3 dbo.Employees
 			3.3.1 CREATE PROCEDURE dbo.USP_CreateEmployee
 			3.3.2 CREATE PROCEDURE dbo.USP_UpdateEmployee
@@ -97,16 +180,21 @@
 			3.8.3 CREATE PROCEDURE dbo.USP_DropRoom
 			3.8.4 CREATE PROCEDURE dbo.USP_GetRoomInformation
 			3.8.4 CREATE PROCEDURE dbo.USP_OpenRoom
+		3.9 dbo.Departments
+			3.9.1 CREATE PROCEDURE dbo.USP_GetDepartmentInformation
+		3.10 dbo.Roles
+			3.10.1 CREATE PROCEDURE dbo.USP_GetRoleInformation
 			
 	4. CREATE VIEWS 
 		4.1 CREATE VIEW V_Patients
 		4.2 CREATE VIEW V_Employees
-		4.3 CREATE VIEW V_Departments
-		4.4 CREATE VIEW V_Registration
-		4.5 CREATE VIEW V_Rooms
-		4.6 CREATE VIEW V_Laboratories
-		4.7 CREATE VIEW V_Reports
-		4.8 CREATE VIEW V_Billings
+		4.3 CREATE VIEW V_Roles
+		4.4 CREATE VIEW V_Departments
+		4.5 CREATE VIEW V_Registrations
+		4.6 CREATE VIEW V_Rooms
+		4.7 CREATE VIEW V_Laboratories
+		4.8 CREATE VIEW V_Reports
+		4.9 CREATE VIEW V_Billings
 	
 	5. INSERT VALUES INTO TABLE
 */
@@ -116,7 +204,90 @@
 -- -1. PRELIMINARY DROP SCRIPTS
 ********************************/
 
+-- -1.1 FOREIGN KEY CONSTRAINTS
 
+-- -1.1.1 DROP CONSTRAINT FK_Patients_Addresses_AddressID
+ALTER TABLE dbo.Patients DROP CONSTRAINT [FK_Patients_Addresses_AddressID]
+-- -1.1.2 DROP CONSTRAINT FK_Employees_Addresses_AddressID
+ALTER TABLE dbo.Employees DROP CONSTRAINT [FK_Employees_Addresses_AddressID]
+-- -1.1.3 DROP CONSTRAINT FK_Employees_Role_RoleID
+ALTER TABLE dbo.Employees DROP CONSTRAINT [FK_Employees_Role_RoleID]
+-- -1.1.4 DROP CONSTRAINT FK_Employees_Department_DepartmentID
+ALTER TABLE dbo.Employees DROP CONSTRAINT [FK_Employees_Department_DepartmentID]
+-- -1.1.5 DROP CONSTRAINT FK_Registrations_Patients_PatientID
+ALTER TABLE dbo.Registrations DROP CONSTRAINT [FK_Registrations_Patients_PatientID]
+-- -1.1.6 DROP CONSTRAINT FK_Registrations_Rooms_RoomID
+ALTER TABLE dbo.Registrations DROP CONSTRAINT [FK_Registrations_Rooms_RoomID]
+-- -1.1.7 DROP CONSTRAINT FK_Reports_Registration_RegistrationID
+ALTER TABLE dbo.Reports DROP CONSTRAINT [FK_Reports_Registration_RegistrationID]
+-- -1.1.8 DROP CONSTRAINT FK_Reports_Laboratories_LaboratoryID
+ALTER TABLE dbo.Reports DROP CONSTRAINT [FK_Reports_Laboratories_LaboratoryID]
+-- -1.1.9 DROP CONSTRAINT FK_Reports_Employees_EmployeeID
+ALTER TABLE dbo.Reports DROP CONSTRAINT [FK_Reports_Employees_EmployeeID]
+-- -1.1.10 DROP CONSTRAINT FK_Billings_Registrations_RegistrationID
+ALTER TABLE dbo.Billings DROP CONSTRAINT [FK_Billings_Registrations_RegistrationID]
+
+-- -1.2 UNIQUE KEY CONSTAINTS
+
+-- -1.2.1 DROP CONSTRAINT UQ_Patients_PatientID
+ALTER TABLE dbo.Patients DROP CONSTRAINT [UQ_Patients_PatientID]
+-- -1.2.2 DROP CONSTRAINT UQ_Employees_EmployeeID
+ALTER TABLE dbo.Employees DROP CONSTRAINT [UQ_Employees_EmployeeID]
+-- -1.2.3 DROP CONSTRAINT UQ_Addresses_AddressID
+ALTER TABLE dbo.Addresses DROP CONSTRAINT [UQ_Addresses_AddressID]
+-- -1.2.4 DROP CONSTRAINT UQ_Registrations_RegistrationID
+ALTER TABLE dbo.Registrations DROP CONSTRAINT [UQ_Registrations_RegistrationID]
+-- -1.2.5 DROP CONSTRAINT UQ_Reports_ReportID
+ALTER TABLE dbo.Reports DROP CONSTRAINT [UQ_Reports_ReportID]
+-- -1.2.6 DROP CONSTRAINT UQ_Billings_BillID
+ALTER TABLE dbo.Billings DROP CONSTRAINT [UQ_Billings_BillID]
+
+-- -1.3 DEFAULT CONSTRAINTS
+
+-- -1.3.1 DROP CONSTRAINT DF_Patients_CreatedOn
+ALTER TABLE dbo.Patients DROP CONSTRAINT [DF_Patients_CreatedOn]
+-- -1.3.2 DROP CONSTRAINT DF_Employees_CreatedOn
+ALTER TABLE dbo.Employees DROP CONSTRAINT [DF_Employees_CreatedOn]
+-- -1.3.3 DROP CONSTRAINT DF_Registrations_CreatedOn
+ALTER TABLE dbo.Registrations DROP CONSTRAINT [DF_Registrations_CreatedOn]
+-- -1.3.4 DROP CONSTRAINT DF_Reports_CreatedOn
+ALTER TABLE dbo.Reports DROP CONSTRAINT [DF_Reports_CreatedOn]
+-- -1.3.5 DROP CONSTRAINT DF_Billings_CreatedOn
+ALTER TABLE dbo.Billings DROP CONSTRAINT [DF_Billings_CreatedOn]
+-- -1.3.6 DROP CONSTRAINT DF_Employees_Status
+ALTER TABLE dbo.Emplyoees DROP CONSTRAINT [DF_Employees_Status]
+-- -1.3.7 DROP CONSTRAINT DF_Registrations_Status
+ALTER TABLE dbo.Registrations DROP CONSTRAINT [DF_Registrations_Status]
+-- -1.3.8 DROP CONSTRAINT DF_Laboratories_Status
+ALTER TABLE dbo.Laboratories DROP CONSTRAINT [DF_Laboratories_Status]
+-- -1.3.9 DROP CONSTRAINT DF_Room_Status
+ALTER TABLE dbo.Room DROP CONSTRAINT [DF_Room_Status]
+-- -1.3.10 DROP CONSTRAINT DF_Billings_Status
+ALTER TABLE dbo.Billings DROP CONSTRAINT [DF_Billings_Status]
+
+-- -1.4 TABLES
+
+-- -1.4.1 DROP TABLE dbo.Addresses
+DROP TABLE dbo.Addresses
+-- -1.4.2 DROP TABLE dbo.Patients
+DROP TABLE dbo.Patients
+-- -1.4.3 DROP TABLE dbo.Employees
+DROP TABLE dbo.Employees
+-- -1.4.4 DROP TABLE dbo.Roles
+DROP TABLE dbo.Roles
+-- -1.4.5 DROP TABLE dbo.Departments
+DROP TABLE dbo.Departments
+-- -1.4.6 DROP TABLE dbo.Registrations
+DROP TABLE dbo.Registrations
+-- -1.4.7 DROP TABLE dbo.Laboratories
+DROP TABLE dbo.Laboratories
+-- -1.4.8 DROP TABLE dbo.Rooms
+DROP TABLE dbo.Rooms
+-- -1.4.9 DROP TABLE dbo.Reports
+DROP TABLE dbo.Reports
+-- -1.4.10 DROP TABLE dbo.Billings
+DROP TABLE dbo.Billings
+GO
 
 /********************************
 -- 0. CREATE FUNCTIONS (FN)
@@ -343,7 +514,7 @@ ALTER TABLE dbo.Registrations ADD CONSTRAINT DF_Registrations_Status DEFAULT 0 F
 -- 2.3.8 ADD CONSTRAINT DF_Laboratories_Status
 ALTER TABLE dbo.Laboratories ADD CONSTRAINT DF_Laboratories_Status DEFAULT 0 FOR [Status]
 -- 2.3.9 ADD CONSTRAINT DF_Room_Status
-ALTER TABLE dbo.Room ADD CONSTRAINT DF_Room_Status DEFAULT 0 FOR [Status]
+ALTER TABLE dbo.Rooms ADD CONSTRAINT DF_Room_Status DEFAULT 0 FOR [Status]
 -- 2.3.10 ADD CONSTRAINT DF_Billings_Status
 ALTER TABLE dbo.Billings ADD CONSTRAINT DF_Billings_Status DEFAULT 0 FOR [Status]
 
@@ -404,8 +575,8 @@ BEGIN
 END
 GO
 
--- 3.1.4 CREATE PROCEDURE dbo.USP_GetAddresInformation
-CREATE PROCEDURE dbo.USP_GetAddresInformation
+-- 3.1.4 CREATE PROCEDURE dbo.USP_GetAddressInformation
+CREATE PROCEDURE dbo.USP_GetAddressInformation
 	@AddressID INT
 AS
 BEGIN
@@ -429,7 +600,6 @@ CREATE PROCEDURE dbo.USP_CreatePatient
 	@Religion VARCHAR(50),
 	@Email VARCHAR(50),
 	@PhoneNumber VARCHAR(50),
-	@DepartmentID INT,
 	@Address1 VARCHAR(50),
 	@Address2 VARCHAR(50),
 	@City VARCHAR(50),
@@ -443,7 +613,7 @@ BEGIN
 	
 	EXEC dbo.USP_CreateAddress @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
 	
-	SET @AddressNumber = (SELECT COUNT(AddressID) FROM dbo.Address)
+	SET @AddressNumber = (SELECT MAX(AddressID) FROM dbo.Addresses)
 	
 	
 	INSERT INTO dbo.Patients (AddressID, FirstName, MiddleName, LastName, Birthdate, Age, Gender, Religion, Email, PhoneNumber, CreatedOn)
@@ -515,13 +685,29 @@ BEGIN
 END
 GO
 
+-- 3.2.5 CREATE PROCEDURE dbo.USP_GetPatientRegistration
+CREATE PROCEDURE dbo.USP_GetPatientRegistration
+	@PatientID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Registrations
+	WHERE PatientID = @PatientID
+END
+GO
+
+
+
+-- 3.3 dbo.Employees
+
+-- 3.3.1 CREATE PROCEDURE dbo.USP_CreateEmployee
+
 
 
 -- 3.3 dbo.Employees
 
 -- 3.3.1 CREATE PROCEDURE dbo.USP_CreateEmployee
 CREATE PROCEDURE dbo.USP_CreateEmployee
-	@AddressID INT,
 	@RoleID INT,
 	@DepartmentID INT,
 	@Password VARCHAR(50),
@@ -548,11 +734,11 @@ BEGIN
 	EXEC dbo.USP_CreateAddress @Address1 = @Address1, @Address2 = @Address2, @City = @City, @Province = @Province, @Zipcode = @Zipcode, @Country = @Country
 	
 	-- Retrieve ID
-	SET @AddressNumber = (SELECT COUNT(AddressID) FROM dbo.Addresses)
+	SET @AddressNumber = (SELECT MAX(AddressID) FROM dbo.Addresses)
 	
 	-- Create ID
 	INSERT INTO dbo.Employees (AddressID, RoleID, DepartmentID, Password, FirstName, MiddleName, LastName, Birthdate, Age, Gender, Religion, Email, PhoneNumber, CreatedOn) 
-	VALUES (@AddressID, @RoleID, @DepartmentID, @Password, @FirstName, @MiddleName, @LastName, @Birthdate, dbo.FN_CalculateAge(@Birthdate), @Gender, @Religion, @Email, @PhoneNumber, @Today)
+	VALUES (@AddressNumber, @RoleID, @DepartmentID, @Password, @FirstName, @MiddleName, @LastName, @Birthdate, dbo.FN_CalculateAge(@Birthdate), @Gender, @Religion, @Email, @PhoneNumber, @Today)
 	
 END
 GO
@@ -769,9 +955,9 @@ BEGIN
 	DECLARE @LaboratoryNumber DATETIME;
 	DECLARE @EmployeeNumber INT;
 	
-	SET @LaboratoryNumber = (SELECT LaboratoryID FROM dbo.Report WHERE ReportID = @ReportID)
+	SET @LaboratoryNumber = (SELECT LaboratoryID FROM dbo.Reports WHERE ReportID = @ReportID)
 	
-	SET @EmployeeNumber = (SELECT EmployeeID FROM dbo.Report WHERE ReportID = @ReportID)
+	SET @EmployeeNumber = (SELECT EmployeeID FROM dbo.Reports WHERE ReportID = @ReportID)
 	
 	-- Set old status to off
 	UPDATE dbo.Laboratories
@@ -816,9 +1002,9 @@ BEGIN
 	DECLARE @LaboratoryNumber DATETIME;
 	DECLARE @EmployeeNumber INT;
 	
-	SET @LaboratoryNumber = (SELECT LaboratoryID FROM dbo.Report WHERE ReportID = @ReportID)	
+	SET @LaboratoryNumber = (SELECT LaboratoryID FROM dbo.Reports WHERE ReportID = @ReportID)	
 	
-	SET @EmployeeNumber = (SELECT EmployeeID FROM dbo.Report WHERE ReportID = @ReportID)
+	SET @EmployeeNumber = (SELECT EmployeeID FROM dbo.Reports WHERE ReportID = @ReportID)
 	
 	UPDATE dbo.Laboratories
 	SET
@@ -830,7 +1016,7 @@ BEGIN
 		Status = 0
 	WHERE EmployeeID = @EmployeeNumber
 	
-	DELETE FROM dbo.Report WHERE ReportID = @ReportID
+	DELETE FROM dbo.Reports WHERE ReportID = @ReportID
 END
 GO
 
@@ -900,7 +1086,7 @@ BEGIN
 	SET @AdmissionOn = (SELECT AdmissionOn FROM dbo.Registrations WHERE RegistrationID = @RegistrationID)	
 	SET @DischargeOn = (SELECT DischargeOn FROM dbo.Registrations WHERE RegistrationID = @RegistrationID)
 	
-	SET @RoomFee = (SELECT RoomID FROM dbo.RegistrationID WHERE RegistrationID = @RegistrationID)
+	SET @RoomFee = (SELECT RoomID FROM dbo.Registrations WHERE RegistrationID = @RegistrationID)
 	
 	SET @RoomTotal = ((MONTH(@DischargeOn) - MONTH(@AdmissionOn)) * 31) + ((DAY(@DischargeOn) - DAY(@AdmissionOn)) * @RoomFee)
 	
@@ -1063,6 +1249,32 @@ BEGIN
 END
 GO
 
+-- 3.9 dbo.Departments
+
+-- 3.9.1 CREATE PROCEDURE dbo.USP_GetDepartmentInformation
+CREATE PROCEDURE dbo.USP_GetDepartmentInformation
+	@DepartmentID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Departments
+	WHERE DepartmentID = @DepartmentID
+END
+GO
+
+
+-- 3.10 dbo.Roles
+
+-- 3.10.1 CREATE PROCEDURE dbo.USP_GetRoleInformation
+CREATE PROCEDURE dbo.USP_GetRoleInformation
+	@RoleID INT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Roles
+	WHERE RoleID = @RoleID
+END
+GO
 
 
 /********************************
@@ -1090,28 +1302,35 @@ AS
 	FROM dbo.Departments
 GO
 
--- 4.4 CREATE VIEW V_Registration
-CREATE VIEW dbo.V_Registration
+-- 4.3 CREATE VIEW V_Roles
+CREATE VIEW V_Roles
+AS
+	SELECT *
+	FROM dbo.Roles
+GO
+
+-- 4.5 CREATE VIEW V_Registrations
+CREATE VIEW dbo.V_Registrations
 AS
 	SELECT *
 	FROM dbo.Registrations
 GO
 
--- 4.5 CREATE VIEW V_Rooms
+-- 4.6 CREATE VIEW V_Rooms
 CREATE VIEW dbo.V_Rooms
 AS
 	SELECT *
 	FROM dbo.Rooms
 GO
 
--- 4.6 CREATE VIEW V_Laboratories
+-- 4.7 CREATE VIEW V_Laboratories
 CREATE VIEW dbo.V_Laboratories
 AS
 	SELECT *
 	FROM dbo.Laboratories
 GO
 
--- 4.7 CREATE VIEW V_Reports
+-- 4.8 CREATE VIEW V_Reports
 CREATE VIEW dbo.V_Reports
 AS
 	SELECT *

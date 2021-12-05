@@ -26,8 +26,8 @@ namespace hospital_management_system.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\".\\dbo\\hospital-information.m" +
-            "df\";Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;InitialCatalog =\".\\dbo1\\\";Integrated Security=" +
+            "True")]
         public string HospitalDB {
             get {
                 return ((string)(this["HospitalDB"]));
