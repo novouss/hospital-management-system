@@ -63,9 +63,10 @@ namespace hospital_management_system.gui.forms
             this.reportCard.CounterColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
             this.reportCard.CounterText = "1337";
             this.reportCard.LabelText = "Reports";
-            this.reportCard.Location = new System.Drawing.Point(437, 3);
+            this.reportCard.Location = new System.Drawing.Point(438, 4);
+            this.reportCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.reportCard.Name = "reportCard";
-            this.reportCard.Size = new System.Drawing.Size(211, 113);
+            this.reportCard.Size = new System.Drawing.Size(209, 111);
             this.reportCard.TabIndex = 2;
             this.reportCard.TextColor = System.Drawing.Color.Black;
             // 
@@ -74,7 +75,8 @@ namespace hospital_management_system.gui.forms
             this.patientCard.CounterColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
             this.patientCard.CounterText = "1337";
             this.patientCard.LabelText = "Patients";
-            this.patientCard.Location = new System.Drawing.Point(3, 3);
+            this.patientCard.Location = new System.Drawing.Point(4, 4);
+            this.patientCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.patientCard.Name = "patientCard";
             this.patientCard.Size = new System.Drawing.Size(209, 110);
             this.patientCard.TabIndex = 0;
@@ -85,9 +87,10 @@ namespace hospital_management_system.gui.forms
             this.registrationCard.CounterColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
             this.registrationCard.CounterText = "1337";
             this.registrationCard.LabelText = "Registrations";
-            this.registrationCard.Location = new System.Drawing.Point(220, 3);
+            this.registrationCard.Location = new System.Drawing.Point(221, 4);
+            this.registrationCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.registrationCard.Name = "registrationCard";
-            this.registrationCard.Size = new System.Drawing.Size(210, 113);
+            this.registrationCard.Size = new System.Drawing.Size(209, 111);
             this.registrationCard.TabIndex = 1;
             this.registrationCard.TextColor = System.Drawing.Color.Black;
             // 
@@ -103,6 +106,7 @@ namespace hospital_management_system.gui.forms
             this.billingDisplay.Label2 = "Status";
             this.billingDisplay.Label3 = "";
             this.billingDisplay.Location = new System.Drawing.Point(690, 115);
+            this.billingDisplay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.billingDisplay.Name = "billingDisplay";
             this.billingDisplay.Size = new System.Drawing.Size(364, 251);
             this.billingDisplay.TabIndex = 4;
@@ -118,7 +122,8 @@ namespace hospital_management_system.gui.forms
             this.employeeDisplay.Label1 = "Name";
             this.employeeDisplay.Label2 = "Status";
             this.employeeDisplay.Label3 = "";
-            this.employeeDisplay.Location = new System.Drawing.Point(15, 223);
+            this.employeeDisplay.Location = new System.Drawing.Point(16, 238);
+            this.employeeDisplay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.employeeDisplay.Name = "employeeDisplay";
             this.employeeDisplay.Size = new System.Drawing.Size(645, 185);
             this.employeeDisplay.TabIndex = 3;
@@ -129,7 +134,8 @@ namespace hospital_management_system.gui.forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.billingCard.LabelText = "Billings";
-            this.billingCard.Location = new System.Drawing.Point(669, 12);
+            this.billingCard.Location = new System.Drawing.Point(669, 13);
+            this.billingCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.billingCard.Name = "billingCard";
             this.billingCard.Size = new System.Drawing.Size(399, 712);
             this.billingCard.TabIndex = 2;
@@ -140,13 +146,14 @@ namespace hospital_management_system.gui.forms
             | System.Windows.Forms.AnchorStyles.Left)));
             this.employeeCard.LabelText = "Employees";
             this.employeeCard.Location = new System.Drawing.Point(12, 137);
+            this.employeeCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.employeeCard.Name = "employeeCard";
             this.employeeCard.Size = new System.Drawing.Size(651, 587);
             this.employeeCard.TabIndex = 1;
             // 
             // PageDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1080, 736);
