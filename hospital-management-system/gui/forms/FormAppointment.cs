@@ -14,158 +14,180 @@ namespace hospital_management_system.gui.forms
     public partial class FormAppointment : Form
     {
         private dbAccess db = new dbAccess();
-        private Registrations Registrations = new Registrations();
+        private Registrations registration = null;
         public FormAppointment(string function, Registrations registration = null)
         {
             InitializeComponent();
-            // InitalizeComboboxItems();
-            // this.Registrations = Registrations;
-            // loadAppointment(function);
-        }
+            InitializeComboBoxItems();
+            this.registration = null;
 
-        #region Form Methods
-
-        #endregion
-
-        /*
-        private void InitalizeComboboxItems()
-        {
-            // Get Patients
-            List<PatientDetails> patients = new List<PatientDetails>();
-            patients = db.getPatientInformation();
-            patientCombobox.ValueMember = null;
-            patientCombobox.DisplayMember = "PatientID";
-            patientCombobox.DataSource = patients;
-            // Get Departments
-            List<Department> departments = new List<Department>();
-            departments = db.getDepartments();
-            departmentCombobox.ValueMember = null;
-            departmentCombobox.DisplayMember = "DepartmentName";
-            departmentCombobox.DataSource = departments;
-            departmentCombobox.SelectedValueChanged += DepartmentCombobox_SelectedValueChanged;
-            // Get Employees 
-            // Is stored in <DepartmentCombobox_SelectedValueChanged> method.
-            // Get Rooms
-            List<Room> rooms = new List<Room>();
-            rooms = db.getRoomInformation();
-            roomCombobox.ValueMember = null;
-            roomCombobox.DisplayMember = "RoomID";
-            roomCombobox.DataSource = rooms;
-            // Get Laboratories
-            List<Laboratory> laboratories = new List<Laboratory>();
-            laboratories = db.getLaboratoryInformation();
-            laboratoryCombobox.ValueMember = null;
-            laboratoryCombobox.DisplayMember = "LaboratoryID";
-            laboratoryCombobox.DataSource = laboratories;
-        }
-        private void DepartmentCombobox_SelectedValueChanged(object sender, EventArgs e)
-        {
-            employeeCombobox.Enabled = true;
-            
-            if (departmentCombobox.SelectedValue != null)
-            {
-                Department department = (Department) departmentCombobox.SelectedValue;
-                
-                List<EmployeeDepartment> emps_dep = new List<EmployeeDepartment>();
-                emps_dep = db.findDepartmentEmployees(department.DepartmentID);
-                employeeCombobox.ValueMember = null;
-                employeeCombobox.DisplayMember = "EmployeeID";
-                employeeCombobox.DataSource = emps_dep;
-            }
-        }
-        private void loadAppointment(string function)
-        {
             switch (function)
             {
                 case "view":
-                    appointmentForm.Text = "View Appointment ID: " + Registrations.RegistrationsID;
-                    viewAppointment(this.Registrations);
+                    LoadViewAppointment();
                     break;
-                case "modify":
-                    appointmentForm.Text = "Modify Appointment ID: " + Registrations.RegistrationsID;
-                    modifyAppointment();
+                case "edit":
+                    LoadEditAppointment();
                     break;
                 case "add":
-                    appointmentForm.Text = "Add Appointment";
-                    addAppointment();
-                    break;
-                default:
+                    LoadAddAppointments();
                     break;
             }
+
         }
-        private void addAppointment()
+
+        private void InitializeComboBoxItems()
         {
-            // Visualize information
-            appointmentGroup.Visible = true;
-            resultGroup.Visible = false;
-            // Allow for user input
-            appointmentGroup.Enabled = true;
-            resultGroup.Enabled = true;
-            // Visualize Buttons
-            deleteBtn.Visible = false;
+            //Initialize Patient ID
+            List<Patients> patient = db.GetListPatients();
+            patientIdInfobox.DataSource = patient;
+            patientIdInfobox.ValueMemeber = null;
+            patientIdInfobox.DisplayMember = "PatientID";
+
+            //Initialize Room ID
+            List<Rooms> room = db.GetListRooms();
+            roomIdInfobox.DataSource = room;
+            roomIdInfobox.ValueMemeber = null;
+            roomIdInfobox.DisplayMember = "RoomID";
+
+        }
+
+        #region Form Methods
+        private void LoadAddAppointments()
+        {
+            appointmentForm.Text = "Add Appointment";
+            // Visualizes Information and record
+            registrataionDetails.Visible = true;
+            reportDetails.Visible = false;
+           
+            //User Input
+            registrataionDetails.Enabled = true;
+            reportDetails.Enabled = false;
+            
+            //Configure buttons
             cancelBtn.Visible = true;
             modifyBtn.Visible = false;
             saveBtn.Visible = true;
-            // Button Function
-            saveBtn.Click += AddRegistrationsSaveBtn_Click;
+            deleteBtn.Visible = false;
+
+            saveBtn.Click += SaveNewAppointment_Click;
         }
-        private void AddRegistrationsSaveBtn_Click(object sender, EventArgs e)
+
+        private void LoadEditAppointment()
         {
-            Registrations Registrations = new Registrations();
-            Registrations.PatientID = int.Parse(patientCombobox.Text);
-            Registrations.EmployeeID = int.Parse(employeeCombobox.Text);
-            Registrations.RoomID = int.Parse(roomCombobox.Text);
-            Registrations.LaboratoryID = int.Parse(laboratoryCombobox.Text);
-            Registrations.AdmissionOn = new DateTime(admissionCalendar.Value.Year, admissionCalendar.Value.Month, admissionCalendar.Value.Day, admissionCalendar.Value.Hour, admissionCalendar.Value.Minute, admissionCalendar.Value.Second);            
-            Registrations.DischargeOn = new DateTime(dischageCalendar.Value.Year, dischageCalendar.Value.Month, dischageCalendar.Value.Day, dischageCalendar.Value.Hour, dischageCalendar.Value.Minute, dischageCalendar.Value.Second);
-            Console.WriteLine(Registrations.DischargeOn);
-            Registrations.Results = resultTextgroup.Text;
-            db.addAppointment(Registrations);
-            this.Close();
+            appointmentForm.Text = "Edit Appointment: " + this.registration.RegistrationID;
+            
+            // Visualizes Information and record
+            registrataionDetails.Visible = true;
+            reportDetails.Visible = true;
+
+            //User Input
+            registrataionDetails.Enabled = true;
+            reportDetails.Enabled = true;
+
+            //Configure buttons
+            cancelBtn.Visible = true;
+            modifyBtn.Visible = false;
+            saveBtn.Visible = true;
+            deleteBtn.Visible = false;
+
+            saveBtn.Click += SaveEditAppointment_Click;
         }
-        private void viewAppointment(Registrations Registrations)
+
+        private void LoadViewAppointment()
         {
-            this.Registrations = Registrations;
-            // Visualize information
-            appointmentGroup.Visible = true;
-            resultGroup.Visible = true;
-            // Do not allow for user input
-            appointmentGroup.Enabled = false;
-            resultGroup.Enabled = false;
-            // Visualize Buttons
-            deleteBtn.Visible = true;
-            cancelBtn.Visible = false;
+            appointmentForm.Text = "View Employee: " + this.registration.PatientID;
+            //Visualizes Information and Record
+            registrataionDetails.Visible = false;
+            reportDetails.Visible = false;
+
+            //User Input
+            registrataionDetails.Enabled = false;
+            reportDetails.Enabled = false;
+
+            //Configure buttons
+            cancelBtn.Visible = true;
             modifyBtn.Visible = true;
             saveBtn.Visible = false;
-            // Visualize Information
-            patientCombobox.Text = Registrations.PatientID + "";
-            employeeCombobox.Text = Registrations.EmployeeID + "";
-            roomCombobox.Text = Registrations.RoomID + "";
-            laboratoryCombobox.Text = Registrations.LaboratoryID + "";
-            admissionCalendar.Value = Registrations.AdmissionOn;
-            dischageCalendar.Value = Registrations.DischargeOn;
-            resultTextgroup.Text = Registrations.Results;
-            // Button Function
-            modifyBtn.Click += ModifyAppointmentBtn_Click;
+            deleteBtn.Visible = false;
+
+            //Display
+            this.registration = new Registrations();
+            this.registration.PatientID = int.Parse(patientIdInfobox.ComboboxText);
+            this.registration.RoomID = int.Parse(roomIdInfobox.ComboboxText);
+            dateAdmissionInfobox.DateText = this.registration.AdmissionOn;
+            dateDischargeInfobox.DateText = this.registration.DischargeOn;
+
         }
-        private void ModifyAppointmentBtn_Click(object sender, EventArgs e)
+
+        private void SaveEditAppointment_Click(object sender, EventArgs e)
         {
-            loadAppointment("modify");
+            //Patient ID Combobox
+            this.registration.PatientID = (patientIdInfobox.SelectedValue as Patients).PatientID;
+
+            //Room ID Combobox
+            this.registration.RoomID = (roomIdInfobox.SelectedValue as Rooms).RoomID;
+
+            //Date Admission
+            this.registration.AdmissionOn = dateAdmissionInfobox.GetDate();
+
+            //Date Discharge
+            this.registration.DischargeOn = dateDischargeInfobox.GetDate();
+
+            db.EditAppointment(this.registration);
+
+            this.Close();
         }
-        private void modifyAppointment()
+
+        private void SaveNewAppointment_Click(object sender, EventArgs e)
         {
-            // Visualize information
-            appointmentGroup.Visible = true;
-            resultGroup.Visible = true;
-            // Allow for user input
-            appointmentGroup.Enabled = true;
-            resultGroup.Enabled = true;
-            // Visualize Buttons
-            deleteBtn.Visible = true;
-            cancelBtn.Visible = true;
-            modifyBtn.Visible = false;
-            saveBtn.Visible = true;
+            this.registration = new Registrations();
+
+            //Patient ID Combobox
+            this.registration.PatientID = (patientIdInfobox.SelectedValue as Patients).PatientID;
+
+            //Room ID Combobox
+            this.registration.RoomID = (roomIdInfobox.SelectedValue as Rooms).RoomID;
+
+            //Date Admission
+            this.registration.AdmissionOn = dateAdmissionInfobox.GetDate();
+
+            //Date Discharge
+            this.registration.DischargeOn = dateDischargeInfobox.GetDate();
+
+            db.AddRegistration(this.registration);
+
+            this.Close();
         }
-        */
+
+
+        #endregion
+
+
+
+
+
+
+        //Cancel Button
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        //Delete Button
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            // TODO: Create Messagebox warning
+            db.RemoveRegistration(this.registration);
+
+            this.Close();
+        }
+
+        //Modify Button
+        private void modifyBtn_Click(object sender, EventArgs e)
+        {
+            LoadEditAppointment();
+        }
+
+        
     }
 }
