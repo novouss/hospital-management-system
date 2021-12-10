@@ -13,38 +13,93 @@ namespace hospital_management_system
     {
 
         private dbAccess db = new dbAccess();
-        private Billings billing;
+        private Billings billing = null;
         public FormBilling(string function, Billings billing = null)
         {
             InitializeComponent();
             this.billing = billing;
-            loadBilling(function);
-        }
 
-        #region Form Methods
-        
-        private void loadBilling(string function)
-        {
             switch (function)
             {
                 case "view":
-                    billingForm.Text = "View Billing: " + billing.BillingID;
-                    // viewPatient(this.patient);
+                    LoadViewBilling();
                     break;
-                case "modify":
-                    billingForm.Text = "Modify Billing: " + billing.BillingID;
-                    // modifyPatient();
+                case "edit":
+                    LoadEditBilling();
                     break;
                 case "add":
-                    billingForm.Text = "Add Billing";
-                    // addPatient();
+                    LoadAddBilling();
                     break;
-                default:
-                    break;
-
             }
+
         }
 
-        #endregion
+        private void LoadAddBilling()
+        {
+            billingForm.Text = "Add Billing";
+
+            // Configure buttons
+            deleteBtn.Visible = false;
+            cancelBtn.Visible = true;
+            modifyBtn.Visible = false;
+            saveBtn.Visible = true;
+
+            saveBtn.Click += SaveNewBilling;
+        }
+
+        private void SaveNewBilling(object sender, EventArgs e)
+        {
+            this.billing = new Billings();
+            // TODO: Create display patient screen
+   
+            db.addBilling(this.billing);
+            this.Close();
+        }
+
+        private void LoadEditBilling()
+        {
+            // Configure buttons
+            deleteBtn.Visible = true;
+            cancelBtn.Visible = true;
+            modifyBtn.Visible = false;
+            saveBtn.Visible = true;
+        }
+
+        private void SaveEditBilling_Click(object sender, EventArgs e)
+        {
+            // HELP: Update billings not exist
+            this.Close();
+        }
+
+        private void LoadViewBilling()
+        {
+            billingForm.Text = "Viewing Billing: " + this.billing.BillingID;
+            // Configure buttons
+            deleteBtn.Visible = false;
+            cancelBtn.Visible = true;
+            modifyBtn.Visible = true;
+            saveBtn.Visible = false;
+
+
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            // TODO: Create Messagebox warning
+            db.RemoveBillings(this.billing);
+
+            this.Close();
+        }
+
+        private void modifyBtn_Click(object sender, EventArgs e)
+        {
+            LoadEditBilling();
+        }
+
     }
 }

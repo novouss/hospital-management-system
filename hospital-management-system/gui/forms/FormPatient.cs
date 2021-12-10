@@ -205,5 +205,10 @@ namespace hospital_management_system
         {
             LoadEditPatient();
         }
+
+        private void patientForm_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

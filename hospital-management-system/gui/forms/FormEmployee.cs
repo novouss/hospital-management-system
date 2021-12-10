@@ -195,7 +195,7 @@ namespace hospital_management_system
             departmentInfobox.DataSource = departments;
 
 
-            // Inialize Roels
+            // Inialize Roles
 
             List<Roles> roles = db.GetListRoles();
 

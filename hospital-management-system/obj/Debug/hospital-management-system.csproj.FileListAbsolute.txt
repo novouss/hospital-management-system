@@ -93,3 +93,33 @@ C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-ma
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.DisplayPreview.resources
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.RoundedGroupbox.resources
 C:\Users\Raymond Gorospe\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.PreviewCards.resources
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\dbo\HospitalInformationDatabase.mdf
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\dbo\HospitalInformationDatabase_log.ldf
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\hospital-management-system.exe.config
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\hospital-management-system.exe
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\hospital-management-system.pdb
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\Dapper.dll
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\ServiceStack.Common.dll
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\ServiceStack.Interfaces.dll
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\ServiceStack.Text.dll
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\System.Buffers.dll
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\System.Memory.dll
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\Dapper.xml
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\ServiceStack.Common.xml
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\ServiceStack.Text.xml
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\System.Buffers.xml
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\System.Memory.xml
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.DisplayPreview.resources
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.PreviewBox.resources
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.PreviewCards.resources
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.components.RoundedGroupbox.resources
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital_management_system.gui.forms.formReport.resources
+C:\Users\Admin\Documents\GitHub\hospital-management-system\hospital-management-system\obj\Debug\hospital-management-system.csproj.CopyComplete
