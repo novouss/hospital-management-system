@@ -508,8 +508,63 @@ namespace hospital_management_system.classes
             }
         }
 
+        #endregion
+
+        #region Registration Functions
+        //Delete Appointment
+        public void RemoveRegistration(Registrations registrations)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var parameters = new
+                {
+                    RegistrationID = registrations.RegistrationID
+                };
+
+                connection.Execute("dbo.USP_DropRegistration @RegistrationID", parameters);
+            }
+        }
+        
+
+        //New Appointment
+        public void AddRegistration(Registrations registration)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+
+            {
+                var parameters = new
+                {
+                    PatientID = registration.PatientID,
+                    RoomID = registration.RoomID,
+                    AdmissionOn = registration.AdmissionOn,
+                    DischargeOn = registration.DischargeOn
+                };
+
+                connection.Execute("dbo.USP_CreateRegistration @PatientID, @RoomID, @AdmissionOn, @DischargeOn", parameters);
+            }
+
+        }
+
+        //Edit Appointment
+        public void EditAppointment(Registrations registration)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var parameters = new
+                {
+                    PatientID = registration.PatientID,
+                    RoomID = registration.RoomID,
+                    AdmissionOn = registration.AdmissionOn,
+                    DischargeOn = registration.DischargeOn
+                };
+                connection.Execute("dbo.USP_CreateRegistration @PatientID, @RoomID, @AdmissionOn, @DischargeOn", parameters);
+            }
+
+        }
 
         #endregion
+
+
 
 
     }
