@@ -157,6 +157,7 @@ namespace hospital_management_system.gui.forms
             this.registrataionIdInfobox.Size = new System.Drawing.Size(482, 35);
             this.registrataionIdInfobox.TabIndex = 7;
             this.registrataionIdInfobox.ValueMemeber = "";
+            //this.registrataionIdInfobox.Load += new System.EventHandler(this.registrataionIdInfobox_Load);
             // 
             // buttonFlowLayout
             // 

@@ -511,6 +511,56 @@ namespace hospital_management_system.classes
 
         #endregion
 
+        #region Report Functions
+
+        public void AddReport(Reports report)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var parameters = new
+                {
+                    RegistrationID = report.RegistrationID,
+                    DepartmentID = report.DepartmentID,
+                    EmployeeID = report.EmployeeID,
+                    LaboratoryID = report.LaboratoryID,
+                    Report = report.Report
+                };
+
+                connection.Execute("dbo.USP_CreateReport @RegistrationID, @DepartmentID, @EmployeeID, @LaboratoryID, @Report", parameters);
+            }
+        }
+
+        public void EditReport(Reports report)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var parameters = new
+                {
+                    RegistrationID = report.RegistrationID,
+                    DepartmentID = report.DepartmentID,
+                    EmployeeID = report.EmployeeID,
+                    LaboratoryID = report.LaboratoryID,
+                    Report = report.Report
+                };
+
+                connection.Execute("dbo.USP_UpdateReport @RegistrationID, @DepartmentID, @EmployeeID, @LaboratoryID, @Report", parameters);
+            }
+        }
+
+        public void RemoveReport(Reports report)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var parameters = new
+                {
+                    ReportID = report.ReportID
+                };
+
+                connection.Execute("dbo.USP_DropReport @ReportID", parameters);
+            }
+        }
+
+        #endregion
 
     }
 }
