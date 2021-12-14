@@ -149,7 +149,7 @@
 			3.3.1 CREATE PROCEDURE dbo.USP_CreateEmployee
 			3.3.2 CREATE PROCEDURE dbo.USP_UpdateEmployee
 			3.3.3 CREATE PROCEDURE dbo.USP_DropEmployee
-			3.3.4 CREATE PROCEDURE dbo.USP_GetEmployeeInforamtion
+			3.3.4 CREATE PROCEDURE dbo.USP_GetEmployeeInformation
 			3.3.5 CREATE PROCEDURE dbo.USP_GetDepartmentEmployees
 			3.3.6 CREATE PROCEDURE dbo.USP_GetEmployeeLogin
 		3.4 dbo.Registrations
@@ -157,6 +157,7 @@
 			3.4.2 CREATE PROCEDURE dbo.USP_UpdateRegistration
 			3.4.3 CREATE PROCEDURE dbo.USP_DropRegistration
 			3.4.4 CREATE PROCEDURE dbo.USP_GetRegistrationInformation
+			3.4.5 CREATE PROCEDURE dbo.USP_FinishedRegistration
 		3.5 dbo.Reports
 			3.5.1 CREATE PROCEDURE dbo.USP_CreateReport
 			3.5.2 CREATE PROCEDURE dbo.USP_UpdateReport
@@ -182,6 +183,7 @@
 			3.8.4 CREATE PROCEDURE dbo.USP_OpenRoom
 		3.9 dbo.Departments
 			3.9.1 CREATE PROCEDURE dbo.USP_GetDepartmentInformation
+			3.9.2 CREATE PROCEDURE dbo.USP_OpenDepartmentEmployees
 		3.10 dbo.Roles
 			3.10.1 CREATE PROCEDURE dbo.USP_GetRoleInformation
 			
@@ -464,17 +466,17 @@ ALTER TABLE dbo.Employees WITH CHECK ADD CONSTRAINT [FK_Employees_Roles_RoleID] 
 -- 2.1.4 ADD CONSTRAINT FK_Employees_Departments_DepartmentID
 ALTER TABLE dbo.Employees WITH CHECK ADD CONSTRAINT [FK_Employees_Departments_DepartmentID] FOREIGN KEY ([DepartmentID]) REFERENCES dbo.Departments (DepartmentID)
 -- 2.1.5 ADD CONSTRAINT FK_Registrations_Patients_PatientID
-ALTER TABLE dbo.Registrations WITH CHECK ADD CONSTRAINT [FK_Registrations_Patients_PatientID] FOREIGN KEY ([PatientID]) REFERENCES dbo.Patients (PatientID)
+ALTER TABLE dbo.Registrations WITH CHECK ADD CONSTRAINT [FK_Registrations_Patients_PatientID] FOREIGN KEY ([PatientID]) REFERENCES dbo.Patients (PatientID) ON DELETE CASCADE
 -- 2.1.6 ADD CONSTRAINT FK_Registrations_Rooms_RoomID
 ALTER TABLE dbo.Registrations WITH CHECK ADD CONSTRAINT [FK_Registrations_Rooms_RoomID] FOREIGN KEY ([RoomID]) REFERENCES dbo.Rooms (RoomID)
 -- 2.1.7 ADD CONSTRAINT FK_Reports_Registration_RegistrationID
-ALTER TABLE dbo.Reports WITH CHECK ADD CONSTRAINT [FK_Reports_Registration_RegistrationID] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.Registrations (RegistrationID)
+ALTER TABLE dbo.Reports WITH CHECK ADD CONSTRAINT [FK_Reports_Registration_RegistrationID] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.Registrations (RegistrationID) ON DELETE CASCADE
 -- 2.1.8 ADD CONSTRAINT FK_Reports_Laboratories_LaboratoryID
 ALTER TABLE dbo.Reports WITH CHECK ADD CONSTRAINT [FK_Reports_Laboratories_LaboratoryID] FOREIGN KEY ([LaboratoryID]) REFERENCES dbo.Laboratories (LaboratoryID)
 -- 2.1.9 ADD CONSTRAINT FK_Reports_Employees_EmployeeID
 ALTER TABLE dbo.Reports WITH CHECK ADD CONSTRAINT [FK_Reports_Employees_EmployeeID] FOREIGN KEY (EmployeeID) REFERENCES dbo.Employees (EmployeeID)
 -- 2.1.10 ADD CONSTRAINT FK_Billings_Registrations_RegistrationID
-ALTER TABLE dbo.Billings WITH CHECK ADD CONSTRAINT [FK_Billings_Registrations_RegistrationID] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.Registrations (RegistrationID)
+ALTER TABLE dbo.Billings WITH CHECK ADD CONSTRAINT [FK_Billings_Registrations_RegistrationID] FOREIGN KEY ([RegistrationID]) REFERENCES dbo.Registrations (RegistrationID) ON DELETE CASCADE
 
 
 
@@ -641,7 +643,7 @@ CREATE PROCEDURE dbo.USP_UpdatePatient
 AS
 BEGIN
 	DECLARE @Today DATETIME = GETDATE();
-	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.PatientDetails WHERE @PatientID = PatientID);
+	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.Patients WHERE @PatientID = PatientID);
 		
 	UPDATE dbo.Patients
 	SET 
@@ -667,7 +669,7 @@ CREATE PROCEDURE dbo.USP_DropPatient
 AS
 BEGIN
 	DECLARE @AddressNumber INT = (SELECT AddressID FROM dbo.Patients WHERE PatientID = @PatientID);
-	
+
 	DELETE FROM dbo.Patients WHERE PatientID = @PatientID
 	
 	EXEC dbo.USP_DropAddress @AddressID = @AddressNumber
@@ -695,14 +697,6 @@ BEGIN
 	WHERE PatientID = @PatientID
 END
 GO
-
-
-
--- 3.3 dbo.Employees
-
--- 3.3.1 CREATE PROCEDURE dbo.USP_CreateEmployee
-
-
 
 -- 3.3 dbo.Employees
 
@@ -803,8 +797,8 @@ BEGIN
 END
 GO
 
--- 3.3.4 CREATE PROCEDURE dbo.USP_GetEmployeeInforamtion
-CREATE PROCEDURE dbo.USP_GetEmployeeInforamtion
+-- 3.3.4 CREATE PROCEDURE dbo.USP_GetEmployeeInformation
+CREATE PROCEDURE dbo.USP_GetEmployeeInformation
 	@EmployeeID INT
 AS
 BEGIN
@@ -816,13 +810,12 @@ GO
 
 -- 3.3.5 CREATE PROCEDURE dbo.USP_GetDepartmentEmployees
 CREATE PROCEDURE dbo.USP_GetDepartmentEmployees
-	@EmployeeID INT,
 	@DepartmentID INT
 AS
 BEGIN
 	SELECT *
 	FROM dbo.Employees
-	WHERE EmployeeID = @EmployeeID AND DepartmentID = @DepartmentID
+	WHERE DepartmentID = @DepartmentID
 END
 GO
 
@@ -916,6 +909,17 @@ BEGIN
 END
 GO
 
+-- 3.4.5 CREATE PROCEDURE dbo.USP_FinishedRegistration
+CREATE PROCEDURE dbo.USP_FinishedRegistration
+	@Status BIT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Registrations
+	WHERE Status = @Status
+END
+GO
+
 
 
 -- 3.5 dbo.Reports
@@ -935,6 +939,11 @@ BEGIN
 	SET
 		Status = 1
 	WHERE LaboratoryID = @LaboratoryID
+	
+	UPDATE dbo.Employees
+	SET
+		Status = 1
+	WHERE EmployeeID = @EmployeeID
 	
 	INSERT INTO dbo.Reports (RegistrationID, DepartmentID, EmployeeID, LaboratoryID, Report, CreatedOn)
 	VALUES (@RegistrationID, @DepartmentID, @EmployeeID, @LaboratoryID, @Report, @Today)
@@ -1046,7 +1055,8 @@ GO
 
 -- 3.6.1 CREATE PROCEDURE dbo.USP_CreateBilling
 CREATE PROCEDURE dbo.USP_CreateBilling
-	@RegistrationID INT
+	@RegistrationID INT,
+	@Status BIT
 AS
 BEGIN
 	DECLARE @Today DATETIME = GETDATE();
@@ -1086,24 +1096,40 @@ BEGIN
 	SET @AdmissionOn = (SELECT AdmissionOn FROM dbo.Registrations WHERE RegistrationID = @RegistrationID)	
 	SET @DischargeOn = (SELECT DischargeOn FROM dbo.Registrations WHERE RegistrationID = @RegistrationID)
 	
-	SET @RoomFee = (SELECT RoomID FROM dbo.Registrations WHERE RegistrationID = @RegistrationID)
+	
+	SET @RoomFee = (
+		SELECT ROOM.Fee
+		FROM dbo.Rooms AS ROOM
+		INNER JOIN (
+			SELECT RoomID
+			FROM dbo.Registrations 
+			WHERE RegistrationID = @RegistrationID
+		) AS ROOM_REP
+		ON ROOM.RoomID = ROOM_REP.RoomID
+	)
 	
 	SET @RoomTotal = ((MONTH(@DischargeOn) - MONTH(@AdmissionOn)) * 31) + ((DAY(@DischargeOn) - DAY(@AdmissionOn)) * @RoomFee)
 	
 	SET @Total = @DepartmentTotal + @LaboratoryTotal + @RoomTotal
 	
-	INSERT INTO dbo.Billings (RegistrationID, LaboratoryFee, RoomFee, DepartmentFee, Total, CreatedOn)
-	VALUES (@RegistrationID, @LaboratoryTotal, @RoomTotal, @DepartmentTotal, @Total, @Today)
+	INSERT INTO dbo.Billings (RegistrationID, LaboratoryFee, RoomFee, DepartmentFee, Status, Total, CreatedOn)
+	VALUES (@RegistrationID, @LaboratoryTotal, @RoomTotal, @DepartmentTotal, @Status, @Total, @Today)
 END
 GO
 
 -- 3.6.2 CREATE PROCEDURE dbo.USP_UpdateBilling
 
-/* 
-(Raymond) - Unecessary USP, since there's not much you can update on Billings. 
-			Every variable in Billing is reliant on Registrations and Reports. 
-			To solve updating issue, drop the bill that was created and create a new one instead. 
-*/
+CREATE PROCEDURE dbo.USP_UpdateBilling
+	@BillingID INT,
+	@Status BIT
+AS
+BEGIN
+	UPDATE dbo.BillingID
+	SET
+		Status = @Status
+	WHERE BillingID = @BillingID
+END 
+GO
 
 -- 3.6.3 CREATE PROCEDURE dbo.USP_DropBilling
 CREATE PROCEDURE dbo.USP_DropBilling
@@ -1168,12 +1194,12 @@ GO
 
 -- 3.7.4 CREATE PROCEDURE dbo.USP_GetLaboratoryInformation
 CREATE PROCEDURE dbo.USP_GetLaboratoryInformation
-	@LaboraotyID INT
+	@LaboratoryID INT
 AS
 BEGIN
 	SELECT *
 	FROM dbo.Laboratories
-	WHERE LaboratoryID = @LaboraotyID
+	WHERE LaboratoryID = @LaboratoryID
 END
 GO
 
@@ -1262,6 +1288,17 @@ BEGIN
 END
 GO
 
+-- 3.9.2 CREATE PROCEDURE dbo.USP_OpenDepartmentEmployees
+CREATE PROCEDURE dbo.USP_OpenDepartmentEmployees
+	@DepartmentID INT,
+	@Status BIT
+AS
+BEGIN
+	SELECT *
+	FROM dbo.Employees
+	WHERE DepartmentID = @DepartmentID AND Status = @Status
+END
+GO
 
 -- 3.10 dbo.Roles
 
