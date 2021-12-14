@@ -130,13 +130,13 @@ namespace experimental_hospital_management_system
             }
         }
 
-        public Employees GetEmployeeLogin(string email, string password)
+        public List<Employees> GetEmployeeLogin(string email, string password)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
                 var output = connection.Query<Employees>($"dbo.USP_GetEmployeeLogin @Email = '{ email }', @Password = '{ password }'");
 
-                return (output as List<Employees>)[0];
+                return (List<Employees>)output;
             }
         }
 

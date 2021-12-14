@@ -17,11 +17,13 @@ namespace experimental_hospital_management_system.gui.pages
         private MoreColors COLORS = new MoreColors();
         private dbAccess DB = new dbAccess();
         private FormWindow form = null;
-        public PageDashboard(FormWindow form)
+        private Employees employee;
+        public PageDashboard(FormWindow form, Employees employee)
         {
+            this.form = form;
+            this.employee = employee;
             InitializeComponent();
             InitializeCustomComponent();
-            this.form = form;
             LoadDatabase();
         }
 
@@ -40,6 +42,8 @@ namespace experimental_hospital_management_system.gui.pages
             scheduledate.ForeColorNow = COLORS.RoyalBlue;
             
             appointmentlabel.ForeColor = COLORS.RoyalBlue;
+
+            greetingslabel.Text = $"Welcome back { this.employee.FirstName }";
             
         }
 

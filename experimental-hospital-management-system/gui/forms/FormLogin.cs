@@ -13,6 +13,8 @@ namespace experimental_hospital_management_system
 {
     public partial class FormLogin : Form
     {
+        private MoreColors COLORS = new MoreColors();
+        private dbAccess DB = new dbAccess();
         public FormLogin()
         {
             InitializeComponent();
@@ -20,7 +22,25 @@ namespace experimental_hospital_management_system
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
+            var account = DB.GetEmployeeLogin(emailInfobox.TextboxText, passwordInfobox.TextboxText);
 
+            if (account != null && account.Count == 1)
+            {
+                FormWindow form = new FormWindow(account[0] as Employees, this);
+                form.Show();
+                this.Hide();
+            }
+            else
+            {
+                emailInfobox.ForeColor = COLORS.Crimson;
+                emailInfobox.TextboxText = "";
+                passwordInfobox.ForeColor = COLORS.Crimson;
+                passwordInfobox.TextboxText = "";
+            }
+        }
+        private void closebtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         #region Draggable Window
@@ -36,5 +56,6 @@ namespace experimental_hospital_management_system
         }
 
         #endregion
+
     }
 }

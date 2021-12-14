@@ -18,15 +18,19 @@ namespace experimental_hospital_management_system
     {
         private DisplayPage DISPLAYPAGE = null;
         private MoreColors COLORS = new MoreColors();
-        public FormWindow()
+        private FormLogin form = new FormLogin();
+        private Employees employee = null;
+        public FormWindow(Employees employee, FormLogin form)
         {
+            this.employee = employee;
+            this.form = form;
             InitializeComponent();
             InitializeCustomComponent();
         }
 
         private void InitializeCustomComponent()
         {
-            this.DISPLAYPAGE = new DisplayPage(this.displaypanel, new PageDashboard(this));
+            this.DISPLAYPAGE = new DisplayPage(this.displaypanel, new PageDashboard(this, employee));
 
             this.headerlabel.ForeColor = COLORS.RoyalBlue;
             this.sidepanel.BackColor = COLORS.RoyalBlue;
@@ -36,12 +40,11 @@ namespace experimental_hospital_management_system
             this.employeebtn.BackColor = COLORS.RoyalBlue;
             this.appointmentbtn.BackColor = COLORS.RoyalBlue;
             this.billingbtn.BackColor = COLORS.RoyalBlue;
-
         }
 
         public void dashboardbtn_Click(object sender, EventArgs e)
         {
-            this.DISPLAYPAGE.OpenChildWindow(new PageDashboard(this));
+            this.DISPLAYPAGE.OpenChildWindow(new PageDashboard(this, this.employee));
         }
 
         public void patientbtn_Click(object sender, EventArgs e)
@@ -64,9 +67,15 @@ namespace experimental_hospital_management_system
             this.DISPLAYPAGE.OpenChildWindow(new PageView("billing"));
         }
 
+        public void logoutbtn_Click(object sender, EventArgs e)
+        {
+            this.form.Show();
+        }
+
         private void closebtn_Click(object sender, EventArgs e)
         {
             this.Close();
+            this.form.Show();
         }
 
         private void maximizebtn_Click(object sender, EventArgs e)

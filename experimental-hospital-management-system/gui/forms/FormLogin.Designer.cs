@@ -159,6 +159,7 @@ namespace experimental_hospital_management_system
             this.closebtn.TabIndex = 7;
             this.closebtn.Text = "ꭓ";
             this.closebtn.UseVisualStyleBackColor = true;
+            this.closebtn.Click += new System.EventHandler(this.closebtn_Click);
             // 
             // FormLogin
             // 
