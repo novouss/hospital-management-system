@@ -170,18 +170,18 @@ namespace hospital_management_system.gui.forms
         #region Login and Logout Functions
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            // dbAccess db = new dbAccess();
+             dbAccess db = new dbAccess();
 
-            // var account = db.GetEmployeeLogin(emailTextbox.Text, passwordTextbox.Text);
+             var account = db.GetEmployeeLogin(emailTextbox.Text, passwordTextbox.Text);
 
-            // if (account == null || account.Count < 1)
-            // {
-            //    AccountDoesNotExist();
-            //    return;
-            // }
+             if (account == null || account.Count < 1)
+             {
+                AccountDoesNotExist();
+                return;
+             }
 
-            // AccountExists(account[0]);
-            AccountExists(null);
+            AccountExists(account[0]);
+            // AccountExists(null);
         }
 
         private void AccountDoesNotExist()

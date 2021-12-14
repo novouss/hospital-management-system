@@ -186,22 +186,22 @@ namespace hospital_management_system
 
         private void InitalizeComboboxItems()
         {
-            // Initalize Deparmtent
+            // Initalize Department
 
             List<Departments> departments = db.GetListDepartments();
-
+            
+            departmentInfobox.DataSource = departments;
             departmentInfobox.ValueMemeber = null;
             departmentInfobox.DisplayMember = "Description";
-            departmentInfobox.DataSource = departments;
 
 
             // Inialize Roles
 
             List<Roles> roles = db.GetListRoles();
 
+            roleInfobox.DataSource = roles;
             roleInfobox.ValueMemeber = null;
             roleInfobox.DisplayMember = "Description";
-            roleInfobox.DataSource = roles;
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
