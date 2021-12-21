@@ -102,7 +102,7 @@ namespace hospital_management_system.classes
             }
         }
 
-        public Rooms GetRoomss(int id)
+        public Rooms GetRooms(int id)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
             {
@@ -508,9 +508,103 @@ namespace hospital_management_system.classes
             }
         }
 
+        #endregion
+
+        #region Registration Functions
+        //Delete Appointment
+        public void RemoveRegistration(Registrations registrations)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var parameters = new
+                {
+                    RegistrationID = registrations.RegistrationID
+                };
+
+                connection.Execute("dbo.USP_DropRegistration @RegistrationID", parameters);
+            }
+        }
+        
+
+        //New Appointment
+        public void AddRegistration(Registrations registration)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+
+            {
+                var parameters = new
+                {
+                    PatientID = registration.PatientID,
+                    RoomID = registration.RoomID,
+                    AdmissionOn = registration.AdmissionOn,
+                    DischargeOn = registration.DischargeOn
+                };
+
+                connection.Execute("dbo.USP_CreateRegistration @PatientID, @RoomID, @AdmissionOn, @DischargeOn", parameters);
+            }
+
+        }
+
+        //Edit Appointment
+        public void EditAppointment(Registrations registration)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var parameters = new
+                {
+                    PatientID = registration.PatientID,
+                    RoomID = registration.RoomID,
+                    AdmissionOn = registration.AdmissionOn,
+                    DischargeOn = registration.DischargeOn
+                };
+                connection.Execute("dbo.USP_CreateRegistration @PatientID, @RoomID, @AdmissionOn, @DischargeOn", parameters);
+            }
+
+        }
 
         #endregion
 
+        #region Billing Functions
 
+        /*
+         * Billing Functions consist of public functions that executes user stored procedures from the database.
+         * 
+         * Region Contents:
+         *      AddBilling(Billings billings)        
+         *      - Adds a billing record to the database.
+         *      
+         *      
+         *      RemoveBilling(Billings billings) 
+         *      - Removes billing from database.
+         * 
+         */
+
+        public void addBilling(Billings billing)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var parameters = new
+                {                   
+                    RegistrationID = billing.RegistrationID
+                };
+
+                connection.Execute("dbo.USP_CreateBilling @RegistrationID", parameters);
+            }
+        }
+
+        public void RemoveBillings(Billings billing)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(dbConnection.ConnectionValue("HospitalDB")))
+            {
+                var parameters = new
+                {
+                    BillingID = billing.BillingID
+                };
+
+                connection.Execute("dbo.USP_DropBilling @BillingID", parameters);
+            }
+        }
+
+        #endregion
     }
 }

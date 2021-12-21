@@ -39,7 +39,6 @@ namespace hospital_management_system
             this.roomInfobox = new hospital_management_system.gui.components.InformationTextbox();
             this.statusInfobox = new hospital_management_system.gui.components.InformationComboBox();
             this.regIdInfobox = new hospital_management_system.gui.components.InformationTextbox();
-            this.billIdInfobox = new hospital_management_system.gui.components.InformationTextbox();
             this.patientBilling = new System.Windows.Forms.GroupBox();
             this.buttonFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -103,7 +102,6 @@ namespace hospital_management_system
             this.billingDetails.Controls.Add(this.roomInfobox);
             this.billingDetails.Controls.Add(this.statusInfobox);
             this.billingDetails.Controls.Add(this.regIdInfobox);
-            this.billingDetails.Controls.Add(this.billIdInfobox);
             this.billingDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.billingDetails.Font = new System.Drawing.Font("Segoe UI", 20.25F);
             this.billingDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(132)))), ((int)(((byte)(222)))));
@@ -119,7 +117,7 @@ namespace hospital_management_system
             this.totalInfobox.ColumnWidth0 = 170F;
             this.totalInfobox.Dock = System.Windows.Forms.DockStyle.Top;
             this.totalInfobox.LabelText = "Total";
-            this.totalInfobox.Location = new System.Drawing.Point(3, 249);
+            this.totalInfobox.Location = new System.Drawing.Point(3, 214);
             this.totalInfobox.Name = "totalInfobox";
             this.totalInfobox.Size = new System.Drawing.Size(519, 35);
             this.totalInfobox.TabIndex = 6;
@@ -131,7 +129,7 @@ namespace hospital_management_system
             this.depInfobox.ColumnWidth0 = 170F;
             this.depInfobox.Dock = System.Windows.Forms.DockStyle.Top;
             this.depInfobox.LabelText = "Department Charge";
-            this.depInfobox.Location = new System.Drawing.Point(3, 214);
+            this.depInfobox.Location = new System.Drawing.Point(3, 179);
             this.depInfobox.Name = "depInfobox";
             this.depInfobox.Size = new System.Drawing.Size(519, 35);
             this.depInfobox.TabIndex = 5;
@@ -143,7 +141,7 @@ namespace hospital_management_system
             this.labInfobox.ColumnWidth0 = 170F;
             this.labInfobox.Dock = System.Windows.Forms.DockStyle.Top;
             this.labInfobox.LabelText = "Laboratory Charge";
-            this.labInfobox.Location = new System.Drawing.Point(3, 179);
+            this.labInfobox.Location = new System.Drawing.Point(3, 144);
             this.labInfobox.Name = "labInfobox";
             this.labInfobox.Size = new System.Drawing.Size(519, 35);
             this.labInfobox.TabIndex = 4;
@@ -155,7 +153,7 @@ namespace hospital_management_system
             this.roomInfobox.ColumnWidth0 = 170F;
             this.roomInfobox.Dock = System.Windows.Forms.DockStyle.Top;
             this.roomInfobox.LabelText = "Room Charge";
-            this.roomInfobox.Location = new System.Drawing.Point(3, 144);
+            this.roomInfobox.Location = new System.Drawing.Point(3, 109);
             this.roomInfobox.Name = "roomInfobox";
             this.roomInfobox.Size = new System.Drawing.Size(519, 35);
             this.roomInfobox.TabIndex = 3;
@@ -170,7 +168,7 @@ namespace hospital_management_system
             this.statusInfobox.DisplayMember = "";
             this.statusInfobox.Dock = System.Windows.Forms.DockStyle.Top;
             this.statusInfobox.LabelText = "Status";
-            this.statusInfobox.Location = new System.Drawing.Point(3, 109);
+            this.statusInfobox.Location = new System.Drawing.Point(3, 74);
             this.statusInfobox.Name = "statusInfobox";
             this.statusInfobox.SelectedValue = null;
             this.statusInfobox.Size = new System.Drawing.Size(519, 35);
@@ -182,24 +180,12 @@ namespace hospital_management_system
             this.regIdInfobox.ColumnWidth0 = 170F;
             this.regIdInfobox.Dock = System.Windows.Forms.DockStyle.Top;
             this.regIdInfobox.LabelText = "Registration Number";
-            this.regIdInfobox.Location = new System.Drawing.Point(3, 74);
+            this.regIdInfobox.Location = new System.Drawing.Point(3, 39);
             this.regIdInfobox.Name = "regIdInfobox";
             this.regIdInfobox.Size = new System.Drawing.Size(519, 35);
             this.regIdInfobox.TabIndex = 1;
             this.regIdInfobox.TextboxPasswordChar = '\0';
             this.regIdInfobox.TextboxText = "";
-            // 
-            // billIdInfobox
-            // 
-            this.billIdInfobox.ColumnWidth0 = 170F;
-            this.billIdInfobox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.billIdInfobox.LabelText = "Billing ID";
-            this.billIdInfobox.Location = new System.Drawing.Point(3, 39);
-            this.billIdInfobox.Name = "billIdInfobox";
-            this.billIdInfobox.Size = new System.Drawing.Size(519, 35);
-            this.billIdInfobox.TabIndex = 0;
-            this.billIdInfobox.TextboxPasswordChar = '\0';
-            this.billIdInfobox.TextboxText = "";
             // 
             // patientBilling
             // 
@@ -326,7 +312,6 @@ namespace hospital_management_system
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.GroupBox billingDetails;
         private System.Windows.Forms.GroupBox patientBilling;
-        private gui.components.InformationTextbox billIdInfobox;
         private gui.components.InformationTextbox regIdInfobox;
         private gui.components.InformationComboBox statusInfobox;
         private gui.components.InformationTextbox totalInfobox;

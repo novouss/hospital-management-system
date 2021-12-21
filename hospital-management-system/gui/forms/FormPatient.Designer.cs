@@ -79,6 +79,7 @@ namespace hospital_management_system
             this.patientForm.TabIndex = 5;
             this.patientForm.TabStop = false;
             this.patientForm.Text = "{function}_patient";
+            this.patientForm.Enter += new System.EventHandler(this.patientForm_Enter);
             // 
             // patientPanel
             // 
@@ -155,6 +156,7 @@ namespace hospital_management_system
             this.countryInfobox.Name = "countryInfobox";
             this.countryInfobox.Size = new System.Drawing.Size(531, 35);
             this.countryInfobox.TabIndex = 5;
+            this.countryInfobox.TextboxPasswordChar = '\0';
             this.countryInfobox.TextboxText = "";
             // 
             // zipcodeInfobox
@@ -166,6 +168,7 @@ namespace hospital_management_system
             this.zipcodeInfobox.Name = "zipcodeInfobox";
             this.zipcodeInfobox.Size = new System.Drawing.Size(531, 35);
             this.zipcodeInfobox.TabIndex = 4;
+            this.zipcodeInfobox.TextboxPasswordChar = '\0';
             this.zipcodeInfobox.TextboxText = "";
             // 
             // provinceInfobox
@@ -177,6 +180,7 @@ namespace hospital_management_system
             this.provinceInfobox.Name = "provinceInfobox";
             this.provinceInfobox.Size = new System.Drawing.Size(531, 35);
             this.provinceInfobox.TabIndex = 3;
+            this.provinceInfobox.TextboxPasswordChar = '\0';
             this.provinceInfobox.TextboxText = "";
             // 
             // cityInfobox
@@ -188,6 +192,7 @@ namespace hospital_management_system
             this.cityInfobox.Name = "cityInfobox";
             this.cityInfobox.Size = new System.Drawing.Size(531, 35);
             this.cityInfobox.TabIndex = 2;
+            this.cityInfobox.TextboxPasswordChar = '\0';
             this.cityInfobox.TextboxText = "";
             // 
             // address2Infobox
@@ -199,6 +204,7 @@ namespace hospital_management_system
             this.address2Infobox.Name = "address2Infobox";
             this.address2Infobox.Size = new System.Drawing.Size(531, 35);
             this.address2Infobox.TabIndex = 1;
+            this.address2Infobox.TextboxPasswordChar = '\0';
             this.address2Infobox.TextboxText = "";
             // 
             // address1Infobox
@@ -210,6 +216,7 @@ namespace hospital_management_system
             this.address1Infobox.Name = "address1Infobox";
             this.address1Infobox.Size = new System.Drawing.Size(531, 35);
             this.address1Infobox.TabIndex = 0;
+            this.address1Infobox.TextboxPasswordChar = '\0';
             this.address1Infobox.TextboxText = "";
             // 
             // personalGroupbox
@@ -241,6 +248,7 @@ namespace hospital_management_system
             this.numberInfobox.Name = "numberInfobox";
             this.numberInfobox.Size = new System.Drawing.Size(507, 35);
             this.numberInfobox.TabIndex = 7;
+            this.numberInfobox.TextboxPasswordChar = '\0';
             this.numberInfobox.TextboxText = "";
             // 
             // emailInfobox
@@ -252,6 +260,7 @@ namespace hospital_management_system
             this.emailInfobox.Name = "emailInfobox";
             this.emailInfobox.Size = new System.Drawing.Size(507, 35);
             this.emailInfobox.TabIndex = 6;
+            this.emailInfobox.TextboxPasswordChar = '\0';
             this.emailInfobox.TextboxText = "";
             // 
             // religionInfobox
@@ -263,6 +272,7 @@ namespace hospital_management_system
             this.religionInfobox.Name = "religionInfobox";
             this.religionInfobox.Size = new System.Drawing.Size(507, 35);
             this.religionInfobox.TabIndex = 5;
+            this.religionInfobox.TextboxPasswordChar = '\0';
             this.religionInfobox.TextboxText = "";
             // 
             // genderInfobox
@@ -306,6 +316,7 @@ namespace hospital_management_system
             this.lastnameInfobox.Name = "lastnameInfobox";
             this.lastnameInfobox.Size = new System.Drawing.Size(507, 35);
             this.lastnameInfobox.TabIndex = 2;
+            this.lastnameInfobox.TextboxPasswordChar = '\0';
             this.lastnameInfobox.TextboxText = "";
             // 
             // middlenameInfobox
@@ -317,6 +328,7 @@ namespace hospital_management_system
             this.middlenameInfobox.Name = "middlenameInfobox";
             this.middlenameInfobox.Size = new System.Drawing.Size(507, 35);
             this.middlenameInfobox.TabIndex = 1;
+            this.middlenameInfobox.TextboxPasswordChar = '\0';
             this.middlenameInfobox.TextboxText = "";
             // 
             // firstnameInfobox
@@ -328,6 +340,7 @@ namespace hospital_management_system
             this.firstnameInfobox.Name = "firstnameInfobox";
             this.firstnameInfobox.Size = new System.Drawing.Size(507, 35);
             this.firstnameInfobox.TabIndex = 0;
+            this.firstnameInfobox.TextboxPasswordChar = '\0';
             this.firstnameInfobox.TextboxText = "";
             // 
             // FlowLayout
