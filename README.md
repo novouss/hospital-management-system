@@ -37,3 +37,11 @@ Staff don't necessarily participate on the Hospital's Information System. Hence 
 * Can Add, View, or Modify Patient Details (including Address Details).
 * Can Add, or View Patient Registration
 * Can View Billing Information.
+
+# Running Missing Packages
+
+Force restore from remote package sources. Run the command while inside the directory terminal.
+
+```cmd
+nuget locals all -clear
+```
